@@ -4,14 +4,14 @@
 
 /* Brand & Typography Variables */
 :root {
-  --gradient: linear-gradient(135deg, #ff2d7a 0%, #ff5a3c 50%, #ff7a1a 100%);
-  --gradient-soft: linear-gradient(135deg, rgba(255, 45, 122, 0.05) 0%, rgba(255, 122, 26, 0.03) 100%);
-  --plum: #5A1A5E;
-  --pink: #FF2D7A;
-  --orange: #FF7A1A;
-  --dark: #333333;
+  --gradient: linear-gradient(135deg, #0061FF 0%, #60EFFF 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(0, 97, 255, 0.08) 0%, rgba(96, 239, 255, 0.05) 100%);
+  --plum: #0A2540;
+  --pink: #0061FF;
+  --orange: #60EFFF;
+  --dark: #0F172A;
   --white: #ffffff;
-  --gray-light: #F8F7F9;
+  --gray-light: #F8FAFC;
   
   --font-heading: 'Poppins', 'Montserrat', sans-serif;
   --font-body: 'Open Sans', sans-serif;
@@ -928,12 +928,12 @@
 }
 
 .expansion-card {
-  background: linear-gradient(135deg, #5a1a5e 0%, #3d1040 100%);
+  background: linear-gradient(135deg, #0A2540 0%, #0061FF 100%);
   border-radius: 36px;
   padding: 4rem 3rem;
   text-align: center;
   color: var(--white);
-  box-shadow: 0 25px 50px rgba(90, 26, 94, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 97, 255, 0.15);
   position: relative;
   overflow: hidden;
 }
@@ -1190,11 +1190,11 @@
 
 .luxury-cta-banner-card {
   position: relative;
-  background: linear-gradient(135deg, #ff2d7a 0%, #ff5a3c 50%, #ff7a1a 100%);
+  background: linear-gradient(135deg, #0A2540 0%, #0061FF 50%, #60EFFF 100%);
   border-radius: 36px;
   padding: 4.5rem 3rem;
   text-align: center;
-  box-shadow: 0 25px 50px rgba(255, 45, 122, 0.2);
+  box-shadow: 0 25px 50px rgba(0, 97, 255, 0.25);
   overflow: hidden;
   color: var(--white);
 }

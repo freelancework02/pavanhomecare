@@ -20,8 +20,12 @@ export default function CoverageMap() {
   );
 
   return (
-    <section className="w-full bg-[#F8FAFC] py-[100px] lg:py-[140px] relative overflow-hidden border-y border-[#E8EDF5]">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-[80px]">
+    <section className="w-full bg-gradient-to-b from-[#F8FAFC] via-white to-[#F8FAFC] py-[90px] lg:py-[130px] relative overflow-hidden border-y border-[#E2E8F0]">
+      {/* Background Decorative Orbs */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#0061FF]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#60EFFF]/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-[80px] relative z-10">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
           <motion.div
@@ -29,8 +33,9 @@ export default function CoverageMap() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-[#0061FF]/[0.08] text-[#0061FF] font-semibold text-[13px] px-4 py-1.5 rounded-full w-fit mb-4 border border-[#0061FF]/15"
+            className="eyebrow-pill mb-4"
           >
+            <MapPin size={14} />
             <span>SERVICE AREAS</span>
           </motion.div>
 
@@ -42,7 +47,9 @@ export default function CoverageMap() {
             className="font-poppins font-extrabold text-[36px] sm:text-[44px] leading-[1.15] text-[#0F172A] tracking-[-0.5px]"
           >
             Compassionate Home Care <br />
-            Across Pennsylvania
+            <span className="bg-gradient-to-r from-[#0061FF] to-[#60EFFF] bg-clip-text text-transparent">
+              Across Pennsylvania
+            </span>
           </motion.h2>
         </div>
 

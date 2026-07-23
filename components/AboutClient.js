@@ -24,9 +24,6 @@ import {
   Printer,
   Mail
 } from "lucide-react";
-import { site } from "@/lib/site";
-import Testimonials from "@/components/Testimonials";
-import InstagramWidget from "@/components/InstagramWidget";
 import GoogleReviews from "@/components/GoogleReviews";
 
 
@@ -644,12 +641,6 @@ export default function AboutClient() {
           </div>
         </div>
       </section>
-
-      {/* ====================================================
-         SECTION 9: TESTIMONIALS (REUSED COMPONENT)
-         ==================================================== */}
-      <Testimonials />
-
       {/* ====================================================
          SECTION 10: GOOGLE REVIEWS (CUSTOM CLONE)
          ==================================================== */}
@@ -658,11 +649,6 @@ export default function AboutClient() {
           <GoogleReviews />
         </div>
       </section>
-
-      {/* ====================================================
-         SECTION 11: INSTAGRAM FEED (REUSED COMPONENT)
-         ==================================================== */}
-      <InstagramWidget />
 
     </div>
   );

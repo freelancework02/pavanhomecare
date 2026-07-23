@@ -20,8 +20,7 @@ import { countiesData } from "@/lib/countiesData";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [servicesDropdown, setServicesDropdown] = useState(false);
-  const [resourcesDropdown, setResourcesDropdown] = useState(false);
+  const [mobileAreasOpen, setMobileAreasOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -34,8 +33,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setOpen(false);
-    setServicesDropdown(false);
-    setResourcesDropdown(false);
+    setMobileAreasOpen(false);
   }, [pathname]);
 
   return (
@@ -60,20 +58,6 @@ export default function Navbar() {
               <Phone size={13} className="text-[#0061FF]" />
               <span>(215) 436-9499</span>
             </a>
-            <Link
-              href="/contact-us"
-              className="flex items-center gap-1.5 hover:text-[#0061FF] transition-colors"
-            >
-              <Heart size={13} className="text-[#0061FF]" />
-              <span>Careers</span>
-            </Link>
-            <a
-              href="#client-portal"
-              className="flex items-center gap-1.5 hover:text-[#0061FF] transition-colors"
-            >
-              <User size={13} className="text-[#0061FF]" />
-              <span>Client Portal</span>
-            </a>
           </div>
         </div>
       </div>
@@ -81,13 +65,13 @@ export default function Navbar() {
       {/* ── 2. MAIN STICKY NAVIGATION BAR ── */}
       <div
         className={`w-full transition-all duration-300 backdrop-blur-[18px] bg-white/85 border-b border-white/40 ${
-          scrolled ? "shadow-[0_10px_30px_rgba(0,97,255,0.06)] py-3" : "py-4"
+          scrolled ? "shadow-[0_10px_30px_rgba(0,97,255,0.06)] py-3" : "py-3"
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-4 lg:px-[80px] flex items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group focus:outline-none">
-            <Logo variant="color" />
+            <Logo variant="color" height="5.0rem" />
           </Link>
 
           {/* Desktop Nav Links */}
@@ -113,27 +97,56 @@ export default function Navbar() {
               About Us
             </Link>
 
-            {/* Services Dropdown Trigger */}
+            <Link
+              href="/services"
+              className={`py-1 transition-colors hover:text-[#0061FF] ${
+                pathname === "/services" ? "text-[#0061FF] font-semibold" : ""
+              }`}
+            >
+              Services
+            </Link>
+
+            {/* Areas We Serve Dropdown Trigger */}
             <div className="relative group">
               <Link
-                href="/services"
-                className="flex items-center gap-1 py-1 transition-colors hover:text-[#0061FF]"
+                href="/areas-we-serve"
+                className={`flex items-center gap-1 py-1 transition-colors hover:text-[#0061FF] ${
+                  pathname.startsWith("/areas-we-serve") ? "text-[#0061FF] font-semibold" : ""
+                }`}
               >
-                <span>Services</span>
+                <span>Areas We Serve</span>
                 <ChevronDown size={14} className="transition-transform group-hover:rotate-180 text-[#64748B]" />
               </Link>
+              
+              {/* Dropdown Menu */}
+              <div className="absolute left-0 mt-2 w-64 bg-white border border-[#E2E8F0] rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 p-2 grid grid-cols-1 gap-0.5">
+                <Link
+                  href="/areas-we-serve"
+                  className="block px-4 py-2 text-[14px] text-[#0061FF] hover:bg-[#0061FF]/5 rounded-xl transition-all duration-200 font-semibold"
+                >
+                  All Areas We Serve
+                </Link>
+                <div className="h-[1px] bg-slate-100 my-1" />
+                {Object.values(countiesData).map((county) => (
+                  <Link
+                    key={county.slug}
+                    href={`/areas-we-serve/${county.slug}`}
+                    className="block px-4 py-2 text-[14px] text-[#475569] hover:text-[#0061FF] hover:bg-[#0061FF]/5 rounded-xl transition-all duration-200 font-medium"
+                  >
+                    {county.name}
+                  </Link>
+                ))}
+              </div>
             </div>
 
-            {/* Resources / Blog Dropdown Trigger */}
-            <div className="relative group">
-              <Link
-                href="/blog"
-                className="flex items-center gap-1 py-1 transition-colors hover:text-[#0061FF]"
-              >
-                <span>Resources</span>
-                <ChevronDown size={14} className="transition-transform group-hover:rotate-180 text-[#64748B]" />
-              </Link>
-            </div>
+            <Link
+              href="/blog"
+              className={`py-1 transition-colors hover:text-[#0061FF] ${
+                pathname === "/blog" ? "text-[#0061FF] font-semibold" : ""
+              }`}
+            >
+              Blog
+            </Link>
 
             <Link
               href="/contact-us"
@@ -198,11 +211,44 @@ export default function Navbar() {
             <Link href="/services" onClick={() => setOpen(false)} className="py-2 border-b border-slate-100">
               Services
             </Link>
-            <Link href="/areas-we-serve" onClick={() => setOpen(false)} className="py-2 border-b border-slate-100">
-              Areas We Serve
-            </Link>
+            
+            {/* Collapsible Areas We Serve */}
+            <div className="border-b border-slate-100">
+              <button
+                onClick={() => setMobileAreasOpen(!mobileAreasOpen)}
+                className="w-full flex items-center justify-between py-2 text-left font-semibold"
+              >
+                <span>Areas We Serve</span>
+                <ChevronDown
+                  size={18}
+                  className={`transition-transform duration-200 ${mobileAreasOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              {mobileAreasOpen && (
+                <div className="pl-4 pb-3 flex flex-col gap-2 mt-1 max-h-[220px] overflow-y-auto">
+                  <Link
+                    href="/areas-we-serve"
+                    onClick={() => setOpen(false)}
+                    className="text-[15px] font-medium text-[#0061FF] py-1 block"
+                  >
+                    All Areas We Serve
+                  </Link>
+                  {Object.values(countiesData).map((county) => (
+                    <Link
+                      key={county.slug}
+                      href={`/areas-we-serve/${county.slug}`}
+                      onClick={() => setOpen(false)}
+                      className="text-[15px] font-medium text-[#475569] hover:text-[#0061FF] py-1 block"
+                    >
+                      {county.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <Link href="/blog" onClick={() => setOpen(false)} className="py-2 border-b border-slate-100">
-              Resources / Blog
+              Blog
             </Link>
             <Link href="/contact-us" onClick={() => setOpen(false)} className="py-2">
               Contact Us

@@ -8,7 +8,7 @@ export default function Logo({ variant = "color", title = "Pavan Homecare", heig
 
   return (
     <div 
-      className="logo-container" 
+      className="logo-container shrink-0" 
       style={{ 
         display: "inline-flex", 
         alignItems: "center", 
@@ -21,6 +21,7 @@ export default function Logo({ variant = "color", title = "Pavan Homecare", heig
         alt={title}
         width={1536}
         height={1024}
+        quality={100}
         style={{
           height: height,
           width: "auto",

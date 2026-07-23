@@ -7,16 +7,20 @@ import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin, Twitter } fr
 export default function Footer() {
   return (
     <footer className="w-full bg-[#0A2540] text-white pt-20 pb-8 relative overflow-hidden">
+      {/* Ambient Decorative Orbs */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-[#0061FF]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#60EFFF]/5 rounded-full blur-3xl pointer-events-none" />
+
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-[80px] relative z-10">
         {/* 4-Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           {/* Col 1: Logo & Company Description (4 cols) */}
           <div className="lg:col-span-4 flex flex-col">
-            <Link href="/" className="mb-6 inline-block w-fit focus:outline-none">
-              <Logo variant="white" height="3.8rem" />
+            <Link href="/" className="mb-6 inline-block w-fit focus:outline-none hover:opacity-95 transition-opacity">
+              <Logo variant="white" height="5.2rem" />
             </Link>
 
-            <p className="text-slate-300 text-[14px] leading-relaxed max-w-[360px] mb-6">
+            <p className="text-slate-300 text-[14.5px] leading-relaxed max-w-[360px] mb-6 font-normal">
               Providing compassionate, personalized in-home care that helps seniors and individuals with disabilities live safely, comfortably, and independently in the place they love most—their home.
             </p>
 
@@ -26,7 +30,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#0061FF] hover:text-white flex items-center justify-center transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#0061FF] hover:scale-110 hover:shadow-[0_4px_15px_rgba(0,97,255,0.4)] flex items-center justify-center transition-all duration-300"
                 aria-label="Facebook"
               >
                 <Facebook size={16} />
@@ -35,7 +39,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#0061FF] hover:text-white flex items-center justify-center transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#0061FF] hover:scale-110 hover:shadow-[0_4px_15px_rgba(0,97,255,0.4)] flex items-center justify-center transition-all duration-300"
                 aria-label="Instagram"
               >
                 <Instagram size={16} />
@@ -44,7 +48,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#0061FF] hover:text-white flex items-center justify-center transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#0061FF] hover:scale-110 hover:shadow-[0_4px_15px_rgba(0,97,255,0.4)] flex items-center justify-center transition-all duration-300"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={16} />
@@ -53,7 +57,7 @@ export default function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#0061FF] hover:text-white flex items-center justify-center transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#0061FF] hover:scale-110 hover:shadow-[0_4px_15px_rgba(0,97,255,0.4)] flex items-center justify-center transition-all duration-300"
                 aria-label="Twitter"
               >
                 <Twitter size={16} />
@@ -87,7 +91,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/blog" className="hover:text-[#60EFFF] transition-colors">
-                  Resources &amp; Blog
+                  Blog
                 </Link>
               </li>
               <li>
