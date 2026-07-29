@@ -21,24 +21,22 @@ import {
 } from "lucide-react";
 
 // Reusable CountyRow Component
-function CountyRow({ icon: Icon, name, description, slug, isLast }) {
+function CountyRow({ icon: Icon, name, description, slug }) {
   return (
     <Link
       href={`/areas-we-serve/${slug}`}
-      className={`group flex items-center justify-between py-3.5 px-4 rounded-2xl hover:bg-[#F0F7FF] transition-all duration-300 ${
-        !isLast ? "border-b border-[#E8EEF8]" : ""
-      }`}
+      className="group flex items-center justify-between py-3.5 px-4 rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#1E7FE0]/50 hover:bg-[#E8F2FD]/40 shadow-[0_4px_15px_rgba(16,24,43,0.04)] hover:shadow-[0_8px_25px_rgba(30,127,224,0.12)] hover:-translate-y-0.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A]"
     >
       <div className="flex items-center gap-3.5">
-        {/* Blue Circular Icon */}
-        <div className="w-10 h-10 rounded-full bg-[#2F80FF]/10 text-[#2F80FF] flex items-center justify-center shrink-0 group-hover:bg-[#2F80FF] group-hover:text-white transition-colors duration-300 shadow-sm">
+        {/* Accent Pin Icon Circle */}
+        <div className="w-10 h-10 rounded-full bg-[#FCEEE0] text-[#F2994A] flex items-center justify-center shrink-0 group-hover:bg-[#F2994A] group-hover:text-white transition-colors duration-300 shadow-sm">
           <Icon size={18} />
         </div>
         <div>
-          <h4 className="font-poppins font-bold text-[16px] text-[#11284F] group-hover:text-[#2F80FF] transition-colors leading-snug">
+          <h4 className="font-poppins font-bold text-[15.5px] text-[#0B2A4A] group-hover:text-[#1E7FE0] transition-colors leading-snug">
             {name}
           </h4>
-          <p className="text-[#667085] text-[13px] leading-tight mt-0.5">
+          <p className="text-[#4A5568] text-[12.5px] leading-tight mt-0.5">
             {description}
           </p>
         </div>
@@ -46,7 +44,7 @@ function CountyRow({ icon: Icon, name, description, slug, isLast }) {
 
       <ArrowRight
         size={16}
-        className="text-[#A0AEC0] group-hover:text-[#2F80FF] group-hover:translate-x-1 transition-all duration-300 shrink-0"
+        className="text-[#8892A0] group-hover:text-[#1E7FE0] group-hover:translate-x-1 transition-all duration-300 shrink-0"
       />
     </Link>
   );
@@ -71,16 +69,15 @@ function TopStatCard({ icon: Icon, number, subtitle }) {
   );
 }
 
-// Data Array for 10 PA Counties
+// Data Array for 9 PA Counties
 const COUNTIES = [
-  { slug: "york", name: "York County", description: "Compassionate care for families across York.", icon: Home },
-  { slug: "lancaster", name: "Lancaster County", description: "Serving Lancaster with trusted in-home support.", icon: Heart },
-  { slug: "adams", name: "Adams County", description: "Providing quality home care in Adams County.", icon: HeartHandshake },
-  { slug: "cumberland", name: "Cumberland County", description: "Supporting independence in Cumberland County.", icon: Users },
-  { slug: "dauphin", name: "Dauphin County", description: "Reliable care for families in Dauphin County.", icon: Building },
-  { slug: "lebanon", name: "Lebanon County", description: "Professional and personalized care in Lebanon.", icon: Activity },
-  { slug: "franklin", name: "Franklin County", description: "Helping families live comfortably at home.", icon: Home },
-  { slug: "perry", name: "Perry County", description: "Dedicated care services in Perry County.", icon: UserCheck },
+  { slug: "philadelphia", name: "Philadelphia County", description: "Compassionate care for families across Philadelphia.", icon: Building },
+  { slug: "bucks", name: "Bucks County", description: "Serving Bucks County with trusted home support.", icon: Home },
+  { slug: "montgomery", name: "Montgomery County", description: "Providing quality in-home care in Montgomery County.", icon: Heart },
+  { slug: "delaware", name: "Delaware County", description: "Supporting independence in Delaware County.", icon: Users },
+  { slug: "chester", name: "Chester County", description: "Reliable care for families in Chester County.", icon: HeartHandshake },
+  { slug: "lehigh", name: "Lehigh County", description: "Professional and personalized care in the Lehigh Valley.", icon: Activity },
+  { slug: "northampton", name: "Northampton County", description: "Dedicated care services in Northampton County.", icon: UserCheck },
   { slug: "berks", name: "Berks County", description: "Compassionate care throughout Berks County.", icon: Star },
   { slug: "schuylkill", name: "Schuylkill County", description: "Reliable in-home care in Schuylkill County.", icon: Shield },
 ];
@@ -133,77 +130,61 @@ export default function ServiceAreasSearch() {
 
         </div>
 
-        {/* ── MAIN CONTENT (2-COLUMN LAYOUT) ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[30px] items-stretch mb-14">
+        {/* ── MAIN CONTENT: DOMINANT MAP (8 COLS) + OVERLAPPING COUNTY SIDEBAR (4 COLS) ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center mb-14">
           
-          {/* LEFT: County List Panel (5 Cols) */}
-          <div className="lg:col-span-5 bg-white rounded-[30px] border border-[#E8EEF8] shadow-[0_15px_35px_rgba(0,0,0,0.04)] p-4 sm:p-6 flex flex-col justify-between">
+          {/* LEFT: County List Sidebar Card (4 Cols - Overlapping Map Edge) */}
+          <div className="lg:col-span-4 bg-white/95 backdrop-blur-md rounded-[30px] border border-[#E2E8F0] shadow-[0_20px_45px_rgba(11,42,74,0.12)] p-4 sm:p-5 flex flex-col justify-between z-20 lg:-mr-8 relative">
             <div className="flex flex-col">
-              {COUNTIES.map((county, index) => (
-                <CountyRow
-                  key={county.slug}
-                  slug={county.slug}
-                  name={county.name}
-                  description={county.description}
-                  icon={county.icon}
-                  isLast={index === COUNTIES.length - 1}
-                />
-              ))}
+              <div className="px-3 py-2 mb-2 border-b border-[#E2E8F0] flex items-center justify-between">
+                <span className="font-poppins font-bold text-[14px] text-[#0B2A4A] uppercase tracking-wider">Target PA Counties</span>
+                <span className="bg-[#FCEEE0] text-[#F2994A] font-extrabold text-[12px] px-2.5 py-0.5 rounded-full">9 Active</span>
+              </div>
+              <div className="max-h-[380px] overflow-y-auto pr-1">
+                {COUNTIES.map((county, index) => (
+                  <CountyRow
+                    key={county.slug}
+                    slug={county.slug}
+                    name={county.name}
+                    description={county.description}
+                    icon={county.icon}
+                    isLast={index === COUNTIES.length - 1}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* RIGHT: Interactive Map Card (7 Cols) */}
-          <div className="lg:col-span-7 bg-white rounded-[32px] border border-[#E8EEF8] shadow-[0_20px_50px_rgba(0,0,0,0.06)] p-6 sm:p-8 relative min-h-[480px] flex items-center justify-center group overflow-hidden">
+          {/* RIGHT: Dominant Interactive Map Container (8 Cols) */}
+          <div className="lg:col-span-8 bg-white rounded-[36px] border border-[#E2E8F0] shadow-[0_20px_50px_rgba(11,42,74,0.08)] p-6 sm:p-8 relative min-h-[500px] flex items-center justify-center group overflow-hidden z-10">
             
             {/* PA Counties Map Asset Image */}
-            <div className="relative w-full h-[400px] sm:h-[480px]">
+            <div className="relative w-full h-[420px] sm:h-[500px] pl-0 lg:pl-6">
               <Image
                 src="/images/pa_counties_map.jpg"
-                alt="Illustrated Pennsylvania county coverage map showing York, Lancaster, Adams, Cumberland, Dauphin, Lebanon, Berks, Schuylkill, Perry, Franklin"
+                alt="Illustrated Pennsylvania county coverage map showing Philadelphia, Bucks, Montgomery, Delaware, Chester, Lehigh, Northampton, Berks, Schuylkill"
                 fill
-                sizes="(max-width: 1024px) 100vw, 55vw"
+                sizes="(max-width: 1024px) 100vw, 65vw"
                 className="object-contain transition-transform duration-700 group-hover:scale-102"
                 priority
               />
             </div>
 
-            {/* Blue Location Pin Near Center */}
+            {/* Coral Pin Near Center */}
             <motion.div
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-[48%] left-[58%] -translate-x-1/2 -translate-y-1/2 z-20 drop-shadow-xl"
+              className="absolute top-[48%] left-[62%] -translate-x-1/2 -translate-y-1/2 z-20 drop-shadow-xl"
             >
-              <MapPin size={38} className="text-[#2F80FF] fill-[#2F80FF] stroke-white stroke-2" />
+              <MapPin size={38} className="text-[#F2994A] fill-[#F2994A] stroke-white stroke-2" />
             </motion.div>
 
-            {/* Floating Circular Image Top-Right */}
-            <div className="hidden sm:block absolute -top-8 -right-6 lg:-top-10 lg:-right-8 z-20">
-              
-              {/* Dotted Blue Semi-Circle Decoration */}
-              <div className="absolute -top-6 -right-6 w-[230px] h-[230px] rounded-full border-2 border-dashed border-[#2F80FF]/35 pointer-events-none" />
-
-              <div className="w-[180px] sm:w-[210px] aspect-square rounded-full overflow-hidden border-[7px] border-white shadow-[0_15px_35px_rgba(0,0,0,0.12)] relative">
-                <Image
-                  src="/images/why_choose_hug.jpg"
-                  alt="Caregiver hugging senior client"
-                  fill
-                  sizes="210px"
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Bottom-Right Floating Glass Icon Button */}
-              <div className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-[#2F80FF] border border-white/80 absolute bottom-1 right-1 z-30">
-                <Heart size={18} className="fill-[#2F80FF]" />
-              </div>
-            </div>
-
             {/* Bottom Floating Glass Callout Badge */}
-            <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md p-3.5 px-5 rounded-[24px] shadow-[0_15px_35px_rgba(0,0,0,0.1)] border border-white/80 flex items-center gap-3 z-20">
-              <div className="w-9 h-9 rounded-full bg-[#2F80FF]/15 text-[#2F80FF] flex items-center justify-center shrink-0">
-                <Heart size={18} className="fill-[#2F80FF]" />
+            <div className="absolute bottom-6 right-6 bg-white/95 backdrop-blur-md p-3.5 px-5 rounded-[24px] shadow-[0_15px_35px_rgba(11,42,74,0.12)] border border-white flex items-center gap-3 z-20">
+              <div className="w-9 h-9 rounded-full bg-[#FCEEE0] text-[#F2994A] flex items-center justify-center shrink-0">
+                <Heart size={18} className="fill-[#F2994A]" />
               </div>
-              <div className="text-[#11284F] text-[13.5px] font-bold leading-snug">
+              <div className="text-[#0B2A4A] text-[13.5px] font-bold leading-snug">
                 Bringing quality care <br />
                 closer to your home.
               </div>

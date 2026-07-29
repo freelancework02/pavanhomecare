@@ -61,57 +61,54 @@ export default function KnowledgeHub() {
           </p>
         </div>
 
-        {/* 1. Featured Article (Editorial 2-Column Banner) */}
+        {/* 1. Featured Article (Asymmetric 55/45 Split Banner) */}
         {featuredPost && (
-          <article className="hub-featured-card" aria-label="Featured Article">
+          <article className="hub-featured-card bg-white rounded-[32px] border border-[#E2E8F0] shadow-[0_15px_40px_rgba(11,42,74,0.08)] overflow-hidden grid grid-cols-1 lg:grid-cols-12 mb-16 relative" aria-label="Featured Article">
             
-            {/* Image Box */}
-            <div className="hub-featured-media">
-              <div className="hub-featured-image-wrapper">
-                <Image
-                  src={featuredPost.image || postImages[featuredPost.slug] || "https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?w=600&auto=format&fit=crop&q=60"}
-                  alt={featuredPost.title}
-                  fill
-                  sizes="(max-width: 68rem) 100vw, 50vw"
-                  className="hub-featured-img"
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-              <span className="hub-featured-category-pill">
+            {/* Image Box (55% / 7 Cols) */}
+            <div className="lg:col-span-7 relative min-h-[320px] lg:min-h-[420px] group overflow-hidden">
+              <Image
+                src={featuredPost.image || postImages[featuredPost.slug] || "https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?w=600&auto=format&fit=crop&q=60"}
+                alt={featuredPost.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B2A4A]/50 via-transparent to-transparent pointer-events-none" />
+              <span className="absolute top-5 left-5 bg-[#F2994A] text-white font-extrabold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full shadow-lg z-10">
                 {postCategories[featuredPost.slug] || "Senior Wellness"}
               </span>
             </div>
 
-            {/* Content Box */}
-            <div className="hub-featured-content">
-              <div className="hub-meta-row">
-                <span className="hub-meta-item">
-                  <Calendar size={14} aria-hidden="true" />
-                  <time dateTime={featuredPost.date}>{formatDate(featuredPost.date)}</time>
-                </span>
-                <span className="hub-meta-item">
-                  <Clock size={14} aria-hidden="true" />
-                  <span>{postReadTimes[featuredPost.slug] || "5 min read"}</span>
-                </span>
-                <span className="hub-meta-item">
-                  <User size={14} aria-hidden="true" />
-                  <span>Pavan Team</span>
-                </span>
+            {/* Content Box (45% / 5 Cols) */}
+            <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between bg-white relative">
+              <div>
+                <div className="hub-meta-row flex items-center gap-4 text-[13px] text-[#4A5568] mb-4">
+                  <span className="flex items-center gap-1.5 font-medium">
+                    <Calendar size={14} className="text-[#1E7FE0]" aria-hidden="true" />
+                    <time dateTime={featuredPost.date}>{formatDate(featuredPost.date)}</time>
+                  </span>
+                  <span className="flex items-center gap-1.5 font-medium">
+                    <Clock size={14} className="text-[#F2994A]" aria-hidden="true" />
+                    <span>{postReadTimes[featuredPost.slug] || "5 min read"}</span>
+                  </span>
+                </div>
+
+                <h3 className="font-poppins font-extrabold text-[24px] sm:text-[28px] text-[#0B2A4A] leading-[1.25] mb-4 hover:text-[#1E7FE0] transition-colors">
+                  <Link href={`/blog/${featuredPost.slug}`}>
+                    {featuredPost.title}
+                  </Link>
+                </h3>
+
+                <p className="text-[#4A5568] text-[15px] leading-relaxed mb-6">
+                  {featuredPost.excerpt}
+                </p>
               </div>
 
-              <h3 className="hub-featured-title">
-                <Link href={`/blog/${featuredPost.slug}`}>
-                  {featuredPost.title}
-                </Link>
-              </h3>
-
-              <p className="hub-featured-excerpt">
-                {featuredPost.excerpt}
-              </p>
-
-              <div className="hub-featured-footer">
-                <Link href={`/blog/${featuredPost.slug}`} className="btn-luxury-primary btn-luxury-cta" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
-                  Read Featured Article
+              {/* Overlapping CTA Button breaking outside bottom border */}
+              <div className="pt-2 lg:-mb-5 z-20">
+                <Link href={`/blog/${featuredPost.slug}`} className="inline-flex items-center gap-2.5 bg-[#F2994A] hover:bg-[#E08838] text-white font-bold text-[14px] px-6 py-3.5 rounded-full shadow-[0_8px_20px_rgba(242,153,74,0.35)] hover:-translate-y-0.5 transition-all duration-300">
+                  <span>Read Featured Article</span>
                   <ArrowRight size={16} aria-hidden="true" />
                 </Link>
               </div>
@@ -120,55 +117,60 @@ export default function KnowledgeHub() {
           </article>
         )}
 
-        {/* 2. Standard Articles Grid */}
-        <div className="hub-grid">
-          {standardPosts.map((post) => (
-            <article key={post.slug} className="hub-card" aria-label={`Blog post: ${post.title}`}>
+        {/* 2. Standard Articles Grid (With Vertical Stagger) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-12">
+          {standardPosts.map((post, idx) => (
+            <article 
+              key={post.slug} 
+              className={`bg-white rounded-[28px] border border-[#E2E8F0] shadow-[0_4px_20px_rgba(16,24,43,0.06)] hover:shadow-[0_8px_30px_rgba(16,24,43,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden group ${
+                idx === 1 ? "lg:-translate-y-5 border-t-4 border-t-[#F2994A]" : ""
+              }`}
+              aria-label={`Blog post: ${post.title}`}
+            >
               
               {/* Card Image */}
-              <div className="hub-card-media">
-                <div className="hub-card-image-wrapper">
-                  <Image
-                    src={post.image || postImages[post.slug] || "https://images.unsplash.com/photo-1765896387387-0538bc9f997e?w=600&auto=format&fit=crop&q=60"}
-                    alt={post.title}
-                    fill
-                    sizes="(max-width: 48rem) 100vw, (max-width: 68rem) 50vw, 33vw"
-                    className="hub-card-img"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <span className="hub-card-category-pill">
+              <div className="relative w-full h-[210px] overflow-hidden">
+                <Image
+                  src={post.image || postImages[post.slug] || "https://images.unsplash.com/photo-1765896387387-0538bc9f997e?w=600&auto=format&fit=crop&q=60"}
+                  alt={post.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-[#0B2A4A] font-bold text-[11px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
                   {postCategories[post.slug] || "Senior Wellness"}
                 </span>
               </div>
 
               {/* Card Content */}
-              <div className="hub-card-content">
-                <div className="hub-meta-row">
-                  <span className="hub-meta-item">
-                    <Calendar size={12} aria-hidden="true" />
-                    <time dateTime={post.date}>{formatDate(post.date)}</time>
-                  </span>
-                  <span className="hub-meta-item">
-                    <Clock size={12} aria-hidden="true" />
-                    <span>{postReadTimes[post.slug] || "4 min read"}</span>
-                  </span>
+              <div className="p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center gap-3 text-[12px] text-[#4A5568] mb-3">
+                    <span className="flex items-center gap-1 font-medium">
+                      <Calendar size={12} className="text-[#1E7FE0]" aria-hidden="true" />
+                      <time dateTime={post.date}>{formatDate(post.date)}</time>
+                    </span>
+                    <span className="flex items-center gap-1 font-medium">
+                      <Clock size={12} className="text-[#F2994A]" aria-hidden="true" />
+                      <span>{postReadTimes[post.slug] || "4 min read"}</span>
+                    </span>
+                  </div>
+
+                  <h3 className="font-poppins font-bold text-[18px] text-[#0B2A4A] group-hover:text-[#1E7FE0] transition-colors mb-3 leading-snug">
+                    <Link href={`/blog/${post.slug}`}>
+                      {post.title}
+                    </Link>
+                  </h3>
+
+                  <p className="text-[#4A5568] text-[13.5px] leading-relaxed mb-6">
+                    {post.excerpt}
+                  </p>
                 </div>
 
-                <h3 className="hub-card-title">
-                  <Link href={`/blog/${post.slug}`}>
-                    {post.title}
-                  </Link>
-                </h3>
-
-                <p className="hub-card-excerpt">
-                  {post.excerpt}
-                </p>
-
-                <div className="hub-card-footer">
-                  <Link href={`/blog/${post.slug}`} className="hub-card-link" aria-label={`Read article: ${post.title}`}>
-                    Read Article
-                    <ArrowRight size={14} className="hub-card-link__arrow" aria-hidden="true" />
+                <div className="pt-2 border-t border-[#E2E8F0] flex items-center justify-between">
+                  <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-1.5 text-[#1E7FE0] font-bold text-[13.5px] group-hover:text-[#F2994A] transition-colors">
+                    <span>Read Article</span>
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                   </Link>
                 </div>
               </div>

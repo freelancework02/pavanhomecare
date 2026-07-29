@@ -15,23 +15,26 @@ import {
 } from "lucide-react";
 
 // Reusable ServiceCard Component
-function ServiceCard({ icon: Icon, title, description, href = "/services" }) {
+function ServiceCard({ icon: Icon, title, description, href = "/services", color = "#1E7FE0", bg = "bg-[#E8F2FD]", cardBg = "bg-white" }) {
   return (
-    <Link href={href} className="block group h-full">
-      <div className="bg-gradient-to-br from-white via-white to-[#F0F7FF]/60 hover:from-white hover:to-[#EBF5FF] border border-slate-200/90 rounded-[28px] p-6 sm:p-7 shadow-[0_8px_25px_rgba(0,97,255,0.03)] hover:shadow-[0_20px_45px_rgba(0,97,255,0.14)] hover:border-[#0061FF]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full relative">
+    <Link href={href} className="block group h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A] rounded-[28px]">
+      <div className={`${cardBg} border border-[#E2E8F0] rounded-[28px] p-6 sm:p-7 shadow-[0_4px_20px_rgba(16,24,43,0.06)] hover:shadow-[0_8px_30px_rgba(16,24,43,0.12)] hover:border-[#1E7FE0]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full relative`}>
         <div>
-          {/* Blue Icon Circle */}
-          <div className="w-11 h-11 rounded-full bg-[#0061FF]/10 flex items-center justify-center text-[#0061FF] mb-5 group-hover:bg-[#0061FF] group-hover:text-white transition-colors duration-300 shadow-sm">
+          {/* Dynamic Icon Circle */}
+          <div
+            className={`w-11 h-11 rounded-full ${bg} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm`}
+            style={{ color: color }}
+          >
             <Icon size={20} />
           </div>
 
           {/* Title */}
-          <h3 className="font-poppins font-bold text-[18px] text-[#12264B] group-hover:text-[#0061FF] transition-colors mb-2 leading-snug">
+          <h3 className="font-poppins font-bold text-[18px] text-[#0B2A4A] group-hover:text-[#1E7FE0] transition-colors mb-2 leading-snug">
             {title}
           </h3>
 
           {/* Description */}
-          <p className="text-[#5D667A] text-[13.5px] leading-relaxed mb-6">
+          <p className="text-[#4A5568] text-[13.5px] leading-relaxed mb-6">
             {description}
           </p>
         </div>
@@ -40,7 +43,7 @@ function ServiceCard({ icon: Icon, title, description, href = "/services" }) {
         <div className="flex justify-end pt-2">
           <ArrowRight
             size={18}
-            className="text-[#A0AEC0] group-hover:text-[#0061FF] group-hover:translate-x-1 transition-all duration-300"
+            className="text-[#8892A0] group-hover:text-[#1E7FE0] group-hover:translate-x-1 transition-all duration-300"
           />
         </div>
       </div>
@@ -55,18 +58,27 @@ const TOP_SERVICES = [
     icon: Users,
     title: "Companionship",
     description: "Friendly support, conversation, and meaningful companionship to brighten each day.",
+    color: "#6FA98A",
+    bg: "bg-[#E7F2EC]",
+    cardBg: "bg-white",
   },
   {
     id: "dementia-care",
     icon: Brain,
     title: "Dementia Care",
     description: "Specialized care focused on safety, patience, and maintaining routines.",
+    color: "#1E7FE0",
+    bg: "bg-[#E8F2FD]",
+    cardBg: "bg-[#F7F9FC]",
   },
   {
     id: "transition-care",
     icon: BedDouble,
     title: "Transition Care",
     description: "Support after hospital stays to ensure a smooth and comfortable recovery.",
+    color: "#F2994A",
+    bg: "bg-[#FCEEE0]",
+    cardBg: "bg-white",
   },
 ];
 
@@ -77,50 +89,50 @@ const BOTTOM_SERVICES = [
     icon: ShieldCheck,
     title: "Respite Care",
     description: "Temporary relief for family caregivers with trusted and reliable care.",
+    color: "#0B2A4A",
+    bg: "bg-[#E8F2FD]",
+    cardBg: "bg-[#F7F9FC]",
   },
   {
     id: "twentyfour-hour-care",
     icon: Clock,
     title: "24-Hour Care",
     description: "Round-the-clock support tailored to individual needs and routines.",
+    color: "#F2994A",
+    bg: "bg-[#FCEEE0]",
+    cardBg: "bg-white",
   },
   {
     id: "post-surgery",
     icon: Plus,
     title: "Post-Surgery Support",
     description: "Compassionate assistance during recovery for a safer and faster healing.",
+    color: "#6FA98A",
+    bg: "bg-[#E7F2EC]",
+    cardBg: "bg-[#F7F9FC]",
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section className="w-full bg-gradient-to-b from-[#F0F7FF] via-white to-[#EBF5FF] py-[110px] relative overflow-hidden border-y border-[#E2E8F0]/60">
-      {/* Background Decorative Radial Glows & Dotted Pattern */}
-      <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-[#0061FF]/8 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -right-20 w-[500px] h-[500px] bg-[#60EFFF]/12 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Decorative Dots Pattern on the Right */}
-      <div className="hidden lg:block absolute top-24 right-10 opacity-30 pointer-events-none">
-        <div className="grid grid-cols-6 gap-3">
-          {[...Array(24)].map((_, i) => (
-            <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#0061FF]" />
-          ))}
-        </div>
-      </div>
+    <section className="w-full bg-[#F7F9FC] py-[110px] relative overflow-hidden border-y border-[#E2E8F0]/60">
+      {/* Background Decorative Radial Glows */}
+      <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-[#1E7FE0]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 -right-20 w-[500px] h-[500px] bg-[#F2994A]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-10 relative z-10">
         {/* ── HEADER ── */}
         <div className="flex flex-col items-center text-center max-w-[620px] mx-auto mb-16">
-          {/* Badge */}
+          {/* Eyebrow Badge */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-[#EBF5FF] text-[#0061FF] font-semibold text-[13px] px-4 py-1.5 rounded-full mb-5 border border-[#0061FF]/15"
+            className="inline-flex items-center gap-2 bg-[#E8F2FD] text-[#0B2A4A] font-bold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full mb-5 border border-[#1E7FE0]/20"
           >
-            <span className="w-2 h-2 rounded-full bg-[#0061FF]" />
-            <span className="tracking-wide uppercase text-[12px] font-bold">OUR SERVICES</span>
+            <span className="w-2 h-2 rounded-full bg-[#F2994A]" />
+            <span>OUR SERVICES</span>
           </motion.div>
 
           {/* Heading */}
@@ -129,11 +141,11 @@ export default function ServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-poppins font-extrabold text-[36px] sm:text-[48px] leading-[1.12] text-[#12264B] tracking-[-0.8px] mb-4"
+            className="font-poppins font-extrabold text-[36px] sm:text-[48px] leading-[1.12] text-[#0B2A4A] tracking-[-0.8px] mb-4"
           >
             How We Help You <br className="hidden sm:inline" />
             Live{" "}
-            <span className="bg-gradient-to-r from-[#0061FF] to-[#60EFFF] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1E7FE0] via-[#114B8C] to-[#F2994A] bg-clip-text text-transparent">
               Comfortably
             </span>{" "}
             At Home
@@ -145,7 +157,7 @@ export default function ServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-[#5D667A] text-[16px] sm:text-[17px] leading-relaxed"
+            className="text-[#4A5568] text-[16px] sm:text-[17px] leading-relaxed"
           >
             From personal care to specialized support, our services are designed to bring comfort, dignity, and independence to you or your loved one.
           </motion.p>
@@ -162,7 +174,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative w-full h-[380px] sm:h-[440px] lg:h-[480px] rounded-[30px] overflow-hidden border border-slate-200/80 shadow-[0_15px_40px_rgba(0,0,0,0.06)] group"
+              className="relative w-full h-[380px] sm:h-[440px] lg:h-[480px] rounded-[30px] overflow-hidden border border-white/60 shadow-[0_8px_30px_rgba(16,24,43,0.1)] group"
             >
               <Image
                 src="/images/service_bento_portrait.jpg"
@@ -172,7 +184,7 @@ export default function ServicesSection() {
                 priority
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#12264B]/30 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B2A4A]/40 via-transparent to-transparent pointer-events-none" />
             </motion.div>
 
             {/* Personal Care Card stacked below */}
@@ -182,24 +194,24 @@ export default function ServicesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <Link href="/services" className="block group">
-                <div className="bg-gradient-to-br from-white via-white to-[#F0F7FF]/60 hover:from-white hover:to-[#EBF5FF] border border-slate-200/90 rounded-[28px] p-6 sm:p-7 shadow-[0_8px_25px_rgba(0,97,255,0.03)] hover:shadow-[0_20px_45px_rgba(0,97,255,0.14)] hover:border-[#0061FF]/40 hover:-translate-y-1.5 transition-all duration-300 relative flex flex-col justify-between">
+              <Link href="/services" className="block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A] rounded-[28px]">
+                <div className="bg-white border border-[#E2E8F0] rounded-[28px] p-6 sm:p-7 shadow-[0_4px_20px_rgba(16,24,43,0.06)] hover:shadow-[0_8px_30px_rgba(16,24,43,0.12)] hover:border-[#1E7FE0]/40 hover:-translate-y-1.5 transition-all duration-300 relative flex flex-col justify-between">
                   <div>
-                    <div className="w-11 h-11 rounded-full bg-[#0061FF]/10 flex items-center justify-center text-[#0061FF] mb-4 group-hover:bg-[#0061FF] group-hover:text-white transition-colors duration-300 shadow-sm">
+                    <div className="w-11 h-11 rounded-full bg-[#E8F2FD] text-[#1E7FE0] flex items-center justify-center mb-4 group-hover:bg-[#1E7FE0] group-hover:text-white transition-colors duration-300 shadow-sm">
                       <Home size={20} />
                     </div>
 
-                    <h3 className="font-poppins font-bold text-[18px] text-[#12264B] group-hover:text-[#0061FF] transition-colors mb-2 leading-snug">
+                    <h3 className="font-poppins font-bold text-[18px] text-[#0B2A4A] group-hover:text-[#1E7FE0] transition-colors mb-2 leading-snug">
                       Personal Care
                     </h3>
 
-                    <p className="text-[#5D667A] text-[13.5px] leading-relaxed mb-4">
+                    <p className="text-[#4A5568] text-[13.5px] leading-relaxed mb-4">
                       Assistance with daily activities like bathing, grooming, dressing, and mobility.
                     </p>
                   </div>
 
                   <div className="flex justify-end pt-2">
-                    <div className="w-9 h-9 rounded-full bg-[#0061FF] text-white flex items-center justify-center shadow-md group-hover:scale-110 group-hover:bg-[#004ACC] transition-all">
+                    <div className="w-9 h-9 rounded-full bg-[#F2994A] text-white flex items-center justify-center shadow-md group-hover:scale-110 group-hover:bg-[#E08838] transition-all">
                       <ArrowRight size={16} />
                     </div>
                   </div>
@@ -226,6 +238,9 @@ export default function ServicesSection() {
                     icon={service.icon}
                     title={service.title}
                     description={service.description}
+                    color={service.color}
+                    bg={service.bg}
+                    cardBg={service.cardBg}
                   />
                 </motion.div>
               ))}
@@ -238,20 +253,20 @@ export default function ServicesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <Link href="/services" className="block group">
-                <div className="bg-gradient-to-r from-[#F0F7FF] via-[#F5FAFF] to-[#EBF5FF] border border-[#0061FF]/15 rounded-[28px] overflow-hidden shadow-[0_10px_30px_rgba(0,97,255,0.04)] hover:shadow-[0_20px_45px_rgba(0,97,255,0.12)] hover:border-[#0061FF]/30 hover:-translate-y-1.5 transition-all duration-300 grid grid-cols-1 md:grid-cols-12 items-center">
+              <Link href="/services" className="block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A] rounded-[28px]">
+                <div className="bg-gradient-to-r from-white via-[#E7F2EC]/40 to-white border border-[#E2E8F0] rounded-[28px] overflow-hidden shadow-[0_4px_20px_rgba(16,24,43,0.06)] hover:shadow-[0_8px_30px_rgba(16,24,43,0.12)] hover:border-[#1E7FE0]/40 hover:-translate-y-1.5 transition-all duration-300 grid grid-cols-1 md:grid-cols-12 items-center">
                   
                   {/* Text (Left Side 55%) */}
                   <div className="md:col-span-6 p-6 sm:p-8 flex flex-col justify-center">
-                    <div className="w-11 h-11 rounded-full bg-[#0061FF]/10 flex items-center justify-center text-[#0061FF] mb-4 group-hover:bg-[#0061FF] group-hover:text-white transition-colors duration-300 shadow-sm">
+                    <div className="w-11 h-11 rounded-full bg-[#E7F2EC] text-[#6FA98A] flex items-center justify-center mb-4 group-hover:bg-[#6FA98A] group-hover:text-white transition-colors duration-300 shadow-sm">
                       <Users size={20} />
                     </div>
 
-                    <h3 className="font-poppins font-extrabold text-[22px] text-[#12264B] group-hover:text-[#0061FF] transition-colors mb-2 leading-snug">
+                    <h3 className="font-poppins font-extrabold text-[22px] text-[#0B2A4A] group-hover:text-[#1E7FE0] transition-colors mb-2 leading-snug">
                       Live-In Care
                     </h3>
 
-                    <p className="text-[#5D667A] text-[14px] leading-relaxed">
+                    <p className="text-[#4A5568] text-[14px] leading-relaxed">
                       24/7 support in the comfort of home for peace of mind and consistent care.
                     </p>
                   </div>
@@ -267,8 +282,8 @@ export default function ServicesSection() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
 
-                    {/* Floating Blue Circular Arrow Button */}
-                    <div className="w-10 h-10 rounded-full bg-[#0061FF] text-white flex items-center justify-center shadow-lg absolute bottom-4 right-4 group-hover:scale-110 group-hover:bg-[#004ACC] transition-all">
+                    {/* Floating Orange Circular Arrow Button */}
+                    <div className="w-10 h-10 rounded-full bg-[#F2994A] text-white flex items-center justify-center shadow-lg absolute bottom-4 right-4 group-hover:scale-110 group-hover:bg-[#E08838] transition-all">
                       <ArrowRight size={18} />
                     </div>
                   </div>
@@ -291,6 +306,9 @@ export default function ServicesSection() {
                     icon={service.icon}
                     title={service.title}
                     description={service.description}
+                    color={service.color}
+                    bg={service.bg}
+                    cardBg={service.cardBg}
                   />
                 </motion.div>
               ))}
@@ -304,7 +322,7 @@ export default function ServicesSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#0061FF] to-[#00a2ff] hover:opacity-95 text-white font-bold text-[15px] px-8 py-3.5 rounded-full shadow-[0_10px_25px_rgba(0,97,255,0.3)] hover:shadow-[0_15px_35px_rgba(0,97,255,0.4)] hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto group"
+            className="inline-flex items-center justify-center gap-2.5 bg-[#F2994A] hover:bg-[#E08838] text-white font-bold text-[15px] px-8 py-3.5 rounded-full shadow-[0_8px_20px_rgba(242,153,74,0.35)] hover:shadow-[0_12px_28px_rgba(242,153,74,0.45)] hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B2A4A]"
           >
             <span>View All Services</span>
             <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
@@ -312,7 +330,7 @@ export default function ServicesSection() {
 
           <Link
             href="/contact-us"
-            className="inline-flex items-center justify-center gap-2 bg-white border border-slate-200/90 hover:border-[#0061FF]/40 text-[#12264B] font-semibold text-[15px] px-7 py-3.5 rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 bg-white border-2 border-[#1E7FE0] text-[#1E7FE0] hover:bg-[#E8F2FD] font-semibold text-[15px] px-7 py-3.5 rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A]"
           >
             <span>Get in Touch</span>
           </Link>

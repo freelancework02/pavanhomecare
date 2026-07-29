@@ -50,58 +50,71 @@ export default function HomePage() {
       {/* Pixel-Perfect Reference Clone Why Choose Us Section */}
       <WhyChooseUs />
 
-      <section className="about-luxury-section" aria-labelledby="about-story-heading">
+      <section className="w-full bg-[#E7F2EC] py-[100px] relative overflow-hidden border-y border-[#6FA98A]/20" aria-labelledby="about-story-heading">
         {/* Decorative elements */}
         <div className="about-luxury-bg-blob" aria-hidden="true" />
         <div className="about-luxury-bg-blob-2" aria-hidden="true" />
 
         <div className="container about-luxury-container">
 
-          {/* Left Column (45% width) */}
-          <div className="about-luxury-media">
-            {/* Background Organic Gradients & Shapes */}
-            <div className="about-luxury-media__backdrop-blob" aria-hidden="true" />
-            <div className="about-luxury-floating-dot about-luxury-floating-dot--1" aria-hidden="true" />
-            <div className="about-luxury-floating-dot about-luxury-floating-dot--2" aria-hidden="true" />
-
-            <div className="about-luxury-image-container">
+          {/* Left Column (Asymmetric Full-Bleed Media 5 Cols) */}
+          <div className="lg:col-span-5 relative group">
+            {/* Background Layered Decorative Blob & Pattern */}
+            <div className="absolute -top-6 -left-6 w-[120%] h-[110%] bg-gradient-to-tr from-[#6FA98A]/15 via-[#F2994A]/10 to-[#1E7FE0]/10 rounded-[40px] blur-xl -z-10 transform -rotate-2" />
+            
+            <div className="relative w-full h-[420px] sm:h-[500px] lg:h-[540px] rounded-[36px] overflow-hidden shadow-[0_20px_50px_rgba(11,42,74,0.14)] border-4 border-white">
               <Image
                 src="/images/image2.jpg"
                 alt="Friendly professional caregiver supporting senior client walking with walker"
                 fill
-                sizes="(max-width: 56rem) 100vw, 45vw"
-                className="about-luxury-media__img"
-                style={{ objectFit: "cover" }}
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B2A4A]/30 via-transparent to-transparent pointer-events-none" />
 
+              {/* Overlapping Coral Badge Chip */}
+              <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md p-3.5 px-5 rounded-2xl shadow-xl border border-white/60 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#FCEEE0] text-[#F2994A] flex items-center justify-center font-bold text-[18px]">
+                  ♥
+                </div>
+                <div>
+                  <span className="font-extrabold text-[14px] text-[#0B2A4A] block leading-tight">Love-Driven Care</span>
+                  <span className="text-[12px] text-[#4A5568]">Tailored for every family</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Right Column (55% width) */}
-          <div className="about-luxury-content">
-            <div className="about-luxury-badge-wrapper">
-              <span className="about-luxury-badge">ABOUT PAVAN HOMECARE</span>
+          {/* Right Column (7 Cols) */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            <div className="inline-flex items-center gap-2 bg-white text-[#0B2A4A] font-bold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full mb-4 border border-[#6FA98A]/30 shadow-sm w-fit">
+              <span className="w-2 h-2 rounded-full bg-[#F2994A]" />
+              <span>ABOUT PAVAN HOMECARE</span>
             </div>
 
-            <h2 id="about-story-heading" className="about-luxury-title">
-              Compassionate Care,<br />Delivered With Love.
+            <h2 id="about-story-heading" className="font-poppins font-extrabold text-[36px] sm:text-[48px] leading-[1.12] text-[#0B2A4A] tracking-[-0.8px] mb-6">
+              Compassionate Care,<br />
+              <span className="bg-gradient-to-r from-[#1E7FE0] via-[#114B8C] to-[#F2994A] bg-clip-text text-transparent">
+                Delivered With Love.
+              </span>
             </h2>
 
             <div className="about-editorial-story">
-              <p className="about-editorial-lead">
+              <p className="text-[17px] sm:text-[18px] font-semibold text-[#0B2A4A] leading-relaxed mb-6 border-l-4 border-[#F2994A] pl-4 bg-white/60 py-3 rounded-r-xl shadow-sm">
                 Pavan Homecare was established to bridge a vital need: providing professional, high-quality care that never compromises on warmth, dignity, or human connection.
               </p>
 
-              <p>
-                We believe that home is more than just a place; it is a repository of memories, a source of comfort, and the foundation of independence. Our mission is to support seniors, veterans, and individuals with disabilities across York and surrounding PA counties, allowing them to lead fulfilling lives in the comfort of their familiar surroundings.
+              <p className="text-[#4A5568] text-[15.5px] leading-relaxed mb-4">
+                We believe that home is more than just a place; it is a repository of memories, a source of comfort, and the foundation of independence. Our mission is to support seniors, veterans, and individuals with disabilities across Philadelphia, Bucks, Montgomery, Delaware, Chester, and surrounding PA counties, allowing them to lead fulfilling lives in the comfort of their familiar surroundings.
               </p>
 
-              <p>
+              <p className="text-[#4A5568] text-[15.5px] leading-relaxed mb-4">
                 Every Pavan caregiver is selected not just for their professional experience, but for their genuine empathy. We pair clients with caregivers who understand the unique rhythm of their daily life, providing a reliable partnership that honors individual routines, preferences, and personal independence.
               </p>
 
-              <p className="about-editorial-signature">
-                Dedicated to serving our community with reliable availability and families first.
+              <p className="font-semibold italic text-[#1E7FE0] mt-6 flex items-center gap-2">
+                <span className="w-6 h-[2px] bg-[#F2994A] rounded-full inline-block" />
+                <span>Dedicated to serving our community with reliable availability and families first.</span>
               </p>
             </div>
           </div>

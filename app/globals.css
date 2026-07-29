@@ -3,27 +3,44 @@
 @tailwind utilities;
 
 :root {
-  --sky-blue: #0061FF;
+  /* Brand Primary */
+  --primary-900: #0B2A4A;
+  --primary-700: #114B8C;
+  --primary-500: #1E7FE0;
+  --primary-100: #E8F2FD;
+
+  /* Warm Accent */
+  --accent-500: #F2994A;
+  --accent-100: #FCEEE0;
+
+  /* Sage Wellness */
+  --sage-500: #6FA98A;
+  --sage-100: #E7F2EC;
+
+  /* Neutrals */
+  --ink-900: #10182B;
+  --ink-600: #4A5568;
+  --ink-400: #8892A0;
+  --surface-0: #FFFFFF;
+  --surface-50: #F7F9FC;
+  --border: #E2E8F0;
+
+  /* Legacy aliases */
+  --sky-blue: #1E7FE0;
   --cyan: #60EFFF;
-  --navy: #0A2540;
-  --blue-accent: #00a2ff;
-
-  --pink: var(--sky-blue);
-  --coral: var(--blue-accent);
-  --orange: var(--cyan);
-  --plum: var(--navy);
-
-  --charcoal: #2d3748;
-  --gray-light: #f7fafc;
+  --navy: #0B2A4A;
+  --blue-accent: #1E7FE0;
+  --charcoal: #10182B;
+  --gray-light: #F7F9FC;
   --white: #ffffff;
-  --gradient: linear-gradient(135deg, var(--sky-blue) 0%, var(--cyan) 100%);
-  --gradient-soft: linear-gradient(135deg, rgba(0, 97, 255, 0.05) 0%, rgba(96, 239, 255, 0.05) 100%);
+  --gradient: linear-gradient(135deg, #0B2A4A 0%, #114B8C 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(30, 127, 224, 0.05) 0%, rgba(242, 153, 74, 0.05) 100%);
 
   --font-heading: "Poppins", Arial, Helvetica, sans-serif;
   --font-body: "Open Sans", Arial, Helvetica, sans-serif;
   --font-cta: "Montserrat", Arial, Helvetica, sans-serif;
 
-  --radius-lg: 2rem;
+  --radius-lg: 1.5rem;
   --radius-md: 1rem;
   --radius-sm: 0.5rem;
   --container-width: 75rem;
@@ -3685,17 +3702,19 @@ textarea:focus-visible,
 
 .hub-featured-category-pill, .hub-card-category-pill {
   position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  background: linear-gradient(90deg, var(--sky-blue) 0%, var(--cyan) 100%);
-  color: var(--white);
+  top: 1.25rem;
+  left: 1.25rem;
+  background: #F2994A;
+  color: #FFFFFF;
   font-family: var(--font-cta);
   font-weight: 700;
   font-size: 0.75rem;
-  padding: 0.3rem 0.9rem;
+  padding: 0.35rem 0.95rem;
   border-radius: 100px;
   z-index: 10;
-  box-shadow: 0 4px 10px rgba(0, 97, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(242, 153, 74, 0.35);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .hub-featured-content {
