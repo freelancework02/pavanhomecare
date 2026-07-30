@@ -6,24 +6,24 @@ import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin, Twitter } fr
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#0B2A4A] text-white pt-20 pb-8 relative overflow-hidden border-t-2 border-gradient-to-r from-[#1E7FE0] via-[#F2994A] to-[#1E7FE0]">
-      {/* Top Gradient Edge Divider Line */}
-      <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#1E7FE0] via-[#F2994A] to-[#1E7FE0]" />
+    <footer className="w-full bg-[#001A4D] text-white pt-20 pb-8 relative overflow-hidden border-t-2 border-[#0061FF]">
+      {/* Top Brand Gradient Edge Divider Line */}
+      <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#0061FF] via-[#60EFFF] to-[#FF7A59]" />
 
       {/* Ambient Decorative Orbs */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-[#1E7FE0]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#F2994A]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-[#0061FF]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#FF7A59]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-[80px] relative z-10">
         {/* 4-Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           {/* Col 1: Logo & Company Description (4 cols) */}
           <div className="lg:col-span-4 flex flex-col">
-            <Link href="/" className="mb-6 inline-block w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A] rounded-lg hover:opacity-95 transition-opacity">
-              <Logo variant="white" height="5.2rem" />
+            <Link href="/" className="mb-6 inline-block w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7A59] rounded-lg hover:opacity-95 transition-opacity">
+              <Logo variant="white" showTagline={true} height="5.2rem" />
             </Link>
 
-            <p className="text-[#8892A0] text-[14.5px] leading-relaxed max-w-[360px] mb-6 font-normal">
+            <p className="text-[#8A97AC] text-[14.5px] leading-relaxed max-w-[360px] mb-6 font-normal">
               Providing compassionate, personalized in-home care that helps seniors and individuals with disabilities live safely, comfortably, and independently in the place they love most—their home.
             </p>
 
@@ -33,7 +33,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-[#8892A0]/40 text-[#8892A0] hover:text-white hover:bg-[#F2994A] hover:border-[#F2994A] hover:scale-110 hover:shadow-[0_4px_15px_rgba(242,153,74,0.4)] flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-10 h-10 rounded-full border border-[#8A97AC]/40 text-[#8A97AC] hover:text-white hover:bg-[#FF7A59] hover:border-[#FF7A59] hover:scale-110 hover:shadow-[0_4px_15px_rgba(255,122,89,0.4)] flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 aria-label="Facebook"
               >
                 <Facebook size={16} />
@@ -71,35 +71,35 @@ export default function Footer() {
           {/* Col 2: Quick Links (2 cols) */}
           <div className="lg:col-span-2 flex flex-col">
             <h4 className="font-poppins font-bold text-[13px] uppercase tracking-wider text-white mb-2">Quick Links</h4>
-            <div className="w-[32px] h-[2px] bg-[#F2994A] mb-6 rounded-full" />
-            <ul className="flex flex-col gap-3 text-[14px] text-[#8892A0] font-medium">
+            <div className="w-[32px] h-[2px] bg-[#FF7A59] mb-6 rounded-full" />
+            <ul className="flex flex-col gap-3 text-[14px] text-[#8A97AC] font-medium">
               <li>
-                <Link href="/" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Link href="/" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Link href="/about" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/areas-we-serve" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Link href="/areas-we-serve" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   Areas We Serve
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Link href="/blog" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/contact-us" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Link href="/contact-us" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   Contact Us
                 </Link>
               </li>
@@ -109,35 +109,35 @@ export default function Footer() {
           {/* Col 3: Services (3 cols) */}
           <div className="lg:col-span-3 flex flex-col">
             <h4 className="font-poppins font-bold text-[13px] uppercase tracking-wider text-white mb-2">Our Services</h4>
-            <div className="w-[32px] h-[2px] bg-[#F2994A] mb-6 rounded-full" />
-            <ul className="flex flex-col gap-3 text-[14px] text-[#8892A0] font-medium">
+            <div className="w-[32px] h-[2px] bg-[#FF7A59] mb-6 rounded-full" />
+            <ul className="flex flex-col gap-3 text-[14px] text-[#8A97AC] font-medium">
               <li>
-                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   Personal Care
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   Companion Care
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   Meal Preparation
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   Medication Reminders
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   Mobility Assistance
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Link href="/services" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   Specialized Dementia Care
                 </Link>
               </li>
@@ -147,26 +147,26 @@ export default function Footer() {
           {/* Col 4: Contact Info (3 cols) */}
           <div className="lg:col-span-3 flex flex-col">
             <h4 className="font-poppins font-bold text-[13px] uppercase tracking-wider text-white mb-2">Contact Us</h4>
-            <div className="w-[32px] h-[2px] bg-[#F2994A] mb-6 rounded-full" />
-            <ul className="flex flex-col gap-4 text-[14px] text-[#8892A0]">
+            <div className="w-[32px] h-[2px] bg-[#FF7A59] mb-6 rounded-full" />
+            <ul className="flex flex-col gap-4 text-[14px] text-[#8A97AC]">
               <li className="flex items-start gap-3">
-                <MapPin size={18} className="text-[#F2994A] shrink-0 mt-0.5" />
+                <MapPin size={18} className="text-[#FF7A59] shrink-0 mt-0.5" />
                 <span>19 Bowman Dr, Feasterville PA 19053</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={18} className="text-[#F2994A] shrink-0" />
-                <a href="tel:+12154369499" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Phone size={18} className="text-[#FF7A59] shrink-0" />
+                <a href="tel:+12154369499" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   (215) 436-9499
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail size={18} className="text-[#F2994A] shrink-0" />
-                <a href="mailto:pavanhomecare@gmail.com" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F2994A]">
+                <Mail size={18} className="text-[#FF7A59] shrink-0" />
+                <a href="mailto:pavanhomecare@gmail.com" className="hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
                   pavanhomecare@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Clock size={18} className="text-[#F2994A] shrink-0" />
+                <Clock size={18} className="text-[#FF7A59] shrink-0" />
                 <span>Mon - Fri: 8:00 AM - 5:00 PM</span>
               </li>
             </ul>
@@ -174,8 +174,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-[13px] text-[#8892A0] font-medium">
-          <p>© {new Date().getFullYear()} Pavan Homecare. All Rights Reserved.</p>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-[13px] text-[#8A97AC] font-medium">
+          <p>© {new Date().getFullYear()} Pavan Homecare. All Rights Reserved. Tagline: Love driven care.</p>
           <div className="flex items-center gap-6">
             <Link href="/privacy-policy" className="hover:text-white transition-colors duration-200">
               Privacy Policy

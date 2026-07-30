@@ -6,29 +6,29 @@ import { Home, Heart, Users, ShieldCheck } from "lucide-react";
 const FEATURES = [
   {
     id: "stay-home",
-    icon: <Home size={22} className="text-[#1E7FE0]" />,
-    iconBg: "bg-[#E8F2FD]",
+    icon: <Home size={22} className="text-[#0061FF]" />,
+    iconBg: "bg-[#E8F2FF]",
     title: "Stay at Home",
     desc: "Stay safe and comfortable in the place you love.",
   },
   {
     id: "compassion",
-    icon: <Heart size={22} className="text-[#F2994A]" />,
-    iconBg: "bg-[#FCEEE0]",
+    icon: <Heart size={22} className="text-[#FF7A59]" />,
+    iconBg: "bg-[#FFEDE7]",
     title: "Compassion First",
     desc: "Every visit centered on dignity and kindness.",
   },
   {
     id: "personalized",
-    icon: <Users size={22} className="text-[#6FA98A]" />,
-    iconBg: "bg-[#E7F2EC]",
+    icon: <Users size={22} className="text-[#0061FF]" />,
+    iconBg: "bg-[#E8F2FF]",
     title: "Personalized Care",
     desc: "Plans designed around your needs and goals.",
   },
   {
     id: "safety",
-    icon: <ShieldCheck size={22} className="text-[#0B2A4A]" />,
-    iconBg: "bg-[#E8F2FD]",
+    icon: <ShieldCheck size={22} className="text-[#001A4D]" />,
+    iconBg: "bg-[#E8F2FF]",
     title: "Safety & Trust",
     desc: "Licensed, insured, and committed to excellence.",
   },
@@ -41,7 +41,7 @@ export default function FeatureStrip() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full bg-white border border-[#E5E7EB] rounded-[32px] p-6 sm:p-8 shadow-[0_20px_80px_rgba(0,0,0,0.06)] mt-12 sm:mt-16 relative z-20"
+      className="w-full bg-white border border-[#DCE7F7] rounded-2xl p-6 sm:p-8 shadow-[0_20px_80px_rgba(0,0,0,0.06)] mt-12 sm:mt-16 relative z-20"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {FEATURES.map((item, index) => (
@@ -50,15 +50,15 @@ export default function FeatureStrip() {
             whileHover={{ y: -4, scale: 1.01 }}
             transition={{ duration: 0.25 }}
             className={`flex items-start gap-4 ${
-              index !== FEATURES.length - 1 ? "lg:border-r lg:border-slate-100 lg:pr-6" : ""
+              index !== FEATURES.length - 1 ? "lg:border-r lg:border-[#DCE7F7] lg:pr-6" : ""
             }`}
           >
             <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 ${item.iconBg}`}>
               {item.icon}
             </div>
             <div>
-              <h3 className="text-[16px] font-bold text-[#0F172A] leading-snug">{item.title}</h3>
-              <p className="text-[13px] text-[#64748B] mt-1 leading-relaxed">{item.desc}</p>
+              <h3 className="text-[16px] font-bold text-[#001A4D] leading-snug">{item.title}</h3>
+              <p className="text-[13px] text-[#4A5A73] mt-1 leading-relaxed">{item.desc}</p>
             </div>
           </motion.div>
         ))}

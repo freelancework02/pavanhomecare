@@ -2,20 +2,20 @@
 
 /* Styling Tokens & Container */
 .reviewsSection {
-  --primary-gradient: linear-gradient(135deg, var(--sky-blue) 0%, var(--blue-accent) 50%, var(--cyan) 100%);
-  --color-heading: var(--navy);
-  --color-body: #4B5563;
-  --color-bg-alt: #F0F7FF;
-  --card-radius: 32px;
+  --primary-gradient: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
+  --color-heading: #001A4D;
+  --color-body: #4A5A73;
+  --color-bg-alt: #F5F9FF;
+  --card-radius: 16px;
   
   position: relative;
   width: 100%;
-  padding: 100px 24px;
+  padding: 64px 24px;
   background-color: var(--color-bg-alt);
-  background-image: radial-gradient(rgba(10, 37, 64, 0.04) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(rgba(0, 26, 77, 0.04) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
   overflow: hidden;
-  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* Background Blobs */

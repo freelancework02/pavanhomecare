@@ -3,46 +3,72 @@
 @tailwind utilities;
 
 :root {
-  /* Brand Primary */
-  --primary-900: #0B2A4A;
-  --primary-700: #114B8C;
-  --primary-500: #1E7FE0;
-  --primary-100: #E8F2FD;
+  /* === Brand Core (from official kit) === */
+  --brand-blue: #0061FF;
+  --brand-sky: #60EFFF;
+  --brand-gradient: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
 
-  /* Warm Accent */
-  --accent-500: #F2994A;
-  --accent-100: #FCEEE0;
+  /* === Derived Primary Scale === */
+  --color-primary-900: #001A4D;   /* Dark navy for headings, footer, dark sections */
+  --color-primary-700: #0047B8;   /* Hover states, secondary emphasis */
+  --color-primary-500: #0061FF;   /* Brand-blue — links, primary icons, active states */
+  --color-primary-300: #4C9EFF;   /* Lighter — subtle borders, secondary icons */
+  --color-primary-100: #E8F2FF;   /* Pale tint — light section backgrounds, card fills */
 
-  /* Sage Wellness */
-  --sage-500: #6FA98A;
-  --sage-100: #E7F2EC;
+  --primary-900: #001A4D;
+  --primary-700: #0047B8;
+  --primary-500: #0061FF;
+  --primary-300: #4C9EFF;
+  --primary-100: #E8F2FF;
 
-  /* Neutrals */
-  --ink-900: #10182B;
-  --ink-600: #4A5568;
-  --ink-400: #8892A0;
+  /* === Sky Accent === */
+  --sky-500: #60EFFF;
+  --sky-100: #E3FBFF;
+
+  /* === Human-Warmth Complementary Accent === */
+  --color-accent-500: #FF7A59;    /* Warm coral — primary CTA buttons, ratings, key highlights */
+  --color-accent-100: #FFEDE7;
+
+  --accent-500: #FF7A59;
+  --accent-100: #FFEDE7;
+  --warm-accent-500: #FF7A59;
+  --warm-accent-100: #FFEDE7;
+
+  /* === Neutrals & Surfaces === */
+  --color-surface-0: #FFFFFF;
+  --color-surface-50: #F5F9FF;    /* Very slight blue-tinted off-white */
+  --color-border: #DCE7F7;
+  --color-ink-900: #0B1730;
+  --color-ink-600: #4A5A73;
+  --color-ink-400: #8A97AC;
+
   --surface-0: #FFFFFF;
-  --surface-50: #F7F9FC;
-  --border: #E2E8F0;
+  --surface-50: #F5F9FF;
+  --border: #DCE7F7;
+  --ink-900: #0B1730;
+  --ink-600: #4A5A73;
+  --ink-400: #8A97AC;
 
-  /* Legacy aliases */
-  --sky-blue: #1E7FE0;
+  /* Radius Tokens */
+  --radius-card: 16px;
+  --radius-pill: 999px;
+
+  /* Legacy & system compatibility aliases */
+  --sky-blue: #0061FF;
   --cyan: #60EFFF;
-  --navy: #0B2A4A;
-  --blue-accent: #1E7FE0;
-  --charcoal: #10182B;
-  --gray-light: #F7F9FC;
+  --navy: #001A4D;
+  --blue-accent: #0061FF;
+  --charcoal: #0B1730;
+  --gray-light: #F5F9FF;
   --white: #ffffff;
-  --gradient: linear-gradient(135deg, #0B2A4A 0%, #114B8C 100%);
-  --gradient-soft: linear-gradient(135deg, rgba(30, 127, 224, 0.05) 0%, rgba(242, 153, 74, 0.05) 100%);
+  --gradient: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(0, 97, 255, 0.05) 0%, rgba(255, 122, 89, 0.05) 100%);
 
   --font-heading: "Poppins", Arial, Helvetica, sans-serif;
-  --font-body: "Open Sans", Arial, Helvetica, sans-serif;
-  --font-cta: "Montserrat", Arial, Helvetica, sans-serif;
+  --font-body: "Poppins", Arial, Helvetica, sans-serif;
+  --font-primary: "Poppins", Arial, Helvetica, sans-serif;
+  --font-cta: "Poppins", Arial, Helvetica, sans-serif;
 
-  --radius-lg: 1.5rem;
-  --radius-md: 1rem;
-  --radius-sm: 0.5rem;
   --container-width: 75rem;
   --header-height: 5rem;
 }

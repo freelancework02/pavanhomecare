@@ -1,4 +1,4 @@
-import { Poppins, Open_Sans, Montserrat } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -6,38 +6,26 @@ import { site } from "@/lib/site";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-heading",
-  display: "swap",
-});
-
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "600"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["500", "600"],
-  variable: "--font-cta",
   display: "swap",
 });
 
 export const metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `In-Home Care Services in York, PA | ${site.name}`,
-    template: `%s | ${site.name}`,
+    default: `${site.name} — ${site.tagline} | In-Home Care Services in Pennsylvania`,
+    template: `%s | ${site.name} — ${site.tagline}`,
   },
   description:
-    "Pavan Homecare offers professional, compassionate in-home care services, companion care, housekeeping, and Medicaid waiver caregiver options in York, PA.",
+    `${site.name} (${site.tagline}) provides compassionate, professional in-home senior care, companion care, 24-hour support, and Medicaid waiver care across Pennsylvania.`,
   keywords: [
-    "home care agency York PA",
-    "Medicaid waiver caregiver York PA",
-    "in-home care York PA",
-    "companion care Pennsylvania",
+    "Pavan Homecare",
+    "Love driven care",
+    "in-home senior care Pennsylvania",
+    "companion care PA",
+    "Medicaid waiver caregiver PA",
+    "24 hour home care PA",
   ],
   icons: {
     icon: "/icon.png",
@@ -45,11 +33,11 @@ export const metadata = {
     apple: "/icon.png",
   },
   openGraph: {
-    title: `In-Home Care Services in York, PA | ${site.name}`,
+    title: `${site.name} — ${site.tagline}`,
     description:
-      "Compassionate in-home care, companion care, housekeeping, and Medicaid waiver caregiver options in York, PA.",
+      "Compassionate, professional in-home care services across Pennsylvania. Love driven care for your family.",
     url: site.url,
-    siteName: site.name,
+    siteName: `${site.name} — ${site.tagline}`,
     locale: "en_US",
     type: "website",
   },
@@ -85,7 +73,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${openSans.variable} ${montserrat.variable}`}>
+    <html lang="en" className={poppins.variable}>
       <body>
         <script
           type="application/ld+json"

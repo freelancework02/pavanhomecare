@@ -13,9 +13,9 @@ export default function HeroLeft() {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="inline-flex items-center gap-2 bg-[#E8F2FD] text-[#0B2A4A] font-bold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full border border-[#1E7FE0]/25 w-fit mb-6 shadow-sm"
+        className="inline-flex items-center gap-2 bg-[#E8F2FF] text-[#001A4D] font-bold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full border border-[#0061FF]/25 w-fit mb-6 shadow-sm"
       >
-        <ShieldCheck size={16} className="text-[#F2994A]" />
+        <ShieldCheck size={16} className="text-[#FF7A59]" />
         <span>Trusted In-Home Care You Can Rely On</span>
       </motion.div>
 
@@ -24,11 +24,11 @@ export default function HeroLeft() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.15 }}
-        className="font-poppins font-extrabold text-[40px] sm:text-[54px] lg:text-[68px] leading-[1.05] tracking-[-1px] text-[#0B2A4A]"
+        className="font-poppins font-extrabold text-[40px] sm:text-[54px] lg:text-[68px] leading-[1.05] tracking-[-1px] text-[#001A4D]"
       >
         Compassionate <br />
         In-Home Care, <br />
-        <span className="bg-gradient-to-r from-[#1E7FE0] via-[#114B8C] to-[#F2994A] bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-[#0061FF] via-[#0061FF] to-[#60EFFF] bg-clip-text text-transparent">
           Designed Around <br />
           Your Family
         </span>
@@ -39,7 +39,7 @@ export default function HeroLeft() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-[#4A5568] text-[16px] sm:text-[18px] font-normal leading-[1.65] mt-6 max-w-[520px]"
+        className="text-[#4A5A73] text-[16px] sm:text-[18px] font-normal leading-[1.65] mt-6 max-w-[520px]"
       >
         We provide personalized in-home care that helps seniors and adults with disabilities live safely, comfortably, and independently in the place they love most—their home.
       </motion.p>

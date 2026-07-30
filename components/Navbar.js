@@ -69,45 +69,50 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-4 lg:px-[80px] flex items-center justify-between gap-4">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A] rounded-lg">
-            <Logo variant="color" height="5.0rem" />
+          {/* Logo with Responsive Swapping and Tagline */}
+          <Link href="/" className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7A59] rounded-lg">
+            <div className="hidden sm:block">
+              <Logo variant="color" showTagline={true} height="4.5rem" />
+            </div>
+            <div className="block sm:hidden">
+              <Logo variant="icon" height="3.2rem" />
+            </div>
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-9 font-medium text-[#10182B]">
+          <nav className="hidden lg:flex items-center gap-8 font-medium text-[#0B1730]">
             <Link
               href="/"
-              className={`relative py-1 transition-colors hover:text-[#1E7FE0] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A] rounded-sm ${
-                pathname === "/" ? "text-[#0B2A4A] font-bold" : ""
+              className={`relative py-1 transition-colors hover:text-[#0061FF] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7A59] rounded-sm ${
+                pathname === "/" ? "text-[#001A4D] font-bold" : ""
               }`}
             >
               Home
-              <span className={`absolute bottom-0 left-0 h-[2.5px] bg-[#F2994A] rounded-full transition-all duration-300 ${
+              <span className={`absolute bottom-0 left-0 h-[2.5px] bg-[#FF7A59] rounded-full transition-all duration-300 ${
                 pathname === "/" ? "w-full" : "w-0 group-hover:w-full"
               }`} />
             </Link>
 
             <Link
               href="/about"
-              className={`relative py-1 transition-colors hover:text-[#1E7FE0] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A] rounded-sm ${
-                pathname === "/about" ? "text-[#0B2A4A] font-bold" : ""
+              className={`relative py-1 transition-colors hover:text-[#0061FF] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7A59] rounded-sm ${
+                pathname === "/about" ? "text-[#001A4D] font-bold" : ""
               }`}
             >
               About Us
-              <span className={`absolute bottom-0 left-0 h-[2.5px] bg-[#F2994A] rounded-full transition-all duration-300 ${
+              <span className={`absolute bottom-0 left-0 h-[2.5px] bg-[#FF7A59] rounded-full transition-all duration-300 ${
                 pathname === "/about" ? "w-full" : "w-0 group-hover:w-full"
               }`} />
             </Link>
 
             <Link
               href="/services"
-              className={`relative py-1 transition-colors hover:text-[#1E7FE0] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A] rounded-sm ${
-                pathname === "/services" ? "text-[#0B2A4A] font-bold" : ""
+              className={`relative py-1 transition-colors hover:text-[#0061FF] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7A59] rounded-sm ${
+                pathname === "/services" ? "text-[#001A4D] font-bold" : ""
               }`}
             >
               Services
-              <span className={`absolute bottom-0 left-0 h-[2.5px] bg-[#F2994A] rounded-full transition-all duration-300 ${
+              <span className={`absolute bottom-0 left-0 h-[2.5px] bg-[#FF7A59] rounded-full transition-all duration-300 ${
                 pathname === "/services" ? "w-full" : "w-0 group-hover:w-full"
               }`} />
             </Link>
@@ -116,13 +121,13 @@ export default function Navbar() {
             <div className="relative group">
               <Link
                 href="/areas-we-serve"
-                className={`relative flex items-center gap-1 py-1 transition-colors hover:text-[#1E7FE0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A] rounded-sm ${
-                  pathname.startsWith("/areas-we-serve") ? "text-[#0B2A4A] font-bold" : ""
+                className={`relative flex items-center gap-1 py-1 transition-colors hover:text-[#0061FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7A59] rounded-sm ${
+                  pathname.startsWith("/areas-we-serve") ? "text-[#001A4D] font-bold" : ""
                 }`}
               >
                 <span>Areas We Serve</span>
-                <ChevronDown size={14} className="transition-transform group-hover:rotate-180 text-[#8892A0]" />
-                <span className={`absolute bottom-0 left-0 h-[2.5px] bg-[#F2994A] rounded-full transition-all duration-300 ${
+                <ChevronDown size={14} className="transition-transform group-hover:rotate-180 text-[#8A97AC]" />
+                <span className={`absolute bottom-0 left-0 h-[2.5px] bg-[#FF7A59] rounded-full transition-all duration-300 ${
                   pathname.startsWith("/areas-we-serve") ? "w-full" : "w-0 group-hover:w-full"
                 }`} />
               </Link>

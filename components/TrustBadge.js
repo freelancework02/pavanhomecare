@@ -25,15 +25,15 @@ const TRUST_ITEMS = [
 
 export default function TrustBadge() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-slate-100 mt-6">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-[#DCE7F7] mt-6">
       {TRUST_ITEMS.map((item) => (
         <div key={item.id} className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-[#0061FF]/10 flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-full bg-[#E8F2FF] flex items-center justify-center shrink-0">
             {item.icon}
           </div>
           <div>
-            <h4 className="text-[14px] font-bold text-[#0F172A] leading-snug">{item.title}</h4>
-            <p className="text-[12px] text-[#64748B] leading-tight">{item.desc}</p>
+            <h4 className="text-[14px] font-bold text-[#001A4D] leading-snug">{item.title}</h4>
+            <p className="text-[12px] text-[#4A5A73] leading-tight">{item.desc}</p>
           </div>
         </div>
       ))}

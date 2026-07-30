@@ -15,7 +15,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} noValidate aria-describedby="form-status" className="flex flex-col gap-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="firstName" className="text-[13.5px] font-semibold text-[#0F172A]">
+          <label htmlFor="firstName" className="text-[13.5px] font-semibold text-[#001A4D]">
             First Name <span className="text-[#0061FF]">*</span>
           </label>
           <input
@@ -24,11 +24,11 @@ export default function ContactForm() {
             type="text"
             required
             autoComplete="given-name"
-            className="w-full px-4 py-3 rounded-xl border border-[#E2E8F0] bg-white text-[#0F172A] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
+            className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] bg-white text-[#0B1730] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
           />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="lastName" className="text-[13.5px] font-semibold text-[#0F172A]">
+          <label htmlFor="lastName" className="text-[13.5px] font-semibold text-[#001A4D]">
             Last Name <span className="text-[#0061FF]">*</span>
           </label>
           <input
@@ -37,13 +37,13 @@ export default function ContactForm() {
             type="text"
             required
             autoComplete="family-name"
-            className="w-full px-4 py-3 rounded-xl border border-[#E2E8F0] bg-white text-[#0F172A] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
+            className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] bg-white text-[#0B1730] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
           />
         </div>
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="email" className="text-[13.5px] font-semibold text-[#0F172A]">
+        <label htmlFor="email" className="text-[13.5px] font-semibold text-[#001A4D]">
           Email <span className="text-[#0061FF]">*</span>
         </label>
         <input
@@ -52,12 +52,12 @@ export default function ContactForm() {
           type="email"
           required
           autoComplete="email"
-          className="w-full px-4 py-3 rounded-xl border border-[#E2E8F0] bg-white text-[#0F172A] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
+          className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] bg-white text-[#0B1730] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="phone" className="text-[13.5px] font-semibold text-[#0F172A]">
+        <label htmlFor="phone" className="text-[13.5px] font-semibold text-[#001A4D]">
           Phone Number <span className="text-[#0061FF]">*</span>
         </label>
         <input
@@ -66,13 +66,13 @@ export default function ContactForm() {
           type="tel"
           required
           autoComplete="tel"
-          className="w-full px-4 py-3 rounded-xl border border-[#E2E8F0] bg-white text-[#0F172A] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
+          className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] bg-white text-[#0B1730] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
         />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="city" className="text-[13.5px] font-semibold text-[#0F172A]">
+          <label htmlFor="city" className="text-[13.5px] font-semibold text-[#001A4D]">
             City <span className="text-[#0061FF]">*</span>
           </label>
           <input
@@ -81,11 +81,11 @@ export default function ContactForm() {
             type="text"
             required
             autoComplete="address-level2"
-            className="w-full px-4 py-3 rounded-xl border border-[#E2E8F0] bg-white text-[#0F172A] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
+            className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] bg-white text-[#0B1730] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
           />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="zip" className="text-[13.5px] font-semibold text-[#0F172A]">
+          <label htmlFor="zip" className="text-[13.5px] font-semibold text-[#001A4D]">
             Zip Code <span className="text-[#0061FF]">*</span>
           </label>
           <input
@@ -94,13 +94,13 @@ export default function ContactForm() {
             type="text"
             required
             autoComplete="postal-code"
-            className="w-full px-4 py-3 rounded-xl border border-[#E2E8F0] bg-white text-[#0F172A] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
+            className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] bg-white text-[#0B1730] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
           />
         </div>
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="help" className="text-[13.5px] font-semibold text-[#0F172A]">
+        <label htmlFor="help" className="text-[13.5px] font-semibold text-[#001A4D]">
           How can we help you? <span className="text-[#0061FF]">*</span>
         </label>
         <select
@@ -108,7 +108,7 @@ export default function ContactForm() {
           name="help"
           required
           defaultValue=""
-          className="w-full px-4 py-3 rounded-xl border border-[#E2E8F0] bg-white text-[#0F172A] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
+          className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] bg-white text-[#0B1730] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0061FF]/25 focus:border-[#0061FF] transition-all"
         >
           <option value="" disabled>
             Please select
@@ -125,13 +125,13 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="w-full bg-gradient-to-r from-[#0061FF] to-[#60EFFF] hover:opacity-95 text-white font-semibold text-[15px] py-4 rounded-full shadow-[0_10px_25px_rgba(0,97,255,0.25)] hover:shadow-[0_15px_30px_rgba(0,97,255,0.35)] hover:-translate-y-0.5 transition-all duration-300 mt-2"
+        className="w-full bg-[#FF7A59] hover:bg-[#E86746] text-white font-bold text-[15px] py-4 rounded-full shadow-[0_10px_25px_rgba(255,122,89,0.35)] hover:shadow-[0_15px_30px_rgba(255,122,89,0.5)] hover:-translate-y-0.5 transition-all duration-300 mt-2"
       >
         Submit Request
       </button>
 
       {status && (
-        <p id="form-status" role="status" aria-live="polite" className="text-[14px] font-medium text-[#0061FF] bg-[#0061FF]/10 p-4 rounded-xl text-center mt-2 border border-[#0061FF]/20">
+        <p id="form-status" role="status" aria-live="polite" className="text-[14px] font-medium text-[#0061FF] bg-[#E8F2FF] p-4 rounded-xl text-center mt-2 border border-[#0061FF]/20">
           {status}
         </p>
       )}

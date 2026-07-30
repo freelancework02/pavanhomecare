@@ -466,109 +466,13 @@
   line-height: 1.5;
 }
 
-/* Service Row Accent Colors */
-.row-personal .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(0, 97, 255, 0.1) 0%, rgba(96, 239, 255, 0.05) 100%);
-  color: #0061FF;
+/* Service Row Accent Colors - Standardized System Tokens */
+.core-services-icon-circle {
+  background: var(--color-primary-100, #E8F2FD) !important;
+  color: var(--color-primary-500, #1E7FE0) !important;
 }
-.row-personal .core-meta-block {
-  border-left-color: #0061FF;
-}
-
-.row-companion .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(90, 26, 94, 0.1) 0%, rgba(255, 45, 122, 0.05) 100%);
-  color: var(--plum);
-}
-.row-companion .core-meta-block {
-  border-left-color: var(--plum);
-}
-
-.row-mealprep .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(255, 122, 26, 0.1) 0%, rgba(255, 176, 31, 0.05) 100%);
-  color: #ff7a1a;
-}
-.row-mealprep .core-meta-block {
-  border-left-color: #ff7a1a;
-}
-
-.row-transport .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(13, 148, 136, 0.05) 100%);
-  color: #06b6d4;
-}
-.row-transport .core-meta-block {
-  border-left-color: #06b6d4;
-}
-
-.row-housekeeping .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(21, 128, 61, 0.05) 100%);
-  color: #22c55e;
-}
-.row-housekeeping .core-meta-block {
-  border-left-color: #22c55e;
-}
-
-.row-medication .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(185, 28, 28, 0.05) 100%);
-  color: #ef4444;
-}
-.row-medication .core-meta-block {
-  border-left-color: #ef4444;
-}
-
-.row-alzheimers .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(109, 40, 217, 0.05) 100%);
-  color: #8b5cf6;
-}
-.row-alzheimers .core-meta-block {
-  border-left-color: #8b5cf6;
-}
-
-.row-dementia .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(126, 34, 206, 0.05) 100%);
-  color: #a855f7;
-}
-.row-dementia .core-meta-block {
-  border-left-color: #a855f7;
-}
-
-.row-respite .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(190, 24, 74, 0.05) 100%);
-  color: #ec4899;
-}
-.row-respite .core-meta-block {
-  border-left-color: #ec4899;
-}
-
-.row-disability .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.05) 100%);
-  color: #3b82f6;
-}
-.row-disability .core-meta-block {
-  border-left-color: #3b82f6;
-}
-
-.row-veteran .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(180, 83, 9, 0.05) 100%);
-  color: #f59e0b;
-}
-.row-veteran .core-meta-block {
-  border-left-color: #f59e0b;
-}
-
-.row-24hour .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(15, 118, 110, 0.05) 100%);
-  color: #14b8a6;
-}
-.row-24hour .core-meta-block {
-  border-left-color: #14b8a6;
-}
-
-.row-employment .core-services-icon-circle {
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(67, 56, 202, 0.05) 100%);
-  color: #4f46e5;
-}
-.row-employment .core-meta-block {
-  border-left-color: #4f46e5;
+.core-meta-block {
+  border-left-color: var(--color-accent-500, #F2994A) !important;
 }
 
 

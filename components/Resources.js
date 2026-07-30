@@ -37,7 +37,7 @@ const ARTICLES = [
 
 export default function Resources() {
   return (
-    <section className="w-full bg-white py-[100px] lg:py-[140px] relative overflow-hidden">
+    <section className="w-full bg-white py-14 lg:py-24 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-[80px]">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
@@ -46,8 +46,9 @@ export default function Resources() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-[#0061FF]/[0.08] text-[#0061FF] font-semibold text-[13px] px-4 py-1.5 rounded-full w-fit mb-4 border border-[#0061FF]/15"
+            className="inline-flex items-center gap-2 bg-[#E8F2FF] text-[#001A4D] font-bold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full mb-4 border border-[#0061FF]/20"
           >
+            <span className="w-2 h-2 rounded-full bg-[#FF7A59]" />
             <span>HELPFUL RESOURCES</span>
           </motion.div>
 
@@ -56,7 +57,7 @@ export default function Resources() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-poppins font-extrabold text-[36px] sm:text-[44px] leading-[1.15] text-[#0F172A] tracking-[-0.5px]"
+            className="font-poppins font-extrabold text-[36px] sm:text-[44px] leading-[1.15] text-[#001A4D] tracking-[-0.5px]"
           >
             Helpful Resources for <br />
             Families &amp; Caregivers
@@ -64,7 +65,7 @@ export default function Resources() {
         </div>
 
         {/* 3 Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {ARTICLES.map((article, index) => (
             <motion.div
               key={article.id}
@@ -73,7 +74,7 @@ export default function Resources() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
               whileHover={{ y: -8 }}
-              className="bg-white border border-[#E8EDF5] rounded-[28px] overflow-hidden shadow-[0_15px_50px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_60px_rgba(0,97,255,0.12)] transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+              className="bg-white border border-[#DCE7F7] rounded-2xl overflow-hidden shadow-[0_15px_50px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_60px_rgba(0,97,255,0.12)] transition-all duration-300 flex flex-col justify-between group cursor-pointer h-full"
             >
               {/* Image Container */}
               <div className="relative w-full h-[220px] bg-slate-100 overflow-hidden">
@@ -92,23 +93,23 @@ export default function Resources() {
               {/* Card Content */}
               <div className="p-6 flex flex-col justify-between flex-1">
                 <div>
-                  <div className="flex items-center gap-2 text-[12px] text-[#64748B] mb-2 font-medium">
+                  <div className="flex items-center gap-2 text-[12px] text-[#4A5A73] mb-2 font-medium">
                     <Clock size={13} className="text-[#0061FF]" />
                     <span>{article.readTime}</span>
                   </div>
 
-                  <h3 className="font-poppins font-bold text-[18px] text-[#0F172A] leading-snug mb-3 group-hover:text-[#0061FF] transition-colors">
+                  <h3 className="font-poppins font-bold text-[18px] text-[#001A4D] leading-snug mb-3 group-hover:text-[#0061FF] transition-colors">
                     {article.title}
                   </h3>
 
-                  <p className="text-[#64748B] text-[13px] leading-relaxed mb-6">
+                  <p className="text-[#4A5A73] text-[13.5px] leading-relaxed mb-6">
                     {article.summary}
                   </p>
                 </div>
 
                 <Link
                   href={article.href}
-                  className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#0061FF] group-hover:gap-3 transition-all pt-4 border-t border-slate-100"
+                  className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#0061FF] group-hover:gap-3 transition-all pt-4 border-t border-[#DCE7F7]"
                 >
                   <span>Read Full Article</span>
                   <ArrowRight size={15} />
@@ -122,7 +123,7 @@ export default function Resources() {
         <div className="flex justify-center mt-12">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 bg-white border border-[#E8EDF5] text-[#0F172A] hover:text-[#0061FF] hover:border-[#0061FF]/30 font-semibold text-[15px] px-7 py-3.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 group"
+            className="inline-flex items-center gap-2 bg-white border border-[#DCE7F7] text-[#001A4D] hover:text-[#0061FF] hover:border-[#0061FF]/40 font-semibold text-[15px] px-7 py-3.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 group"
           >
             <BookOpen size={16} className="text-[#0061FF]" />
             <span>Browse All Resources</span>

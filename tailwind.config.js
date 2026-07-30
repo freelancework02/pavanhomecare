@@ -8,32 +8,41 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Brand Primary Palette
-        'primary-900': '#0B2A4A',
-        'primary-700': '#114B8C',
-        'primary-500': '#1E7FE0',
-        'primary-100': '#E8F2FD',
-        'primary-blue': '#0061FF',
+        // Official Brand Core
+        'brand-blue': '#0061FF',
+        'brand-sky': '#60EFFF',
 
-        // Warm Accent Palette (Coral / Amber)
-        'accent-500': '#F2994A',
-        'accent-100': '#FCEEE0',
+        // Derived Primary Scale
+        'primary-900': '#001A4D',
+        'primary-700': '#0047B8',
+        'primary-500': '#0061FF',
+        'primary-300': '#4C9EFF',
+        'primary-100': '#E8F2FF',
 
-        // Sage Wellness Palette
-        'sage-500': '#6FA98A',
-        'sage-100': '#E7F2EC',
+        // Sky Accent
+        'sky-500': '#60EFFF',
+        'sky-100': '#E3FBFF',
+
+        // Warm Coral Accent
+        'accent-500': '#FF7A59',
+        'accent-100': '#FFEDE7',
+        'warm-accent-500': '#FF7A59',
+        'warm-accent-100': '#FFEDE7',
 
         // Neutrals & Surface
-        'ink-900': '#10182B',
-        'ink-600': '#4A5568',
-        'ink-400': '#8892A0',
+        'ink-900': '#0B1730',
+        'ink-600': '#4A5A73',
+        'ink-400': '#8A97AC',
         'surface-0': '#FFFFFF',
-        'surface-50': '#F7F9FC',
+        'surface-50': '#F5F9FF',
+        'border-subtle': '#DCE7F7',
 
-        // Legacy compatibility
-        'secondary-cyan': '#60EFFF',
-        'navy': '#0B2A4A',
-        'slate-paragraph': '#4A5568',
+        // System Compatibility
+        'navy': '#001A4D',
+      },
+      borderRadius: {
+        'card': '16px',
+        'pill': '999px',
       },
       fontFamily: {
         poppins: ['var(--font-heading)', 'Poppins', 'sans-serif'],

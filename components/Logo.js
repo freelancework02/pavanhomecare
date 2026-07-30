@@ -1,14 +1,17 @@
 import Image from "next/image";
 
-export default function Logo({ variant = "color", title = "Pavan Homecare", height = "4.0rem" }) {
-  const isWhite = variant === "white";
-  const logoSrc = isWhite 
-    ? "/images/pavan-logo/White_Version.png" 
-    : "/images/pavan-logo/PavanHomecare_Transparent.png";
+export default function Logo({ variant = "color", showTagline = false, title = "Pavan Homecare", height = "4.0rem" }) {
+  let logoSrc = "/images/pavan-logo/PavanHomecare_Transparent.png";
+  
+  if (variant === "white") {
+    logoSrc = "/images/pavan-logo/White_Version.png";
+  } else if (variant === "icon") {
+    logoSrc = "/images/pavan-logo/PavanHomecare_IconOnly.png";
+  }
 
   return (
     <div 
-      className="logo-container shrink-0" 
+      className="logo-container shrink-0 flex items-center gap-3" 
       style={{ 
         display: "inline-flex", 
         alignItems: "center", 
@@ -30,6 +33,15 @@ export default function Logo({ variant = "color", title = "Pavan Homecare", heig
         }}
         priority
       />
+      {showTagline && (
+        <span className={`text-[12px] font-medium tracking-wide uppercase px-2.5 py-0.5 rounded-full border hidden sm:inline-block ${
+          variant === "white" 
+            ? "text-[#8A97AC] border-white/15 bg-white/5" 
+            : "text-[#0061FF] border-[#0061FF]/20 bg-[#E8F2FF]"
+        }`}>
+          Love driven care
+        </span>
+      )}
     </div>
   );
 }

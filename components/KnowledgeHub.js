@@ -63,7 +63,7 @@ export default function KnowledgeHub() {
 
         {/* 1. Featured Article (Asymmetric 55/45 Split Banner) */}
         {featuredPost && (
-          <article className="hub-featured-card bg-white rounded-[32px] border border-[#E2E8F0] shadow-[0_15px_40px_rgba(11,42,74,0.08)] overflow-hidden grid grid-cols-1 lg:grid-cols-12 mb-16 relative" aria-label="Featured Article">
+          <article className="hub-featured-card bg-white rounded-2xl border border-[#DCE7F7] shadow-[0_15px_40px_rgba(0,26,77,0.08)] overflow-hidden grid grid-cols-1 lg:grid-cols-12 mb-16 relative" aria-label="Featured Article">
             
             {/* Image Box (55% / 7 Cols) */}
             <div className="lg:col-span-7 relative min-h-[320px] lg:min-h-[420px] group overflow-hidden">
@@ -74,8 +74,8 @@ export default function KnowledgeHub() {
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B2A4A]/50 via-transparent to-transparent pointer-events-none" />
-              <span className="absolute top-5 left-5 bg-[#F2994A] text-white font-extrabold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full shadow-lg z-10">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#001A4D]/50 via-transparent to-transparent pointer-events-none" />
+              <span className="absolute top-5 left-5 bg-[#FF7A59] text-white font-extrabold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full shadow-lg z-10">
                 {postCategories[featuredPost.slug] || "Senior Wellness"}
               </span>
             </div>
@@ -83,31 +83,31 @@ export default function KnowledgeHub() {
             {/* Content Box (45% / 5 Cols) */}
             <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between bg-white relative">
               <div>
-                <div className="hub-meta-row flex items-center gap-4 text-[13px] text-[#4A5568] mb-4">
+                <div className="hub-meta-row flex items-center gap-4 text-[13px] text-[#4A5A73] mb-4">
                   <span className="flex items-center gap-1.5 font-medium">
-                    <Calendar size={14} className="text-[#1E7FE0]" aria-hidden="true" />
+                    <Calendar size={14} className="text-[#0061FF]" aria-hidden="true" />
                     <time dateTime={featuredPost.date}>{formatDate(featuredPost.date)}</time>
                   </span>
                   <span className="flex items-center gap-1.5 font-medium">
-                    <Clock size={14} className="text-[#F2994A]" aria-hidden="true" />
+                    <Clock size={14} className="text-[#FF7A59]" aria-hidden="true" />
                     <span>{postReadTimes[featuredPost.slug] || "5 min read"}</span>
                   </span>
                 </div>
 
-                <h3 className="font-poppins font-extrabold text-[24px] sm:text-[28px] text-[#0B2A4A] leading-[1.25] mb-4 hover:text-[#1E7FE0] transition-colors">
+                <h3 className="font-poppins font-extrabold text-[24px] sm:text-[28px] text-[#001A4D] leading-[1.25] mb-4 hover:text-[#0061FF] transition-colors">
                   <Link href={`/blog/${featuredPost.slug}`}>
                     {featuredPost.title}
                   </Link>
                 </h3>
 
-                <p className="text-[#4A5568] text-[15px] leading-relaxed mb-6">
+                <p className="text-[#4A5A73] text-[15px] leading-relaxed mb-6">
                   {featuredPost.excerpt}
                 </p>
               </div>
 
               {/* Overlapping CTA Button breaking outside bottom border */}
               <div className="pt-2 lg:-mb-5 z-20">
-                <Link href={`/blog/${featuredPost.slug}`} className="inline-flex items-center gap-2.5 bg-[#F2994A] hover:bg-[#E08838] text-white font-bold text-[14px] px-6 py-3.5 rounded-full shadow-[0_8px_20px_rgba(242,153,74,0.35)] hover:-translate-y-0.5 transition-all duration-300">
+                <Link href={`/blog/${featuredPost.slug}`} className="inline-flex items-center gap-2.5 bg-[#FF7A59] hover:bg-[#E86746] text-white font-bold text-[14px] px-6 py-3.5 rounded-full shadow-[0_8px_20px_rgba(255,122,89,0.35)] hover:-translate-y-0.5 transition-all duration-300">
                   <span>Read Featured Article</span>
                   <ArrowRight size={16} aria-hidden="true" />
                 </Link>
@@ -122,8 +122,8 @@ export default function KnowledgeHub() {
           {standardPosts.map((post, idx) => (
             <article 
               key={post.slug} 
-              className={`bg-white rounded-[28px] border border-[#E2E8F0] shadow-[0_4px_20px_rgba(16,24,43,0.06)] hover:shadow-[0_8px_30px_rgba(16,24,43,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden group ${
-                idx === 1 ? "lg:-translate-y-5 border-t-4 border-t-[#F2994A]" : ""
+              className={`bg-white rounded-2xl border border-[#DCE7F7] shadow-[0_4px_20px_rgba(11,23,48,0.06)] hover:shadow-[0_8px_30px_rgba(11,23,48,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden group ${
+                idx === 1 ? "lg:-translate-y-5 border-t-4 border-t-[#FF7A59]" : ""
               }`}
               aria-label={`Blog post: ${post.title}`}
             >
@@ -137,7 +137,7 @@ export default function KnowledgeHub() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-[#0B2A4A] font-bold text-[11px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-[#001A4D] font-bold text-[11px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
                   {postCategories[post.slug] || "Senior Wellness"}
                 </span>
               </div>
@@ -145,30 +145,30 @@ export default function KnowledgeHub() {
               {/* Card Content */}
               <div className="p-6 flex flex-col justify-between h-full">
                 <div>
-                  <div className="flex items-center gap-3 text-[12px] text-[#4A5568] mb-3">
+                  <div className="flex items-center gap-3 text-[12px] text-[#4A5A73] mb-3">
                     <span className="flex items-center gap-1 font-medium">
-                      <Calendar size={12} className="text-[#1E7FE0]" aria-hidden="true" />
+                      <Calendar size={12} className="text-[#0061FF]" aria-hidden="true" />
                       <time dateTime={post.date}>{formatDate(post.date)}</time>
                     </span>
                     <span className="flex items-center gap-1 font-medium">
-                      <Clock size={12} className="text-[#F2994A]" aria-hidden="true" />
+                      <Clock size={12} className="text-[#FF7A59]" aria-hidden="true" />
                       <span>{postReadTimes[post.slug] || "4 min read"}</span>
                     </span>
                   </div>
 
-                  <h3 className="font-poppins font-bold text-[18px] text-[#0B2A4A] group-hover:text-[#1E7FE0] transition-colors mb-3 leading-snug">
+                  <h3 className="font-poppins font-bold text-[18px] text-[#001A4D] group-hover:text-[#0061FF] transition-colors mb-3 leading-snug">
                     <Link href={`/blog/${post.slug}`}>
                       {post.title}
                     </Link>
                   </h3>
 
-                  <p className="text-[#4A5568] text-[13.5px] leading-relaxed mb-6">
+                  <p className="text-[#4A5A73] text-[13.5px] leading-relaxed mb-6">
                     {post.excerpt}
                   </p>
                 </div>
 
-                <div className="pt-2 border-t border-[#E2E8F0] flex items-center justify-between">
-                  <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-1.5 text-[#1E7FE0] font-bold text-[13.5px] group-hover:text-[#F2994A] transition-colors">
+                <div className="pt-2 border-t border-[#DCE7F7] flex items-center justify-between">
+                  <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-1.5 text-[#0061FF] font-bold text-[13.5px] group-hover:text-[#FF7A59] transition-colors">
                     <span>Read Article</span>
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                   </Link>
