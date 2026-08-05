@@ -2,6 +2,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import StickyCallBar from "@/components/StickyCallBar";
 import { site } from "@/lib/site";
 
 const poppins = Poppins({
@@ -82,7 +83,9 @@ export default function RootLayout({ children }) {
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
+        <StickyCallBar />
       </body>
     </html>
   );
 }
+

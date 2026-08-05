@@ -1,208 +1,352 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import {
-  Heart,
-  ShieldCheck,
-  Clock,
-  UserCheck,
-  Home,
-  Users,
-  Star,
-  PhoneCall,
-  FileText,
+  UserCheck, ShieldCheck, Clock, Heart, Home, Users,
 } from "lucide-react";
 
-// Reusable FeatureCard Component
-function FeatureCard({ icon: Icon, title, description }) {
+/* ── Animated counter hook ── */
+function useCounter(target, duration = 1800, trigger) {
+  const [count, setCount] = useState("0");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!trigger || !mounted) return;
+    const num = parseFloat(target.replace(/[^0-9.]/g, ""));
+    const suffix = target.replace(/[0-9.]/g, "");
+    let start = 0;
+    const step = num / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= num) { setCount(target); clearInterval(timer); }
+      else setCount(Math.floor(start) + suffix);
+    }, 16);
+    return () => clearInterval(timer);
+  }, [trigger, target, duration, mounted]);
+  return mounted ? count : "0";
+}
+
+/* ── Animated stat ── */
+function AnimatedStat({ value, label, trigger }) {
+  const displayed = useCounter(value, 1600, trigger);
   return (
-    <div className="bg-white rounded-2xl border border-[#DCE7F7] p-6 shadow-[0_4px_20px_rgba(11,23,48,0.06)] hover:-translate-y-1.5 hover:border-[#0061FF]/40 hover:shadow-[0_8px_30px_rgba(11,23,48,0.12)] transition-all duration-300 flex flex-col justify-between group h-full relative border-t-4 border-t-[#FF7A59]">
-      <div>
-        {/* Blue Circular Icon Container */}
-        <div className="w-11 h-11 rounded-full bg-[#E8F2FF] text-[#0061FF] flex items-center justify-center mb-4 group-hover:bg-[#0061FF] group-hover:text-white transition-colors duration-300 shadow-sm">
-          <Icon size={20} />
-        </div>
-
-        {/* Title */}
-        <h3 className="font-poppins font-bold text-[18px] text-[#001A4D] mb-2 leading-snug group-hover:text-[#0061FF] transition-colors">
-          {title}
-        </h3>
-
-        {/* Description */}
-        <p className="text-[#4A5A73] text-[13.5px] leading-relaxed mb-4">
-          {description}
-        </p>
-      </div>
-
-      {/* Accent Line at Bottom Left */}
-      <div className="w-[40px] h-[3px] rounded-full bg-[#FF7A59] group-hover:w-[60px] transition-all duration-300" />
+    <div className="wcu-stat">
+      <span className="wcu-stat__val">{displayed}</span>
+      <span className="wcu-stat__lbl">{label}</span>
     </div>
   );
 }
 
-// Data Array for Feature Cards
+/* ── Feature row (editorial style — no card) ── */
+function FeatureRow({ icon: Icon, title, desc, delay = 0 }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -16 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay }}
+      className="wcu-feature"
+    >
+      <div className="wcu-feature__icon">
+        <Icon size={20} color="#0061FF" />
+      </div>
+      <div className="wcu-feature__body">
+        <h3 className="wcu-feature__title">{title}</h3>
+        <p className="wcu-feature__desc">{desc}</p>
+      </div>
+    </motion.div>
+  );
+}
+
 const FEATURES = [
-  {
-    id: "personalized-care",
-    icon: UserCheck,
-    title: "Personalized Care",
-    description: "Care plans tailored to your loved one's unique needs and preferences.",
-  },
-  {
-    id: "experienced-caregivers",
-    icon: ShieldCheck,
-    title: "Experienced Caregivers",
-    description: "Trained, background-checked professionals you can trust in your home.",
-  },
-  {
-    id: "reliable-consistent",
-    icon: Clock,
-    title: "Reliable & Consistent",
-    description: "We show up on time, every time, with care your family can count on.",
-  },
-  {
-    id: "compassionate-support",
-    icon: Heart,
-    title: "Compassionate Support",
-    description: "We treat your loved ones with dignity, respect, and genuine care.",
-  },
-  {
-    id: "safety-first",
-    icon: Home,
-    title: "Safety First Approach",
-    description: "Prioritizing home safety, fall prevention, and healthy daily routines.",
-  },
-  {
-    id: "locally-owned",
-    icon: Users,
-    title: "Locally Owned & Trusted",
-    description: "Regular updates and transparent care tracking so families stay informed.",
-  },
+  { icon: UserCheck,   title: "Personalized Care Plans",   desc: "Tailored to your loved one's unique schedule, preferences, and needs — not a one-size-fits-all approach." },
+  { icon: ShieldCheck, title: "100% Vetted Caregivers",    desc: "Every caregiver is background-checked, licensed, and trained. Your family's safety is our top priority." },
+  { icon: Clock,       title: "Reliable & Consistent",     desc: "We show up on time, every time. Dependable care your family can schedule their lives around." },
+  { icon: Heart,       title: "Compassion in Every Visit", desc: "We treat every client as family — with genuine warmth, respect, and love-driven care." },
+  { icon: Home,        title: "Safety First Approach",     desc: "Proactive home safety assessments, fall prevention, and daily wellness routines built into every plan." },
+  { icon: Users,       title: "Locally Owned & Trusted",   desc: "Rooted in Pennsylvania, we know our community — and we're invested in its wellbeing." },
+];
+
+const STATS = [
+  { value: "500+", label: "Happy Families" },
+  { value: "98%",  label: "Satisfaction"  },
+  { value: "15+",  label: "Years Care"    },
+  { value: "24/7", label: "Support"       },
 ];
 
 export default function WhyChooseUs() {
+  const statsRef  = useRef(null);
+  const statsInView = useInView(statsRef, { once: true, margin: "-100px" });
+
   return (
-    <section className="w-full bg-white py-14 lg:py-24 relative overflow-hidden" id="why-choose-us">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#DCE7F7] to-transparent" />
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-10 relative z-10">
-        
-        {/* ── HEADER ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
-          <div className="lg:col-span-7">
-            {/* Eyebrow Label */}
-            <div className="inline-flex items-center gap-2 bg-[#E8F2FF] text-[#001A4D] font-bold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full mb-4 border border-[#0061FF]/20">
-              <span className="w-2 h-2 rounded-full bg-[#FF7A59]" />
-              <span>WHY CHOOSE US</span>
-            </div>
+    <section className="wcu-section" id="why-choose-us" aria-labelledby="wcu-heading">
+      {/* decorative dots */}
+      <div aria-hidden="true" className="wcu-bg-dots" />
 
-            <h2 className="font-poppins font-extrabold text-[36px] sm:text-[48px] leading-[1.12] text-[#001A4D] tracking-[-0.8px]">
-              Why Families Trust <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-[#0061FF] via-[#0061FF] to-[#60EFFF] bg-clip-text text-transparent">
-                Pavan Homecare
-              </span>
-            </h2>
-          </div>
+      <div className="wcu-container">
 
-          <div className="lg:col-span-5">
-            <p className="text-[#4A5A73] text-[16px] sm:text-[17px] leading-relaxed">
-              We know how important it is to find care you can rely on. Pavan Homecare is dedicated to delivering professional, dignified, and loving care in South Central & Eastern PA.
-            </p>
-          </div>
+        {/* ── SECTION HEADER ── */}
+        <div className="wcu-header">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.6 }}
+          >
+            <span className="wcu-eyebrow">
+              <span className="wcu-eyebrow__dot" />
+              Why Choose Us
+            </span>
+          </motion.div>
+          <motion.h2 id="wcu-heading"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}
+            className="wcu-h2"
+          >
+            Why Families Trust{" "}
+            <span className="text-brand-gradient">Pavan Homecare</span>
+          </motion.h2>
         </div>
 
-        {/* ── ASYMMETRIC MERGED COMPOSITION: 7-COL FEATURE GRID + 5-COL TALL STATS CARD ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          
-          {/* LEFT SIDE (7 Cols): 2x3 Grid of Feature Cards */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5 items-stretch">
-            {FEATURES.map((feature) => (
-              <FeatureCard
-                key={feature.id}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
+        {/* ── MAIN SPLIT LAYOUT ── */}
+        <div className="wcu-body">
+
+          {/* LEFT — image + stats */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="wcu-media"
+          >
+            {/* Tall image */}
+            <div className="wcu-img-wrap">
+              <Image
+                src="/images/why_choose_hug.jpg"
+                alt="Pavan Homecare caregiver embracing senior client with warmth"
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                style={{ objectFit: "cover", objectPosition: "center top" }}
               />
-            ))}
-          </div>
-
-          {/* RIGHT SIDE (5 Cols): Tall Deep Navy Stats Panel Spanning Full Height */}
-          <div className="lg:col-span-5 flex flex-col h-full">
-            <div className="w-full h-full rounded-2xl bg-[#001A4D] border border-white/10 shadow-[0_20px_50px_rgba(0,26,77,0.3)] p-8 flex flex-col justify-between relative overflow-hidden group">
-              
-              {/* Background Image Layer with Gradient Overlay */}
-              <div className="absolute inset-0 z-0 opacity-20 group-hover:scale-105 transition-transform duration-700">
-                <Image
-                  src="/images/why_choose_hug.jpg"
-                  alt="Caregiver hugging senior client"
-                  fill
-                  sizes="33vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-b from-[#001A4D]/90 via-[#001A4D]/95 to-[#001A4D] z-0" />
-
-              {/* Content Container */}
-              <div className="relative z-10 flex flex-col h-full justify-between gap-6">
-                
-                {/* Header Badge Inside Dark Card */}
-                <div>
-                  <div className="inline-flex items-center gap-2 bg-white/10 text-[#FF7A59] font-bold text-[11px] tracking-widest uppercase px-3 py-1 rounded-full mb-4 border border-white/15">
-                    <span>PAVAN IMPACT</span>
-                  </div>
-                  <h3 className="font-poppins font-extrabold text-[24px] text-white leading-tight">
-                    Trusted by Over 500+ Families Across PA
-                  </h3>
-                </div>
-
-                {/* 4 Vertical Stat Rows */}
-                <div className="grid grid-cols-2 gap-4 py-4 border-y border-white/10">
-                  <div className="flex flex-col">
-                    <span className="font-poppins font-extrabold text-[36px] text-[#FF7A59] leading-none">500+</span>
-                    <span className="font-bold text-[14px] text-white mt-1">Happy Families</span>
-                    <span className="text-[12px] text-[#8A97AC]">Community trust</span>
-                  </div>
-
-                  <div className="flex flex-col">
-                    <span className="font-poppins font-extrabold text-[36px] text-[#FF7A59] leading-none">98%</span>
-                    <span className="font-bold text-[14px] text-white mt-1">Satisfaction</span>
-                    <span className="text-[12px] text-[#8A97AC]">Family rating</span>
-                  </div>
-
-                  <div className="flex flex-col">
-                    <span className="font-poppins font-extrabold text-[36px] text-[#FF7A59] leading-none">15+</span>
-                    <span className="font-bold text-[14px] text-white mt-1">Years Care</span>
-                    <span className="text-[12px] text-[#8A97AC]">Local experience</span>
-                  </div>
-
-                  <div className="flex flex-col">
-                    <span className="font-poppins font-extrabold text-[36px] text-[#FF7A59] leading-none">24/7</span>
-                    <span className="font-bold text-[14px] text-white mt-1">Support</span>
-                    <span className="text-[12px] text-[#8A97AC]">Always available</span>
-                  </div>
-                </div>
-
-                {/* Bottom Avatar Badge */}
-                <div className="bg-[#FF7A59] text-white p-3.5 px-4 rounded-2xl border border-white/20 flex items-center justify-between shadow-lg mt-2">
-                  <div>
-                    <span className="font-extrabold text-[15px] block leading-tight">Licensed &amp; Vetted</span>
-                    <span className="text-[11px] text-white/90 font-medium">100% Background Checked</span>
-                  </div>
-                  <div className="flex items-center shrink-0">
-                    <Image src="/images/reviewer_gloria.png" alt="Client 1" width={28} height={28} className="w-7 h-7 rounded-full border-2 border-white object-cover -ml-2 first:ml-0" />
-                    <Image src="/images/reviewer_reginald.png" alt="Client 2" width={28} height={28} className="w-7 h-7 rounded-full border-2 border-white object-cover -ml-2" />
-                    <Image src="/images/review_gloria_photo.png" alt="Client 3" width={28} height={28} className="w-7 h-7 rounded-full border-2 border-white object-cover -ml-2" />
-                  </div>
-                </div>
-
-              </div>
-
+              <div aria-hidden="true" className="wcu-img__overlay" />
             </div>
+
+            {/* Stats row below image */}
+            <div ref={statsRef} className="wcu-stats">
+              {STATS.map(s => (
+                <AnimatedStat key={s.label} value={s.value} label={s.label} trigger={statsInView} />
+              ))}
+            </div>
+          </motion.div>
+
+          {/* RIGHT — editorial feature rows */}
+          <div className="wcu-features">
+
+            {/* Pull quote */}
+            <motion.blockquote
+              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.7 }}
+              className="wcu-quote"
+            >
+              <span className="wcu-quote__mark">&ldquo;</span>
+              We don&apos;t just provide care — we become family.
+            </motion.blockquote>
+
+            {/* Feature rows */}
+            <div className="wcu-feature-list">
+              {FEATURES.map((f, i) => (
+                <FeatureRow key={f.title} {...f} delay={i * 0.08} />
+              ))}
+            </div>
+
+            {/* Trust badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}
+              className="wcu-trust-badge"
+            >
+              <div className="wcu-trust-badge__avatars">
+                <Image src="/images/reviewer_gloria.png"   alt="" width={36} height={36} className="wcu-avatar" />
+                <Image src="/images/reviewer_reginald.png" alt="" width={36} height={36} className="wcu-avatar" />
+                <Image src="/images/review_gloria_photo.png" alt="" width={36} height={36} className="wcu-avatar" />
+              </div>
+              <div className="wcu-trust-badge__text">
+                <span className="wcu-trust-badge__primary">Licensed &amp; 100% Vetted</span>
+                <span className="wcu-trust-badge__sub">Trusted by 500+ Pennsylvania families</span>
+              </div>
+              <ShieldCheck size={24} color="#0061FF" className="wcu-trust-badge__icon" />
+            </motion.div>
           </div>
-
         </div>
-
       </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        /* ── section ── */
+        .wcu-section {
+          position: relative;
+          width: 100%;
+          background: #FFFFFF;
+          padding: clamp(4rem, 7vw, 6rem) 0;
+          overflow: hidden;
+        }
+        .wcu-bg-dots {
+          position: absolute; inset: 0; pointer-events: none;
+          background-image: radial-gradient(rgba(0,97,255,0.04) 1.5px, transparent 1.5px);
+          background-size: 32px 32px;
+        }
+        .wcu-container { max-width: 1360px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* ── header ── */
+        .wcu-header { margin-bottom: 3rem; }
+        .wcu-eyebrow {
+          display: inline-flex; align-items: center; gap: 0.5rem;
+          background: #E8F2FF; color: #001A4D;
+          font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+          padding: 0.4rem 1rem; border-radius: 9999px;
+          border: 1px solid rgba(0,97,255,0.15);
+          margin-bottom: 1rem;
+        }
+        .wcu-eyebrow__dot { width: 8px; height: 8px; border-radius: 50%; background: #FF7A59; }
+        .wcu-h2 {
+          font-family: var(--font-heading);
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 800; line-height: 1.1;
+          letter-spacing: -0.03em; color: #001A4D; margin: 0;
+        }
+
+        /* ── body layout ── */
+        .wcu-body {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 3rem;
+          align-items: start;
+        }
+        @media (min-width: 1024px) {
+          .wcu-body { grid-template-columns: 0.9fr 1.1fr; gap: 5rem; }
+        }
+
+        /* ── media column ── */
+        .wcu-media { display: flex; flex-direction: column; gap: 1.5rem; }
+        .wcu-img-wrap {
+          position: relative;
+          border-radius: 1.5rem;
+          overflow: hidden;
+          height: clamp(300px, 50vw, 520px);
+          box-shadow: 0 24px 60px rgba(0,26,77,0.15);
+          border: 4px solid #FFFFFF;
+        }
+        .wcu-img__overlay {
+          position: absolute; inset: 0;
+          background: linear-gradient(to top, rgba(0,26,77,0.35) 0%, transparent 50%);
+        }
+
+        /* stats */
+        .wcu-stats {
+          display: grid; grid-template-columns: repeat(4, 1fr);
+          background: #001A4D;
+          border-radius: 1.25rem;
+          overflow: hidden;
+          box-shadow: 0 16px 40px rgba(0,26,77,0.25);
+        }
+        .wcu-stat {
+          display: flex; flex-direction: column; align-items: center;
+          padding: 1.25rem 0.75rem;
+          border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .wcu-stat:last-child { border-right: none; }
+        .wcu-stat__val {
+          font-family: var(--font-heading);
+          font-size: clamp(1.5rem, 3vw, 2rem);
+          font-weight: 800; line-height: 1;
+          background: linear-gradient(90deg, #FFFFFF, #60EFFF);
+          -webkit-background-clip: text; background-clip: text; color: transparent;
+          margin-bottom: 0.3rem;
+        }
+        .wcu-stat__lbl {
+          font-size: 11px; color: rgba(255,255,255,0.55);
+          font-weight: 500; text-align: center; line-height: 1.3;
+        }
+
+        /* ── features column ── */
+        .wcu-features { display: flex; flex-direction: column; gap: 0; }
+
+        /* pull quote */
+        .wcu-quote {
+          position: relative;
+          font-family: var(--font-heading);
+          font-size: clamp(1.1rem, 2vw, 1.4rem);
+          font-weight: 700; font-style: italic;
+          color: #001A4D;
+          line-height: 1.4;
+          margin: 0 0 2rem;
+          padding-left: 1.5rem;
+          border-left: 4px solid transparent;
+          border-image: linear-gradient(180deg, #0061FF, #60EFFF) 1;
+        }
+        .wcu-quote__mark {
+          font-size: 4rem; line-height: 0;
+          vertical-align: -1.5rem;
+          background: linear-gradient(135deg, #0061FF, #60EFFF);
+          -webkit-background-clip: text; background-clip: text; color: transparent;
+          font-family: Georgia, serif;
+          margin-right: 0.15rem;
+        }
+
+        /* feature rows */
+        .wcu-feature-list { display: flex; flex-direction: column; }
+        .wcu-feature {
+          display: flex; align-items: flex-start; gap: 1rem;
+          padding: 1.1rem 0;
+          border-bottom: 1px solid #DCE7F7;
+          transition: background 0.2s;
+        }
+        .wcu-feature:first-child { border-top: 1px solid #DCE7F7; }
+        .wcu-feature:hover { background: #F5F9FF; border-radius: 0.75rem; padding-left: 0.75rem; }
+        .wcu-feature__icon {
+          width: 42px; height: 42px; border-radius: 0.875rem; flex-shrink: 0;
+          background: linear-gradient(135deg, rgba(0,97,255,0.08), rgba(96,239,255,0.12));
+          border: 1px solid rgba(0,97,255,0.1);
+          display: flex; align-items: center; justify-content: center;
+          transition: transform 0.25s, background 0.25s;
+        }
+        .wcu-feature:hover .wcu-feature__icon {
+          transform: scale(1.1);
+          background: linear-gradient(135deg, #0061FF, #60EFFF);
+        }
+        .wcu-feature:hover .wcu-feature__icon svg { color: #FFFFFF !important; }
+        .wcu-feature__body { flex: 1; }
+        .wcu-feature__title {
+          font-family: var(--font-heading);
+          font-size: 15px; font-weight: 700; color: #001A4D;
+          margin: 0 0 0.2rem; line-height: 1.3;
+        }
+        .wcu-feature__desc {
+          font-size: 13.5px; color: #4A5A73; line-height: 1.55; margin: 0;
+        }
+
+        /* trust badge */
+        .wcu-trust-badge {
+          display: flex; align-items: center; gap: 1rem;
+          background: linear-gradient(90deg, #F5F9FF, #E8F2FF);
+          border: 1px solid rgba(0,97,255,0.15);
+          border-radius: 1.25rem; padding: 1.1rem 1.5rem;
+          margin-top: 1.75rem;
+          box-shadow: 0 8px 24px rgba(0,97,255,0.07);
+        }
+        .wcu-trust-badge__avatars { display: flex; }
+        .wcu-avatar {
+          width: 36px; height: 36px; border-radius: 50%;
+          border: 2.5px solid #FFFFFF; object-fit: cover;
+          margin-left: -10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .wcu-avatar:first-child { margin-left: 0; }
+        .wcu-trust-badge__text { flex: 1; display: flex; flex-direction: column; gap: 0.15rem; }
+        .wcu-trust-badge__primary { font-size: 14px; font-weight: 700; color: #001A4D; }
+        .wcu-trust-badge__sub { font-size: 12px; color: #4A5A73; }
+        .wcu-trust-badge__icon { flex-shrink: 0; }
+      ` }} />
     </section>
   );
 }

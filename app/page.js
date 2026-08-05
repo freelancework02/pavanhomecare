@@ -29,6 +29,7 @@ import CTASection from "@/components/CTASection";
 import ServiceAreasSearch from "@/components/ServiceAreasSearch";
 import KnowledgeHub from "@/components/KnowledgeHub";
 import GoogleReviews from "@/components/GoogleReviews";
+import HowItWorks from "@/components/HowItWorks";
 
 import { services, site } from "@/lib/site";
 
@@ -49,6 +50,8 @@ export default function HomePage() {
 
       {/* Pixel-Perfect Reference Clone Why Choose Us Section */}
       <WhyChooseUs />
+
+      <HowItWorks />
 
       <section className="w-full bg-[#F5F9FF] py-14 lg:py-24 relative overflow-hidden border-y border-[#DCE7F7]" aria-labelledby="about-story-heading">
         {/* Decorative elements */}
@@ -126,8 +129,8 @@ export default function HomePage() {
 
       <KnowledgeHub />
 
-      <section className="section" aria-label="Google Reviews">
-        <div className="container">
+      <section className="w-full bg-white py-14 lg:py-24" aria-label="Google Reviews">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-10">
           <GoogleReviews />
         </div>
       </section>

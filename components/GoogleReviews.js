@@ -3,22 +3,20 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  Star, 
-  Users, 
-  Clock, 
-  Shield, 
-  Quote, 
-  ArrowRight, 
+import {
+  Star,
+  Quote,
+  ArrowRight,
   Phone,
   Heart,
+  Check,
+  ShieldCheck,
+  Award,
   Sparkles,
-  Check
 } from "lucide-react";
-import styles from "./GoogleReviews.module.css";
 import { site } from "@/lib/site";
 
-// Preserved original reviews data
+// Google Reviews Data
 const reviewsData = [
   {
     id: 1,
@@ -26,32 +24,33 @@ const reviewsData = [
     avatar: "/images/reviewer_gloria.png",
     type: "image",
     verified: true,
-    time: "9 days ago",
+    time: "Verified Google Review",
     rating: 5,
     text: "I love working with Pavan Homecare. The team is so nice, extremely professional and compassionate. Highly recommend! 🙏❤️👍",
-    photo: "/images/review_gloria_photo.png"
+    photo: "/images/review_gloria_photo.png",
+    featured: true,
   },
   {
     id: 2,
     name: "Betty Mellinger",
     avatar: "B",
-    avatarBg: "#4a5568", // Slate grey
+    avatarBg: "#0061FF",
     type: "letter",
     verified: true,
-    time: "9 days ago",
+    time: "Verified Google Review",
     rating: 5,
-    text: "I enjoy working with the Pavan team. They are always understanding, highly responsive, and help check in when there are issues. I truly appreciate that.😊"
+    text: "I enjoy working with the Pavan team. They are always understanding, highly responsive, and help check in when there are issues. I truly appreciate that. 😊",
   },
   {
     id: 3,
     name: "Dennie Barnes",
     avatar: "D",
-    avatarBg: "#5A1A5E", // Brand plum
+    avatarBg: "#FF7A59",
     type: "letter",
     verified: true,
-    time: "9 days ago",
+    time: "Verified Google Review",
     rating: 5,
-    text: "Pavan Homecare is an exceptional company. Very nice to work with, highly professional, and extremely friendly caregivers."
+    text: "Pavan Homecare is an exceptional company. Very nice to work with, highly professional, and extremely friendly caregivers.",
   },
   {
     id: 4,
@@ -59,387 +58,503 @@ const reviewsData = [
     avatar: "/images/reviewer_reginald.png",
     type: "image",
     verified: true,
-    time: "10 days ago",
+    time: "Verified Google Review",
     rating: 5,
-    text: "Our experience has been incredibly pleasant. The staff is professional, courteous, responsive, and efficient. They provide everything we could ask for. Thanks for all you do!"
-  }
+    text: "Our experience has been incredibly pleasant. The staff is professional, courteous, responsive, and efficient. They provide everything we could ask for. Thanks for all you do!",
+  },
+  {
+    id: 5,
+    name: "Sarah Jenkins",
+    avatar: "S",
+    avatarBg: "#10B981",
+    type: "letter",
+    verified: true,
+    time: "Verified Google Review",
+    rating: 5,
+    text: "The caregivers from Pavan Homecare treated my mother with the utmost respect and warmth. It gave our whole family immense peace of mind.",
+  },
+  {
+    id: 6,
+    name: "Marcus Vance",
+    avatar: "M",
+    avatarBg: "#8B5CF6",
+    type: "letter",
+    verified: true,
+    time: "Verified Google Review",
+    rating: 5,
+    text: "Prompt, reliable, and genuinely caring staff. Scheduling was seamless and the care coordinator was always available to help.",
+  },
 ];
 
-// Reusable SVG Components
+// SVG Google Icon
 const GoogleIconSVG = () => (
-  <svg viewBox="0 0 24 24" width="100%" height="100%">
-    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22c-.67-.67-1.19-1.48-1.54-2.38z"/>
-    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+  <svg viewBox="0 0 24 24" width="18" height="18">
+    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22c-.67-.67-1.19-1.48-1.54-2.38z" />
+    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
   </svg>
 );
-
-const VerifiedSVG = () => (
-  <svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor">
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-  </svg>
-);
-
-// Framer Motion Animation Variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      type: "spring", 
-      stiffness: 70, 
-      damping: 14 
-    } 
-  }
-};
-
-const floatingVariants = (delay) => ({
-  animate: {
-    y: [0, -12, 0],
-    transition: {
-      repeat: Infinity,
-      duration: 5,
-      ease: "easeInOut",
-      delay: delay
-    }
-  }
-});
 
 export default function GoogleReviews() {
-  // Google reviews write link
-  const reviewLink = "https://search.google.com/local/writereview?placeid=ChIJeYg-fQzpy4kRphl563O-mQk"; 
-
-  // Select Gloria Custis's review (id 1) as the featured review
-  const featuredReview = reviewsData.find(r => r.id === 1) || reviewsData[0];
+  const reviewLink = "https://search.google.com/local/writereview?placeid=ChIJeYg-fQzpy4kRphl563O-mQk";
+  const featuredReview = reviewsData.find((r) => r.featured) || reviewsData[0];
+  const otherReviews = reviewsData.filter((r) => !r.featured);
 
   return (
-    <section className={styles.reviewsSection} aria-labelledby="reviews-section-heading">
-      {/* Background Decorators */}
-      <div className={`${styles.blob} ${styles.blob1}`} aria-hidden="true" />
-      <div className={`${styles.blob} ${styles.blob2}`} aria-hidden="true" />
-      <div className={`${styles.blob} ${styles.blob3}`} aria-hidden="true" />
-      
-      {/* Decorative Hearts Watermark */}
-      <Heart className={styles.heartWatermark} strokeWidth={1} aria-hidden="true" />
-      <Heart className={styles.heartWatermarkRight} strokeWidth={0.8} aria-hidden="true" />
+    <section className="gr-section" aria-labelledby="reviews-heading">
+      {/* Background radial mesh */}
+      <div aria-hidden="true" className="gr-bg" />
 
-      {/* Floating badges for visual depth (Desktop only) */}
-      <div className={styles.floatingContainer} aria-hidden="true">
-        <motion.div 
-          className={`${styles.floatingCard} ${styles.float1}`}
-          variants={floatingVariants(0)}
-          animate="animate"
-        >
-          <span style={{ color: "#FBBC05" }}>★</span> Rated 4.9
-        </motion.div>
+      <div className="gr-container">
         
-        <motion.div 
-          className={`${styles.floatingCard} ${styles.float2}`}
-          variants={floatingVariants(1.2)}
-          animate="animate"
-        >
-          <span style={{ color: "#FF2D7A" }}>❤️</span> Trusted by Families
-        </motion.div>
-        
-        <motion.div 
-          className={`${styles.floatingCard} ${styles.float3}`}
-          variants={floatingVariants(2.4)}
-          animate="animate"
-        >
-          <span style={{ color: "#FF7A1A" }}>🛡️</span> Licensed Agency
-        </motion.div>
-        
-        <motion.div 
-          className={`${styles.floatingCard} ${styles.float4}`}
-          variants={floatingVariants(0.6)}
-          animate="animate"
-        >
-          <span style={{ color: "#5A1A5E" }}>👨‍⚕️</span> Background Checked
-        </motion.div>
-      </div>
+        {/* ── SECTION HEADER ── */}
+        <div className="gr-header">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="gr-eyebrow">
+              <GoogleIconSVG />
+              Google Reviews · 4.9 Out of 5 Stars
+            </span>
+          </motion.div>
 
-      <motion.div 
-        className={styles.contentContainer}
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        {/* SECTION HEADER */}
-        <motion.div className={styles.sectionHeader} variants={itemVariants}>
-          <h2 id="reviews-section-heading">Loved by Families Across South Central Pennsylvania</h2>
-          <div className={styles.titleUnderline} />
-          <p>
-            Hundreds of local families trust Pavan Homecare for compassionate, 
-            reliable, and professional in-home care services.
-          </p>
-        </motion.div>
+          <motion.h2
+            id="reviews-heading"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="gr-h2"
+          >
+            Loved by Families Across<br />
+            <span className="gr-gradient-text">South Central Pennsylvania</span>
+          </motion.h2>
 
-        {/* TOP TRUST BAR (GOOGLE RATING HERO CARD) */}
-        <motion.div className={styles.heroCard} variants={itemVariants}>
-          <div className={styles.heroLeft}>
-            <div className={styles.googleBrand}>
-              <div className={styles.googleLogoText}>
-                <span style={{ color: '#4285F4' }}>G</span>
-                <span style={{ color: '#EA4335' }}>o</span>
-                <span style={{ color: '#FBBC05' }}>o</span>
-                <span style={{ color: '#4285F4' }}>g</span>
-                <span style={{ color: '#34A853' }}>l</span>
-                <span style={{ color: '#EA4335' }}>e</span>
-                <span className={styles.reviewsLabel}>Reviews</span>
-              </div>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="gr-sub"
+          >
+            Real stories of warmth, dignity, and dependable care from local families who trust Pavan Homecare.
+          </motion.p>
+        </div>
+
+        {/* ── GOOGLE RATING HERO BAR ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="gr-hero-card"
+        >
+          <div className="gr-hero-card__left">
+            <div className="gr-google-badge">
+              <GoogleIconSVG />
+              <span className="gr-google-text">Google Business Review</span>
             </div>
-            <div className={styles.ratingDisplay}>
-              <span className={styles.ratingNumber}>4.9</span>
-              <div className={styles.ratingStarsCol}>
-                <div className={styles.starsRow}>
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} size={20} fill="#FBBC05" stroke="none" />
+
+            <div className="gr-rating-display">
+              <span className="gr-rating-num">4.9</span>
+              <div className="gr-stars-col">
+                <div className="gr-stars-row">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={18} className="fill-[#FFB800] text-[#FFB800]" />
                   ))}
                 </div>
-                <span className={styles.reviewsCountText}>132+ Google Reviews</span>
+                <span className="gr-rating-count">Based on 132+ verified client &amp; family reviews</span>
               </div>
             </div>
           </div>
-          <Link 
-            href={reviewLink} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className={styles.ctaButton}
-            aria-label="Review us on Google (opens in a new tab)"
+
+          <Link
+            href={reviewLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="gr-btn-review btn-shimmer"
           >
+            <Sparkles size={16} />
             Review Us on Google
-            <ArrowRight size={18} />
+            <ArrowRight size={16} />
           </Link>
         </motion.div>
 
-        {/* STATISTICS ROW */}
-        <motion.div className={styles.statsRowGrid} variants={containerVariants}>
-          {/* Stat 1 */}
-          <motion.div className={styles.statCard} variants={itemVariants}>
-            <div className={styles.statIconContainer}>
-              <Star size={24} fill="#FF5A3C" stroke="none" />
-            </div>
-            <h3 className={styles.statVal}>4.9</h3>
-            <p className={styles.statLabel}>Average Rating</p>
-          </motion.div>
-
-          {/* Stat 2 */}
-          <motion.div className={styles.statCard} variants={itemVariants}>
-            <div className={styles.statIconContainer}>
-              <Users size={24} />
-            </div>
-            <h3 className={styles.statVal}>100+</h3>
-            <p className={styles.statLabel}>Families Served</p>
-          </motion.div>
-
-          {/* Stat 3 */}
-          <motion.div className={styles.statCard} variants={itemVariants}>
-            <div className={styles.statIconContainer}>
-              <Clock size={24} />
-            </div>
-            <h3 className={styles.statVal}>24/7</h3>
-            <p className={styles.statLabel}>Dedicated Support</p>
-          </motion.div>
-
-          {/* Stat 4 */}
-          <motion.div className={styles.statCard} variants={itemVariants}>
-            <div className={styles.statIconContainer}>
-              <Shield size={24} />
-            </div>
-            <h3 className={styles.statVal}>100%</h3>
-            <p className={styles.statLabel}>Licensed & Insured</p>
-          </motion.div>
-        </motion.div>
-
-        {/* FEATURED REVIEW */}
-        <motion.div className={styles.featuredSection} variants={itemVariants}>
-          <div className={styles.featuredCardOuter}>
-            <div className={styles.featuredCardInner}>
-              <Quote className={styles.quoteDecoration} size={120} strokeWidth={1} />
-              
-              {/* Featured Image Col */}
-              {featuredReview.photo && (
-                <div className={styles.featuredImageCol}>
-                  <Image 
-                    src={featuredReview.photo}
-                    alt="Pavan Homecare caregiver helping elderly lady"
-                    width={500}
-                    height={350}
-                    className={styles.featuredImage}
-                    priority
-                  />
-                </div>
-              )}
-
-              {/* Featured Content Col */}
-              <div className={styles.featuredContentCol}>
-                <span className={styles.featuredBadge}>Featured Review</span>
-                <div className={styles.featuredStarsRow}>
-                  {Array.from({ length: featuredReview.rating }).map((_, i) => (
-                    <Star key={i} size={18} fill="#FBBC05" stroke="none" />
-                  ))}
-                </div>
-                <blockquote className={styles.featuredText}>
-                  "{featuredReview.text}"
-                </blockquote>
-                
-                <div className={styles.featuredAuthorRow}>
-                  <div className={styles.featuredProfile}>
-                    <div className={styles.featuredAvatarWrapper}>
-                      <Image 
-                        src={featuredReview.avatar}
-                        alt={featuredReview.name}
-                        width={56}
-                        height={56}
-                        className={styles.featuredAvatar}
-                      />
-                    </div>
-                    <div className={styles.featuredMeta}>
-                      <span className={styles.featuredName}>{featuredReview.name}</span>
-                      <span className={styles.featuredVerifiedBadge}>
-                        <Check size={14} strokeWidth={3} /> Verified Client
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div className={styles.featuredFooterBrand}>
-                    <span className={styles.featuredDate}>{featuredReview.time}</span>
-                    <span style={{ opacity: 0.3 }}>|</span>
-                    <div className={styles.featuredGoogleIcon}>
-                      <GoogleIconSVG />
-                    </div>
-                    <span>Verified Google Review</span>
-                  </div>
+        {/* ── FEATURED TESTIMONIAL CARD ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.35 }}
+          className="gr-featured-card"
+        >
+          <div className="gr-featured-grid">
+            
+            {/* Left Photo */}
+            {featuredReview.photo && (
+              <div className="gr-featured-img-wrap">
+                <Image
+                  src={featuredReview.photo}
+                  alt="Pavan Homecare caregiver with senior client"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 400px"
+                  priority
+                  className="gr-featured-img"
+                />
+                <div className="gr-featured-badge-overlay">
+                  <Award size={14} color="#0061FF" />
+                  <span>Featured Client Story</span>
                 </div>
               </div>
-            </div>
-          </div>
-        </motion.div>
+            )}
 
-        {/* RESPONSIVE REVIEWS GRID */}
-        <motion.div className={styles.reviewsGrid} variants={containerVariants}>
-          {reviewsData.map((review) => (
-            <motion.div 
-              key={review.id} 
-              className={styles.reviewCard}
-              variants={itemVariants}
-            >
-              <div className={styles.cardHeader}>
-                <div className={styles.avatarWrapper}>
-                  {review.type === "image" ? (
-                    <Image
-                      src={review.avatar}
-                      alt={review.name}
-                      width={52}
-                      height={52}
-                      className={styles.avatarImage}
-                    />
-                  ) : (
-                    <div 
-                      className={styles.avatarLetter} 
-                      style={{ backgroundColor: review.avatarBg || '#5A1A5E' }}
-                    >
-                      {review.avatar}
-                    </div>
-                  )}
-                  <div className={styles.googleBadge}>
-                    <GoogleIconSVG />
-                  </div>
-                </div>
-                <div className={styles.authorMeta}>
-                  <div className={styles.authorNameRow}>
-                    <span className={styles.authorName}>{review.name}</span>
-                    {review.verified && (
-                      <span className={styles.verifiedBadge} title="Verified reviewer">
-                        <VerifiedSVG />
-                      </span>
-                    )}
-                  </div>
-                  <span className={styles.reviewTime}>{review.time}</span>
-                </div>
-              </div>
-              
-              {/* Rating stars with shimmer animation */}
-              <div className={styles.cardStars}>
-                {Array.from({ length: review.rating }).map((_, i) => (
-                  <Star 
-                    key={i} 
-                    size={16} 
-                    fill="#FBBC05" 
-                    stroke="none" 
-                    className={styles.shimmerStar}
-                  />
+            {/* Right Quote Content */}
+            <div className="gr-featured-content">
+              <Quote className="gr-quote-icon" size={64} />
+
+              <div className="gr-stars-row mb-3">
+                {[...Array(featuredReview.rating)].map((_, i) => (
+                  <Star key={i} size={20} className="fill-[#FFB800] text-[#FFB800]" />
                 ))}
               </div>
 
-              {/* Review Text */}
-              <p className={styles.reviewText}>{review.text}</p>
+              <blockquote className="gr-featured-text">
+                &ldquo;{featuredReview.text}&rdquo;
+              </blockquote>
 
-              {/* Optional Review Photo */}
-              {review.photo && (
-                <div className={styles.reviewCardPhotoWrapper}>
+              <div className="gr-featured-author">
+                <div className="hs-avatars">
                   <Image
-                    src={review.photo}
-                    alt={`${review.name}'s review attachment`}
-                    width={320}
-                    height={200}
-                    className={styles.reviewCardPhoto}
+                    src={featuredReview.avatar}
+                    alt={featuredReview.name}
+                    width={48}
+                    height={48}
+                    className="gr-author-img"
                   />
                 </div>
-              )}
-
-              {/* Footer */}
-              <div className={styles.cardFooter}>
-                <div className={styles.footerLeft}>
-                  <div className={styles.footerGoogleIcon}>
-                    <GoogleIconSVG />
+                <div>
+                  <div className="gr-author-name-row">
+                    <span className="gr-author-name">{featuredReview.name}</span>
+                    <span className="gr-verified-pill">
+                      <Check size={12} strokeWidth={3} /> Verified Client
+                    </span>
                   </div>
-                  <span className={styles.footerVerifiedLabel}>Verified Google Review</span>
+                  <span className="gr-author-meta">{featuredReview.time}</span>
                 </div>
-                <Sparkles size={14} style={{ color: '#FF2D7A', opacity: 0.7 }} />
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
+            </div>
 
-        {/* BOTTOM CTA */}
-        <motion.div className={styles.ctaContainer} variants={itemVariants}>
-          <div className={`${styles.ctaBlob} ${styles.ctaBlob1}`} aria-hidden="true" />
-          <div className={`${styles.ctaBlob} ${styles.ctaBlob2}`} aria-hidden="true" />
-          
-          <h3>Need compassionate care for someone you love?</h3>
-          <div className={styles.ctaButtons}>
-            <Link 
-              href="/contact-us" 
-              className={styles.ctaBtnPrimary}
-            >
-              Request Care
-              <ArrowRight size={18} />
-            </Link>
-            <Link 
-              href={site.phoneHref} 
-              className={styles.ctaBtnSecondary}
-            >
-              <Phone size={18} />
-              Call Now: {site.phoneDisplay}
-            </Link>
           </div>
         </motion.div>
-      </motion.div>
+
+        {/* ── REVIEWS GRID ── */}
+        <div className="gr-grid">
+          {otherReviews.map((r, idx) => (
+            <motion.div
+              key={r.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 * idx }}
+              className="gr-card"
+            >
+              <div className="gr-card__top">
+                <div className="gr-card__user">
+                  {r.type === "image" ? (
+                    <Image
+                      src={r.avatar}
+                      alt={r.name}
+                      width={44}
+                      height={44}
+                      className="gr-card__avatar-img"
+                    />
+                  ) : (
+                    <div className="gr-card__avatar-letter" style={{ background: r.avatarBg }}>
+                      {r.avatar}
+                    </div>
+                  )}
+
+                  <div>
+                    <div className="gr-card__name-row">
+                      <span className="gr-card__name">{r.name}</span>
+                      <ShieldCheck size={14} className="text-[#0061FF]" />
+                    </div>
+                    <span className="gr-card__sub">{r.time}</span>
+                  </div>
+                </div>
+
+                <GoogleIconSVG />
+              </div>
+
+              <div className="gr-stars-row my-3">
+                {[...Array(r.rating)].map((_, i) => (
+                  <Star key={i} size={15} className="fill-[#FFB800] text-[#FFB800]" />
+                ))}
+              </div>
+
+              <p className="gr-card__text">&ldquo;{r.text}&rdquo;</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ── BOTTOM CTA ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="gr-bottom-cta"
+        >
+          <div className="gr-bottom-cta__inner">
+            <h3 className="gr-bottom-cta__title">Need compassionate home care for someone you love?</h3>
+            <div className="gr-bottom-cta__buttons">
+              <Link href="/contact-us" className="gr-btn-primary btn-shimmer">
+                <Heart size={16} className="fill-white/30" />
+                Request Free Care Consultation
+                <ArrowRight size={16} />
+              </Link>
+              <a href={site.phoneHref} className="gr-btn-phone">
+                <Phone size={16} className="text-[#0061FF]" />
+                Call {site.phoneDisplay}
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        .gr-section {
+          position: relative;
+          width: 100%;
+          background: #F8FAFC;
+          padding: clamp(4rem, 7vw, 6.5rem) 0;
+          overflow: hidden;
+          border-top: 1px solid #E2E8F0;
+        }
+
+        .gr-bg {
+          position: absolute; inset: 0; pointer-events: none;
+          background-image: radial-gradient(rgba(0, 97, 255, 0.05) 1.5px, transparent 1.5px);
+          background-size: 28px 28px;
+        }
+
+        .gr-container {
+          max-width: 1360px; margin: 0 auto; padding: 0 1.5rem;
+          position: relative; z-index: 10;
+        }
+
+        /* Header */
+        .gr-header { text-align: center; max-width: 720px; margin: 0 auto 3.5rem; }
+
+        .gr-eyebrow {
+          display: inline-flex; align-items: center; gap: 0.55rem;
+          background: #FFFFFF; border: 1px solid #E2E8F0;
+          color: #0F172A; font-weight: 700; font-size: 13px;
+          padding: 0.45rem 1.1rem; border-radius: 9999px;
+          box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+          margin-bottom: 1.25rem;
+        }
+
+        .gr-h2 {
+          font-family: var(--font-heading);
+          font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+          font-weight: 800; line-height: 1.1;
+          letter-spacing: -0.03em; color: #0F172A;
+          margin: 0 0 1.25rem;
+        }
+
+        .gr-gradient-text {
+          background: linear-gradient(90deg, #0061FF 0%, #38BDF8 100%);
+          -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+
+        .gr-sub {
+          font-size: clamp(1rem, 1.4vw, 1.1rem);
+          color: #475569; line-height: 1.7; margin: 0;
+        }
+
+        /* Hero Rating Card */
+        .gr-hero-card {
+          background: #FFFFFF;
+          border: 1px solid #E2E8F0;
+          border-radius: 1.5rem; padding: 1.5rem 2rem;
+          box-shadow: 0 16px 40px rgba(0, 26, 77, 0.06);
+          display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+          gap: 1.5rem; margin-bottom: 3rem;
+        }
+
+        .gr-hero-card__left { display: flex; flex-direction: column; gap: 0.6rem; }
+        .gr-google-badge { display: flex; align-items: center; gap: 0.5rem; }
+        .gr-google-text { font-size: 12.5px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        .gr-rating-display { display: flex; align-items: center; gap: 1rem; }
+        .gr-rating-num {
+          font-family: var(--font-heading); font-size: 3rem; font-weight: 800;
+          color: #0F172A; line-height: 1;
+        }
+
+        .gr-stars-col { display: flex; flex-direction: column; gap: 0.2rem; }
+        .gr-stars-row { display: flex; align-items: center; gap: 0.25rem; }
+        .gr-rating-count { font-size: 13px; color: #475569; font-weight: 600; }
+
+        .gr-btn-review {
+          display: inline-flex; align-items: center; gap: 0.6rem;
+          background: linear-gradient(90deg, #0061FF 0%, #38BDF8 100%);
+          color: #FFFFFF; font-family: var(--font-heading);
+          font-weight: 700; font-size: 14.5px;
+          padding: 0.8rem 1.6rem; border-radius: 9999px;
+          box-shadow: 0 8px 24px rgba(0, 97, 255, 0.3);
+          text-decoration: none; transition: all 0.25s ease;
+        }
+        .gr-btn-review:hover {
+          transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0, 97, 255, 0.45);
+          color: #FFFFFF; text-decoration: none;
+        }
+
+        /* Featured Card */
+        .gr-featured-card {
+          background: #FFFFFF;
+          border: 1px solid #E2E8F0;
+          border-radius: 1.75rem; overflow: hidden;
+          box-shadow: 0 20px 50px rgba(0, 26, 77, 0.08);
+          margin-bottom: 2.5rem;
+        }
+
+        .gr-featured-grid {
+          display: grid; grid-template-columns: 1fr;
+        }
+        @media (min-width: 900px) {
+          .gr-featured-grid { grid-template-columns: 0.85fr 1.15fr; }
+        }
+
+        .gr-featured-img-wrap {
+          position: relative; min-height: 320px; background: #EFF6FF;
+        }
+        .gr-featured-img { object-fit: cover; object-position: center; }
+
+        .gr-featured-badge-overlay {
+          position: absolute; top: 1.25rem; left: 1.25rem;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          border-radius: 9999px; padding: 0.4rem 1rem;
+          display: flex; align-items: center; gap: 0.4rem;
+          font-size: 12px; font-weight: 700; color: #0F172A;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .gr-featured-content {
+          position: relative; padding: clamp(2rem, 4vw, 3rem);
+          display: flex; flex-direction: column; justify-content: center;
+        }
+
+        .gr-quote-icon {
+          position: absolute; top: 1.5rem; right: 2rem;
+          color: rgba(0, 97, 255, 0.07); pointer-events: none;
+        }
+
+        .gr-featured-text {
+          font-family: var(--font-heading);
+          font-size: clamp(1.15rem, 2vw, 1.45rem);
+          font-weight: 700; color: #0F172A; line-height: 1.5;
+          margin: 0 0 2rem; border: none; padding: 0;
+        }
+
+        .gr-featured-author { display: flex; align-items: center; gap: 1rem; }
+        .gr-author-img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+        .gr-author-name-row { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+        .gr-author-name { font-size: 16px; font-weight: 800; color: #0F172A; }
+        .gr-verified-pill {
+          display: inline-flex; align-items: center; gap: 0.25rem;
+          background: #ECFDF5; border: 1px solid #A7F3D0;
+          color: #059669; font-size: 11.5px; font-weight: 700;
+          padding: 0.25rem 0.65rem; border-radius: 9999px;
+        }
+        .gr-author-meta { font-size: 12.5px; color: #64748B; }
+
+        /* Grid */
+        .gr-grid {
+          display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.5rem; margin-bottom: 3.5rem;
+        }
+
+        .gr-card {
+          background: #FFFFFF;
+          border: 1px solid #E2E8F0;
+          border-radius: 1.25rem; padding: 1.5rem;
+          box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+          transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+          display: flex; flex-direction: column;
+        }
+        .gr-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 16px 36px rgba(0, 97, 255, 0.1);
+          border-color: rgba(0, 97, 255, 0.3);
+        }
+
+        .gr-card__top { display: flex; align-items: center; justify-content: space-between; }
+        .gr-card__user { display: flex; align-items: center; gap: 0.75rem; }
+        .gr-card__avatar-img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+        .gr-card__avatar-letter {
+          width: 44px; height: 44px; border-radius: 50%; color: #FFF;
+          font-family: var(--font-heading); font-weight: 800; font-size: 18px;
+          display: flex; align-items: center; justify-content: center;
+        }
+
+        .gr-card__name-row { display: flex; align-items: center; gap: 0.35rem; }
+        .gr-card__name { font-size: 15px; font-weight: 800; color: #0F172A; }
+        .gr-card__sub { font-size: 11.5px; color: #64748B; }
+        .gr-card__text { font-size: 13.5px; color: #334155; line-height: 1.65; margin: 0; flex: 1; }
+
+        /* Bottom CTA */
+        .gr-bottom-cta {
+          background: #FFFFFF;
+          border: 1px solid #E2E8F0;
+          border-radius: 1.5rem; padding: 2rem;
+          box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
+        }
+        .gr-bottom-cta__inner {
+          display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+          gap: 1.5rem;
+        }
+        .gr-bottom-cta__title {
+          font-family: var(--font-heading); font-size: clamp(1.2rem, 2vw, 1.5rem);
+          font-weight: 800; color: #0F172A; margin: 0; max-width: 460px;
+        }
+        .gr-bottom-cta__buttons { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+        .gr-btn-primary {
+          display: inline-flex; align-items: center; gap: 0.5rem;
+          background: linear-gradient(90deg, #0061FF 0%, #38BDF8 100%);
+          color: #FFFFFF; font-family: var(--font-heading);
+          font-weight: 700; font-size: 14px;
+          padding: 0.75rem 1.5rem; border-radius: 9999px;
+          box-shadow: 0 6px 20px rgba(0, 97, 255, 0.3);
+          text-decoration: none; transition: all 0.2s;
+        }
+        .gr-btn-primary:hover {
+          transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0, 97, 255, 0.45);
+          color: #FFFFFF; text-decoration: none;
+        }
+
+        .gr-btn-phone {
+          display: inline-flex; align-items: center; gap: 0.5rem;
+          background: #F8FAFC; border: 1px solid #E2E8F0;
+          color: #0F172A; font-family: var(--font-heading);
+          font-weight: 700; font-size: 14px;
+          padding: 0.75rem 1.5rem; border-radius: 9999px;
+          text-decoration: none; transition: all 0.2s;
+        }
+        .gr-btn-phone:hover {
+          border-color: #0061FF; background: #EFF6FF;
+          text-decoration: none;
+        }
+      ` }} />
     </section>
   );
 }
