@@ -64,6 +64,14 @@
   --gradient: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
   --gradient-soft: linear-gradient(135deg, rgba(0, 97, 255, 0.05) 0%, rgba(255, 122, 89, 0.05) 100%);
 
+  --plum: #001A4D;
+  --pink: #0061FF;
+  --coral: #FF7A59;
+  --orange: #FF7A59;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
   --font-heading: "Poppins", Arial, Helvetica, sans-serif;
   --font-body: "Poppins", Arial, Helvetica, sans-serif;
   --font-primary: "Poppins", Arial, Helvetica, sans-serif;
@@ -88,7 +96,9 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--charcoal);
-  background: var(--white);
+  background:
+    linear-gradient(180deg, rgba(245, 249, 255, 0.75) 0%, rgba(255, 255, 255, 0) 22rem),
+    var(--white);
   font-size: 1rem;
   line-height: 1.65;
   width: 100%;
@@ -101,7 +111,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-heading);
-  color: var(--plum);
+  color: var(--color-primary-900);
   line-height: 1.2;
   margin: 0 0 0.75rem;
 }
@@ -126,7 +136,7 @@ p {
 }
 
 a {
-  color: var(--pink);
+  color: var(--brand-blue);
   text-decoration: none;
 }
 
@@ -3730,7 +3740,7 @@ textarea:focus-visible,
   position: absolute;
   top: 1.25rem;
   left: 1.25rem;
-  background: #F2994A;
+  background: #FF7A59;
   color: #FFFFFF;
   font-family: var(--font-cta);
   font-weight: 700;
@@ -6471,14 +6481,19 @@ a.footer-contact-link-item:hover {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--navy);
+  background: #EEF5FF;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--pink) 0%, var(--orange) 100%);
+  background: linear-gradient(180deg, var(--brand-blue) 0%, var(--brand-sky) 100%);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--orange) 0%, var(--pink) 100%);
+  background: linear-gradient(180deg, var(--brand-blue) 0%, var(--coral) 100%);
+}
+
+::selection {
+  background: rgba(0, 97, 255, 0.16);
+  color: var(--color-primary-900);
 }
 
 /* ==========================================================================

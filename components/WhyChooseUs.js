@@ -17,7 +17,7 @@ import {
 // Reusable FeatureCard Component
 function FeatureCard({ icon: Icon, title, description }) {
   return (
-    <div className="bg-white rounded-2xl border border-[#DCE7F7] p-6 shadow-[0_4px_20px_rgba(11,23,48,0.06)] hover:-translate-y-1.5 hover:border-[#0061FF]/40 hover:shadow-[0_8px_30px_rgba(11,23,48,0.12)] transition-all duration-300 flex flex-col justify-between group cursor-pointer h-full relative border-t-4 border-t-[#FF7A59]">
+    <div className="bg-white rounded-2xl border border-[#DCE7F7] p-6 shadow-[0_4px_20px_rgba(11,23,48,0.06)] hover:-translate-y-1.5 hover:border-[#0061FF]/40 hover:shadow-[0_8px_30px_rgba(11,23,48,0.12)] transition-all duration-300 flex flex-col justify-between group h-full relative border-t-4 border-t-[#FF7A59]">
       <div>
         {/* Blue Circular Icon Container */}
         <div className="w-11 h-11 rounded-full bg-[#E8F2FF] text-[#0061FF] flex items-center justify-center mb-4 group-hover:bg-[#0061FF] group-hover:text-white transition-colors duration-300 shadow-sm">
@@ -84,10 +84,7 @@ const FEATURES = [
 export default function WhyChooseUs() {
   return (
     <section className="w-full bg-white py-14 lg:py-24 relative overflow-hidden" id="why-choose-us">
-      {/* Background Radial Glows */}
-      <div className="absolute top-10 left-10 w-[500px] h-[500px] bg-[#0061FF]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#FF7A59]/5 rounded-full blur-3xl pointer-events-none" />
-
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#DCE7F7] to-transparent" />
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-10 relative z-10">
         
         {/* ── HEADER ── */}

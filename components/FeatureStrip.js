@@ -41,7 +41,7 @@ export default function FeatureStrip() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full bg-white border border-[#DCE7F7] rounded-2xl p-6 sm:p-8 shadow-[0_20px_80px_rgba(0,0,0,0.06)] mt-12 sm:mt-16 relative z-20"
+      className="w-full bg-white border border-[#DCE7F7] rounded-[24px] p-5 sm:p-7 shadow-[0_22px_70px_rgba(0,26,77,0.08)] mt-12 sm:mt-16 relative z-20"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {FEATURES.map((item, index) => (
@@ -49,7 +49,7 @@ export default function FeatureStrip() {
             key={item.id}
             whileHover={{ y: -4, scale: 1.01 }}
             transition={{ duration: 0.25 }}
-            className={`flex items-start gap-4 ${
+            className={`flex items-start gap-4 rounded-2xl p-3 transition-colors hover:bg-[#F5F9FF] ${
               index !== FEATURES.length - 1 ? "lg:border-r lg:border-[#DCE7F7] lg:pr-6" : ""
             }`}
           >

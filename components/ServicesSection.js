@@ -95,10 +95,7 @@ const BOTTOM_SERVICES = [
 export default function ServicesSection() {
   return (
     <section className="w-full bg-[#F5F9FF] py-14 lg:py-24 relative overflow-hidden border-y border-[#DCE7F7]">
-      {/* Background Decorative Radial Glows */}
-      <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-[#0061FF]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -right-20 w-[500px] h-[500px] bg-[#FF7A59]/5 rounded-full blur-3xl pointer-events-none" />
-
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#0061FF]/25 to-transparent" />
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-10 relative z-10">
         {/* ── HEADER ── */}
         <div className="flex flex-col items-center text-center max-w-[620px] mx-auto mb-16">
@@ -229,20 +226,20 @@ export default function ServicesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <Link href="/services" className="block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A] rounded-2xl">
-                <div className="bg-white border border-[#E2E8F0] rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(16,24,43,0.06)] hover:shadow-[0_8px_30px_rgba(16,24,43,0.12)] hover:border-[#1E7FE0]/40 hover:-translate-y-1.5 transition-all duration-300 grid grid-cols-1 md:grid-cols-12 items-center">
+              <Link href="/services" className="block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7A59] rounded-2xl">
+                <div className="bg-white border border-[#DCE7F7] rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(11,23,48,0.06)] hover:shadow-[0_8px_30px_rgba(11,23,48,0.12)] hover:border-[#0061FF]/40 hover:-translate-y-1.5 transition-all duration-300 grid grid-cols-1 md:grid-cols-12 items-center">
                   
                   {/* Text (Left Side 55%) */}
                   <div className="md:col-span-6 p-6 sm:p-8 flex flex-col justify-center">
-                    <div className="w-11 h-11 rounded-full bg-[#E8F2FD] text-[#1E7FE0] flex items-center justify-center mb-4 group-hover:bg-[#1E7FE0] group-hover:text-white transition-colors duration-300 shadow-sm">
+                    <div className="w-11 h-11 rounded-full bg-[#E8F2FF] text-[#0061FF] flex items-center justify-center mb-4 group-hover:bg-[#0061FF] group-hover:text-white transition-colors duration-300 shadow-sm">
                       <Users size={20} />
                     </div>
 
-                    <h3 className="font-poppins font-extrabold text-[22px] text-[#0B2A4A] group-hover:text-[#1E7FE0] transition-colors mb-2 leading-snug">
+                    <h3 className="font-poppins font-extrabold text-[22px] text-[#001A4D] group-hover:text-[#0061FF] transition-colors mb-2 leading-snug">
                       Live-In Care
                     </h3>
 
-                    <p className="text-[#4A5568] text-[14px] leading-relaxed">
+                    <p className="text-[#4A5A73] text-[14px] leading-relaxed">
                       24/7 support in the comfort of home for peace of mind and consistent care.
                     </p>
                   </div>
@@ -259,7 +256,7 @@ export default function ServicesSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
 
                     {/* Floating Orange Circular Arrow Button */}
-                    <div className="w-10 h-10 rounded-full bg-[#F2994A] text-white flex items-center justify-center shadow-lg absolute bottom-4 right-4 group-hover:scale-110 group-hover:bg-[#E08838] transition-all">
+                    <div className="w-10 h-10 rounded-full bg-[#FF7A59] text-white flex items-center justify-center shadow-lg absolute bottom-4 right-4 group-hover:scale-110 group-hover:bg-[#E86746] transition-all">
                       <ArrowRight size={18} />
                     </div>
                   </div>
@@ -295,7 +292,7 @@ export default function ServicesSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-2.5 bg-[#F2994A] hover:bg-[#E08838] text-white font-bold text-[15px] px-8 py-3.5 rounded-full shadow-[0_8px_20px_rgba(242,153,74,0.35)] hover:shadow-[0_12px_28px_rgba(242,153,74,0.45)] hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B2A4A]"
+            className="inline-flex items-center justify-center gap-2.5 bg-[#FF7A59] hover:bg-[#E86746] text-white font-bold text-[15px] px-8 py-3.5 rounded-full shadow-[0_8px_20px_rgba(255,122,89,0.32)] hover:shadow-[0_12px_28px_rgba(255,122,89,0.42)] hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#001A4D]"
           >
             <span>View All Services</span>
             <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
@@ -303,7 +300,7 @@ export default function ServicesSection() {
 
           <Link
             href="/contact-us"
-            className="inline-flex items-center justify-center gap-2 bg-white border-2 border-[#1E7FE0] text-[#1E7FE0] hover:bg-[#E8F2FD] font-semibold text-[15px] px-7 py-3.5 rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2994A]"
+            className="inline-flex items-center justify-center gap-2 bg-white border border-[#0061FF] text-[#0061FF] hover:bg-[#E8F2FF] font-semibold text-[15px] px-7 py-3.5 rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7A59]"
           >
             <span>Get in Touch</span>
           </Link>

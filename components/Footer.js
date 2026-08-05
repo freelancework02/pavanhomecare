@@ -10,9 +10,7 @@ export default function Footer() {
       {/* Top Brand Gradient Edge Divider Line */}
       <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#0061FF] via-[#60EFFF] to-[#FF7A59]" />
 
-      {/* Ambient Decorative Orbs */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-[#0061FF]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#FF7A59]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.24)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.24)_1px,transparent_1px)] [background-size:64px_64px] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-[80px] relative z-10">
         {/* 4-Column Layout */}
@@ -42,7 +40,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-[#8892A0]/40 text-[#8892A0] hover:text-white hover:bg-[#F2994A] hover:border-[#F2994A] hover:scale-110 hover:shadow-[0_4px_15px_rgba(242,153,74,0.4)] flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-10 h-10 rounded-full border border-[#8A97AC]/40 text-[#8A97AC] hover:text-white hover:bg-[#FF7A59] hover:border-[#FF7A59] hover:scale-110 hover:shadow-[0_4px_15px_rgba(255,122,89,0.35)] flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 aria-label="Instagram"
               >
                 <Instagram size={16} />
@@ -51,7 +49,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-[#8892A0]/40 text-[#8892A0] hover:text-white hover:bg-[#F2994A] hover:border-[#F2994A] hover:scale-110 hover:shadow-[0_4px_15px_rgba(242,153,74,0.4)] flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-10 h-10 rounded-full border border-[#8A97AC]/40 text-[#8A97AC] hover:text-white hover:bg-[#FF7A59] hover:border-[#FF7A59] hover:scale-110 hover:shadow-[0_4px_15px_rgba(255,122,89,0.35)] flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={16} />
@@ -60,7 +58,7 @@ export default function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-[#8892A0]/40 text-[#8892A0] hover:text-white hover:bg-[#F2994A] hover:border-[#F2994A] hover:scale-110 hover:shadow-[0_4px_15px_rgba(242,153,74,0.4)] flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-10 h-10 rounded-full border border-[#8A97AC]/40 text-[#8A97AC] hover:text-white hover:bg-[#FF7A59] hover:border-[#FF7A59] hover:scale-110 hover:shadow-[0_4px_15px_rgba(255,122,89,0.35)] flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 aria-label="Twitter"
               >
                 <Twitter size={16} />

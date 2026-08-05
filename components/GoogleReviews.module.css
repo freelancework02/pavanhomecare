@@ -18,12 +18,11 @@
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Background Blobs */
+/* Background accents */
 .blob {
+  display: none;
   position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.12;
+  opacity: 0;
   z-index: 1;
   pointer-events: none;
 }
@@ -293,7 +292,7 @@
 .statCard {
   background: #ffffff;
   border: 1px solid rgba(226, 232, 240, 0.8);
-  border-top: 3px solid #F2994A;
+  border-top: 3px solid #FF7A59;
   border-radius: var(--card-radius);
   padding: 32px 24px;
   box-shadow: 0 8px 25px rgba(16, 24, 43, 0.06);
@@ -308,7 +307,7 @@
 .statCard:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 40px rgba(16, 24, 43, 0.12);
-  border-top-color: #1E7FE0;
+  border-top-color: #0061FF;
 }
 
 .statIconContainer {
@@ -512,7 +511,7 @@
 .reviewCard {
   background: #ffffff;
   border: 1px solid rgba(226, 232, 240, 0.9);
-  border-top: 4px solid #F2994A;
+  border-top: 4px solid #FF7A59;
   border-radius: var(--card-radius);
   padding: 36px;
   box-shadow: 0 8px 25px rgba(16, 24, 43, 0.06);
@@ -526,7 +525,7 @@
 .reviewCard:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 40px rgba(16, 24, 43, 0.12);
-  border-top-color: #1E7FE0;
+  border-top-color: #0061FF;
 }
 
 @media (min-width: 992px) {

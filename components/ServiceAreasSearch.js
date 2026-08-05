@@ -85,9 +85,7 @@ const COUNTIES = [
 export default function ServiceAreasSearch() {
   return (
     <section className="w-full bg-white py-14 lg:py-24 relative overflow-hidden">
-      {/* Background Soft Blue Radial Gradients */}
-      <div className="absolute top-10 left-10 w-[500px] h-[500px] bg-[#0061FF]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[#0061FF]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#DCE7F7] to-transparent" />
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-10 relative z-10">
         
@@ -181,10 +179,10 @@ export default function ServiceAreasSearch() {
 
             {/* Bottom Floating Glass Callout Badge */}
             <div className="absolute bottom-6 right-6 bg-white/95 backdrop-blur-md p-3.5 px-5 rounded-2xl shadow-[0_15px_35px_rgba(11,42,74,0.12)] border border-white flex items-center gap-3 z-20">
-              <div className="w-9 h-9 rounded-full bg-[#FCEEE0] text-[#F2994A] flex items-center justify-center shrink-0">
-                <Heart size={18} className="fill-[#F2994A]" />
+              <div className="w-9 h-9 rounded-full bg-[#FFEDE7] text-[#FF7A59] flex items-center justify-center shrink-0">
+                <Heart size={18} className="fill-[#FF7A59]" />
               </div>
-              <div className="text-[#0B2A4A] text-[13.5px] font-bold leading-snug">
+              <div className="text-[#001A4D] text-[13.5px] font-bold leading-snug">
                 Bringing quality care <br />
                 closer to your home.
               </div>
@@ -195,17 +193,17 @@ export default function ServiceAreasSearch() {
         </div>
 
         {/* ── BOTTOM FEATURE STRIP (FULL WIDTH BANNER) ── */}
-        <div className="w-full rounded-2xl bg-[#F7F9FC] border border-[#E2E8F0] shadow-sm p-6 sm:p-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#E2E8F0] gap-6 sm:gap-0">
+        <div className="w-full rounded-2xl bg-[#F5F9FF] border border-[#DCE7F7] shadow-sm p-6 sm:p-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#DCE7F7] gap-6 sm:gap-0">
             
             {/* 1. Shield */}
             <div className="flex items-center gap-4 px-4 py-2 sm:py-0 group">
-              <div className="w-12 h-12 rounded-full bg-[#E8F2FD] text-[#1E7FE0] flex items-center justify-center shrink-0 group-hover:bg-[#1E7FE0] group-hover:text-white transition-colors duration-300 shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-[#E8F2FF] text-[#0061FF] flex items-center justify-center shrink-0 group-hover:bg-[#0061FF] group-hover:text-white transition-colors duration-300 shadow-sm">
                 <ShieldCheck size={22} />
               </div>
               <div>
-                <h4 className="font-poppins font-bold text-[17px] text-[#0B2A4A]">Local &amp; Trusted</h4>
-                <p className="text-[#4A5568] text-[13.5px] leading-snug mt-0.5">
+                <h4 className="font-poppins font-bold text-[17px] text-[#001A4D]">Local &amp; Trusted</h4>
+                <p className="text-[#4A5A73] text-[13.5px] leading-snug mt-0.5">
                   We&apos;re part of your community and dedicated to your family.
                 </p>
               </div>
@@ -213,12 +211,12 @@ export default function ServiceAreasSearch() {
 
             {/* 2. User */}
             <div className="flex items-center gap-4 px-4 py-2 sm:py-0 group">
-              <div className="w-12 h-12 rounded-full bg-[#E8F2FD] text-[#1E7FE0] flex items-center justify-center shrink-0 group-hover:bg-[#1E7FE0] group-hover:text-white transition-colors duration-300 shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-[#E8F2FF] text-[#0061FF] flex items-center justify-center shrink-0 group-hover:bg-[#0061FF] group-hover:text-white transition-colors duration-300 shadow-sm">
                 <User size={22} />
               </div>
               <div>
-                <h4 className="font-poppins font-bold text-[17px] text-[#0B2A4A]">Personalized Care</h4>
-                <p className="text-[#4A5568] text-[13.5px] leading-snug mt-0.5">
+                <h4 className="font-poppins font-bold text-[17px] text-[#001A4D]">Personalized Care</h4>
+                <p className="text-[#4A5A73] text-[13.5px] leading-snug mt-0.5">
                   Care plans tailored to your loved one&apos;s needs.
                 </p>
               </div>
@@ -226,12 +224,12 @@ export default function ServiceAreasSearch() {
 
             {/* 3. Team */}
             <div className="flex items-center gap-4 px-4 py-2 sm:py-0 group">
-              <div className="w-12 h-12 rounded-full bg-[#E8F2FD] text-[#1E7FE0] flex items-center justify-center shrink-0 group-hover:bg-[#1E7FE0] group-hover:text-white transition-colors duration-300 shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-[#E8F2FF] text-[#0061FF] flex items-center justify-center shrink-0 group-hover:bg-[#0061FF] group-hover:text-white transition-colors duration-300 shadow-sm">
                 <Users size={22} />
               </div>
               <div>
-                <h4 className="font-poppins font-bold text-[17px] text-[#0B2A4A]">Experienced Team</h4>
-                <p className="text-[#4A5568] text-[13.5px] leading-snug mt-0.5">
+                <h4 className="font-poppins font-bold text-[17px] text-[#001A4D]">Experienced Team</h4>
+                <p className="text-[#4A5A73] text-[13.5px] leading-snug mt-0.5">
                   Highly trained caregivers you can count on.
                 </p>
               </div>
@@ -239,12 +237,12 @@ export default function ServiceAreasSearch() {
 
             {/* 4. Clock */}
             <div className="flex items-center gap-4 px-4 py-2 sm:py-0 group">
-              <div className="w-12 h-12 rounded-full bg-[#E8F2FD] text-[#1E7FE0] flex items-center justify-center shrink-0 group-hover:bg-[#1E7FE0] group-hover:text-white transition-colors duration-300 shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-[#E8F2FF] text-[#0061FF] flex items-center justify-center shrink-0 group-hover:bg-[#0061FF] group-hover:text-white transition-colors duration-300 shadow-sm">
                 <Clock size={22} />
               </div>
               <div>
-                <h4 className="font-poppins font-bold text-[17px] text-[#0B2A4A]">Always Here</h4>
-                <p className="text-[#4A5568] text-[13.5px] leading-snug mt-0.5">
+                <h4 className="font-poppins font-bold text-[17px] text-[#001A4D]">Always Here</h4>
+                <p className="text-[#4A5A73] text-[13.5px] leading-snug mt-0.5">
                   24/7 support when you need us most.
                 </p>
               </div>

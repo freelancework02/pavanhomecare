@@ -2,69 +2,69 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Star, ShieldCheck, Heart } from "lucide-react";
+import { BadgeCheck, Heart, Star, Users } from "lucide-react";
 
 export default function HeroImage() {
   return (
-    <div className="relative w-full max-w-[620px] mx-auto lg:max-w-none flex items-center justify-center">
-      {/* ── 1. Organic Light Blue & Coral Backdrop Blob ── */}
-      <div className="absolute inset-0 -top-8 -left-8 right-8 bottom-8 bg-gradient-to-tr from-[#E8F2FF] via-[#FFEDE7] to-[#E8F2FF] rounded-[40%_60%_70%_30%/50%_60%_40%_50%] blur-md -z-10 transform rotate-[-4deg] scale-105" />
-
-      {/* ── 2. Main Caregiver Photo Container ── */}
+    <div className="relative w-full max-w-[680px] mx-auto lg:max-w-none">
       <motion.div
-        initial={{ opacity: 0, scale: 0.92 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full aspect-[4/3.5] sm:aspect-[4/3] rounded-[36%_64%_64%_36%/48%_52%_48%_52%] overflow-hidden border-4 border-white shadow-[0_25px_60px_rgba(0,26,77,0.14)] bg-slate-100"
-      >
-        <Image
-          src="/images/hero_right_image_card.png"
-          alt="Compassionate Pavan Homecare caregiver assisting an elderly client with love"
-          fill
-          sizes="(max-width: 992px) 100vw, 50vw"
-          priority
-          className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
-        />
-
-        {/* Inner Soft Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#001A4D]/30 via-transparent to-transparent" />
-      </motion.div>
-
-      {/* ── 3. FLOATING STAT OVERLAY CARD (OVERLAPPING BOTTOM-LEFT CORNER) ── */}
-      <motion.div
-        initial={{ opacity: 0, x: -20, y: 20 }}
-        animate={{ opacity: 1, x: 0, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.5 }}
-        whileHover={{ y: -4, scale: 1.02 }}
-        className="absolute -bottom-6 -left-2 sm:-left-6 bg-white/95 backdrop-blur-md p-4 px-5 rounded-2xl shadow-[0_15px_40px_rgba(0,26,77,0.16)] border border-[#DCE7F7] z-20 flex items-center gap-4 max-w-[280px]"
-      >
-        <div className="w-11 h-11 rounded-xl bg-[#FFEDE7] text-[#FF7A59] flex items-center justify-center shrink-0 shadow-sm border border-[#FF7A59]/20">
-          <Heart size={22} className="fill-[#FF7A59]" />
-        </div>
-        <div>
-          <div className="flex items-center gap-1 text-[#FF7A59] text-[13px] font-bold">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={13} className="fill-[#FF7A59] text-[#FF7A59]" />
-              ))}
-            </div>
-            <span className="text-[#001A4D] ml-1 font-extrabold text-[14px]">4.9</span>
-          </div>
-          <p className="text-[12px] text-[#4A5A73] font-semibold leading-tight mt-0.5">
-            Rated 5 Stars by 500+ PA Families
-          </p>
-        </div>
-      </motion.div>
-
-      {/* ── 4. FLOATING TOP-RIGHT BADGE CHIP ── */}
-      <motion.div
-        initial={{ opacity: 0, y: -15 }}
+        initial={{ opacity: 0, y: 22 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.7 }}
-        className="absolute -top-3 -right-2 sm:-right-4 bg-white/90 backdrop-blur-md text-[#001A4D] font-bold text-[12px] px-3.5 py-2 rounded-xl shadow-lg border border-[#DCE7F7] z-20 flex items-center gap-2"
+        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+        className="relative overflow-hidden rounded-[28px] bg-white border border-[#DCE7F7] shadow-[0_28px_80px_rgba(0,26,77,0.14)]"
       >
-        <ShieldCheck size={16} className="text-[#0061FF]" />
-        <span>Licensed &amp; Insured</span>
+        <div className="relative h-[420px] sm:h-[540px] lg:h-[620px]">
+          <Image
+            src="/images/hero_right_image_card.png"
+            alt="Pavan Homecare caregiver assisting a senior client at home"
+            fill
+            sizes="(max-width: 992px) 100vw, 54vw"
+            priority
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#001A4D]/55 via-[#001A4D]/10 to-transparent" />
+        </div>
+
+        <div className="absolute left-4 right-4 bottom-4 sm:left-6 sm:right-6 sm:bottom-6 grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-3 items-end">
+          <div className="rounded-2xl bg-white/94 backdrop-blur-md border border-white/70 p-4 shadow-[0_16px_36px_rgba(0,26,77,0.16)]">
+            <div className="flex items-center gap-2 text-[#FF7A59] mb-2">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={15} className="fill-[#FF7A59]" />
+              ))}
+              <span className="text-[#001A4D] text-sm font-extrabold">4.9 family rating</span>
+            </div>
+            <p className="text-[#4A5A73] text-[13px] leading-relaxed m-0">
+              Trusted by Pennsylvania families for attentive, respectful support at home.
+            </p>
+          </div>
+
+          <div className="hidden sm:flex flex-col gap-3">
+            <div className="rounded-2xl bg-[#001A4D] text-white p-4 min-w-[176px] shadow-[0_14px_34px_rgba(0,26,77,0.22)]">
+              <div className="flex items-center gap-2 text-[#60EFFF] text-xs font-bold uppercase tracking-wider mb-1">
+                <Users size={15} />
+                Families
+              </div>
+              <div className="text-3xl font-extrabold leading-none">500+</div>
+            </div>
+            <div className="rounded-2xl bg-[#FF7A59] text-white p-4 min-w-[176px] shadow-[0_14px_34px_rgba(255,122,89,0.28)]">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-1">
+                <Heart size={15} className="fill-white/25" />
+                Care
+              </div>
+              <div className="text-base font-extrabold leading-tight">Love driven care</div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: 18 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.45 }}
+        className="absolute top-5 right-5 bg-white/95 backdrop-blur-md text-[#001A4D] font-bold text-[12px] px-4 py-2 rounded-full shadow-[0_12px_28px_rgba(0,26,77,0.12)] border border-[#DCE7F7] flex items-center gap-2"
+      >
+        <BadgeCheck size={16} className="text-[#0061FF]" />
+        Licensed & insured
       </motion.div>
     </div>
   );

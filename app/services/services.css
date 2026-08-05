@@ -4,8 +4,7 @@
 .services-hero-section {
   position: relative;
   padding: 100px 0 120px;
-  background: radial-gradient(circle at 10% 10%, rgba(255, 45, 122, 0.03) 0%, transparent 40%),
-              radial-gradient(circle at 90% 80%, rgba(255, 122, 26, 0.03) 0%, transparent 40%);
+  background: linear-gradient(180deg, #F5F9FF 0%, #FFFFFF 100%);
   overflow: hidden;
   z-index: 2;
 }
@@ -468,11 +467,11 @@
 
 /* Service Row Accent Colors - Standardized System Tokens */
 .core-services-icon-circle {
-  background: var(--color-primary-100, #E8F2FD) !important;
-  color: var(--color-primary-500, #1E7FE0) !important;
+  background: var(--color-primary-100, #E8F2FF) !important;
+  color: var(--color-primary-500, #0061FF) !important;
 }
 .core-meta-block {
-  border-left-color: var(--color-accent-500, #F2994A) !important;
+  border-left-color: var(--color-accent-500, #FF7A59) !important;
 }
 
 

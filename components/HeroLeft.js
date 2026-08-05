@@ -7,57 +7,48 @@ import TrustBadge from "./TrustBadge";
 
 export default function HeroLeft() {
   return (
-    <div className="flex flex-col justify-center max-w-[600px] mx-auto lg:mx-0 z-10">
-      {/* ── 1. Small Top Badge ── */}
+    <div className="flex flex-col justify-center max-w-[620px] mx-auto lg:mx-0 z-10">
       <motion.div
-        initial={{ opacity: 0, y: 15 }}
+        initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="inline-flex items-center gap-2 bg-[#E8F2FF] text-[#001A4D] font-bold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full border border-[#0061FF]/25 w-fit mb-6 shadow-sm"
+        className="inline-flex items-center gap-2 bg-white text-[#001A4D] font-bold text-[12px] tracking-[0.12em] uppercase px-4 py-2 rounded-full border border-[#DCE7F7] w-fit mb-6 shadow-[0_8px_28px_rgba(0,26,77,0.06)]"
       >
-        <ShieldCheck size={16} className="text-[#FF7A59]" />
-        <span>Trusted In-Home Care You Can Rely On</span>
+        <ShieldCheck size={16} className="text-[#0061FF]" />
+        <span>Licensed Pennsylvania Home Care</span>
       </motion.div>
 
-      {/* ── 2. Big Heading ── */}
       <motion.h1
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.15 }}
-        className="font-poppins font-extrabold text-[40px] sm:text-[54px] lg:text-[68px] leading-[1.05] tracking-[-1px] text-[#001A4D]"
+        transition={{ duration: 0.6, delay: 0.12 }}
+        className="font-poppins font-extrabold text-[42px] sm:text-[56px] lg:text-[70px] leading-[1.03] text-[#001A4D]"
       >
-        Compassionate <br />
-        In-Home Care, <br />
-        <span className="bg-gradient-to-r from-[#0061FF] via-[#0061FF] to-[#60EFFF] bg-clip-text text-transparent">
-          Designed Around <br />
-          Your Family
-        </span>
+        Professional care at home,{" "}
+        <span className="text-[#0061FF]">guided by love.</span>
       </motion.h1>
 
-      {/* ── 3. Paragraph ── */}
       <motion.p
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-[#4A5A73] text-[16px] sm:text-[18px] font-normal leading-[1.65] mt-6 max-w-[520px]"
+        transition={{ duration: 0.6, delay: 0.26 }}
+        className="text-[#4A5A73] text-[16px] sm:text-[18px] leading-[1.75] mt-6 max-w-[560px]"
       >
-        We provide personalized in-home care that helps seniors and adults with disabilities live safely, comfortably, and independently in the place they love most—their home.
+        Pavan Homecare helps seniors, veterans, and adults with disabilities live safely and comfortably at home with personal care, companionship, respite support, and dependable 24-hour care.
       </motion.p>
 
-      {/* ── 4. CTA Buttons ── */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.45 }}
+        transition={{ duration: 0.6, delay: 0.38 }}
       >
         <CTAButtons />
       </motion.div>
 
-      {/* ── 5. Mini Trust Badge Icons ── */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
       >
         <TrustBadge />
       </motion.div>

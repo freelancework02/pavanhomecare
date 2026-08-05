@@ -1,40 +1,9 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 export default function BackgroundShapes() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
-      {/* ── Soft Gradient Orbs ── */}
-      <motion.div
-        animate={{
-          scale: [1, 1.08, 1],
-          opacity: [0.15, 0.25, 0.15],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[-5%] right-[10%] w-[500px] h-[500px] rounded-full bg-gradient-to-br from-[#0061FF]/20 to-[#60EFFF]/30 blur-[100px]"
-      />
-
-      <motion.div
-        animate={{
-          scale: [1, 1.12, 1],
-          opacity: [0.1, 0.18, 0.1],
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#0061FF]/15 to-transparent blur-[120px]"
-      />
-
-      {/* ── Dotted SVG Grid Pattern (Top Right) ── */}
-      <div className="absolute top-[12%] right-[5%] w-[160px] h-[160px] opacity-30">
-        <svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="dot-pattern" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="2" fill="#0061FF" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dot-pattern)" />
-        </svg>
-      </div>
+      <div className="absolute inset-x-0 top-0 h-[58%] bg-[linear-gradient(180deg,#F5F9FF_0%,rgba(255,255,255,0)_100%)]" />
+      <div className="absolute inset-0 opacity-[0.38] [background-image:linear-gradient(rgba(0,97,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(0,97,255,0.07)_1px,transparent_1px)] [background-size:72px_72px]" />
+      <div className="absolute left-0 right-0 top-[120px] h-px bg-gradient-to-r from-transparent via-[#0061FF]/20 to-transparent" />
     </div>
   );
 }
