@@ -403,3 +403,749 @@
   line-height: 1.63;
   margin: 0;
 }
+
+/* ── COUNTY DETAIL PAGE REDESIGN ── */
+.areas-page-container {
+  background:
+    linear-gradient(180deg, #FFFFFF 0%, #F6FAFF 42%, #FFFFFF 100%);
+}
+
+.areas-hero-section {
+  isolation: isolate;
+  min-height: clamp(620px, 72vh, 820px);
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(96, 239, 255, 0.34), transparent 28%),
+    radial-gradient(circle at 86% 10%, rgba(0, 97, 255, 0.18), transparent 30%),
+    linear-gradient(135deg, #F7FCFF 0%, #EAF5FF 48%, #FFFFFF 100%);
+}
+
+.areas-hero-section::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 140px;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFFFFF 88%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.areas-hero-bg-dots {
+  opacity: 0.8;
+  mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,0.35) 70%, transparent 100%);
+}
+
+.areas-hero-copy {
+  position: relative;
+  padding: clamp(1.3rem, 2.8vw, 2.2rem);
+  border: 1px solid rgba(255,255,255,0.72);
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.72), rgba(255,255,255,0.34));
+  box-shadow: 0 22px 70px rgba(0, 26, 77, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.areas-hero-badge {
+  letter-spacing: 0;
+  border-color: rgba(0, 97, 255, 0.16);
+  box-shadow: 0 10px 28px rgba(0, 97, 255, 0.08);
+}
+
+.areas-hero-title {
+  max-width: 780px;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.areas-hero-desc {
+  max-width: 640px;
+}
+
+.areas-hero-actions {
+  gap: 0.8rem;
+}
+
+.btn-hero-primary,
+.btn-hero-phone {
+  min-height: 52px;
+}
+
+.areas-hero-trust {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  border-top: 0;
+  padding-top: 0;
+}
+
+.areas-hero-trust-item {
+  min-height: 48px;
+  padding: 0.72rem 0.8rem;
+  border: 1px solid rgba(0, 97, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.74);
+  box-shadow: 0 10px 24px rgba(15,23,42,0.04);
+}
+
+.areas-hero-media::before {
+  content: '';
+  position: absolute;
+  width: min(70%, 360px);
+  aspect-ratio: 1;
+  right: 0;
+  top: -28px;
+  background: linear-gradient(135deg, rgba(0,97,255,0.14), rgba(96,239,255,0.32));
+  border-radius: 30% 70% 42% 58%;
+  filter: blur(1px);
+}
+
+.areas-hero-image-frame {
+  max-width: 560px;
+  height: clamp(360px, 42vw, 560px);
+  border-radius: 30px;
+  box-shadow:
+    0 30px 80px rgba(0, 26, 77, 0.18),
+    0 0 0 10px rgba(255,255,255,0.62),
+    0 0 0 1px rgba(0,97,255,0.16);
+}
+
+.areas-hero-image-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,26,77,0) 54%, rgba(0,26,77,0.34) 100%);
+  pointer-events: none;
+}
+
+.areas-floating-badge {
+  left: clamp(0.85rem, 4vw, 2rem);
+  right: auto;
+  bottom: clamp(0.85rem, 4vw, 2rem);
+  max-width: calc(100% - 1.7rem);
+  border-radius: 20px;
+  box-shadow: 0 22px 50px rgba(0, 26, 77, 0.18);
+}
+
+.county-communities-section,
+.county-services-section,
+.county-why-section,
+.timeline-section,
+.county-request-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.county-communities-section {
+  padding-top: clamp(4.5rem, 8vw, 7rem) !important;
+  padding-bottom: clamp(4.5rem, 8vw, 7rem) !important;
+  background:
+    radial-gradient(circle at 8% 18%, rgba(0,97,255,0.1), transparent 28%),
+    radial-gradient(circle at 92% 38%, rgba(96,239,255,0.28), transparent 30%),
+    linear-gradient(180deg, #FFFFFF 0%, #F3FAFF 100%) !important;
+}
+
+.county-communities-section::before {
+  content: '';
+  position: absolute;
+  inset: 18% -12% auto auto;
+  width: 34rem;
+  height: 34rem;
+  background: radial-gradient(circle, rgba(56,189,248,0.18), transparent 68%);
+  pointer-events: none;
+}
+
+.county-community-list {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem !important;
+  position: relative;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border: 1px solid rgba(0,97,255,0.1);
+  border-radius: 28px;
+  background: rgba(255,255,255,0.54);
+  box-shadow: 0 28px 80px rgba(0, 26, 77, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.county-community-chip {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+  min-height: 58px;
+  padding-left: 1.05rem;
+  padding-right: 1.05rem;
+  border-radius: 16px !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.98), rgba(247,251,255,0.94)) !important;
+  box-shadow:
+    0 14px 30px rgba(0,26,77,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.95) !important;
+}
+
+.county-community-chip::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0061FF, #60EFFF);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.county-community-chip:hover::before {
+  opacity: 1;
+}
+
+.county-community-chip svg {
+  width: 26px;
+  height: 26px;
+  padding: 5px;
+  border-radius: 50%;
+  background: #EAF3FF;
+}
+
+.county-services-section {
+  padding-top: clamp(4.5rem, 8vw, 7.5rem) !important;
+  padding-bottom: clamp(4.5rem, 8vw, 7.5rem) !important;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(0,97,255,0.11), transparent 30%),
+    radial-gradient(circle at 88% 18%, rgba(96,239,255,0.22), transparent 28%),
+    linear-gradient(180deg, #F8FAFC 0%, #EEF7FF 50%, #FFFFFF 100%) !important;
+}
+
+.county-services-section::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,97,255,0.22), transparent);
+}
+
+.county-services-grid {
+  align-items: stretch;
+  gap: clamp(1rem, 2vw, 1.6rem) !important;
+}
+
+.county-service-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 316px;
+  border-radius: 24px !important;
+  padding: clamp(1.45rem, 2.1vw, 1.9rem) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.98) 0%, rgba(248,251,255,0.94) 62%, rgba(239,247,255,0.96) 100%) !important;
+  border-color: rgba(0,97,255,0.13) !important;
+  box-shadow:
+    0 18px 44px rgba(0, 26, 77, 0.07),
+    inset 0 1px 0 rgba(255,255,255,0.95) !important;
+}
+
+.county-service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  height: auto;
+  background:
+    linear-gradient(135deg, rgba(0,97,255,0.1), transparent 36%),
+    radial-gradient(circle at 94% 8%, rgba(96,239,255,0.28), transparent 30%),
+    radial-gradient(circle at 12% 98%, rgba(0,97,255,0.08), transparent 30%);
+  pointer-events: none;
+}
+
+.county-service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
+}
+
+.county-service-card > div,
+.county-service-card > a {
+  position: relative;
+  z-index: 1;
+}
+
+.county-service-card .w-13 {
+  width: 3.45rem !important;
+  height: 3.45rem !important;
+  border-radius: 18px !important;
+  margin-bottom: 1.35rem !important;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.22), transparent 42%),
+    linear-gradient(135deg, #005DFF 0%, #22B9F5 100%) !important;
+  box-shadow:
+    0 16px 30px rgba(0,97,255,0.24),
+    0 0 0 9px rgba(0,97,255,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.28) !important;
+}
+
+.county-service-card .w-13 svg {
+  filter: drop-shadow(0 4px 8px rgba(0,26,77,0.16));
+}
+
+.county-service-card:hover {
+  transform: translateY(-10px) !important;
+  border-color: rgba(0,97,255,0.34) !important;
+  box-shadow:
+    0 30px 70px rgba(0,97,255,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.95) !important;
+}
+
+.county-service-card:hover .w-13 {
+  transform: translateY(-2px) scale(1.08) rotate(-3deg);
+}
+
+.county-service-index {
+  position: absolute;
+  top: 1.35rem;
+  right: 1.45rem;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 900;
+  color: rgba(0, 97, 255, 0.58);
+  padding: 0.36rem 0.58rem;
+  border: 1px solid rgba(0,97,255,0.13);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.68);
+  box-shadow: 0 8px 18px rgba(0,26,77,0.04);
+}
+
+.county-service-card h3,
+.county-why-card h3 {
+  letter-spacing: 0;
+}
+
+.county-service-card h3 {
+  max-width: calc(100% - 3rem);
+  font-size: clamp(1.28rem, 1.65vw, 1.58rem) !important;
+  line-height: 1.08 !important;
+  margin-bottom: 0.85rem !important;
+  color: #07142F !important;
+}
+
+.county-service-card p {
+  font-size: 0.97rem !important;
+  line-height: 1.68 !important;
+  color: #475569 !important;
+  margin-bottom: 1.35rem !important;
+}
+
+.county-service-card a {
+  min-height: 44px;
+  width: fit-content;
+  padding: 0.64rem 1rem !important;
+  border: 1px solid rgba(0,97,255,0.13) !important;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.74);
+  box-shadow: 0 8px 20px rgba(0,97,255,0.06);
+}
+
+.county-service-card:hover a {
+  background: #0061FF;
+  color: #FFFFFF !important;
+  border-color: #0061FF !important;
+}
+
+.county-service-card:hover a svg {
+  color: #FFFFFF;
+}
+
+@media (min-width: 1024px) {
+  .county-services-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  .county-service-card:nth-child(1),
+  .county-service-card:nth-child(5) {
+    transform: translateY(-8px);
+  }
+
+  .county-service-card:nth-child(4),
+  .county-service-card:nth-child(8) {
+    transform: translateY(8px);
+  }
+
+  .county-service-card:hover {
+    transform: translateY(-14px) !important;
+  }
+}
+
+.county-why-section {
+  background:
+    radial-gradient(circle at 8% 20%, rgba(0,97,255,0.12), transparent 28%),
+    radial-gradient(circle at 88% 72%, rgba(96,239,255,0.2), transparent 32%),
+    linear-gradient(180deg, #FFFFFF 0%, #F8FBFF 100%) !important;
+}
+
+.county-why-grid {
+  align-items: stretch;
+}
+
+.county-why-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 230px;
+  border-radius: 24px !important;
+  padding: 2rem !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.98) 0%, rgba(248,251,255,0.96) 100%) !important;
+  border-color: rgba(0,97,255,0.13) !important;
+  box-shadow:
+    0 18px 48px rgba(0,26,77,0.07),
+    inset 0 1px 0 rgba(255,255,255,0.95) !important;
+}
+
+.county-why-card::after {
+  content: '';
+  position: absolute;
+  inset: auto -3rem -3rem auto;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(96,239,255,0.28), transparent 66%);
+  pointer-events: none;
+}
+
+.county-why-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0061FF, #60EFFF);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.24s ease;
+}
+
+.county-why-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow:
+    0 30px 70px rgba(0,97,255,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.95) !important;
+}
+
+.county-why-card:hover::before {
+  transform: scaleX(1);
+}
+
+.county-why-card .w-11 {
+  width: 3.35rem !important;
+  height: 3.35rem !important;
+  border-radius: 18px !important;
+  box-shadow:
+    0 16px 30px rgba(0,97,255,0.24),
+    0 0 0 9px rgba(0,97,255,0.06) !important;
+}
+
+.county-why-index {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.6rem;
+  font-family: var(--font-heading);
+  font-size: 0.86rem;
+  font-weight: 900;
+  color: rgba(0,97,255,0.56);
+  padding: 0.34rem 0.56rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(0,97,255,0.12);
+}
+
+.county-why-card h3 {
+  font-size: clamp(1.25rem, 1.7vw, 1.55rem) !important;
+  line-height: 1.08 !important;
+  max-width: calc(100% - 3rem);
+}
+
+.county-why-card p {
+  font-size: 0.96rem !important;
+  line-height: 1.68 !important;
+}
+
+.timeline-section {
+  border-top: 0;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(0,97,255,0.09), transparent 30%),
+    linear-gradient(180deg, #F8FBFF 0%, #FFFFFF 100%);
+}
+
+.timeline-header h2 {
+  text-wrap: balance;
+}
+
+.timeline-steps {
+  position: relative;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 1.8vw, 1.35rem);
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border-radius: 30px;
+  background: rgba(255,255,255,0.56);
+  border: 1px solid rgba(0,97,255,0.09);
+  box-shadow: 0 30px 80px rgba(0,26,77,0.07);
+  backdrop-filter: blur(14px);
+}
+
+.timeline-steps::before {
+  content: '';
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(0,97,255,0.05), rgba(0,97,255,0.36), rgba(96,239,255,0.4), rgba(0,97,255,0.05));
+}
+
+.timeline-step-card {
+  overflow: hidden;
+  min-height: 300px;
+  justify-content: center;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,251,255,0.94));
+  box-shadow:
+    0 18px 44px rgba(0,26,77,0.07),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  z-index: 1;
+}
+
+.timeline-step-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0061FF, #60EFFF);
+}
+
+.timeline-step-card::after {
+  content: '';
+  position: absolute;
+  inset: auto -3rem -3rem auto;
+  width: 9rem;
+  height: 9rem;
+  background: radial-gradient(circle, rgba(96,239,255,0.24), transparent 66%);
+}
+
+.timeline-step-num {
+  width: 62px;
+  height: 62px;
+  font-size: 16px;
+  border: 6px solid #FFFFFF;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-step-label {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: rgba(0,97,255,0.5);
+  border: 1px solid rgba(0,97,255,0.12);
+  border-radius: 999px;
+  padding: 0.3rem 0.5rem;
+  background: rgba(255,255,255,0.68);
+}
+
+.timeline-step-title,
+.timeline-step-desc {
+  position: relative;
+  z-index: 1;
+}
+
+.county-request-section {
+  padding-top: clamp(4.5rem, 8vw, 7rem) !important;
+  padding-bottom: clamp(4.5rem, 8vw, 7rem) !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(96,239,255,0.24), transparent 34%),
+    radial-gradient(circle at 12% 80%, rgba(0,97,255,0.1), transparent 28%),
+    linear-gradient(180deg, #F7FAFC 0%, #EEF6FF 100%) !important;
+}
+
+.county-request-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px !important;
+  border-color: rgba(0,97,255,0.13) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.99), rgba(248,251,255,0.96)) !important;
+  box-shadow:
+    0 34px 90px rgba(0, 26, 77, 0.14),
+    inset 0 1px 0 rgba(255,255,255,0.95) !important;
+}
+
+.county-request-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: linear-gradient(90deg, #0061FF, #60EFFF);
+}
+
+.county-request-card input,
+.county-request-card textarea {
+  min-height: 54px;
+  border-radius: 16px !important;
+  background: #F8FBFF;
+  border-color: rgba(15,23,42,0.12) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.county-request-card input:focus,
+.county-request-card textarea:focus {
+  background: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(0, 97, 255, 0.1);
+}
+
+.county-request-card label {
+  letter-spacing: 0.02em;
+}
+
+.county-request-card button[type="submit"] {
+  min-height: 56px;
+  border-radius: 16px !important;
+  box-shadow: 0 18px 36px rgba(0,97,255,0.25);
+}
+
+@media (max-width: 1180px) {
+  .areas-hero-grid {
+    gap: 2.5rem;
+  }
+
+  .areas-hero-title {
+    font-size: clamp(2.1rem, 4.6vw, 3.25rem);
+  }
+
+  .county-community-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .timeline-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .timeline-steps::before {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .areas-hero-section {
+    min-height: auto;
+    padding-top: clamp(3.5rem, 9vw, 5rem);
+  }
+
+  .areas-hero-copy {
+    padding: 1.25rem;
+  }
+
+  .areas-hero-title,
+  .areas-hero-desc,
+  .areas-hero-actions {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .areas-hero-actions {
+    justify-content: center;
+  }
+
+  .areas-hero-trust {
+    grid-template-columns: 1fr;
+  }
+
+  .areas-hero-media::before {
+    right: 12%;
+  }
+
+  .county-community-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .areas-hero-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .areas-hero-copy {
+    border-radius: 22px;
+  }
+
+  .areas-hero-badge {
+    max-width: 100%;
+    white-space: normal;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .areas-hero-title {
+    font-size: clamp(2rem, 10.4vw, 2.85rem);
+    line-height: 1.05;
+  }
+
+  .areas-hero-desc {
+    font-size: 0.98rem;
+  }
+
+  .areas-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-phone {
+    width: 100%;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+  }
+
+  .areas-hero-image-frame {
+    height: 340px;
+    border-radius: 24px;
+  }
+
+  .areas-floating-badge {
+    padding: 0.8rem 0.9rem;
+    gap: 0.65rem;
+  }
+
+  .areas-badge-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .county-community-list {
+    grid-template-columns: 1fr;
+  }
+
+  .county-community-chip {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .county-service-card,
+  .county-why-card,
+  .timeline-step-card {
+    border-radius: 18px !important;
+  }
+
+  .timeline-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .county-request-card {
+    padding: 1.5rem !important;
+  }
+}

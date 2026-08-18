@@ -144,6 +144,7 @@ export default function CountyPageClient({ data, city }) {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
+              className="areas-hero-copy"
             >
               <span className="areas-hero-badge">
                 <MapPin size={14} className="text-[#0061FF]" />
@@ -195,7 +196,7 @@ export default function CountyPageClient({ data, city }) {
             >
               <div className="areas-hero-image-frame">
                 <Image
-                  src="https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?w=800&auto=format&fit=crop&q=80"
+                  src={data.heroImage || "https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?w=800&auto=format&fit=crop&q=80"}
                   alt={`Caregiver assisting senior in ${displayLocation}`}
                   fill
                   priority
@@ -226,7 +227,7 @@ export default function CountyPageClient({ data, city }) {
       </section>
 
       {/* ── CITIES & COMMUNITIES SERVED ── */}
-      <section className="py-20 bg-gradient-to-b from-white to-[#F0F7FF] border-b border-[#DCE7F7]">
+      <section className="county-communities-section py-20 bg-gradient-to-b from-white to-[#F0F7FF] border-b border-[#DCE7F7]">
         <div className="max-w-[1360px] mx-auto px-6 text-center">
           <span className="areas-hero-badge mb-4">
             <Compass size={14} className="text-[#0061FF]" />
@@ -239,13 +240,13 @@ export default function CountyPageClient({ data, city }) {
             Our local caregivers live right in your community, enabling prompt, dependable in-home care visits across every borough and township.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-3 max-w-[1050px] mx-auto">
+          <div className="county-community-list flex flex-wrap justify-center gap-3 max-w-[1050px] mx-auto">
             {(data.cities || []).map((cObj, idx) => {
               const cName = typeof cObj === "string" ? cObj : cObj.name;
               return (
                 <span
                   key={cName || idx}
-                  className="inline-flex items-center gap-2.5 bg-white border border-[#DCE7F7] hover:border-[#0061FF] hover:bg-[#EFF6FF] text-[#0F172A] hover:text-[#0061FF] text-sm font-bold px-4.5 py-3 rounded-full shadow-[0_4px_14px_rgba(0,97,255,0.06)] hover:shadow-[0_8px_20px_rgba(0,97,255,0.15)] hover:-translate-y-0.5 transition-all duration-200"
+                  className="county-community-chip inline-flex items-center gap-2.5 bg-white border border-[#DCE7F7] hover:border-[#0061FF] hover:bg-[#EFF6FF] text-[#0F172A] hover:text-[#0061FF] text-sm font-bold py-3 rounded-full shadow-[0_4px_14px_rgba(0,97,255,0.06)] hover:shadow-[0_8px_20px_rgba(0,97,255,0.15)] hover:-translate-y-0.5 transition-all duration-200"
                 >
                   <MapPin size={15} className="text-[#0061FF] shrink-0" />
                   {cName}
@@ -257,7 +258,7 @@ export default function CountyPageClient({ data, city }) {
       </section>
 
       {/* ── SERVICES AVAILABLE IN COUNTY ── */}
-      <section className="py-24 bg-[#F8FAFC]">
+      <section className="county-services-section py-24 bg-[#F8FAFC]">
         <div className="max-w-[1360px] mx-auto px-6">
           <div className="text-center max-w-[760px] mx-auto mb-16">
             <span className="areas-hero-badge mb-4">
@@ -272,14 +273,17 @@ export default function CountyPageClient({ data, city }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {servicesList.map((srv) => {
+          <div className="county-services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {servicesList.map((srv, idx) => {
               const IconComp = srv.icon;
               return (
                 <div
                   key={srv.title}
-                  className="bg-white border border-[#DCE7F7] hover:border-[#0061FF] rounded-3xl p-7 shadow-[0_10px_30px_rgba(15,23,42,0.04)] hover:shadow-[0_20px_48px_rgba(0,97,255,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+                  className="county-service-card bg-white border border-[#DCE7F7] hover:border-[#0061FF] rounded-3xl p-7 shadow-[0_10px_30px_rgba(15,23,42,0.04)] hover:shadow-[0_20px_48px_rgba(0,97,255,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
                 >
+                  <span className="county-service-index">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
                   <div>
                     <div className="w-13 h-13 rounded-2xl bg-gradient-to-br from-[#0061FF] to-[#38BDF8] text-white flex items-center justify-center mb-5 shadow-[0_8px_20px_rgba(0,97,255,0.3)] group-hover:scale-110 transition-transform duration-300">
                       <IconComp size={24} />
@@ -306,7 +310,7 @@ export default function CountyPageClient({ data, city }) {
       </section>
 
       {/* ── WHY FAMILIES CHOOSE US ── */}
-      <section className="py-24 bg-white border-t border-[#E2E8F0]">
+      <section className="county-why-section py-24 bg-white border-t border-[#E2E8F0]">
         <div className="max-w-[1360px] mx-auto px-6">
           <div className="text-center max-w-[760px] mx-auto mb-16">
             <span className="areas-hero-badge mb-4">
@@ -318,12 +322,13 @@ export default function CountyPageClient({ data, city }) {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {chooseUsReasons.map((reason) => (
+          <div className="county-why-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            {chooseUsReasons.map((reason, idx) => (
               <div
                 key={reason.title}
-                className="bg-gradient-to-br from-white to-[#F8FAFC] border border-[#DCE7F7] hover:border-[#0061FF] rounded-3xl p-7 shadow-[0_8px_24px_rgba(15,23,42,0.04)] hover:shadow-[0_16px_36px_rgba(0,97,255,0.1)] hover:-translate-y-1 transition-all duration-300"
+                className="county-why-card bg-gradient-to-br from-white to-[#F8FAFC] border border-[#DCE7F7] hover:border-[#0061FF] rounded-3xl p-7 shadow-[0_8px_24px_rgba(15,23,42,0.04)] hover:shadow-[0_16px_36px_rgba(0,97,255,0.1)] hover:-translate-y-1 transition-all duration-300"
               >
+                <span className="county-why-index">{String(idx + 1).padStart(2, "0")}</span>
                 <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#0061FF] to-[#38BDF8] text-white flex items-center justify-center font-bold mb-5 shadow-[0_6px_16px_rgba(0,97,255,0.25)]">
                   <Check size={20} strokeWidth={3} />
                 </div>
@@ -353,8 +358,9 @@ export default function CountyPageClient({ data, city }) {
           </div>
 
           <div className="timeline-steps">
-            {timelineSteps.map((st) => (
+            {timelineSteps.map((st, idx) => (
               <div key={st.num} className="timeline-step-card">
+                <span className="timeline-step-label">{String(idx + 1).padStart(2, "0")}</span>
                 <div className="timeline-step-num">{st.num}</div>
                 <h3 className="timeline-step-title">{st.title}</h3>
                 <p className="timeline-step-desc">{st.desc}</p>
@@ -368,9 +374,9 @@ export default function CountyPageClient({ data, city }) {
       <GoogleReviews />
 
       {/* ── BOOKING CONTACT SECTION ── */}
-      <section id="request-care" className="py-20 bg-slate-50 border-t border-slate-200">
+      <section id="request-care" className="county-request-section py-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xl max-w-[800px] mx-auto text-center">
+          <div className="county-request-card bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xl max-w-[800px] mx-auto text-center">
             <span className="areas-hero-badge mb-4">
               <Heart size={14} className="text-[#0061FF]" />
               Start Free Consultation
