@@ -133,6 +133,13 @@ export default function Navbar() {
             </div>
 
             <Link
+              href="/blog"
+              className={`nb-link ${pathname.startsWith("/blog") ? "nb-link--active" : ""}`}
+            >
+              Blog
+            </Link>
+
+            <Link
               href="/contact-us"
               className={`nb-link ${pathname === "/contact-us" ? "nb-link--active" : ""}`}
             >
@@ -377,14 +384,14 @@ export default function Navbar() {
 
         .nb-cta {
           display: inline-flex; align-items: center; gap: 0.5rem;
-          background: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
+          background: #FF7A59;
           color: #FFFFFF; font-family: var(--font-heading);
           font-weight: 700; font-size: 14.5px;
           padding: 0.65rem 1.4rem; border-radius: 9999px;
-          box-shadow: 0 6px 20px rgba(0,97,255,0.3);
+          box-shadow: 0 6px 20px rgba(255,122,89,0.35);
           text-decoration: none; transition: all 0.2s;
         }
-        .nb-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,97,255,0.45); color: #FFFFFF; text-decoration: none; }
+        .nb-cta:hover { background: #E86746; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,122,89,0.5); color: #FFFFFF; text-decoration: none; }
 
         .nb-hamburger {
           display: none; padding: 0.5rem; border-radius: 0.5rem;
@@ -411,30 +418,30 @@ export default function Navbar() {
           width: 100%;
           display: flex; align-items: center; justify-content: center; gap: 0.45rem;
           border: 1px solid rgba(96,239,255,0.22);
-          background: rgba(255,255,255,0.08);
+          border-radius: 14px;
+          padding: 0.85rem; font-size: 1.15rem; font-weight: 600; color: #FFF;
+          background: rgba(255,255,255,0.06);
           cursor: pointer;
-          font-family: inherit;
         }
         .nb-mobile__chevron { transition: transform 0.18s ease; }
         .nb-mobile__chevron--open { transform: rotate(180deg); }
         .nb-mobile__submenu {
+          margin-top: 0.5rem;
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 0.45rem;
-          margin-top: 0.55rem;
-          padding: 0.65rem;
-          background: rgba(255,255,255,0.08);
+          gap: 0.4rem;
+          text-align: left;
+          background: rgba(0, 15, 45, 0.7);
           border: 1px solid rgba(96,239,255,0.18);
-          border-radius: 16px;
+          border-radius: 14px;
+          padding: 0.55rem;
         }
         .nb-mobile__subLink {
-          min-height: 38px;
-          display: flex; align-items: center; justify-content: center;
-          padding: 0.55rem 0.5rem;
-          border-radius: 11px;
-          background: rgba(255,255,255,0.08);
-          color: #FFFFFF;
-          font-size: 0.84rem;
+          display: block;
+          padding: 0.55rem 0.65rem;
+          border-radius: 9px;
+          color: #E2E8F0;
+          font-size: 12.5px;
           font-weight: 650;
           line-height: 1.15;
           text-decoration: none;
@@ -442,7 +449,7 @@ export default function Navbar() {
         .nb-mobile__subLink:hover { background: rgba(96,239,255,0.16); color: #FFFFFF; text-decoration: none; }
         .nb-mobile__ctas { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; max-width: 300px; margin-top: 2rem; }
         .nb-mobile__call { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.9rem; background: rgba(255,255,255,0.1); border-radius: 9999px; color: #FFF; font-weight: 600; text-decoration: none; }
-        .nb-mobile__request { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.9rem; background: linear-gradient(90deg, #0061FF, #60EFFF); border-radius: 9999px; color: #FFF; font-weight: 700; text-decoration: none; }
+        .nb-mobile__request { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.9rem; background: #FF7A59; border-radius: 9999px; color: #FFF; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px rgba(255,122,89,0.35); }
 
         @media (max-width: 1023px) {
           .nb-nav, .nb-ctas { display: none !important; }

@@ -3,210 +3,115 @@ import { site } from "@/lib/site";
 
 export const metadata = {
   title: "Terms & Conditions",
-  description: `Read the Terms & Conditions and SMS Terms for using the ${site.name} website.`,
+  description: `Read the Terms & Conditions and SMS Terms for using the ${site.name} website and care coordination services.`,
   alternates: { canonical: "/terms-conditions" },
 };
 
 export default function TermsConditionsPage() {
   return (
-    <>
+    <div className="bg-white">
       <PageHero
-        title="Terms & Conditions"
-        description="Please read these terms and conditions carefully before using our website or signing up for SMS updates."
+        eyebrow="LEGAL &amp; POLICIES"
+        title="Terms &amp; Conditions"
+        description="Please read these terms and conditions carefully before using the Pavan Homecare website or enrolling in care communications."
         ctaLabel={null}
-        mediaLabel="Illustration representing terms of service and agreement contracts"
+        showPhone={false}
       />
 
-      <section className="section">
-        <div className="container" style={{ maxWidth: "48rem" }}>
-          <p>
-            <em>Last updated: July 2026</em>
-          </p>
+      <section className="py-16 lg:py-24 bg-[#F5F9FF]">
+        <div className="max-w-[900px] mx-auto px-4 sm:px-6">
+          <div className="bg-white rounded-3xl p-8 sm:p-14 border border-[#DCE7F7] shadow-[0_12px_35px_rgba(0,26,77,0.05)] text-[#4A5A73] leading-relaxed text-[15.5px]">
+            
+            <p className="text-[13.5px] font-semibold text-[#8A97AC] uppercase tracking-wider mb-6">
+              Last updated: July 2026
+            </p>
 
-          <p>Welcome to {site.name}!</p>
-          <p>
-            These terms and conditions outline the rules and regulations for the use of {site.name}'s Website, located at <a href={site.url}>{site.url}</a>.
-          </p>
-          <p>
-            By accessing this website we assume you accept these terms and conditions. Do not continue to use {site.name} if you do not agree to take all of the terms and conditions stated on this page.
-          </p>
-          <p>
-            The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person logging on this website and complying with the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting their needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of the United States. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to the same.
-          </p>
+            <p className="mb-4">
+              Welcome to <strong className="text-[#001A4D]">{site.name}</strong>!
+            </p>
+            <p className="mb-6">
+              These terms and conditions outline the rules and regulations for the use of {site.name}&apos;s Website, located at <a href={site.url} className="text-[#0061FF] font-semibold hover:underline">{site.url}</a>.
+            </p>
+            <p className="mb-8">
+              By accessing this website we assume you accept these terms and conditions. Do not continue to use {site.name} if you do not agree to take all of the terms and conditions stated on this page.
+            </p>
 
-          <h2>Cookies</h2>
-          <p>
-            We employ the use of cookies. By accessing {site.name}, you agree to use cookies in agreement with the {site.name}'s Privacy Policy.
-          </p>
-          <p>
-            Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.
-          </p>
+            <div className="border-t border-[#DCE7F7] pt-8 mt-8">
+              <h2 className="font-poppins font-bold text-[24px] text-[#001A4D] mb-4">Cookies</h2>
+              <p className="mb-6">
+                We employ the use of cookies to enhance your experience. By accessing {site.name}, you agree to use cookies in agreement with the {site.name}&apos;s Privacy Policy. Cookies allow us to optimize navigational flow and remember user preferences.
+              </p>
+            </div>
 
-          <h2>License</h2>
-          <p>
-            Unless otherwise stated, {site.name} and/or its licensors own the intellectual property rights for all material on {site.name}. All intellectual property rights are reserved. You may access this from {site.name} for your own personal use, subject to restrictions set in these terms and conditions.
-          </p>
-          <p>You must not:</p>
-          <ul>
-            <li>Republish material from {site.name}</li>
-            <li>Sell, rent or sub-license material from {site.name}</li>
-            <li>Reproduce, duplicate or copy material from {site.name}</li>
-            <li>Redistribute content from {site.name}</li>
-          </ul>
-          <p>This Agreement shall begin on the date hereof.</p>
-          <p>
-            Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. {site.name} does not filter, edit, publish or review Comments prior to their appearance on the website. Comments do not reflect the views and opinions of {site.name}, its agents and/or affiliates. Comments reflect the views and opinions of the person who posts their views and opinions. To the extent permitted by applicable laws, {site.name} shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.
-          </p>
-          <p>
-            {site.name} reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes a breach of these Terms and Conditions.
-          </p>
-          <p>You warrant and represent that:</p>
-          <ul>
-            <li>You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</li>
-            <li>The Comments do not invade any intellectual property right, including, without limitation, copyright, patent, or trademark rights of any third party;</li>
-            <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material which is an invasion of privacy;</li>
-            <li>The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</li>
-          </ul>
-          <p>
-            You hereby grant {site.name} a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.
-          </p>
+            <div className="border-t border-[#DCE7F7] pt-8 mt-8">
+              <h2 className="font-poppins font-bold text-[24px] text-[#001A4D] mb-4">License &amp; Intellectual Property</h2>
+              <p className="mb-4">
+                Unless otherwise stated, {site.name} and/or its licensors own the intellectual property rights for all material on {site.name}. All intellectual property rights are reserved. You may access this from {site.name} for your own personal use, subject to restrictions set in these terms and conditions.
+              </p>
+              <p className="mb-2 font-semibold text-[#001A4D]">You must not:</p>
+              <ul className="list-disc pl-6 space-y-1.5 mb-6 text-[#334155]">
+                <li>Republish material from {site.name}</li>
+                <li>Sell, rent or sub-license material from {site.name}</li>
+                <li>Reproduce, duplicate or copy material from {site.name} without written permission</li>
+                <li>Redistribute content from {site.name}</li>
+              </ul>
+            </div>
 
-          <h2>Hyperlinking to our Content</h2>
-          <p>The following organizations may link to our Website without prior written approval:</p>
-          <ul>
-            <li>Government agencies;</li>
-            <li>Search engines;</li>
-            <li>News organizations;</li>
-            <li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses; and</li>
-            <li>System-wide Accredited Businesses, except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups, which may not hyperlink to our website.</li>
-          </ul>
-          <p>
-            These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party’s site.
-          </p>
-          <p>We may consider and approve other link requests from the following types of organizations:</p>
-          <ul>
-            <li>commonly-known consumer and/or business information sources;</li>
-            <li>dot.com community sites;</li>
-            <li>associations or other groups representing charities;</li>
-            <li>online directory distributors;</li>
-            <li>internet portals;</li>
-            <li>accounting, law and consulting firms; and</li>
-            <li>educational institutions and trade associations.</li>
-          </ul>
-          <p>
-            We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of {site.name}; and (d) the link is in the context of general resource information.
-          </p>
-          <p>
-            These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context and format of the linking party’s site.
-          </p>
-          <p>
-            If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to {site.name}. Please include your name, your organization name, contact information, as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Please allow 2-3 weeks for a response.
-          </p>
-          <p>Approved organizations may hyperlink to our Website as follows:</p>
-          <ul>
-            <li>By use of our corporate name; or</li>
-            <li>By use of the uniform resource locator being linked to; or</li>
-            <li>By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party’s site.</li>
-          </ul>
-          <p>
-            No use of {site.name}'s logo or other artwork will be allowed for linking absent a trademark license agreement.
-          </p>
+            <div className="border-t border-[#DCE7F7] pt-8 mt-8">
+              <h2 className="font-poppins font-bold text-[24px] text-[#001A4D] mb-4">Your Privacy</h2>
+              <p className="mb-6">
+                Please read our <a href="/privacy-policy" className="text-[#0061FF] font-semibold hover:underline">Privacy Policy</a> to understand how your data is handled and protected.
+              </p>
+            </div>
 
-          <h2>iFrames</h2>
-          <p>
-            Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.
-          </p>
+            <div className="border-t border-[#DCE7F7] pt-8 mt-8">
+              <h2 className="font-poppins font-bold text-[24px] text-[#001A4D] mb-4">SMS Messaging Terms &amp; Conditions</h2>
+              
+              <h3 className="font-poppins font-bold text-[18px] text-[#001A4D] mb-3">How to Opt In</h3>
+              <p className="mb-3">
+                If you would like to communicate with {site.name} via text message for care updates or appointment confirmations, you can opt in by either:
+              </p>
+              <ul className="list-disc pl-6 space-y-1.5 mb-6 text-[#334155]">
+                <li>Texting the word START to <a href={site.phoneHref} className="text-[#0061FF] font-semibold">{site.phoneDisplay}</a>, or</li>
+                <li>Providing verbal or written consent during your care evaluation or intake onboarding.</li>
+              </ul>
 
-          <h2>Content Liability</h2>
-          <p>
-            We shall not be held responsible for any content that appears on your Website. You agree to protect and defend us against all claims that are rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.
-          </p>
+              <h3 className="font-poppins font-bold text-[18px] text-[#001A4D] mb-3">Types of Messages</h3>
+              <p className="mb-3">By opting in to SMS communications, you may receive:</p>
+              <ul className="list-disc pl-6 space-y-1.5 mb-6 text-[#334155]">
+                <li>Appointment confirmations, reminders, and scheduling adjustments</li>
+                <li>Caregiver arrival notifications and care plan updates</li>
+                <li>Service notifications and client portal access alerts</li>
+                <li>Direct replies to your family care inquiries</li>
+              </ul>
 
-          <h2>Your Privacy</h2>
-          <p>
-            Please read our <a href="/privacy-policy">Privacy Policy</a>.
-          </p>
+              <h3 className="font-poppins font-bold text-[18px] text-[#001A4D] mb-3">Privacy &amp; Opt-Out Protections</h3>
+              <div className="p-5 rounded-2xl bg-[#F5F9FF] border border-[#DCE7F7] text-[#001A4D] font-medium mb-6">
+                <p className="mb-2">
+                  <strong>Mobile Information Protection:</strong> Mobile information will NOT be shared with third parties or affiliates for marketing or promotional purposes. All text messaging originator opt-in data and consent information is excluded from any third-party sharing.
+                </p>
+                <p className="m-0 text-[14px] text-[#4A5A73]">
+                  Message frequency may vary. Standard message and data rates may apply. Reply STOP at any time to opt out. Reply HELP for assistance or email <a href={`mailto:${site.email}`} className="text-[#0061FF] underline">{site.email}</a>.
+                </p>
+              </div>
 
-          <h2>Reservation of Rights</h2>
-          <p>
-            We reserve the right to request that you remove all links or any particular link to our Website. You agree to immediately remove all links to our Website upon request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.
-          </p>
+              <h3 className="font-poppins font-bold text-[18px] text-[#001A4D] mb-3">Opt-In Confirmation Language</h3>
+              <blockquote className="border-l-4 border-[#0061FF] pl-4 py-2 italic bg-[#F8FAFC] rounded-r-xl text-[#334155] text-[14.5px] mb-6">
+                &ldquo;By checking this box, texting START to {site.phoneDisplay}, or providing verbal consent, you agree to receive informational text messages (appointment reminders, scheduling updates, service notifications, and account information) from {site.name}. Msg frequency varies. Msg &amp; data rates may apply. Mobile information will not be shared with third parties/affiliates for marketing/promotional purposes. Reply HELP for assistance or email {site.email} for support. Reply STOP to cancel at any time. Privacy Policy: {site.url}/privacy-policy | Terms &amp; Conditions: {site.url}/terms-conditions&rdquo;
+              </blockquote>
+            </div>
 
-          <h2>Removal of links from our website</h2>
-          <p>
-            If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to do so or to respond to you directly.
-          </p>
-          <p>
-            We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.
-          </p>
+            <div className="border-t border-[#DCE7F7] pt-8 mt-8">
+              <h2 className="font-poppins font-bold text-[24px] text-[#001A4D] mb-4">Contact Information</h2>
+              <p className="mb-2"><strong>{site.name}</strong></p>
+              <p className="mb-2">{site.addressFull}</p>
+              <p className="mb-2">Email: <a href={`mailto:${site.email}`} className="text-[#0061FF] font-semibold hover:underline">{site.email}</a></p>
+              <p className="m-0">Phone: <a href={site.phoneHref} className="text-[#0061FF] font-semibold hover:underline">{site.phoneDisplay}</a></p>
+            </div>
 
-          <h2>Disclaimer</h2>
-          <p>
-            To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:
-          </p>
-          <ul>
-            <li>limit or exclude our or your liability for death or personal injury;</li>
-            <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
-            <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
-            <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>
-          </ul>
-          <p>
-            The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort, and for breach of statutory duty.
-          </p>
-          <p>
-            As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.
-          </p>
-
-          <hr style={{ margin: "3rem 0" }} />
-
-          <h2>SMS Sign-Up &amp; Terms and Conditions</h2>
-
-          <h3>How to Opt In</h3>
-          <p>
-            If you would like to communicate with {site.name} by text message, you can opt in by either:
-          </p>
-          <ul>
-            <li>Texting the word START to <a href={site.phoneHref}>{site.phoneDisplay}</a>, or</li>
-            <li>Providing verbal consent during your intake or enrollment with our staff.</li>
-          </ul>
-
-          <h3>What Messages You Will Receive</h3>
-          <p>
-            By opting in to SMS communications with {site.name}, you may receive the following types of messages:
-          </p>
-          <ul>
-            <li>Appointment confirmations, reminders, and scheduling updates</li>
-            <li>Caregiver scheduling notifications</li>
-            <li>Service updates and important account information</li>
-            <li>Responses to your direct inquiries via text message</li>
-          </ul>
-
-          <h3>Terms and Conditions</h3>
-          <p>
-            By agreeing to receive messages from {site.name}, you acknowledge and agree to the following:
-          </p>
-          <ul>
-            <li>Message frequency may vary.</li>
-            <li>Message and data rates may apply.</li>
-            <li>Your phone number and consent information will be used solely for the purposes described above and will not be sold, rented, or shared with third parties or affiliates for marketing or promotional purposes.</li>
-            <li>All text messaging originator opt-in data and consent information is excluded from any third-party sharing.</li>
-            <li>Your consent to receive text messages is voluntary. You may revoke it at any time.</li>
-            <li>Reply STOP at any time to opt out. You will receive no further messages.</li>
-            <li>Reply HELP at any time for assistance or alternative contact options.</li>
-          </ul>
-          <p>
-            <strong>Mobile information will not be shared with third parties/affiliates for marketing/promotional purposes. All the above categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties. By agreeing to receive messages from {site.name}, you understand that message frequency varies, and message/data rates may apply. Reply STOP to opt out. Reply HELP for assistance.</strong>
-          </p>
-
-          <h3>Opt-In Confirmation Language</h3>
-          <p>
-            The following disclosure is presented to all consumers at the point of opt-in:
-          </p>
-          <p style={{ fontStyle: "italic", borderLeft: "4px solid #ccc", paddingLeft: "1rem" }}>
-            "By checking this box, texting START to {site.phoneDisplay} or providing verbal consent, you agree to receive informational text messages (appointment reminders, scheduling updates, service notifications, and account information) from {site.name}. Msg frequency varies. Msg &amp; data rates may apply. Mobile information will not be shared with third parties/affiliates for marketing/promotional purposes. Reply HELP for help or email <a href={`mailto:${site.email}`}>{site.email}</a> for support. Reply STOP to opt out at any time. Privacy Policy: <a href="/privacy-policy">www.blessedheartshomecare.com/privacy-policy</a> | Terms &amp; Conditions: <a href="/terms-conditions">www.blessedheartshomecare.com/terms-conditions</a>"
-          </p>
+          </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -3,11 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import GoogleReviews from "@/components/GoogleReviews";
-import { blogPosts } from "@/lib/site";
+import { blogPosts, site } from "@/lib/site";
 import { 
   Calendar, 
   ArrowRight, 
@@ -29,7 +28,6 @@ function formatDate(d) {
   });
 }
 
-// Add categories mapping helper
 const categories = [
   { id: "all", label: "All Topics" },
   { id: "waiver", label: "Medicaid Waiver" },
@@ -39,7 +37,6 @@ const categories = [
 export default function BlogIndexPage() {
   const [activeCategory, setActiveCategory] = useState("all");
 
-  // Determine tag dynamically
   const postsWithCategory = blogPosts.map(post => {
     let catId = "tips";
     if (post.slug.includes("waiver") || post.slug.includes("medicaid")) {
@@ -52,25 +49,24 @@ export default function BlogIndexPage() {
     ? postsWithCategory 
     : postsWithCategory.filter(p => p.categoryId === activeCategory);
 
-  // Separate the very first article as our "Featured Post" (only when category is "all")
   const featuredPost = activeCategory === "all" ? postsWithCategory[0] : null;
   const standardPosts = activeCategory === "all" ? filteredPosts.slice(1) : filteredPosts;
 
   return (
     <div className="blog-page-wrapper">
       <PageHero
-        variant="services"
         eyebrow="RESOURCES &amp; GUIDES"
-        title="Blessed Hearts Resource Hub"
-        description="Practical guidance on senior care, caregiving, and navigating home care options in Pennsylvania."
-        ctaLabel={null}
+        title="Pavan Care Resource Hub"
+        description="Practical guidance on senior care, Medicaid waivers, family caregiving, and navigating home care options in Pennsylvania."
+        ctaLabel="Explore Resources"
+        ctaHref="#blog-articles"
         mediaLabel="Caregiver reading with a senior client"
         imageSrc="https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SG9tZWNhcmV8ZW58MHx8MHx8fDA%3D"
       />
 
       {/* Blog Resource Hub Section */}
-      <section className="section" style={{ padding: "80px 0" }} aria-labelledby="latest-articles-heading">
-        <div className="container">
+      <section id="blog-articles" className="section py-16 lg:py-24" aria-labelledby="latest-articles-heading">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-10">
           
           {/* Category Filter Tabs */}
           <div className="blog-filter-container">
@@ -90,9 +86,10 @@ export default function BlogIndexPage() {
 
           {/* Featured Post Card (1 Column full width) */}
           {featuredPost && (
-            <div style={{ marginBottom: "4rem" }}>
-              <div className="section-heading-luxury" style={{ alignItems: "flex-start", textAlign: "left", marginBottom: "1.5rem" }}>
-                <span className="eyebrow-luxury-accent">FEATURED ARTICLE</span>
+            <div className="mb-14">
+              <div className="inline-flex items-center gap-2 bg-[#E8F2FF] text-[#0061FF] font-bold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full mb-4 border border-[#0061FF]/20 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-[#FF7A59]" />
+                <span>FEATURED ARTICLE</span>
               </div>
               <div className="blog-featured-row">
                 {/* Thumbnail */}
@@ -111,7 +108,7 @@ export default function BlogIndexPage() {
                 <div className="blog-featured-content">
                   <div className="blog-meta-row">
                     <div className="blog-meta-date">
-                      <Calendar size={14} className="trust-badge-check" style={{ color: "var(--pink)" }} />
+                      <Calendar size={14} className="text-[#0061FF]" />
                       <time dateTime={featuredPost.date}>{formatDate(featuredPost.date)}</time>
                     </div>
                     <span className="blog-category-badge">
@@ -130,8 +127,11 @@ export default function BlogIndexPage() {
                   </p>
 
                   <div>
-                    <Link href={`/blog/${featuredPost.slug}`} className="btn-luxury-lg btn-luxury-lg--primary" style={{ display: "inline-flex", textDecoration: "none", padding: "0.85rem 1.75rem", fontSize: "0.85rem" }}>
-                      Read Article <ArrowRight size={14} style={{ marginLeft: "0.25rem" }} />
+                    <Link
+                      href={`/blog/${featuredPost.slug}`}
+                      className="inline-flex items-center gap-2 bg-[#0061FF] hover:bg-[#0047B8] text-white font-poppins font-bold text-[14px] px-6 py-3 rounded-full shadow-[0_6px_18px_rgba(0,97,255,0.3)] hover:shadow-[0_10px_25px_rgba(0,97,255,0.45)] hover:-translate-y-0.5 transition-all duration-300 btn-shimmer"
+                    >
+                      Read Article <ArrowRight size={14} />
                     </Link>
                   </div>
                 </div>
@@ -140,16 +140,15 @@ export default function BlogIndexPage() {
           )}
 
           {/* Articles list grid */}
-          <div className="section-heading-luxury" style={{ alignItems: "flex-start", textAlign: "left", marginBottom: "2rem" }}>
-            <span className="eyebrow-luxury-accent">
-              {activeCategory === "all" ? "MORE ARTICLES" : `${categories.find(c => c.id === activeCategory).label} Articles`}
-            </span>
+          <div className="inline-flex items-center gap-2 bg-[#E8F2FF] text-[#0061FF] font-bold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full mb-6 border border-[#0061FF]/20 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-[#FF7A59]" />
+            <span>{activeCategory === "all" ? "MORE ARTICLES" : `${categories.find(c => c.id === activeCategory).label} Articles`}</span>
           </div>
 
           {standardPosts.length > 0 ? (
             <div className="blog-grid">
               {standardPosts.map((post) => (
-                <article key={post.slug} className="blog-card">
+                <article key={post.slug} className="blog-card group">
                   <div className="blog-card-media">
                     <Image
                       src={post.image || "https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?w=600&auto=format&fit=crop&q=60"}
@@ -164,9 +163,12 @@ export default function BlogIndexPage() {
                   <div className="blog-card-body">
                     <div className="blog-meta-row">
                       <div className="blog-meta-date">
-                        <Calendar size={14} style={{ color: "var(--pink)" }} />
+                        <Calendar size={14} className="text-[#0061FF]" />
                         <time dateTime={post.date}>{formatDate(post.date)}</time>
                       </div>
+                      <span className="blog-category-badge text-[11px] py-0.5 px-2">
+                        {post.categoryId === "waiver" ? "Medicaid Waiver" : "Caregiver Tips"}
+                      </span>
                     </div>
 
                     <h3 className="blog-card-title">
@@ -179,8 +181,11 @@ export default function BlogIndexPage() {
                       {post.excerpt}
                     </p>
 
-                    <div style={{ marginTop: "auto" }}>
-                      <Link href={`/blog/${post.slug}`} className="btn-luxury-secondary-small" style={{ textDecoration: "none", width: "100%", justifyContent: "center", display: "inline-flex", alignItems: "center", gap: "0.25rem" }}>
+                    <div className="mt-auto pt-3 border-t border-[#DCE7F7]">
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="inline-flex items-center gap-1.5 text-[#0061FF] font-poppins font-bold text-[14px] hover:text-[#0047B8] hover:gap-2.5 transition-all duration-200"
+                      >
                         Read Article <ArrowRight size={14} />
                       </Link>
                     </div>
@@ -189,32 +194,36 @@ export default function BlogIndexPage() {
               ))}
             </div>
           ) : (
-            <p style={{ textAlign: "center", padding: "3rem", color: "#777777" }}>No articles found in this category.</p>
+            <p className="text-center py-12 text-[#4A5A73]">No articles found in this category.</p>
           )}
 
         </div>
       </section>
 
-      {/* SECTION: Discover How Blessed Hearts Homecare Enhances Lives */}
+      {/* SECTION: Discover How Pavan Homecare Enhances Lives */}
       <section className="blog-info-section" aria-labelledby="blog-info-title">
-        <div className="container">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-10">
           <div className="blog-info-grid">
             
             <div className="blog-info-content">
-              <div className="areas-hero-badge" style={{ display: "inline-flex", alignItems: "center", gap: "6px", backgroundColor: "rgba(255, 45, 122, 0.08)", padding: "0.5rem 1rem", borderRadius: "100px", color: "var(--pink)", fontWeight: 750, fontSize: "0.8rem", textTransform: "uppercase" }}>
-                <Heart size={12} fill="currentColor" /> Elevating Senior Life
+              <div className="inline-flex items-center gap-2 bg-[#FFEDE7] text-[#FF7A59] font-bold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full mb-4 border border-[#FF7A59]/20 shadow-sm">
+                <Heart size={12} className="fill-[#FF7A59]" />
+                <span>Elevating Senior Life</span>
               </div>
               <h2 id="blog-info-title" className="blog-info-title">
-                How Blessed Hearts Homecare Enhances Your Loved One’s Life
+                How Pavan Homecare Enhances Your Loved One’s Life
               </h2>
               <p className="blog-info-desc">
-                At Blessed Hearts Homecare, we are deeply committed to delivering high-quality, licensed in-home care services that prioritize the comfort, security, and personal dignity of our clients. Our dedicated caregiving team focuses on providing attentive, fully personalized support that helps seniors live active and fulfilling lives in their own homes.
+                At Pavan Homecare, we are deeply committed to delivering high-quality, licensed in-home care services that prioritize the comfort, security, and personal dignity of our clients. Our dedicated caregiving team focuses on providing attentive, love-driven support that helps seniors live active and fulfilling lives in their own homes.
               </p>
-              <p className="blog-info-desc" style={{ marginBottom: "2.5rem" }}>
+              <p className="blog-info-desc mb-8">
                 Discover how our customized home care plans can ease daily tasks and bring vital peace of mind to your family. Ready to discuss your loved one’s specific care goals?
               </p>
               <div>
-                <Link href="/contact-us" className="btn-luxury-lg btn-luxury-lg--primary" style={{ display: "inline-flex", textDecoration: "none" }}>
+                <Link
+                  href="/contact-us"
+                  className="inline-flex items-center gap-2.5 bg-[#FF7A59] hover:bg-[#E86746] text-white font-poppins font-bold text-[15px] px-8 py-4 rounded-full shadow-[0_10px_25px_rgba(255,122,89,0.35)] hover:shadow-[0_15px_30px_rgba(255,122,89,0.5)] hover:-translate-y-0.5 transition-all duration-300 btn-shimmer"
+                >
                   Schedule Consultation <ChevronRight size={16} />
                 </Link>
               </div>
@@ -224,27 +233,27 @@ export default function BlogIndexPage() {
             <div className="blog-info-card">
               <h3>Get In Touch</h3>
               <p>
-                Have questions about licensed hours, Medicaid Waiver support, or scheduling? Reach out to our local coordinators today.
+                Have questions about licensed hours, Medicaid Waiver support, or caregiver scheduling? Reach out to our care coordinators today.
               </p>
 
               <div className="blog-info-contacts">
                 <div className="blog-contact-row">
-                  <Phone size={16} style={{ color: "var(--pink)" }} />
+                  <Phone size={16} className="text-[#0061FF]" />
                   <span>
-                    <strong>Call Us:</strong> <a href="tel:2154369499">(215) 436-9499</a>
+                    <strong>Call Us:</strong> <a href={site.phoneHref}>{site.phoneDisplay}</a>
                   </span>
                 </div>
                 <div className="blog-contact-row">
-                  <Mail size={16} style={{ color: "var(--pink)" }} />
+                  <Mail size={16} className="text-[#0061FF]" />
                   <span>
-                    <strong>Email:</strong> <a href="mailto:info@blessedheartshomecare.com">info@blessedheartshomecare.com</a>
+                    <strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a>
                   </span>
                 </div>
               </div>
 
-              <div style={{ borderTop: "1px solid rgba(0, 0, 0, 0.06)", paddingTop: "1.5rem", fontSize: "0.9rem", color: "#666", lineHeight: "1.5" }}>
-                <p style={{ margin: 0, fontStyle: "italic" }}>
-                  Take the first step towards securing compassionate, reliable home care. We look forward to hearing from you!
+              <div className="border-t border-[#DCE7F7] pt-4 text-[13.5px] text-[#4A5A73] italic">
+                <p className="m-0">
+                  Take the first step towards securing compassionate, reliable home care. We look forward to supporting your family!
                 </p>
               </div>
             </div>
@@ -253,9 +262,9 @@ export default function BlogIndexPage() {
         </div>
       </section>
 
-      {/* SECTION: Google Reviews (CUSTOM CLONE) */}
-      <section className="section" aria-label="Google Reviews" style={{ padding: "80px 0", backgroundColor: "var(--white)" }}>
-        <div className="container">
+      {/* SECTION: Google Reviews */}
+      <section className="py-16 lg:py-24 bg-white" aria-label="Google Reviews">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-10">
           <GoogleReviews />
         </div>
       </section>

@@ -25,6 +25,7 @@ import {
   Mail
 } from "lucide-react";
 import GoogleReviews from "@/components/GoogleReviews";
+import { site } from "@/lib/site";
 
 
 // Count Up component for stats
@@ -110,12 +111,20 @@ export default function AboutClient() {
                 Pavan Homecare is dedicated to providing high-quality, clinical coordinator-supervised caregiver options across York and surrounding PA counties.
               </p>
               <div className="about-hero-actions">
-                <Link href="/contact-us" className="btn btn--gradient">
+                <Link
+                  href="/contact-us"
+                  className="inline-flex items-center gap-2 bg-[#FF7A59] hover:bg-[#E86746] text-white font-poppins font-bold text-[15px] px-8 py-4 rounded-full shadow-[0_10px_25px_rgba(255,122,89,0.35)] hover:shadow-[0_15px_30px_rgba(255,122,89,0.5)] hover:-translate-y-0.5 transition-all duration-300 btn-shimmer"
+                >
+                  <Heart size={16} className="fill-white/30" />
                   Request Care
+                  <ArrowRight size={16} />
                 </Link>
-                <a href="tel:+12232609042" className="btn btn--outline" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
-                  <Phone size={16} />
-                  Call us
+                <a
+                  href={site.phoneHref}
+                  className="inline-flex items-center gap-2 bg-white hover:bg-[#F5F9FF] text-[#001A4D] hover:text-[#0061FF] border border-[#DCE7F7] hover:border-[#0061FF]/40 font-poppins font-bold text-[15px] px-7 py-4 rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <Phone size={16} className="text-[#0061FF]" />
+                  Call {site.phoneDisplay}
                 </a>
               </div>
             </motion.div>
@@ -149,11 +158,11 @@ export default function AboutClient() {
                 className="about-floating-badge about-floating-badge--left"
               >
                 <div className="about-floating-badge-icon about-floating-badge-icon--heart">
-                  <Heart size={14} fill="#ff2d7a" aria-hidden="true" />
+                  <Heart size={14} fill="#FF7A59" color="#FF7A59" aria-hidden="true" />
                 </div>
                 <div>
                   <div className="about-floating-badge-title">Family Trusted</div>
-                  <div className="about-floating-badge-sub">South Central PA</div>
+                  <div className="about-floating-badge-sub">Pennsylvania</div>
                 </div>
               </motion.div>
 
@@ -163,7 +172,7 @@ export default function AboutClient() {
                 className="about-floating-badge about-floating-badge--right"
               >
                 <div className="about-floating-badge-icon about-floating-badge-icon--award">
-                  <Award size={14} fill="#ff7a1a" aria-hidden="true" />
+                  <Award size={14} fill="#0061FF" color="#0061FF" aria-hidden="true" />
                 </div>
                 <div>
                   <div className="about-floating-badge-title">15+ Years</div>
@@ -209,10 +218,10 @@ export default function AboutClient() {
               </h2>
               <div className="about-story-body">
                 <p>
-                  Pavan Homecare was established to raise the bar for local home care in South Central PA. We saw a critical need: providing professional, high-quality caregiver assistance that never compromises on human empathy and connection.
+                  Pavan Homecare was established to raise the bar for local in-home care across Pennsylvania. We saw a critical need: providing professional, high-quality caregiver assistance that never compromises on human empathy and connection.
                 </p>
                 <p>
-                  We believe that home is the foundation of independence. Our mission is to support seniors, veterans, and individuals with disabilities across York and surrounding PA counties, allowing them to lead fulfilling lives in the comfort of their own homes.
+                  We believe that home is the foundation of independence. Our mission is to support seniors, veterans, and individuals with disabilities across Philadelphia, Bucks, Montgomery, Delaware, Chester, York, and surrounding PA counties, allowing them to lead fulfilling lives in the comfort of their own homes.
                 </p>
               </div>
 
@@ -222,7 +231,7 @@ export default function AboutClient() {
                   <div className="about-timeline-dot" />
                   <div className="about-timeline-content">
                     <h5>The Genesis</h5>
-                    <p>Established with a simple guiding principle: care delivered from the heart, directed by experienced local care managers.</p>
+                    <p>Established with a simple guiding principle: care delivered with love, directed by experienced healthcare and coordination professionals.</p>
                   </div>
                 </div>
                 <div className="about-timeline-item">
@@ -236,7 +245,7 @@ export default function AboutClient() {
                   <div className="about-timeline-dot" />
                   <div className="about-timeline-content">
                     <h5>Community Leadership</h5>
-                    <p>Serving hundreds of families across York, Lancaster, Dauphin, Cumberland, and Adams counties with 24/7 dedicated local coordinators.</p>
+                    <p>Serving hundreds of families across Philadelphia, Bucks, Montgomery, Delaware, Chester, York, and surrounding PA counties with 24/7 dedicated local coordinators.</p>
                   </div>
                 </div>
               </div>
@@ -481,7 +490,7 @@ export default function AboutClient() {
       <section className="about-standards-section" aria-labelledby="standards-heading">
         <div className="container">
           <div className="section-heading-luxury">
-            <span className="eyebrow-luxury-accent" style={{ color: "#ffa04d", WebkitTextFillColor: "#ffa04d", background: "none", WebkitBackgroundClip: "initial", backgroundClip: "initial" }}>SAFETY PROTOCOLS</span>
+            <span className="eyebrow-luxury-accent" style={{ color: "#FF7A59", WebkitTextFillColor: "#FF7A59", background: "none", WebkitBackgroundClip: "initial", backgroundClip: "initial" }}>SAFETY PROTOCOLS</span>
             <h2 id="standards-heading" className="section-title-luxury text-white">
               Our Caregiver Standards
             </h2>
@@ -555,7 +564,7 @@ export default function AboutClient() {
       </section>
 
       {/* ====================================================
-         SECTION 6: SERVING YORK & LOCAL COUNTIES
+         SECTION 6: SERVING PENNSYLVANIA COUNTIES
          ==================================================== */}
       <section className="about-local-section" aria-labelledby="local-heading-new">
         <div className="container">
@@ -563,27 +572,36 @@ export default function AboutClient() {
             <div className="about-local-content">
               <span className="eyebrow-luxury-accent">OUR COVERAGE</span>
               <h2 id="local-heading-new" className="section-title-luxury" style={{ textAlign: "left" }}>
-                Proudly Serving York & Surrounding PA Counties
+                Proudly Serving Pennsylvania Counties
               </h2>
               <p>
-                From our offices on South Queen Street in York, PA, we coordinate support services across a broad South Central Pennsylvania footprint.
+                From our offices in Feasterville, PA, we coordinate compassionate in-home support services across a broad Pennsylvania footprint.
               </p>
               
               <div className="about-local-counties">
+                <div className="about-county-pill"> Philadelphia County </div>
+                <div className="about-county-pill"> Bucks County </div>
+                <div className="about-county-pill"> Montgomery County </div>
+                <div className="about-county-pill"> Delaware County </div>
+                <div className="about-county-pill"> Chester County </div>
                 <div className="about-county-pill"> York County </div>
-                <div className="about-county-pill"> Adams County </div>
                 <div className="about-county-pill"> Lancaster County </div>
-                <div className="about-county-pill"> Dauphin County </div>
-                <div className="about-county-pill"> Cumberland County </div>
+                <div className="about-county-pill"> Lehigh County </div>
+                <div className="about-county-pill"> Berks County </div>
               </div>
 
               <p className="about-local-footer-text">
-                Need care outside these counties? Contact us. We frequently coordinate schedules with surrounding PA health systems to accommodate client requests.
+                Need care in your area? Contact us today. We coordinate schedules with surrounding PA health networks and families to accommodate all care requests.
               </p>
 
               <div style={{ marginTop: "2rem" }}>
-                <Link href="/contact-us" className="btn btn--gradient">
+                <Link
+                  href="/contact-us"
+                  className="inline-flex items-center gap-2 bg-[#FF7A59] hover:bg-[#E86746] text-white font-poppins font-bold text-[15px] px-8 py-4 rounded-full shadow-[0_10px_25px_rgba(255,122,89,0.35)] hover:shadow-[0_15px_30px_rgba(255,122,89,0.5)] hover:-translate-y-0.5 transition-all duration-300 btn-shimmer"
+                >
+                  <Heart size={16} className="fill-white/30" />
                   Check Your Service Coverage
+                  <ArrowRight size={16} />
                 </Link>
               </div>
             </div>

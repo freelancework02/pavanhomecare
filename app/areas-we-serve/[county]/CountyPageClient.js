@@ -279,25 +279,25 @@ export default function CountyPageClient({ data, city }) {
               return (
                 <div
                   key={srv.title}
-                  className="county-service-card bg-white border border-[#DCE7F7] hover:border-[#0061FF] rounded-3xl p-7 shadow-[0_10px_30px_rgba(15,23,42,0.04)] hover:shadow-[0_20px_48px_rgba(0,97,255,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+                  className="county-service-card bg-white border border-[#DCE7F7] hover:border-[#0061FF] rounded-3xl p-7 shadow-[0_10px_30px_rgba(0,26,77,0.04)] hover:shadow-[0_20px_48px_rgba(0,97,255,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
                 >
                   <span className="county-service-index">
                     {String(idx + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <div className="w-13 h-13 rounded-2xl bg-gradient-to-br from-[#0061FF] to-[#38BDF8] text-white flex items-center justify-center mb-5 shadow-[0_8px_20px_rgba(0,97,255,0.3)] group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-13 h-13 rounded-2xl bg-gradient-to-br from-[#0061FF] to-[#60EFFF] text-white flex items-center justify-center mb-5 shadow-[0_8px_20px_rgba(0,97,255,0.3)] group-hover:scale-110 transition-transform duration-300">
                       <IconComp size={24} />
                     </div>
-                    <h3 className="font-heading text-xl font-extrabold text-[#0F172A] group-hover:text-[#0061FF] transition-colors mb-2.5">
+                    <h3 className="font-heading text-xl font-extrabold text-[#001A4D] group-hover:text-[#0061FF] transition-colors mb-2.5">
                       {srv.title}
                     </h3>
-                    <p className="text-[#475569] text-sm leading-relaxed mb-6">
+                    <p className="text-[#4A5A73] text-sm leading-relaxed mb-6">
                       {srv.desc}
                     </p>
                   </div>
                   <Link
                     href="/services"
-                    className="inline-flex items-center gap-2 text-[#0061FF] font-extrabold text-sm group-hover:text-[#38BDF8] transition-colors mt-auto pt-4 border-t border-[#F1F5F9]"
+                    className="inline-flex items-center gap-2 text-[#0061FF] font-extrabold text-sm group-hover:text-[#0047B8] transition-colors mt-auto pt-4 border-t border-[#F1F5F9]"
                   >
                     <span>Explore Service</span>
                     <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
@@ -310,14 +310,14 @@ export default function CountyPageClient({ data, city }) {
       </section>
 
       {/* ── WHY FAMILIES CHOOSE US ── */}
-      <section className="county-why-section py-24 bg-white border-t border-[#E2E8F0]">
+      <section className="county-why-section py-24 bg-white border-t border-[#DCE7F7]">
         <div className="max-w-[1360px] mx-auto px-6">
           <div className="text-center max-w-[760px] mx-auto mb-16">
             <span className="areas-hero-badge mb-4">
               <ShieldCheck size={14} className="text-[#0061FF]" />
               The Pavan Distinction
             </span>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F172A] mb-4">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#001A4D] mb-4">
               Why Families Choose Pavan Homecare in <span className="gradient-text-blue">{displayLocation}</span>
             </h2>
           </div>
@@ -326,16 +326,16 @@ export default function CountyPageClient({ data, city }) {
             {chooseUsReasons.map((reason, idx) => (
               <div
                 key={reason.title}
-                className="county-why-card bg-gradient-to-br from-white to-[#F8FAFC] border border-[#DCE7F7] hover:border-[#0061FF] rounded-3xl p-7 shadow-[0_8px_24px_rgba(15,23,42,0.04)] hover:shadow-[0_16px_36px_rgba(0,97,255,0.1)] hover:-translate-y-1 transition-all duration-300"
+                className="county-why-card bg-gradient-to-br from-white to-[#F8FAFC] border border-[#DCE7F7] hover:border-[#0061FF] rounded-3xl p-7 shadow-[0_8px_24px_rgba(0,26,77,0.04)] hover:shadow-[0_16px_36px_rgba(0,97,255,0.1)] hover:-translate-y-1 transition-all duration-300"
               >
                 <span className="county-why-index">{String(idx + 1).padStart(2, "0")}</span>
-                <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#0061FF] to-[#38BDF8] text-white flex items-center justify-center font-bold mb-5 shadow-[0_6px_16px_rgba(0,97,255,0.25)]">
+                <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#0061FF] to-[#60EFFF] text-white flex items-center justify-center font-bold mb-5 shadow-[0_6px_16px_rgba(0,97,255,0.25)]">
                   <Check size={20} strokeWidth={3} />
                 </div>
-                <h3 className="font-heading text-xl font-extrabold text-[#0F172A] mb-2.5">
+                <h3 className="font-heading text-xl font-extrabold text-[#001A4D] mb-2.5">
                   {reason.title}
                 </h3>
-                <p className="text-[#475569] text-sm leading-relaxed">
+                <p className="text-[#4A5A73] text-sm leading-relaxed">
                   {reason.desc}
                 </p>
               </div>
@@ -374,43 +374,43 @@ export default function CountyPageClient({ data, city }) {
       <GoogleReviews />
 
       {/* ── BOOKING CONTACT SECTION ── */}
-      <section id="request-care" className="county-request-section py-20 bg-slate-50 border-t border-slate-200">
+      <section id="request-care" className="county-request-section py-20 bg-[#F5F9FF] border-t border-[#DCE7F7]">
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="county-request-card bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xl max-w-[800px] mx-auto text-center">
+          <div className="county-request-card bg-white rounded-3xl p-8 sm:p-12 border border-[#DCE7F7] shadow-[0_20px_50px_rgba(0,26,77,0.08)] max-w-[800px] mx-auto text-center">
             <span className="areas-hero-badge mb-4">
-              <Heart size={14} className="text-[#0061FF]" />
+              <Heart size={14} className="text-[#FF7A59]" />
               Start Free Consultation
             </span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#001A4D] mb-4">
               Schedule a Free Care Assessment in {displayLocation}
             </h2>
-            <p className="text-slate-600 text-base mb-8 max-w-[600px] mx-auto">
+            <p className="text-[#4A5A73] text-base mb-8 max-w-[600px] mx-auto">
               Our local care coordinator will discuss your family&apos;s needs and create a customized care plan.
             </p>
 
             <form onSubmit={(e) => e.preventDefault()} className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">First Name</label>
-                <input type="text" placeholder="John" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#0061FF] text-sm" />
+                <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">First Name</label>
+                <input type="text" placeholder="John" className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">Last Name</label>
-                <input type="text" placeholder="Doe" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#0061FF] text-sm" />
+                <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Last Name</label>
+                <input type="text" placeholder="Doe" className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]" />
               </div>
               <div className="sm:col-span-2">
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">Email Address</label>
-                <input type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#0061FF] text-sm" />
+                <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Email Address</label>
+                <input type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]" />
               </div>
               <div className="sm:col-span-2">
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">Phone Number</label>
-                <input type="tel" placeholder="(215) 436-9499" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#0061FF] text-sm" />
+                <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Phone Number</label>
+                <input type="tel" placeholder="(215) 436-9499" className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]" />
               </div>
               <div className="sm:col-span-2">
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">How Can We Help?</label>
-                <textarea rows={3} placeholder="Tell us about the care services needed..." className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-[#0061FF] text-sm" />
+                <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">How Can We Help?</label>
+                <textarea rows={3} placeholder="Tell us about the care services needed..." className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]" />
               </div>
               <div className="sm:col-span-2 pt-2">
-                <button type="submit" className="w-full btn-hero-primary btn-shimmer py-3.5 text-base justify-center">
+                <button type="submit" className="w-full inline-flex items-center justify-center gap-2.5 bg-[#FF7A59] hover:bg-[#E86746] text-white font-poppins font-bold text-[15px] py-4 rounded-full shadow-[0_10px_25px_rgba(255,122,89,0.35)] hover:shadow-[0_15px_30px_rgba(255,122,89,0.5)] hover:-translate-y-0.5 transition-all duration-300 btn-shimmer">
                   Submit Request &amp; Get Call Back <ArrowRight size={18} />
                 </button>
               </div>

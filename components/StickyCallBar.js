@@ -84,12 +84,13 @@ export default function StickyCallBar() {
         }
 
         .sc-btn--request {
-          background: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
+          background: #FF7A59;
           color: #FFFFFF;
-          box-shadow: 0 4px 14px rgba(0, 97, 255, 0.4);
+          box-shadow: 0 4px 14px rgba(255, 122, 89, 0.4);
         }
         .sc-btn--request:hover {
-          box-shadow: 0 6px 20px rgba(0, 97, 255, 0.6);
+          background: #E86746;
+          box-shadow: 0 6px 20px rgba(255, 122, 89, 0.6);
           color: #FFFFFF;
           text-decoration: none;
         }

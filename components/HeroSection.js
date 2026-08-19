@@ -233,17 +233,17 @@ export default function HeroSection() {
           font-family: var(--font-heading);
           font-size: clamp(2.8rem, 5.2vw, 4.4rem);
           font-weight: 800; line-height: 1.08;
-          letter-spacing: -0.03em; color: #0F172A;
+          letter-spacing: -0.03em; color: #001A4D;
           margin: 0 0 1.5rem;
         }
         .hs-gradient-text {
-          background: linear-gradient(90deg, #0061FF 0%, #38BDF8 100%);
+          background: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
           -webkit-background-clip: text; background-clip: text; color: transparent;
         }
 
         .hs-desc {
           font-size: clamp(1rem, 1.4vw, 1.1rem);
-          color: #475569; line-height: 1.7;
+          color: #4A5A73; line-height: 1.7;
           margin: 0 0 2.25rem; max-width: 540px;
         }
 
@@ -252,15 +252,16 @@ export default function HeroSection() {
 
         .hs-btn-primary {
           display: inline-flex; align-items: center; gap: 0.65rem;
-          background: linear-gradient(90deg, #0061FF 0%, #38BDF8 100%);
+          background: #FF7A59;
           color: #FFFFFF; font-family: var(--font-heading);
           font-weight: 700; font-size: 1rem;
           padding: 0.95rem 2.2rem; border-radius: 9999px;
-          box-shadow: 0 10px 28px rgba(0, 97, 255, 0.35);
+          box-shadow: 0 10px 25px rgba(255, 122, 89, 0.35);
           text-decoration: none; transition: all 0.25s ease;
         }
         .hs-btn-primary:hover {
-          transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0, 97, 255, 0.45);
+          background: #E86746;
+          transform: translateY(-2px); box-shadow: 0 15px 30px rgba(255, 122, 89, 0.5);
           color: #FFFFFF; text-decoration: none;
         }
 

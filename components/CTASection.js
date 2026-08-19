@@ -175,18 +175,18 @@ export default function CTASection() {
           font-family: var(--font-heading);
           font-size: clamp(2.4rem, 4.8vw, 3.6rem);
           font-weight: 800; line-height: 1.1;
-          letter-spacing: -0.03em; color: #0F172A;
+          letter-spacing: -0.03em; color: #001A4D;
           margin: 0 0 1.25rem;
         }
 
         .cta-gradient-text {
-          background: linear-gradient(90deg, #0061FF 0%, #38BDF8 100%);
+          background: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
           -webkit-background-clip: text; background-clip: text; color: transparent;
         }
 
         .cta-sub {
           font-size: clamp(1rem, 1.4vw, 1.15rem);
-          color: #475569; line-height: 1.7;
+          color: #4A5A73; line-height: 1.7;
           margin: 0 0 2rem; max-width: 560px;
         }
 
@@ -194,21 +194,21 @@ export default function CTASection() {
         .cta-benefits { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2.25rem; }
         .cta-benefit-item {
           display: flex; align-items: center; gap: 0.65rem;
-          font-size: 14.5px; font-weight: 600; color: #1E293B;
+          font-size: 14.5px; font-weight: 600; color: #001A4D;
         }
 
         /* Rating Bar */
         .cta-rating-bar {
           display: flex; align-items: center; gap: 0.85rem;
-          padding-top: 1.5rem; border-top: 1px solid #E2E8F0;
+          padding-top: 1.5rem; border-top: 1px solid #DCE7F7;
         }
         .cta-stars-row { display: flex; align-items: center; gap: 0.25rem; }
-        .cta-rating-text { font-size: 13.5px; color: #475569; }
+        .cta-rating-text { font-size: 13.5px; color: #4A5A73; }
 
         /* Right Booking Card */
         .cta-card {
           background: #FFFFFF;
-          border: 1px solid #E2E8F0;
+          border: 1px solid #DCE7F7;
           border-radius: 2rem;
           padding: clamp(2rem, 4vw, 2.75rem);
           box-shadow: 0 24px 64px rgba(0, 26, 77, 0.09), 0 0 0 1px rgba(0, 97, 255, 0.05);
@@ -226,28 +226,29 @@ export default function CTASection() {
         .cta-card__title {
           font-family: var(--font-heading);
           font-size: clamp(1.4rem, 2.2vw, 1.8rem);
-          font-weight: 800; color: #0F172A;
+          font-weight: 800; color: #001A4D;
           margin: 0 0 0.6rem; line-height: 1.2;
         }
 
         .cta-card__sub {
-          font-size: 14px; color: #475569; line-height: 1.6;
+          font-size: 14px; color: #4A5A73; line-height: 1.6;
           margin: 0 0 1.75rem;
         }
 
         /* Buttons */
         .cta-btn-primary {
           display: flex; align-items: center; justify-content: center; gap: 0.65rem;
-          background: linear-gradient(90deg, #0061FF 0%, #38BDF8 100%);
+          background: #FF7A59;
           color: #FFFFFF; font-family: var(--font-heading);
           font-weight: 700; font-size: 15.5px;
           padding: 1rem 1.8rem; border-radius: 9999px;
-          box-shadow: 0 10px 28px rgba(0, 97, 255, 0.35);
+          box-shadow: 0 10px 25px rgba(255, 122, 89, 0.35);
           text-decoration: none; transition: all 0.25s ease;
           width: 100%; text-align: center;
         }
         .cta-btn-primary:hover {
-          transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0, 97, 255, 0.48);
+          background: #E86746;
+          transform: translateY(-2px); box-shadow: 0 15px 30px rgba(255, 122, 89, 0.5);
           color: #FFFFFF; text-decoration: none;
         }
 
@@ -255,7 +256,7 @@ export default function CTASection() {
         .cta-divider {
           display: flex; align-items: center; gap: 0.75rem; margin: 1.5rem 0;
         }
-        .cta-divider__line { flex: 1; height: 1px; background: #E2E8F0; }
+        .cta-divider__line { flex: 1; height: 1px; background: #DCE7F7; }
         .cta-divider__text { font-size: 12px; color: #64748B; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 
         /* Phone pill */

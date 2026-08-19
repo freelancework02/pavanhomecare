@@ -364,24 +364,24 @@ export default function GoogleReviews() {
           font-family: var(--font-heading);
           font-size: clamp(2.2rem, 4.5vw, 3.4rem);
           font-weight: 800; line-height: 1.1;
-          letter-spacing: -0.03em; color: #0F172A;
+          letter-spacing: -0.03em; color: #001A4D;
           margin: 0 0 1.25rem;
         }
 
         .gr-gradient-text {
-          background: linear-gradient(90deg, #0061FF 0%, #38BDF8 100%);
+          background: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
           -webkit-background-clip: text; background-clip: text; color: transparent;
         }
 
         .gr-sub {
           font-size: clamp(1rem, 1.4vw, 1.1rem);
-          color: #475569; line-height: 1.7; margin: 0;
+          color: #4A5A73; line-height: 1.7; margin: 0;
         }
 
         /* Hero Rating Card */
         .gr-hero-card {
           background: #FFFFFF;
-          border: 1px solid #E2E8F0;
+          border: 1px solid #DCE7F7;
           border-radius: 1.5rem; padding: 1.5rem 2rem;
           box-shadow: 0 16px 40px rgba(0, 26, 77, 0.06);
           display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
@@ -395,16 +395,16 @@ export default function GoogleReviews() {
         .gr-rating-display { display: flex; align-items: center; gap: 1rem; }
         .gr-rating-num {
           font-family: var(--font-heading); font-size: 3rem; font-weight: 800;
-          color: #0F172A; line-height: 1;
+          color: #001A4D; line-height: 1;
         }
 
         .gr-stars-col { display: flex; flex-direction: column; gap: 0.2rem; }
         .gr-stars-row { display: flex; align-items: center; gap: 0.25rem; }
-        .gr-rating-count { font-size: 13px; color: #475569; font-weight: 600; }
+        .gr-rating-count { font-size: 13px; color: #4A5A73; font-weight: 600; }
 
         .gr-btn-review {
           display: inline-flex; align-items: center; gap: 0.6rem;
-          background: linear-gradient(90deg, #0061FF 0%, #38BDF8 100%);
+          background: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
           color: #FFFFFF; font-family: var(--font-heading);
           font-weight: 700; font-size: 14.5px;
           padding: 0.8rem 1.6rem; border-radius: 9999px;
@@ -514,9 +514,9 @@ export default function GoogleReviews() {
         /* Bottom CTA */
         .gr-bottom-cta {
           background: #FFFFFF;
-          border: 1px solid #E2E8F0;
+          border: 1px solid #DCE7F7;
           border-radius: 1.5rem; padding: 2rem;
-          box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
+          box-shadow: 0 12px 32px rgba(0, 26, 77, 0.05);
         }
         .gr-bottom-cta__inner {
           display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
@@ -524,28 +524,29 @@ export default function GoogleReviews() {
         }
         .gr-bottom-cta__title {
           font-family: var(--font-heading); font-size: clamp(1.2rem, 2vw, 1.5rem);
-          font-weight: 800; color: #0F172A; margin: 0; max-width: 460px;
+          font-weight: 800; color: #001A4D; margin: 0; max-width: 460px;
         }
         .gr-bottom-cta__buttons { display: flex; flex-wrap: wrap; gap: 0.85rem; }
 
         .gr-btn-primary {
           display: inline-flex; align-items: center; gap: 0.5rem;
-          background: linear-gradient(90deg, #0061FF 0%, #38BDF8 100%);
+          background: #FF7A59;
           color: #FFFFFF; font-family: var(--font-heading);
           font-weight: 700; font-size: 14px;
           padding: 0.75rem 1.5rem; border-radius: 9999px;
-          box-shadow: 0 6px 20px rgba(0, 97, 255, 0.3);
+          box-shadow: 0 6px 20px rgba(255, 122, 89, 0.35);
           text-decoration: none; transition: all 0.2s;
         }
         .gr-btn-primary:hover {
-          transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0, 97, 255, 0.45);
+          background: #E86746;
+          transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255, 122, 89, 0.5);
           color: #FFFFFF; text-decoration: none;
         }
 
         .gr-btn-phone {
           display: inline-flex; align-items: center; gap: 0.5rem;
-          background: #F8FAFC; border: 1px solid #E2E8F0;
-          color: #0F172A; font-family: var(--font-heading);
+          background: #F8FAFC; border: 1px solid #DCE7F7;
+          color: #001A4D; font-family: var(--font-heading);
           font-weight: 700; font-size: 14px;
           padding: 0.75rem 1.5rem; border-radius: 9999px;
           text-decoration: none; transition: all 0.2s;

@@ -255,24 +255,24 @@ export default function KnowledgeHub() {
           font-family: var(--font-heading);
           font-size: clamp(2.2rem, 4.5vw, 3.4rem);
           font-weight: 800; line-height: 1.1;
-          letter-spacing: -0.03em; color: #0F172A;
+          letter-spacing: -0.03em; color: #001A4D;
           margin: 0 0 1.25rem;
         }
 
         .kh-gradient-text {
-          background: linear-gradient(90deg, #0061FF 0%, #38BDF8 100%);
+          background: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
           -webkit-background-clip: text; background-clip: text; color: transparent;
         }
 
         .kh-sub {
           font-size: clamp(1rem, 1.4vw, 1.1rem);
-          color: #475569; line-height: 1.7; margin: 0;
+          color: #4A5A73; line-height: 1.7; margin: 0;
         }
 
         /* Featured Article Card */
         .kh-featured-card {
           background: #FFFFFF;
-          border: 1px solid #E2E8F0;
+          border: 1px solid #DCE7F7;
           border-radius: 1.75rem; overflow: hidden;
           box-shadow: 0 20px 50px rgba(0, 26, 77, 0.08);
           margin-bottom: 3.5rem;
@@ -297,7 +297,7 @@ export default function KnowledgeHub() {
 
         .kh-featured-overlay {
           position: absolute; inset: 0;
-          background: linear-gradient(to top, rgba(15, 23, 42, 0.4) 0%, transparent 60%);
+          background: linear-gradient(to top, rgba(0, 26, 77, 0.4) 0%, transparent 60%);
         }
 
         .kh-featured-chip {
@@ -321,20 +321,20 @@ export default function KnowledgeHub() {
         .kh-featured-title {
           font-family: var(--font-heading);
           font-size: clamp(1.4rem, 2.4vw, 1.9rem);
-          font-weight: 800; color: #0F172A; line-height: 1.25;
+          font-weight: 800; color: #001A4D; line-height: 1.25;
           margin: 0.75rem 0 1rem;
         }
-        .kh-featured-title a { color: #0F172A; text-decoration: none; transition: color 0.2s; }
+        .kh-featured-title a { color: #001A4D; text-decoration: none; transition: color 0.2s; }
         .kh-featured-title a:hover { color: #0061FF; text-decoration: none; }
 
         .kh-featured-excerpt {
-          font-size: 14.5px; color: #475569; line-height: 1.7;
+          font-size: 14.5px; color: #4A5A73; line-height: 1.7;
           margin: 0 0 2rem;
         }
 
         .kh-btn-primary {
           display: inline-flex; align-items: center; gap: 0.6rem;
-          background: linear-gradient(90deg, #0061FF 0%, #38BDF8 100%);
+          background: linear-gradient(90deg, #0061FF 0%, #60EFFF 100%);
           color: #FFFFFF; font-family: var(--font-heading);
           font-weight: 700; font-size: 14.5px;
           padding: 0.85rem 1.8rem; border-radius: 9999px;
@@ -355,9 +355,9 @@ export default function KnowledgeHub() {
 
         .kh-card {
           background: #FFFFFF;
-          border: 1px solid #E2E8F0;
+          border: 1px solid #DCE7F7;
           border-radius: 1.5rem; overflow: hidden;
-          box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+          box-shadow: 0 10px 30px rgba(0, 26, 77, 0.04);
           display: flex; flex-direction: column;
           transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
@@ -382,7 +382,7 @@ export default function KnowledgeHub() {
           background: rgba(255, 255, 255, 0.95);
           backdrop-filter: blur(12px);
           border: 1px solid rgba(255, 255, 255, 0.8);
-          color: #0F172A; font-size: 11.5px; font-weight: 700;
+          color: #001A4D; font-size: 11.5px; font-weight: 700;
           padding: 0.3rem 0.8rem; border-radius: 9999px;
           display: flex; align-items: center; gap: 0.3rem;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); z-index: 10;
@@ -394,14 +394,14 @@ export default function KnowledgeHub() {
 
         .kh-card__title {
           font-family: var(--font-heading);
-          font-size: 18px; font-weight: 800; color: #0F172A;
+          font-size: 18px; font-weight: 800; color: #001A4D;
           line-height: 1.3; margin: 0.5rem 0 0.75rem;
         }
-        .kh-card__title a { color: #0F172A; text-decoration: none; transition: color 0.2s; }
+        .kh-card__title a { color: #001A4D; text-decoration: none; transition: color 0.2s; }
         .kh-card:hover .kh-card__title a { color: #0061FF; }
 
         .kh-card__excerpt {
-          font-size: 13.5px; color: #475569; line-height: 1.65;
+          font-size: 13.5px; color: #4A5A73; line-height: 1.65;
           margin: 0 0 1.5rem; flex: 1;
         }
 
@@ -422,8 +422,8 @@ export default function KnowledgeHub() {
         .kh-bottom { display: flex; justify-content: center; }
         .kh-btn-outline {
           display: inline-flex; align-items: center; gap: 0.6rem;
-          background: #FFFFFF; border: 1.5px solid #E2E8F0;
-          color: #0F172A; font-family: var(--font-heading);
+          background: #FFFFFF; border: 1.5px solid #DCE7F7;
+          color: #001A4D; font-family: var(--font-heading);
           font-weight: 700; font-size: 15px;
           padding: 0.85rem 2rem; border-radius: 9999px;
           box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);

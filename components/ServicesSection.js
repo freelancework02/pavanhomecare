@@ -205,11 +205,12 @@ export default function ServicesSection() {
 
         {/* ── BOTTOM CTA ROW ── */}
         <motion.div variants={fadeUp(0.2)} initial="hidden" whileInView="visible" viewport={{ once: true }} className="ss-bottom">
-          <Link href="/services" className="ss-btn ss-btn--primary">
-            View All Services <ArrowRight size={16} />
+          <Link href="/contact-us" className="ss-btn ss-btn--primary btn-shimmer">
+            <Heart size={16} className="fill-white/30" />
+            Request Free Consultation <ArrowRight size={16} />
           </Link>
-          <Link href="/contact-us" className="ss-btn ss-btn--outline">
-            Request Free Consultation
+          <Link href="/services" className="ss-btn ss-btn--outline">
+            View All 8+ Care Services
           </Link>
         </motion.div>
 
@@ -487,17 +488,24 @@ export default function ServicesSection() {
         }
         .ss-btn:hover { transform: translateY(-2px); text-decoration: none; }
         .ss-btn--primary {
-          background: linear-gradient(90deg,#0061FF,#60EFFF);
+          background: #FF7A59;
           color: #FFFFFF;
-          box-shadow: 0 10px 28px rgba(0,97,255,0.35);
+          box-shadow: 0 10px 25px rgba(255, 122, 89, 0.35);
         }
-        .ss-btn--primary:hover { box-shadow: 0 14px 36px rgba(0,97,255,0.5); color: #FFFFFF; }
+        .ss-btn--primary:hover {
+          background: #E86746;
+          box-shadow: 0 15px 30px rgba(255, 122, 89, 0.5);
+          color: #FFFFFF;
+        }
         .ss-btn--outline {
-          background: #FFFFFF; color: #0061FF;
-          border: 1.5px solid rgba(0,97,255,0.3);
-          box-shadow: 0 4px 14px rgba(0,97,255,0.08);
+          background: #FFFFFF; color: #001A4D;
+          border: 1.5px solid #DCE7F7;
+          box-shadow: 0 4px 14px rgba(0, 26, 77, 0.04);
         }
-        .ss-btn--outline:hover { border-color: #0061FF; color: #0061FF; }
+        .ss-btn--outline:hover {
+          border-color: #0061FF; color: #0061FF;
+          background: #F5F9FF;
+        }
       ` }} />
     </section>
   );
