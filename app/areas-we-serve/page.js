@@ -142,7 +142,7 @@ export default function AreasWeServePage() {
             >
               <div className="areas-hero-image-frame">
                 <Image
-                  src="https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?w=800&auto=format&fit=crop&q=80"
+                  src="/images/photos/areas-hero.jpg"
                   alt="Caregiver walking outdoors with senior client in Pennsylvania"
                   fill
                   priority

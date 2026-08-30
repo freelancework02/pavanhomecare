@@ -67,7 +67,7 @@ export default function HomePage() {
             
             <div className="relative w-full h-[420px] sm:h-[500px] lg:h-[540px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,26,77,0.14)] border-4 border-white">
               <Image
-                src="/images/image2.jpg"
+                src="/images/photos/about-companion-knitting.jpg"
                 alt="Friendly professional caregiver supporting senior client walking with walker"
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"

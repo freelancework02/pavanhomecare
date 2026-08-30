@@ -42,7 +42,7 @@ export default function BlogPostPage({ params }) {
         ctaLabel="Request Care"
         ctaHref="/contact-us"
         mediaLabel={post.title}
-        imageSrc={post.image || "https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?w=600&auto=format&fit=crop&q=60"}
+        imageSrc={post.image || "/images/photos/fallback-care.png"}
       />
 
       <article className="py-16 lg:py-20">

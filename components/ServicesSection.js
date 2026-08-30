@@ -145,7 +145,7 @@ export default function ServicesSection() {
                 {/* background image overlay */}
                 <div aria-hidden="true" className="ss-hero-card__img-wrap">
                   <Image
-                    src="/images/service_bento_livein.jpg"
+                    src="/images/photos/live-in-care-garden.jpg"
                     alt="Live-in caregiver"
                     fill
                     sizes="33vw"
@@ -164,7 +164,7 @@ export default function ServicesSection() {
             {/* Portrait image */}
             <motion.div variants={fadeUp(0.05)} initial="hidden" whileInView="visible" viewport={{ once: true }} className="ss-portrait">
               <Image
-                src="/images/service_bento_portrait.jpg"
+                src="/images/photos/caregiver-portrait.jpg"
                 alt="Pavan Homecare caregiver assisting a senior client"
                 fill
                 sizes="(max-width: 1024px) 100vw, 25vw"

@@ -8,10 +8,10 @@ import { blogPosts } from "@/lib/site";
 
 // Image mapping for posts
 const postImages = {
-  "medicaid-waiver-programs-pa": "https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?w=700&auto=format&fit=crop&q=80",
-  "signs-loved-one-needs-home-care": "https://images.unsplash.com/photo-1765896387387-0538bc9f997e?w=700&auto=format&fit=crop&q=80",
-  "caregiver-burnout-family-caregivers": "https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?w=700&auto=format&fit=crop&q=80",
-  "creating-safe-home-for-seniors": "/images/image.jpg",
+  "medicaid-waiver-programs-pa": "/images/photos/blog-medicaid-waiver.jpg",
+  "signs-loved-one-needs-home-care": "/images/photos/blog-signs-need-care.jpg",
+  "caregiver-burnout-family-caregivers": "/images/photos/blog-caregiver-burnout.jpg",
+  "creating-safe-home-for-seniors": "/images/photos/blog-safe-home.jpg",
 };
 
 const postCategories = {
@@ -98,7 +98,7 @@ export default function KnowledgeHub() {
               {/* Left Photo (55%) */}
               <div className="kh-featured-img-wrap">
                 <Image
-                  src={featuredPost.image || postImages[featuredPost.slug] || "https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?w=700&auto=format&fit=crop&q=80"}
+                  src={featuredPost.image || postImages[featuredPost.slug] || "/images/photos/fallback-care.png"}
                   alt={featuredPost.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"
@@ -162,7 +162,7 @@ export default function KnowledgeHub() {
               {/* Image */}
               <div className="kh-card__img-wrap">
                 <Image
-                  src={post.image || postImages[post.slug] || "https://images.unsplash.com/photo-1765896387387-0538bc9f997e?w=600&auto=format&fit=crop&q=80"}
+                  src={post.image || postImages[post.slug] || "/images/photos/fallback-care.png"}
                   alt={post.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"

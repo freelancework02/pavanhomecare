@@ -159,7 +159,7 @@ export default function ServiceAreasSearch() {
             {/* PA Counties Map Asset Image */}
             <div className="relative w-full h-[420px] sm:h-[500px] pl-0 lg:pl-6">
               <Image
-                src="/images/pa_counties_map.jpg"
+                src="/images/pa_counties_map.png"
                 alt="Illustrated Pennsylvania county coverage map showing Philadelphia, Bucks, Montgomery, Delaware, Chester, Lehigh, Northampton, Berks, Schuylkill"
                 fill
                 sizes="(max-width: 1024px) 100vw, 65vw"

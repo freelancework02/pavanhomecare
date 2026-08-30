@@ -124,7 +124,7 @@ export default function WhyChooseUs() {
             {/* Tall image */}
             <div className="wcu-img-wrap">
               <Image
-                src="/images/why_choose_hug.jpg"
+                src="/images/photos/why-choose-us-hands.jpg"
                 alt="Pavan Homecare caregiver embracing senior client with warmth"
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
