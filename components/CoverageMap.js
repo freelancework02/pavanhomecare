@@ -8,7 +8,7 @@ import { countiesData } from "@/lib/countiesData";
 
 export default function CoverageMap() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCounty, setSelectedCounty] = useState("york");
+  const [selectedCounty, setSelectedCounty] = useState("bucks");
 
   const countiesList = Object.keys(countiesData).map((slug) => ({
     slug,
@@ -91,7 +91,7 @@ export default function CoverageMap() {
                     </div>
                     <div>
                       <h4 className="font-poppins font-bold text-[15px] text-[#001A4D]">
-                        {county.name} County
+                        {county.name}
                       </h4>
                       <p className="text-[12px] text-[#4A5A73]">{county.heroHeadline}</p>
                     </div>

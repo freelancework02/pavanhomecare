@@ -685,7 +685,7 @@ export default function ServicesClient({ initialService }) {
               Compassionate Home Care Across Pennsylvania
             </h2>
             <p className="services-section-subtitle">
-              Pavan Homecare proudly serves families throughout South Central &amp; Eastern PA communities with licensed, compassionate in-home care services.
+              Pavan Homecare proudly serves families throughout Eastern &amp; Southeastern PA communities with licensed, compassionate in-home care services.
             </p>
           </div>
 
@@ -856,7 +856,7 @@ export default function ServicesClient({ initialService }) {
                     </p>
                     <a href={site.phoneHref} className="btn-coral-glow inline-flex items-center gap-2">
                       <Phone size={16} />
-                      <span>Call (215) 436-9499 Directly</span>
+                      <span>Call {site.phoneDisplay} Directly</span>
                     </a>
                   </div>
                 ) : (
@@ -876,7 +876,7 @@ export default function ServicesClient({ initialService }) {
                         <input
                           type="tel"
                           required
-                          placeholder="(215) 436-9499"
+                          placeholder={site.phoneDisplay}
                           className="form-input-lux"
                         />
                       </div>
@@ -894,22 +894,11 @@ export default function ServicesClient({ initialService }) {
                       </div>
                       <div className="form-group-lux">
                         <label>County of Residence *</label>
-                        <select required className="form-input-lux">
-                          <option value="York County">York County</option>
-                          <option value="Adams County">Adams County</option>
-                          <option value="Cumberland County">Cumberland County</option>
-                          <option value="Dauphin County">Dauphin County</option>
-                          <option value="Lancaster County">Lancaster County</option>
-                          <option value="Lebanon County">Lebanon County</option>
-                          <option value="Perry County">Perry County</option>
-                          <option value="Berks County">Berks County</option>
-                          <option value="Lehigh County">Lehigh County</option>
-                          <option value="Northampton County">Northampton County</option>
-                          <option value="Philadelphia County">Philadelphia County</option>
-                          <option value="Bucks County">Bucks County</option>
-                          <option value="Montgomery County">Montgomery County</option>
-                          <option value="Delaware County">Delaware County</option>
-                          <option value="Chester County">Chester County</option>
+                        <select required className="form-input-lux" defaultValue="">
+                          <option value="" disabled>Select your PA County</option>
+                          {site.serviceAreas.map((county) => (
+                            <option key={county} value={county}>{county}</option>
+                          ))}
                         </select>
                       </div>
                     </div>

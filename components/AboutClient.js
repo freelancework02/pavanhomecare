@@ -108,7 +108,7 @@ export default function AboutClient() {
                 <span className="text-gradient">Supporting Independence.</span>
               </h1>
               <p className="about-hero-desc">
-                Pavan Homecare is dedicated to providing high-quality, clinical coordinator-supervised caregiver options across York and surrounding PA counties.
+                Pavan Homecare is dedicated to providing high-quality, clinical coordinator-supervised caregiver options across Bucks, Philadelphia, and surrounding PA counties.
               </p>
               <div className="about-hero-actions">
                 <Link
@@ -221,7 +221,7 @@ export default function AboutClient() {
                   Pavan Homecare was established to raise the bar for local in-home care across Pennsylvania. We saw a critical need: providing professional, high-quality caregiver assistance that never compromises on human empathy and connection.
                 </p>
                 <p>
-                  We believe that home is the foundation of independence. Our mission is to support seniors, veterans, and individuals with disabilities across Philadelphia, Bucks, Montgomery, Delaware, Chester, York, and surrounding PA counties, allowing them to lead fulfilling lives in the comfort of their own homes.
+                  We believe that home is the foundation of independence. Our mission is to support seniors, veterans, and individuals with disabilities across Philadelphia, Bucks, Montgomery, Delaware, Chester, and surrounding PA counties, allowing them to lead fulfilling lives in the comfort of their own homes.
                 </p>
               </div>
 
@@ -245,7 +245,7 @@ export default function AboutClient() {
                   <div className="about-timeline-dot" />
                   <div className="about-timeline-content">
                     <h5>Community Leadership</h5>
-                    <p>Serving hundreds of families across Philadelphia, Bucks, Montgomery, Delaware, Chester, York, and surrounding PA counties with 24/7 dedicated local coordinators.</p>
+                    <p>Serving hundreds of families across Philadelphia, Bucks, Montgomery, Delaware, Chester, and surrounding PA counties with 24/7 dedicated local coordinators.</p>
                   </div>
                 </div>
               </div>
@@ -456,7 +456,7 @@ export default function AboutClient() {
                 <div className="about-trust-image-wrapper">
                   <Image
                     src="/images/photos/trust-row4-coordination.jpg"
-                    alt="Local York PA care coordination meeting"
+                    alt="Local Feasterville PA care coordination meeting"
                     fill
                     sizes="(max-width: 68rem) 100vw, 550px"
                     className="about-trust-img"
@@ -464,14 +464,14 @@ export default function AboutClient() {
                 </div>
               </div>
               <div className="about-trust-content">
-                <h3>South Central PA Local Support</h3>
+                <h3>Bucks County Headquarters &amp; Local PA Support</h3>
                 <p>
-                  Rooted on South Queen Street in York, PA, we have deep relationships with local PA case managers, health clinics, and veteran coordination programs.
+                  Headquartered at 19 Bowman Dr, Feasterville, PA, we have deep relationships with local PA case managers, health clinics, and veteran coordination programs.
                 </p>
                 <ul className="about-trust-checklist">
-                  <li>Medicaid Waiver program enrollment guide</li>
-                  <li>VA Aid & Attendance pension expertise</li>
-                  <li>Serving York, Lancaster, Cumberland, and Adams counties</li>
+                  <li>Medicaid Waiver program enrollment guidance</li>
+                  <li>VA Aid &amp; Attendance pension expertise</li>
+                  <li>Serving Bucks, Philadelphia, Montgomery, Delaware, and Chester counties</li>
                 </ul>
                 <Link href="/areas-we-serve" className="about-trust-cta">
                   See service areas
@@ -584,10 +584,10 @@ export default function AboutClient() {
                 <div className="about-county-pill"> Montgomery County </div>
                 <div className="about-county-pill"> Delaware County </div>
                 <div className="about-county-pill"> Chester County </div>
-                <div className="about-county-pill"> York County </div>
-                <div className="about-county-pill"> Lancaster County </div>
                 <div className="about-county-pill"> Lehigh County </div>
+                <div className="about-county-pill"> Northampton County </div>
                 <div className="about-county-pill"> Berks County </div>
+                <div className="about-county-pill"> Schuylkill County </div>
               </div>
 
               <p className="about-local-footer-text">
@@ -611,7 +611,7 @@ export default function AboutClient() {
               <div className="about-local-image-wrapper">
                 <Image
                   src="/images/service-area-map.png"
-                  alt="Pennsylvania map highlighting York and serving Adams, Lancaster, Dauphin, Cumberland counties"
+                  alt="Pennsylvania map highlighting Feasterville headquarters and serving Bucks, Philadelphia, Montgomery, Delaware, Chester, Lehigh, Northampton, Berks, and Schuylkill counties"
                   fill
                   sizes="(max-width: 68rem) 100vw, 550px"
                   className="about-local-img"
@@ -633,7 +633,7 @@ export default function AboutClient() {
             <div className="about-stat-card">
               <Counter value="500+" />
               <div className="about-stat-label">Families Served</div>
-              <p>Providing peace of mind across South Central PA homes.</p>
+              <p>Providing peace of mind across Pennsylvania homes.</p>
             </div>
 
             {/* Stat 2 */}

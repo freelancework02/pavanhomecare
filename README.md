@@ -1,9 +1,6 @@
-# Blessed Hearts Homecare — Website
+# Pavan Homecare — Website
 
-A Next.js 14 (App Router) site for **Blessed Hearts Homecare**, built from `project.md`'s brand
-guide (colors, typography, business info, accessibility, SEO) and laid out to match the
-reference screenshots (rounded "blob" hero, split contact panel, service/testimonial cards,
-newsletter + multi-column footer).
+A Next.js 14 (App Router) site for **Pavan Homecare**, built with modern design principles, accessible layout, responsive components, and centralized business data in `lib/site.js`.
 
 ## Run it locally
 

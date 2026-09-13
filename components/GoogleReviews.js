@@ -131,7 +131,7 @@ export default function GoogleReviews() {
             className="gr-h2"
           >
             Loved by Families Across<br />
-            <span className="gr-gradient-text">South Central Pennsylvania</span>
+            <span className="gr-gradient-text">Pennsylvania</span>
           </motion.h2>
 
           <motion.p

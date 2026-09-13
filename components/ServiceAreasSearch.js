@@ -111,7 +111,7 @@ export default function ServiceAreasSearch() {
 
             {/* Description */}
             <p className="text-[#4A5A73] text-[18px] sm:text-[20px] font-normal leading-[1.7] max-w-[600px]">
-              Pavan Homecare is proud to provide trusted, in-home care services to families across South Central Pennsylvania. We’re here to bring comfort, support, and peace of mind—right where you call home.
+              Pavan Homecare is proud to provide trusted, in-home care services to families across Pennsylvania. We’re here to bring comfort, support, and peace of mind—right where you call home.
             </p>
 
             {/* Accent Line */}

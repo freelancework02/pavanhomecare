@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
-import { blogPosts } from "@/lib/site";
+import { blogPosts, site } from "@/lib/site";
 import { Calendar, ArrowLeft, ArrowRight, BookOpen, Clock } from "lucide-react";
 
 export function generateStaticParams() {
@@ -12,10 +12,50 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const post = blogPosts.find((p) => p.slug === params.slug);
   if (!post) return {};
+  const canonicalUrl = `/blog/${post.slug}`;
+
   return {
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates: { canonical: canonicalUrl },
+    keywords: [
+      post.title,
+      "senior care Pennsylvania",
+      "home care guide PA",
+      "Pavan Homecare blog",
+      "family caregiver advice"
+    ],
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+      },
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: `${site.url}${canonicalUrl}`,
+      type: "article",
+      publishedTime: post.date,
+      authors: [site.name],
+      siteName: site.name,
+      images: [
+        {
+          url: post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/pavan-logo/PavanHomecare_Transparent.png`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
   };
 }
 
@@ -32,9 +72,66 @@ export default function BlogPostPage({ params }) {
   if (!post) notFound();
 
   const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const canonicalUrl = `/blog/${post.slug}`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${site.url}${canonicalUrl}/#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": site.url
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": `${site.url}/blog`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": post.title,
+            "item": `${site.url}${canonicalUrl}`
+          }
+        ]
+      },
+      {
+        "@type": "Article",
+        "@id": `${site.url}${canonicalUrl}/#article`,
+        "headline": post.title,
+        "description": post.excerpt,
+        "datePublished": post.date,
+        "dateModified": post.date,
+        "url": `${site.url}${canonicalUrl}`,
+        "image": post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/pavan-logo/PavanHomecare_Transparent.png`,
+        "author": {
+          "@type": "Organization",
+          "name": `${site.name} Clinical Care Team`,
+          "url": site.url
+        },
+        "publisher": {
+          "@id": `${site.url}/#organization`
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `${site.url}${canonicalUrl}`
+        }
+      }
+    ]
+  };
 
   return (
     <div className="bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageHero
         eyebrow="CARE RESOURCE ARTICLE"
         title={post.title}

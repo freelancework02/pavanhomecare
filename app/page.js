@@ -1,25 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import Script from "next/script";
-import {
-  ShieldCheck,
-  HeartHandshake,
-  ClipboardList,
-  Bath,
-  Utensils,
-  Brush,
-  Car,
-  Bell,
-  AlertTriangle,
-  Accessibility,
-  ShoppingBag,
-  ArrowRight,
-  Heart,
-  Star,
-  Award,
-  Home,
-  Shield
-} from "lucide-react";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -30,19 +11,188 @@ import ServiceAreasSearch from "@/components/ServiceAreasSearch";
 import KnowledgeHub from "@/components/KnowledgeHub";
 import GoogleReviews from "@/components/GoogleReviews";
 import HowItWorks from "@/components/HowItWorks";
-
+import HomeFaq, { homeFaqs } from "@/components/HomeFaq";
 import { services, site } from "@/lib/site";
 
 export const metadata = {
-  title: `Home Care Services in Pennsylvania | ${site.name}`,
+  title: `In-Home Senior Care & Caregiver Services in PA | ${site.name}`,
   description:
-    "Trusted in-home senior care across South Central & Eastern PA. Serving 10 counties. Call today for a free consultation.",
+    "Trusted in-home senior care across Pennsylvania. Serving 9 counties including Bucks, Philadelphia, Montgomery, Delaware, and Chester. Companion care, personal care, 24/7 care & Medicaid waiver assistance.",
   alternates: { canonical: "/" },
+  keywords: [
+    "in home care Pennsylvania",
+    "Bucks County senior care",
+    "home care agency Philadelphia PA",
+    "personal care Feasterville PA",
+    "24 hour live-in care PA",
+    "companion care for elderly PA",
+    "dementia care Bucks County",
+    "Medicaid waiver home care provider PA"
+  ],
+  openGraph: {
+    title: `In-Home Senior Care & Caregiver Services in PA | ${site.name}`,
+    description:
+      "Compassionate, licensed in-home care tailored to your family's needs. Serving Bucks County, Philadelphia, and 9 PA counties.",
+    url: site.url,
+    siteName: site.name,
+    type: "website",
+  },
+};
+
+const homePageJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "@id": `${site.url}/#faq`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What in-home care services does Pavan Homecare provide in Pennsylvania?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pavan Homecare provides comprehensive, licensed non-medical senior home care across 9 Pennsylvania counties. Our services include personal hygiene care, companion care, 24-hour live-in care, specialized Alzheimer's and dementia memory care, medication reminders, meal preparation, mobility assistance, and post-hospital respite care."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Pennsylvania Medicaid (Community HealthChoices) pay for in-home care?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Eligible seniors and individuals with disabilities in Pennsylvania can receive 100% state-funded in-home care through the Pennsylvania Community HealthChoices (CHC) and OBRA Medicaid waiver programs. Pavan Homecare works closely with participants, families, and service coordinators to quickly initiate approved care hours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does in-home senior care cost in Pennsylvania?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Private-pay home care in Pennsylvania typically ranges from $28 to $36 per hour depending on scheduling and care intensity. We provide completely transparent pricing with flexible hourly schedules and zero long-term binding contracts. We also assist families utilizing Long-Term Care Insurance and Veterans Aid & Attendance benefits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can family members get paid to be caregivers in Pennsylvania?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Under Pennsylvania's Community HealthChoices Medicaid waiver, qualifying family members (such as adult daughters, sons, or relatives) can often be hired, trained, and paid as official caregivers through Pavan Homecare."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How quickly can care services start for my loved one?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In most cases, our care coordinators can conduct a complimentary in-home assessment and match a compassionate caregiver within 24 to 48 hours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are Pavan Homecare caregivers background-checked and insured?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, 100%. Every caregiver at Pavan Homecare undergoes rigorous multi-state criminal background checks, FBI fingerprinting, reference verification, and drug screening. Pavan Homecare is licensed by the Pennsylvania Department of Health, bonded, and fully insured."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      description: site.tagline,
+      publisher: {
+        "@id": `${site.url}/#organization`,
+      },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${site.url}/areas-we-serve?search={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "HomeHealthCareService",
+      "@id": `${site.url}/#service`,
+      name: `${site.name} In-Home Senior Care Services`,
+      url: site.url,
+      telephone: site.phoneDisplay,
+      description:
+        "Comprehensive in-home senior care and caregiver services throughout Pennsylvania. Specializing in companion care, personal hygiene, 24-hour live-in support, Alzheimer's care, and Medicaid waiver support.",
+      provider: {
+        "@id": `${site.url}/#organization`,
+      },
+      areaServed: site.serviceAreas.map((area) => ({
+        "@type": "AdministrativeArea",
+        name: area,
+      })),
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "In-Home Care Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Companion Care",
+              description:
+                "Friendly socialization, meal preparation, medication reminders, light housekeeping, and errands to keep seniors active and connected.",
+              url: `${site.url}/companion-care`,
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Personal Care & Hygiene",
+              description:
+                "Dignified personal hygiene, bathing, dressing, grooming, toileting, and mobility assistance by trained caregivers.",
+              url: `${site.url}/personal-care`,
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "24-Hour & Live-In Care",
+              description:
+                "Continuous around-the-clock supervision and immediate assistance for seniors requiring constant support.",
+              url: `${site.url}/24-hour-live-in-care`,
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Alzheimer's & Dementia Memory Care",
+              description:
+                "Specialized memory support, structured routines, wandering prevention, and cognitive engagement in the comforting familiarity of home.",
+              url: `${site.url}/dementia-alzheimers-care`,
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Post-Hospital & Respite Care",
+              description:
+                "Short-term relief for family caregivers and dedicated recovery support following hospital discharge or surgery.",
+              url: `${site.url}/post-hospital-respite-care`,
+            },
+          },
+        ],
+      },
+    },
+  ],
 };
 
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageJsonLd) }}
+      />
       <HeroSection />
 
       {/* New Asymmetric Bento Grid Services Section */}
@@ -134,6 +284,8 @@ export default function HomePage() {
           <GoogleReviews />
         </div>
       </section>
+
+      <HomeFaq />
 
       <CTASection />
     </>

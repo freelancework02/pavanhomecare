@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import Logo from "./Logo";
 import { countiesData } from "@/lib/countiesData";
+import { site } from "@/lib/site";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -48,9 +49,9 @@ export default function Navbar() {
           </div>
 
           <div className="nb-topbar__right">
-            <a href="tel:+12154369499" className="nb-topbar__link">
+            <a href={site.phoneHref} className="nb-topbar__link">
               <Phone size={13} color="#0061FF" />
-              <span>(215) 436-9499</span>
+              <span>{site.phoneDisplay}</span>
             </a>
             <span className="nb-topbar__divider" />
             <Link href="/contact-us" className="nb-topbar__link">
@@ -149,13 +150,13 @@ export default function Navbar() {
 
           {/* Desktop Right CTAs */}
           <div className="nb-ctas">
-            <a href="tel:+12154369499" className="nb-phone-pill">
+            <a href={site.phoneHref} className="nb-phone-pill">
               <span className="nb-phone-icon">
                 <Phone size={13} color="#fff" />
               </span>
               <span className="nb-phone-text">
                 <span className="nb-phone-label">Call Anytime</span>
-                <span className="nb-phone-number">(215) 436-9499</span>
+                <span className="nb-phone-number">{site.phoneDisplay}</span>
               </span>
             </a>
 
@@ -215,9 +216,9 @@ export default function Navbar() {
             <Link href="/contact-us" onClick={() => setMobileOpen(false)} className="nb-mobile__link">Contact Us</Link>
           </nav>
           <div className="nb-mobile__ctas">
-            <a href="tel:+12154369499" className="nb-mobile__call">
+            <a href={site.phoneHref} className="nb-mobile__call">
               <Phone size={18} color="#60EFFF" />
-              Call (215) 436-9499
+              Call {site.phoneDisplay}
             </a>
             <Link href="/contact-us" onClick={() => setMobileOpen(false)} className="nb-mobile__request btn-shimmer">
               Request Care <ArrowRight size={16} />

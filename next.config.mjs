@@ -23,28 +23,27 @@ const nextConfig = {
   async rewrites() {
     return [
       // County Pages
-      { source: '/adams-county-home-care', destination: '/areas-we-serve/adams' },
-      { source: '/cumberland-county-home-care', destination: '/areas-we-serve/cumberland' },
-      { source: '/dauphin-county-home-care', destination: '/areas-we-serve/dauphin' },
-      { source: '/lancaster-county-home-care', destination: '/areas-we-serve/lancaster' },
-      { source: '/lebanon-county-home-care', destination: '/areas-we-serve/lebanon' },
-      { source: '/perry-county-home-care', destination: '/areas-we-serve/perry' },
-      { source: '/york-county-home-care', destination: '/areas-we-serve/york' },
-      { source: '/berks-county-home-care', destination: '/areas-we-serve/berks' },
+      { source: '/philadelphia-county-home-care', destination: '/areas-we-serve/philadelphia' },
+      { source: '/bucks-county-home-care', destination: '/areas-we-serve/bucks' },
+      { source: '/montgomery-county-home-care', destination: '/areas-we-serve/montgomery' },
+      { source: '/delaware-county-home-care', destination: '/areas-we-serve/delaware' },
+      { source: '/chester-county-home-care', destination: '/areas-we-serve/chester' },
       { source: '/lehigh-county-home-care', destination: '/areas-we-serve/lehigh' },
       { source: '/northampton-county-home-care', destination: '/areas-we-serve/northampton' },
+      { source: '/berks-county-home-care', destination: '/areas-we-serve/berks' },
+      { source: '/schuylkill-county-home-care', destination: '/areas-we-serve/schuylkill' },
 
       // City Pages
-      { source: '/york-pa-home-care', destination: '/areas-we-serve/york?city=york' },
-      { source: '/lancaster-pa-home-care', destination: '/areas-we-serve/lancaster?city=lancaster' },
+      { source: '/feasterville-pa-home-care', destination: '/areas-we-serve/bucks?city=feasterville' },
+      { source: '/philadelphia-pa-home-care', destination: '/areas-we-serve/philadelphia?city=philadelphia' },
+      { source: '/doylestown-pa-home-care', destination: '/areas-we-serve/bucks?city=doylestown' },
+      { source: '/norristown-pa-home-care', destination: '/areas-we-serve/montgomery?city=norristown' },
+      { source: '/media-pa-home-care', destination: '/areas-we-serve/delaware?city=media' },
+      { source: '/west-chester-pa-home-care', destination: '/areas-we-serve/chester?city=westchester' },
       { source: '/reading-pa-home-care', destination: '/areas-we-serve/berks?city=reading' },
       { source: '/allentown-pa-home-care', destination: '/areas-we-serve/lehigh?city=allentown' },
       { source: '/bethlehem-pa-home-care', destination: '/areas-we-serve/northampton?city=bethlehem' },
-      { source: '/harrisburg-pa-home-care', destination: '/areas-we-serve/dauphin?city=harrisburg' },
-      { source: '/mechanicsburg-pa-home-care', destination: '/areas-we-serve/cumberland?city=mechanicsburg' },
-      { source: '/carlisle-pa-home-care', destination: '/areas-we-serve/cumberland?city=carlisle' },
-      { source: '/gettysburg-pa-home-care', destination: '/areas-we-serve/adams?city=gettysburg' },
-      { source: '/hershey-pa-home-care', destination: '/areas-we-serve/dauphin?city=hershey' },
+      { source: '/pottsville-pa-home-care', destination: '/areas-we-serve/schuylkill?city=pottsville' },
 
       // Service Pages
       { source: '/companion-care', destination: '/services?service=companion-care' },
@@ -54,6 +53,7 @@ const nextConfig = {
       { source: '/post-hospital-respite-care', destination: '/services?service=respite-care' },
 
       // Blog Pages
+      { source: '/paid-family-caregiver-pennsylvania', destination: '/blog/paid-family-caregiver-pa' },
       { source: '/medicaid-home-care-pennsylvania', destination: '/blog/medicaid-waiver-programs-pa' },
       { source: '/home-care-cost-pennsylvania', destination: '/blog/home-care-cost-pennsylvania' },
       { source: '/home-care-vs-assisted-living', destination: '/blog/home-care-vs-assisted-living' },

@@ -7,6 +7,7 @@ import {
   ArrowRight, Phone, Heart, Star, ShieldCheck, UserCheck, Clock,
   Home as HomeIcon, Users, CheckCircle2,
 } from "lucide-react";
+import { site } from "@/lib/site";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -39,14 +40,14 @@ export default function HeroSection() {
             {/* H1 Headline */}
             <motion.h1 variants={fadeUp} custom={0.15} className="hs-h1">
               Compassionate<br />
-              In-Home Care,<br />
-              <span className="hs-gradient-text">Designed Around</span><br />
-              <span className="hs-gradient-text">Your Family</span>
+              In-Home Senior Care<br />
+              <span className="hs-gradient-text">In Bucks, Philly</span><br />
+              <span className="hs-gradient-text">&amp; Pennsylvania</span>
             </motion.h1>
 
             {/* Description */}
             <motion.p variants={fadeUp} custom={0.25} className="hs-desc">
-              We provide personalized in-home care that helps seniors and adults with disabilities live safely, comfortably, and independently in the place they love most—their home.
+              Pavan Homecare provides licensed companion care, personal hygiene support, 24-hour live-in care, and Medicaid waiver home care across Bucks County, Philadelphia, Montgomery, and 9 PA counties.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -57,13 +58,13 @@ export default function HeroSection() {
                 <ArrowRight size={17} />
               </Link>
 
-              <a href="tel:+12154369499" id="hero-call-btn" className="hs-btn-phone">
+              <a href={site.phoneHref} id="hero-call-btn" className="hs-btn-phone">
                 <span className="hs-phone-circle">
                   <Phone size={14} color="#FFF" />
                 </span>
                 <span className="hs-phone-text">
                   <span className="hs-phone-label">Call Now</span>
-                  <span className="hs-phone-num">(215) 436-9499</span>
+                  <span className="hs-phone-num">{site.phoneDisplay}</span>
                 </span>
               </a>
             </motion.div>

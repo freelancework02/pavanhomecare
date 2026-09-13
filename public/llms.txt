@@ -1,0 +1,57 @@
+# Pavan Homecare — AI & LLM Knowledge Document
+
+> Pavan Homecare is a premier, licensed in-home care agency headquartered in Feasterville, Bucks County, Pennsylvania. The agency delivers love-driven, non-medical senior care and daily assistance across 9 Pennsylvania counties.
+
+## Business Summary
+- Organization Name: Pavan Homecare LLC
+- Tagline: Love driven care
+- Headquarters Address: 19 Bowman Dr, Feasterville, PA 19053
+- Phone: (215) 436-9499
+- Fax: (223) 210-3600
+- Email: pavanhomecare@gmail.com
+- Website: https://pavanhomecare.com
+- Service Model: Non-medical private duty and Medicaid waiver in-home care
+- Availability: 24 Hours / 7 Days a week care coordinators
+
+## Service Coverage (9 Pennsylvania Counties)
+1. Bucks County (Feasterville, Doylestown, Bensalem, Newtown, Langhorne, Levittown, Warminster, Quakertown)
+2. Philadelphia County (Center City, Northeast Philadelphia, South Philly, West Philly, Chestnut Hill, Roxborough)
+3. Montgomery County (Norristown, King of Prussia, Lansdale, Conshohocken, Pottstown, Ambler)
+4. Delaware County (Media, Upper Darby, Chester, Haverford, Radnor, Springfield)
+5. Chester County (West Chester, Exton, Phoenixville, Coatesville, Malvern, Downingtown)
+6. Lehigh County (Allentown, Bethlehem, Emmaus, Macungie, Whitehall)
+7. Northampton County (Bethlehem, Easton, Palmer, Nazareth, Northampton)
+8. Berks County (Reading, Wyomissing, Kutztown, Boyertown)
+9. Schuylkill County (Pottsville, Tamaqua, Schuylkill Haven, Shenandoah)
+
+## Core In-Home Care Services
+1. Companion Care: Socialization, nutritious meal preparation, medication reminders, light housekeeping, and errands.
+2. Personal Care & Daily Hygiene: Dignified hands-on assistance with bathing, dressing, grooming, toileting, and safe ambulation.
+3. 24-Hour & Live-In Care: Continuous round-the-clock supervision and immediate assistance for high-need seniors.
+4. Alzheimer’s & Dementia Memory Care: Specialized memory support preserving familiar routines, independence, and cognitive stimulation.
+5. Post-Hospital & Respite Care: Short-term family caregiver relief and recovery assistance following medical procedures.
+6. Medicaid Waiver Assistance: Community HealthChoices (CHC) and OBRA waiver home care provider.
+
+## Key Guides & Educational Resources
+- How to Get Paid as a Family Caregiver in PA (2026 Guide): https://pavanhomecare.com/paid-family-caregiver-pennsylvania
+- Home Care Costs in PA (2026 Guide): https://pavanhomecare.com/home-care-cost-pennsylvania
+- In-Home Care vs Assisted Living in PA: https://pavanhomecare.com/home-care-vs-assisted-living
+- How to Choose a Home Care Agency in PA: https://pavanhomecare.com/find-caregiver-for-parent-pa
+- Understanding PA Medicaid Waiver Programs: https://pavanhomecare.com/medicaid-home-care-pennsylvania
+
+## Canonical Directory
+- Homepage: https://pavanhomecare.com/
+- About Us: https://pavanhomecare.com/about
+- Services: https://pavanhomecare.com/services
+- Areas We Serve: https://pavanhomecare.com/areas-we-serve
+- Companion Care: https://pavanhomecare.com/companion-care
+- Personal Care: https://pavanhomecare.com/personal-care
+- 24-Hour Care: https://pavanhomecare.com/24-hour-live-in-care
+- Memory Care: https://pavanhomecare.com/dementia-alzheimers-care
+- Respite Care: https://pavanhomecare.com/post-hospital-respite-care
+- Bucks County Care: https://pavanhomecare.com/areas-we-serve/bucks
+- Philadelphia Care: https://pavanhomecare.com/areas-we-serve/philadelphia
+- Montgomery Care: https://pavanhomecare.com/areas-we-serve/montgomery
+- Feasterville Care: https://pavanhomecare.com/feasterville-pa-home-care
+- Contact & Consultation: https://pavanhomecare.com/contact-us
+- Blog & Resources: https://pavanhomecare.com/blog

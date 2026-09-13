@@ -36,7 +36,7 @@ const contactChannels = [
     title: "Direct Phone Line",
     desc: "Speak with our on-call Care Coordinator immediately for guidance & urgent admissions.",
     icon: Phone,
-    actionText: "Call (215) 436-9499",
+    actionText: `Call ${site.phoneDisplay}`,
     actionLink: site.phoneHref,
     badge: "24/7 Response",
     featured: true
@@ -329,7 +329,7 @@ export default function ContactClient() {
 
                 <a href={site.phoneHref} className="btn-blue-outline">
                   <Phone size={18} className="text-[#0061FF]" />
-                  <span>Call (215) 436-9499</span>
+                  <span>Call {site.phoneDisplay}</span>
                 </a>
               </div>
 
@@ -496,7 +496,7 @@ export default function ContactClient() {
                 <p>Prefer to speak directly with an on-call manager?</p>
                 <a href={site.phoneHref} className="sidebar-direct-phone">
                   <Phone size={20} />
-                  <span>(215) 436-9499</span>
+                  <span>{site.phoneDisplay}</span>
                 </a>
               </div>
             </div>
@@ -518,7 +518,7 @@ export default function ContactClient() {
                   </p>
                   <a href={site.phoneHref} className="btn-coral-glow" style={{ textDecoration: "none" }}>
                     <Phone size={18} />
-                    <span>Call (215) 436-9499 for Immediate Help</span>
+                    <span>Call {site.phoneDisplay} for Immediate Help</span>
                   </a>
                 </motion.div>
               ) : (
@@ -714,7 +714,7 @@ export default function ContactClient() {
                       onChange={handleCheckboxChange}
                     />
                     <label htmlFor="privacyConsent">
-                      By checking this box, texting START to <a href={site.phoneHref}>215-436-9499</a>, or providing verbal consent, you agree to receive informational text messages (appointment reminders, scheduling updates, service notifications) from Pavan Homecare. Msg frequency varies. Msg &amp; data rates may apply. Mobile information is strictly confidential and never shared with third parties for promotional purposes. Reply STOP to opt out. See our <Link href="/privacy-policy">Privacy Policy</Link>. *
+                      By checking this box, texting START to <a href={site.phoneHref}>{site.phoneDisplay}</a>, or providing verbal consent, you agree to receive informational text messages (appointment reminders, scheduling updates, service notifications) from Pavan Homecare. Msg frequency varies. Msg &amp; data rates may apply. Mobile information is strictly confidential and never shared with third parties for promotional purposes. Reply STOP to opt out. See our <Link href="/privacy-policy">Privacy Policy</Link>. *
                     </label>
                   </div>
                   {errors.privacyConsent && (
@@ -850,7 +850,7 @@ export default function ContactClient() {
                 </div>
                 <address>
                   <strong>{site.name}</strong><br />
-                  {site.address.line1}, Suite 206<br />
+                  {site.address.line1}<br />
                   {site.address.city}, {site.address.state} {site.address.zip}
                 </address>
               </div>
@@ -972,7 +972,7 @@ export default function ContactClient() {
             </p>
             <a href={site.phoneHref} className="emergency-call-btn">
               <Phone size={22} />
-              <span>Call Emergency Line: (215) 436-9499</span>
+              <span>Call Emergency Line: {site.phoneDisplay}</span>
             </a>
           </div>
         </div>
@@ -1120,7 +1120,7 @@ export default function ContactClient() {
               </button>
               <a href={site.phoneHref} className="btn-glass-outline">
                 <Phone size={18} />
-                <span>Call (215) 436-9499</span>
+                <span>Call {site.phoneDisplay}</span>
               </a>
             </div>
           </div>

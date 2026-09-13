@@ -33,7 +33,7 @@ export default function ContactSplit() {
           <li style={{ display: "flex", gap: "0.75rem" }}>
             <MapPin aria-hidden="true" style={{ flexShrink: 0 }} />
             <span>
-              <strong>York Office</strong>
+              <strong>Feasterville Office</strong>
               <br />
               {site.address.line1}
               <br />

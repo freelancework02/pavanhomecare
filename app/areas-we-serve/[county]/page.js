@@ -19,11 +19,40 @@ export async function generateMetadata({ params, searchParams }) {
   const description = isCity ? citiesData[city].metaDescription : data.metaDescription;
   const canonicalUrl = isCity ? `/${city}-pa-home-care` : `/areas-we-serve/${data.slug}`;
 
+  const localizedKeywords = isCity
+    ? [
+        `home care ${citiesData[city].name} PA`,
+        `senior care in ${citiesData[city].name}`,
+        `in home caregivers ${citiesData[city].name} Pennsylvania`,
+        `personal care ${citiesData[city].name}`,
+        `24 hour caregiver ${citiesData[city].name} PA`,
+        `Medicaid waiver care ${citiesData[city].name}`
+      ]
+    : [
+        `home care ${data.name} PA`,
+        `senior care ${data.name}`,
+        `in home caregivers ${data.name} Pennsylvania`,
+        `companion care ${data.name}`,
+        `personal care agency ${data.name}`,
+        `live in care ${data.name} PA`,
+        `dementia care ${data.name}`
+      ];
+
   return {
     title,
     description,
+    keywords: localizedKeywords,
     alternates: {
       canonical: canonicalUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+      },
     },
     openGraph: {
       title,
@@ -60,7 +89,7 @@ export default function CountyPage({ params, searchParams }) {
       {
         "@type": "LocalBusiness",
         "@id": `${site.url}${canonicalUrl}/#localbusiness`,
-        "name": isCity ? `${site.name} - Home Care in ${city.charAt(0).toUpperCase() + city.slice(1)}, PA` : `${site.name} - ${data.name} In-Home Care`,
+        "name": isCity ? `${site.name} - Home Care in ${citiesData[city].name}, PA` : `${site.name} - ${data.name} In-Home Care`,
         "url": `${site.url}${canonicalUrl}`,
         "telephone": site.phoneDisplay,
         "email": site.email,
@@ -74,7 +103,7 @@ export default function CountyPage({ params, searchParams }) {
         },
         "areaServed": {
           "@type": "AdministrativeArea",
-          "name": isCity ? `${city.charAt(0).toUpperCase() + city.slice(1)}, PA` : data.name
+          "name": isCity ? `${citiesData[city].name}, PA` : data.name
         },
         "description": pageDesc
       },
@@ -97,7 +126,7 @@ export default function CountyPage({ params, searchParams }) {
           {
             "@type": "ListItem",
             "position": 3,
-            "name": isCity ? `${city.charAt(0).toUpperCase() + city.slice(1)}, PA` : data.name,
+            "name": isCity ? `${citiesData[city].name}, PA` : data.name,
             "item": `${site.url}${canonicalUrl}`
           }
         ]
@@ -105,7 +134,7 @@ export default function CountyPage({ params, searchParams }) {
       {
         "@type": "FAQPage",
         "@id": `${site.url}${canonicalUrl}/#faq`,
-        "mainEntity": data.faqs.map((faq) => ({
+        "mainEntity": (data.faqs || []).map((faq) => ({
           "@type": "Question",
           "name": faq.q,
           "acceptedAnswer": {

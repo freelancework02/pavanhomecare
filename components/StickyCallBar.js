@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Phone, Heart } from "lucide-react";
+import { site } from "@/lib/site";
 
 export default function StickyCallBar() {
   const [show, setShow] = useState(false);
@@ -20,9 +21,9 @@ export default function StickyCallBar() {
 
   return (
     <div className="sc-bar">
-      <a href="tel:+12154369499" className="sc-btn sc-btn--call">
+      <a href={site.phoneHref} className="sc-btn sc-btn--call">
         <Phone size={16} />
-        Call (215) 436-9499
+        Call {site.phoneDisplay}
       </a>
       <Link href="/contact-us" className="sc-btn sc-btn--request">
         <Heart size={16} fill="rgba(255,255,255,0.4)" />

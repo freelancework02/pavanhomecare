@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Logo from "./Logo";
-import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin, Twitter, ShieldCheck } from "lucide-react";
+import { site } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -13,18 +14,42 @@ export default function Footer() {
       <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.24)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.24)_1px,transparent_1px)] [background-size:64px_64px] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-[80px] relative z-10">
-        {/* 4-Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/15">
+        
+        {/* Main 4-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-white/15">
           
-          {/* Col 1: Logo & Description */}
+          {/* Col 1: Logo, Mission & Contact Details */}
           <div className="lg:col-span-4 flex flex-col">
             <Link href="/" className="mb-6 inline-block w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7A59] rounded-lg hover:opacity-95 transition-opacity">
               <Logo variant="white" showTagline={false} height="7.0rem" />
             </Link>
 
-            <p className="text-white/90 text-[15px] leading-relaxed max-w-[360px] mb-6 font-normal">
-              Providing compassionate, personalized in-home care that helps seniors and individuals with disabilities live safely, comfortably, and independently in the place they love most—their home.
+            <p className="text-white/80 text-[14.5px] leading-relaxed max-w-[360px] mb-6 font-normal">
+              Licensed in-home care agency dedicated to love-driven support. Empowering seniors and adults with disabilities across 9 Pennsylvania counties to thrive with dignity in the comfort of home.
             </p>
+
+            <div className="flex flex-col gap-3 text-[14px] text-white/90 mb-6">
+              <div className="flex items-start gap-2.5">
+                <MapPin size={16} className="text-[#FF7A59] shrink-0 mt-0.5" />
+                <span>{site.addressFull}</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Phone size={16} className="text-[#FF7A59] shrink-0" />
+                <a href={site.phoneHref} className="text-white font-bold hover:text-[#60EFFF] transition-colors">
+                  {site.phoneDisplay}
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Mail size={16} className="text-[#FF7A59] shrink-0" />
+                <a href={`mailto:${site.email}`} className="text-white hover:text-[#60EFFF] transition-colors">
+                  {site.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Clock size={16} className="text-[#FF7A59] shrink-0" />
+                <span>24/7 Live Care Coordinator Support</span>
+              </div>
+            </div>
 
             {/* Social Links */}
             <div className="flex items-center gap-3 text-white">
@@ -32,161 +57,173 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-white/30 text-white hover:text-white hover:bg-[#FF7A59] hover:border-[#FF7A59] hover:scale-110 hover:shadow-[0_4px_15px_rgba(255,122,89,0.4)] flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-9 h-9 rounded-full border border-white/30 text-white hover:bg-[#FF7A59] hover:border-[#FF7A59] flex items-center justify-center transition-all duration-300"
                 aria-label="Facebook"
               >
-                <Facebook size={16} />
+                <Facebook size={15} />
               </a>
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-white/30 text-white hover:text-white hover:bg-[#FF7A59] hover:border-[#FF7A59] hover:scale-110 hover:shadow-[0_4px_15px_rgba(255,122,89,0.35)] flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-9 h-9 rounded-full border border-white/30 text-white hover:bg-[#FF7A59] hover:border-[#FF7A59] flex items-center justify-center transition-all duration-300"
                 aria-label="Instagram"
               >
-                <Instagram size={16} />
+                <Instagram size={15} />
               </a>
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-white/30 text-white hover:text-white hover:bg-[#FF7A59] hover:border-[#FF7A59] hover:scale-110 hover:shadow-[0_4px_15px_rgba(255,122,89,0.35)] flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-9 h-9 rounded-full border border-white/30 text-white hover:bg-[#FF7A59] hover:border-[#FF7A59] flex items-center justify-center transition-all duration-300"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={16} />
+                <Linkedin size={15} />
               </a>
               <a
                 href="https://twitter.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full border border-white/30 text-white hover:text-white hover:bg-[#FF7A59] hover:border-[#FF7A59] hover:scale-110 hover:shadow-[0_4px_15px_rgba(255,122,89,0.35)] flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-9 h-9 rounded-full border border-white/30 text-white hover:bg-[#FF7A59] hover:border-[#FF7A59] flex items-center justify-center transition-all duration-300"
                 aria-label="Twitter"
               >
-                <Twitter size={16} />
+                <Twitter size={15} />
               </a>
             </div>
           </div>
 
-          {/* Col 2: Quick Links */}
-          <div className="lg:col-span-2 flex flex-col">
-            <h4 className="font-poppins font-bold text-[13px] uppercase tracking-wider text-white mb-2">Quick Links</h4>
+          {/* Col 2: Care Services (Direct Canonical URLs) */}
+          <div className="lg:col-span-3 flex flex-col">
+            <h4 className="font-poppins font-bold text-[13px] uppercase tracking-wider text-white mb-2">Our Care Services</h4>
             <div className="w-[32px] h-[2px] bg-[#FF7A59] mb-6 rounded-full" />
-            <ul className="flex flex-col gap-3 text-[14.5px] text-white/90 font-medium">
+            <ul className="flex flex-col gap-3 text-[14px] text-white/90 font-medium">
               <li>
-                <Link href="/" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  Home
+                <Link href="/personal-care" className="text-white/80 hover:text-[#60EFFF] transition-colors">
+                  Personal Care &amp; Hygiene
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
+                <Link href="/companion-care" className="text-white/80 hover:text-[#60EFFF] transition-colors">
+                  Companion Care &amp; Errand Help
+                </Link>
+              </li>
+              <li>
+                <Link href="/24-hour-live-in-care" className="text-white/80 hover:text-[#60EFFF] transition-colors">
+                  24-Hour &amp; Live-In Care
+                </Link>
+              </li>
+              <li>
+                <Link href="/dementia-alzheimers-care" className="text-white/80 hover:text-[#60EFFF] transition-colors">
+                  Alzheimer&apos;s &amp; Dementia Memory Care
+                </Link>
+              </li>
+              <li>
+                <Link href="/post-hospital-respite-care" className="text-white/80 hover:text-[#60EFFF] transition-colors">
+                  Post-Hospital &amp; Respite Care
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-[#FF7A59] font-bold hover:underline transition-all">
+                  View All Care Offerings →
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Areas We Serve (9 PA Counties) */}
+          <div className="lg:col-span-3 flex flex-col">
+            <h4 className="font-poppins font-bold text-[13px] uppercase tracking-wider text-white mb-2">Service Areas in PA</h4>
+            <div className="w-[32px] h-[2px] bg-[#FF7A59] mb-6 rounded-full" />
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-[13.5px] text-white/80">
+              <Link href="/areas-we-serve/bucks" className="hover:text-[#60EFFF] transition-colors">
+                Bucks County
+              </Link>
+              <Link href="/areas-we-serve/philadelphia" className="hover:text-[#60EFFF] transition-colors">
+                Philadelphia
+              </Link>
+              <Link href="/areas-we-serve/montgomery" className="hover:text-[#60EFFF] transition-colors">
+                Montgomery
+              </Link>
+              <Link href="/areas-we-serve/delaware" className="hover:text-[#60EFFF] transition-colors">
+                Delaware County
+              </Link>
+              <Link href="/areas-we-serve/chester" className="hover:text-[#60EFFF] transition-colors">
+                Chester County
+              </Link>
+              <Link href="/areas-we-serve/lehigh" className="hover:text-[#60EFFF] transition-colors">
+                Lehigh County
+              </Link>
+              <Link href="/areas-we-serve/northampton" className="hover:text-[#60EFFF] transition-colors">
+                Northampton
+              </Link>
+              <Link href="/areas-we-serve/berks" className="hover:text-[#60EFFF] transition-colors">
+                Berks County
+              </Link>
+              <Link href="/areas-we-serve/schuylkill" className="hover:text-[#60EFFF] transition-colors">
+                Schuylkill
+              </Link>
+              <Link href="/feasterville-pa-home-care" className="text-[#60EFFF] hover:underline">
+                Feasterville PA
+              </Link>
+            </div>
+            <div className="mt-4 pt-3 border-t border-white/10">
+              <Link href="/areas-we-serve" className="text-[#FF7A59] font-bold text-[13.5px] hover:underline">
+                Explore Full Coverage Map →
+              </Link>
+            </div>
+          </div>
+
+          {/* Col 4: Quick Navigation & Guides */}
+          <div className="lg:col-span-2 flex flex-col">
+            <h4 className="font-poppins font-bold text-[13px] uppercase tracking-wider text-white mb-2">Care Resources</h4>
+            <div className="w-[32px] h-[2px] bg-[#FF7A59] mb-6 rounded-full" />
+            <ul className="flex flex-col gap-3 text-[14px] text-white/90 font-medium">
+              <li>
+                <Link href="/about" className="text-white/80 hover:text-[#60EFFF] transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  Services
+                <Link href="/blog" className="text-white/80 hover:text-[#60EFFF] transition-colors">
+                  Care Resource Hub
                 </Link>
               </li>
               <li>
-                <Link href="/areas-we-serve" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  Areas We Serve
+                <Link href="/home-care-cost-pennsylvania" className="text-white/80 hover:text-[#60EFFF] transition-colors">
+                  Home Care Costs PA
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  Blog
+                <Link href="/medicaid-home-care-pennsylvania" className="text-white/80 hover:text-[#60EFFF] transition-colors">
+                  Medicaid Waiver Guide
                 </Link>
               </li>
               <li>
-                <Link href="/contact-us" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  Contact Us
+                <Link href="/contact-us" className="text-white/80 hover:text-[#60EFFF] transition-colors">
+                  Request Care
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Services */}
-          <div className="lg:col-span-3 flex flex-col">
-            <h4 className="font-poppins font-bold text-[13px] uppercase tracking-wider text-white mb-2">Our Services</h4>
-            <div className="w-[32px] h-[2px] bg-[#FF7A59] mb-6 rounded-full" />
-            <ul className="flex flex-col gap-3 text-[14.5px] text-white/90 font-medium">
-              <li>
-                <Link href="/services" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  Personal Care
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  Companion Care
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  Meal Preparation
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  Medication Reminders
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  Mobility Assistance
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  Specialized Dementia Care
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Contact Info */}
-          <div className="lg:col-span-3 flex flex-col">
-            <h4 className="font-poppins font-bold text-[13px] uppercase tracking-wider text-white mb-2">Contact Us</h4>
-            <div className="w-[32px] h-[2px] bg-[#FF7A59] mb-6 rounded-full" />
-            <ul className="flex flex-col gap-4 text-[14.5px] text-white/90">
-              <li className="flex items-start gap-3">
-                <MapPin size={18} className="text-[#FF7A59] shrink-0 mt-0.5" />
-                <span className="text-white">19 Bowman Dr, Feasterville PA 19053</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone size={18} className="text-[#FF7A59] shrink-0" />
-                <a href="tel:+12154369499" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  (215) 436-9499
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail size={18} className="text-[#FF7A59] shrink-0" />
-                <a href="mailto:pavanhomecare@gmail.com" className="text-white hover:text-[#60EFFF] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF7A59]">
-                  pavanhomecare@gmail.com
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Clock size={18} className="text-[#FF7A59] shrink-0" />
-                <span className="text-white">Mon - Fri: 8:00 AM - 5:00 PM</span>
-              </li>
-            </ul>
-          </div>
         </div>
 
-        {/* Bottom Copyright Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-[13.5px] text-white/90 font-medium">
-          <p>© {new Date().getFullYear()} Pavan Homecare. All Rights Reserved.</p>
+        {/* Bottom Copyright & Trust Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-[13px] text-white/70">
+          <p>© {new Date().getFullYear()} Pavan Homecare LLC. All Rights Reserved. Licensed by the Pennsylvania Department of Health.</p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy-policy" className="text-white/90 hover:text-white transition-colors duration-200">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms-conditions" className="text-white/90 hover:text-white transition-colors duration-200">
+            <Link href="/terms-conditions" className="hover:text-white transition-colors">
               Terms &amp; Conditions
             </Link>
-            <a href="/sitemap.xml" className="text-white/90 hover:text-white transition-colors duration-200">
+            <a href="/sitemap.xml" className="hover:text-white transition-colors">
               Sitemap
             </a>
           </div>
         </div>
+
       </div>
     </footer>
   );
