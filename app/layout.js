@@ -87,7 +87,7 @@ export const metadata = {
     images: [`${site.url}/images/pavan-logo/PavanHomecare_Transparent.png`],
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "google63a6f166145c4e73",
   },
 };
 
