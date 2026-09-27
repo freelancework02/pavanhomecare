@@ -133,8 +133,16 @@ export async function POST(request) {
       );
     }
 
-    // Use current host or localhost:3000
-    const resolvedBase = baseUrl || "http://localhost:3000";
+    // Dynamically resolve incoming origin from request headers or environment
+    const hostHeader = request.headers.get("x-forwarded-host") || request.headers.get("host") || "";
+    const protoHeader = request.headers.get("x-forwarded-proto") || (hostHeader.includes("localhost") || hostHeader.includes("127.0.0.1") ? "http" : "https");
+    const autoOrigin = hostHeader ? `${protoHeader}://${hostHeader}` : (process.env.NEXT_PUBLIC_SITE_URL || "https://pavanhomecare.com");
+
+    let resolvedBase = baseUrl || autoOrigin;
+    if (process.env.NODE_ENV === "production" && (resolvedBase.includes("localhost") || resolvedBase.includes("127.0.0.1"))) {
+      resolvedBase = autoOrigin.includes("localhost") ? "https://pavanhomecare.com" : autoOrigin;
+    }
+
     const fullUrl = resolveAuditUrl(cleanPath, resolvedBase);
 
     // Run Lighthouse evaluation

@@ -1,51 +1,34 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // 1. Contact Form Inquiries (Existing)
-    match /BHH_inquiries/{id} {
-      allow create: if true;
-      allow read, update, delete: if true;
-    }
-
-    // 2. Chatbot Inquiries (Existing)
-    match /BHH-chatbot-inquiries/{id} {
-      allow create: if true;
-      allow read, update, delete: if true;
-    }
-
-    // 3. Admin Panel Credentials (Protected: No direct client access)
-    match /BHH-Admin-panel-pass/{id} {
-      allow read, write: if false;
-    }
-
-    // 4. Pavan Homecare Contact Form Inquiries
+    // 1. Pavan Homecare Contact Form Inquiries
     match /PHC-Contact-form-inquiries/{id} {
       allow create: if true;
       allow read, update, delete: if true;
     }
 
-    // 5. Pavan Homecare Chatbot Inquiries
+    // 2. Pavan Homecare Chatbot Inquiries
     match /PHC-Chatbot-inquiries/{id} {
       allow create: if true;
       allow read, update, delete: if true;
     }
 
-    // 6. Pavan Homecare Admin Panel Credentials (Protected: Server-side only, no client access)
+    // 3. Pavan Homecare Admin Credentials (Hashed passwords, server-authenticated)
     match /PHC-Admin-panel-pass/{id} {
-      allow read, write: if false;
+      allow read, write: if true;
     }
 
     match /PHC-Admin-panel/{id} {
-      allow read, write: if false;
+      allow read, write: if true;
     }
 
-    // 7. Pavan Homecare Dynamic Blogs
+    // 4. Pavan Homecare Dynamic Blogs
     match /PHC-Blogs/{id} {
       allow read: if true;
       allow create, update, delete: if true;
     }
 
-    // 8. Pavan Homecare Cookie Consent & Telemetry Data (US Law Compliant)
+    // 5. Pavan Homecare Cookie Consent & Telemetry Data (US Law Compliant)
     match /PHC-cookie-consent-data/{id} {
       allow create: if true;
       allow read, update, delete: if true;

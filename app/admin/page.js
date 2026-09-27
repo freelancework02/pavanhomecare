@@ -304,12 +304,18 @@ export default function AdminPage() {
     setAuditError("");
     setAuditSuccessMsg("");
     try {
+      const currentOrigin =
+        typeof window !== "undefined" && window.location.origin
+          ? window.location.origin
+          : undefined;
+
       const res = await fetch("/api/admin/lighthouse", {
         method: "POST",
         headers: getAuthHeaders(),
         body: JSON.stringify({
           path: selectedAuditPage,
-          device: auditDeviceMode
+          device: auditDeviceMode,
+          baseUrl: currentOrigin
         })
       });
       const data = await res.json();

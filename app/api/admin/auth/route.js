@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { createAdminToken, authenticateAdminRequest } from "@/lib/adminAuthServer";
+import {
+  createAdminToken,
+  authenticateAdminRequest,
+  hashPassword,
+  verifyPassword
+} from "@/lib/adminAuthServer";
 
 const ADMIN_COLLECTION = "PHC-Admin-panel-pass";
 const ADMIN_DOC_ID = "admin_credentials";
@@ -30,7 +35,7 @@ async function getStoredCredentials() {
         id: DEFAULT_ADMIN.id,
         username: DEFAULT_ADMIN.username,
         email: DEFAULT_ADMIN.email,
-        password: DEFAULT_ADMIN.password,
+        passwordHash: hashPassword(DEFAULT_ADMIN.password),
         role: DEFAULT_ADMIN.role,
         createdAtIso: new Date().toISOString(),
         updatedAtIso: new Date().toISOString()
@@ -39,12 +44,15 @@ async function getStoredCredentials() {
         await setDoc(credRef, initialData, { merge: true });
         await setDoc(doc(db, ADMIN_COLLECTION, "admin"), initialData, { merge: true });
       } catch (writeErr) {
-        // Silent server-side fallback to DEFAULT_ADMIN if Firestore rule rejects
+        // Fallback to DEFAULT_ADMIN if Firestore write is delayed
       }
       return initialData;
     }
   } catch (error) {
-    return DEFAULT_ADMIN;
+    return {
+      ...DEFAULT_ADMIN,
+      passwordHash: hashPassword(DEFAULT_ADMIN.password)
+    };
   }
 }
 
@@ -100,8 +108,11 @@ export async function POST(request) {
       cleanInputUser === cleanStoredEmail ||
       cleanInputUser === (DEFAULT_ADMIN.username || "").toLowerCase();
 
+    // Verify against hashed password or fallback env password
     const isPassMatch =
-      password === stored.password || password === DEFAULT_ADMIN.password;
+      verifyPassword(password, stored.passwordHash) ||
+      verifyPassword(password, stored.password) ||
+      password === DEFAULT_ADMIN.password;
 
     if (isUserMatch && isPassMatch) {
       const token = createAdminToken(stored.username || DEFAULT_ADMIN.username);
@@ -147,7 +158,12 @@ export async function PUT(request) {
 
     const stored = await getStoredCredentials();
 
-    if (currentPassword !== stored.password && currentPassword !== DEFAULT_ADMIN.password) {
+    const isCurrentValid =
+      verifyPassword(currentPassword, stored.passwordHash) ||
+      verifyPassword(currentPassword, stored.password) ||
+      currentPassword === DEFAULT_ADMIN.password;
+
+    if (!isCurrentValid) {
       return NextResponse.json(
         { success: false, error: "Current password does not match." },
         { status: 400 }
@@ -165,7 +181,7 @@ export async function PUT(request) {
       id: "admin",
       username: (newUsername || stored.username || "admin").trim(),
       email: (newUsername && newUsername.includes("@") ? newUsername : stored.email || "admin@pavanhomecare.com").trim(),
-      password: newPassword,
+      passwordHash: hashPassword(newPassword),
       role: "SuperAdmin",
       updatedAtIso: new Date().toISOString()
     };
