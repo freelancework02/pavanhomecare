@@ -25,10 +25,13 @@ import {
   Printer,
   ChevronRight,
   ShieldAlert,
-  HelpCircle
+  HelpCircle,
+  Loader2,
+  AlertCircle
 } from "lucide-react";
 import { site } from "@/lib/site";
 import GoogleReviews from "@/components/GoogleReviews";
+import { submitContactInquiry } from "@/lib/firebase";
 
 const contactChannels = [
   {
@@ -212,6 +215,8 @@ export default function ContactClient() {
 
   const [errors, setErrors] = useState({});
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [openFaq, setOpenFaq] = useState(0);
 
   const toggleService = (serviceId) => {
@@ -240,7 +245,7 @@ export default function ContactClient() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
 
@@ -275,7 +280,48 @@ export default function ContactClient() {
       return;
     }
 
-    setFormSubmitted(true);
+    setSubmitError("");
+    setIsSubmitting(true);
+
+    try {
+      const recipientLabel = recipientOptions.find(o => o.id === recipient)?.label || recipient;
+      const servicesLabels = selectedServices.map(id => careServicesOptions.find(o => o.id === id)?.label || id);
+
+      const result = await submitContactInquiry({
+        firstName: formData.firstName.trim(),
+        lastName: formData.lastName.trim(),
+        fullName: `${formData.firstName.trim()} ${formData.lastName.trim()}`,
+        phone: formData.phone.trim(),
+        email: formData.email.trim(),
+        city: formData.city.trim(),
+        zip: formData.zip.trim(),
+        recipient,
+        recipientLabel,
+        services: selectedServices,
+        servicesLabels,
+        preferredContact: formData.preferredContact,
+        preferredTime: formData.preferredTime,
+        message: formData.message.trim(),
+        privacyConsent: formData.privacyConsent,
+        pageUrl: typeof window !== "undefined" ? window.location.href : "/contact-us",
+        formName: "Contact Us - Free In-Home Assessment Form"
+      });
+
+      if (result.success) {
+        setFormSubmitted(true);
+      } else {
+        if (result.error && result.error.includes("permission-denied")) {
+          setSubmitError("Firebase Firestore permissions pending: Please ensure Firestore rules allow write access to the 'PHC-Contact-form-inquiries' collection.");
+        } else {
+          setSubmitError(result.error || "Failed to submit. Please call us directly for immediate care assistance.");
+        }
+      }
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setSubmitError("An unexpected error occurred. Please call us directly at " + site.phoneDisplay);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToForm = () => {
@@ -723,11 +769,48 @@ export default function ContactClient() {
                     </div>
                   )}
 
+                  {/* Submit Error Notification */}
+                  {submitError && (
+                    <div className="mb-4 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-start gap-3">
+                      <AlertCircle size={20} className="shrink-0 mt-0.5 text-red-500" />
+                      <div className="text-sm">
+                        <p className="font-semibold mb-1">Submission Notice</p>
+                        <p className="mb-2">{submitError}</p>
+                        <a
+                          href={site.phoneHref}
+                          className="inline-flex items-center gap-1 font-semibold text-[#0061FF] hover:underline"
+                        >
+                          <Phone size={14} /> Call us immediately at {site.phoneDisplay}
+                        </a>
+                      </div>
+                    </div>
+                  )}
+
                   {/* 9. Submit Button */}
                   <div className="form-submit-block">
-                    <button type="submit" className="btn-coral-glow" style={{ width: "100%", justifyContent: "center", fontSize: "1.08rem" }}>
-                      <span>Submit Care Request</span>
-                      <ArrowRight size={20} />
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn-coral-glow"
+                      style={{
+                        width: "100%",
+                        justifyContent: "center",
+                        fontSize: "1.08rem",
+                        opacity: isSubmitting ? 0.75 : 1,
+                        cursor: isSubmitting ? "not-allowed" : "pointer"
+                      }}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 size={20} className="animate-spin" />
+                          <span>Submitting Care Request...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Submit Care Request</span>
+                          <ArrowRight size={20} />
+                        </>
+                      )}
                     </button>
                     <div className="submit-guarantee-text">
                       <ShieldCheck size={16} className="text-[#10B981]" />

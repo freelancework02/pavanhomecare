@@ -1,11 +1,13 @@
-import { blogPosts, site } from "@/lib/site";
+import { site } from "@/lib/site";
 import { countiesData, citiesData } from "@/lib/countiesData";
+import { getAllBlogs } from "@/lib/blogs";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-export default function sitemap() {
+export default async function sitemap() {
   const now = new Date();
+  const dynamicBlogs = await getAllBlogs({ onlyPublished: true });
 
   // 1. Core Pages
   const staticRoutes = [
@@ -54,10 +56,10 @@ export default function sitemap() {
     priority: 0.75,
   }));
 
-  // 5. Dynamic Blog Articles (Automatically includes new guides)
-  const blogRoutes = (blogPosts || []).map((post) => ({
+  // 5. Dynamic Blog Articles (Automatically includes newly published guides)
+  const blogRoutes = (dynamicBlogs || []).map((post) => ({
     url: `${site.url}/blog/${post.slug}`,
-    lastModified: new Date(post.date || now),
+    lastModified: new Date(post.publishedAt || post.date || now),
     changeFrequency: "weekly",
     priority: 0.85,
   }));

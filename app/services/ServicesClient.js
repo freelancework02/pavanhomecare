@@ -30,10 +30,13 @@ import {
   Building2, 
   Check, 
   Calendar,
-  Lock
+  Lock,
+  Loader2,
+  AlertCircle
 } from "lucide-react";
 import ServiceAreasSearch from "@/components/ServiceAreasSearch";
 import { site } from "@/lib/site";
+import { submitContactInquiry } from "@/lib/firebase";
 import "./services.css";
 
 const servicesList = [
@@ -348,6 +351,15 @@ const mainFaqs = [
 export default function ServicesClient({ initialService }) {
   const [openFaq, setOpenFaq] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [formData, setFormData] = useState({
+    fullName: "",
+    phone: "",
+    email: "",
+    county: "",
+    careNeeds: ""
+  });
 
   useEffect(() => {
     if (initialService) {
@@ -367,9 +379,48 @@ export default function ServicesClient({ initialService }) {
     }
   };
 
-  const handleFormSubmit = (e) => {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const names = formData.fullName.trim().split(" ");
+      const firstName = names[0] || formData.fullName.trim();
+      const lastName = names.slice(1).join(" ") || "";
+
+      const result = await submitContactInquiry({
+        firstName,
+        lastName,
+        fullName: formData.fullName.trim(),
+        phone: formData.phone.trim(),
+        email: formData.email.trim(),
+        county: formData.county,
+        message: formData.careNeeds.trim(),
+        formName: "Services Page - In-Home Assessment Form",
+        sourcePage: typeof window !== "undefined" ? window.location.pathname : "/services"
+      });
+
+      if (result.success) {
+        setFormSubmitted(true);
+      } else {
+        if (result.error && result.error.includes("permission-denied")) {
+          setSubmitError("Firebase Firestore permissions pending: Please ensure Firestore rules allow write access to 'PHC-Contact-form-inquiries'.");
+        } else {
+          setSubmitError(result.error || "Unable to send consultation request. Please call us directly.");
+        }
+      }
+    } catch (err) {
+      console.error("Error submitting assessment request:", err);
+      setSubmitError("An unexpected error occurred. Please call us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -866,8 +917,11 @@ export default function ServicesClient({ initialService }) {
                         <label>Full Name *</label>
                         <input
                           type="text"
+                          name="fullName"
                           required
                           placeholder="John Doe"
+                          value={formData.fullName}
+                          onChange={handleInputChange}
                           className="form-input-lux"
                         />
                       </div>
@@ -875,8 +929,11 @@ export default function ServicesClient({ initialService }) {
                         <label>Phone Number *</label>
                         <input
                           type="tel"
+                          name="phone"
                           required
                           placeholder={site.phoneDisplay}
+                          value={formData.phone}
+                          onChange={handleInputChange}
                           className="form-input-lux"
                         />
                       </div>
@@ -887,14 +944,23 @@ export default function ServicesClient({ initialService }) {
                         <label>Email Address *</label>
                         <input
                           type="email"
+                          name="email"
                           required
                           placeholder="name@example.com"
+                          value={formData.email}
+                          onChange={handleInputChange}
                           className="form-input-lux"
                         />
                       </div>
                       <div className="form-group-lux">
                         <label>County of Residence *</label>
-                        <select required className="form-input-lux" defaultValue="">
+                        <select
+                          required
+                          name="county"
+                          className="form-input-lux"
+                          value={formData.county}
+                          onChange={handleInputChange}
+                        >
                           <option value="" disabled>Select your PA County</option>
                           {site.serviceAreas.map((county) => (
                             <option key={county} value={county}>{county}</option>
@@ -907,14 +973,38 @@ export default function ServicesClient({ initialService }) {
                       <label>Describe Your Loved One's Care Needs</label>
                       <textarea
                         rows={4}
+                        name="careNeeds"
                         placeholder="Provide any details about schedules, specific needs, or preferred timing..."
+                        value={formData.careNeeds}
+                        onChange={handleInputChange}
                         className="form-textarea-lux"
                       />
                     </div>
 
-                    <button type="submit" className="btn-coral-glow" style={{ width: "100%", justifyContent: "center" }}>
-                      <span>Schedule Free Consultation</span>
-                      <ArrowRight size={18} />
+                    {submitError && (
+                      <div className="p-3 mb-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2">
+                        <AlertCircle size={18} className="shrink-0" />
+                        <span>{submitError}</span>
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn-coral-glow"
+                      style={{ width: "100%", justifyContent: "center", opacity: isSubmitting ? 0.75 : 1 }}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 size={18} className="animate-spin" />
+                          <span>Scheduling Consultation...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Schedule Free Consultation</span>
+                          <ArrowRight size={18} />
+                        </>
+                      )}
                     </button>
 
                     <div className="form-privacy-note">

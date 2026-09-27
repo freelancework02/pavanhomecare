@@ -1,11 +1,14 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Logo from "./Logo";
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin, Twitter, ShieldCheck } from "lucide-react";
 import { site } from "@/lib/site";
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname && pathname.startsWith("/admin")) return null;
   return (
     <footer className="w-full bg-[#001A4D] text-white pt-20 pb-8 relative overflow-hidden border-t-2 border-[#0061FF]">
       {/* Top Brand Gradient Edge Divider Line */}
@@ -211,13 +214,25 @@ export default function Footer() {
         {/* Bottom Copyright & Trust Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-[13px] text-white/70">
           <p>© {new Date().getFullYear()} Pavan Homecare LLC. All Rights Reserved. Licensed by the Pennsylvania Department of Health.</p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
             <Link href="/terms-conditions" className="hover:text-white transition-colors">
               Terms &amp; Conditions
             </Link>
+            <a
+              href="#cookie-settings"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.hash = "#cookie-settings";
+              }}
+              className="hover:text-[#60EFFF] transition-colors inline-flex items-center gap-1"
+              title="Manage Cookie Preferences & Privacy Choices (CCPA/CPRA)"
+            >
+              <ShieldCheck size={13} className="text-[#60EFFF]" />
+              <span>Cookie Choices</span>
+            </a>
             <a href="/sitemap.xml" className="hover:text-white transition-colors">
               Sitemap
             </a>

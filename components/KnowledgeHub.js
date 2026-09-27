@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -29,7 +30,10 @@ const postReadTimes = {
 };
 
 function formatDate(d) {
-  return new Date(d).toLocaleDateString("en-US", {
+  if (!d) return "Recent";
+  const dateObj = new Date(d);
+  if (isNaN(dateObj.getTime())) return "Recent";
+  return dateObj.toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -37,8 +41,21 @@ function formatDate(d) {
 }
 
 export default function KnowledgeHub() {
-  const featuredPost = blogPosts[0];
-  const standardPosts = blogPosts.slice(1, 4);
+  const [posts, setPosts] = useState(blogPosts);
+
+  useEffect(() => {
+    fetch("/api/blogs")
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.success && Array.isArray(d.blogs) && d.blogs.length > 0) {
+          setPosts(d.blogs);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const featuredPost = posts.find((p) => p.featured) || posts[0];
+  const standardPosts = posts.filter((p) => p.slug !== featuredPost?.slug).slice(0, 3);
 
   return (
     <section className="kh-section" aria-labelledby="kh-heading">
@@ -103,12 +120,13 @@ export default function KnowledgeHub() {
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"
                   priority
+                  unoptimized={Boolean(featuredPost.image && featuredPost.image.startsWith("http"))}
                   className="kh-featured-img"
                 />
                 <div className="kh-featured-overlay" />
                 <span className="kh-featured-chip">
                   <Sparkles size={12} />
-                  {postCategories[featuredPost.slug] || "Featured Guide"}
+                  {featuredPost.category || postCategories[featuredPost.slug] || "Featured Guide"}
                 </span>
               </div>
 
@@ -117,12 +135,14 @@ export default function KnowledgeHub() {
                 <div className="kh-meta-row">
                   <span className="kh-meta-item">
                     <Calendar size={13} className="text-[#0061FF]" />
-                    <time dateTime={featuredPost.date}>{formatDate(featuredPost.date)}</time>
+                    <time dateTime={featuredPost.publishedAt || featuredPost.date}>
+                      {formatDate(featuredPost.publishedAt || featuredPost.date || featuredPost.createdAt)}
+                    </time>
                   </span>
                   <span className="kh-meta-dot">•</span>
                   <span className="kh-meta-item">
                     <Clock size={13} className="text-[#FF7A59]" />
-                    <span>{postReadTimes[featuredPost.slug] || "5 min read"}</span>
+                    <span>{featuredPost.readTime || postReadTimes[featuredPost.slug] || "5 min read"}</span>
                   </span>
                 </div>
 
@@ -166,11 +186,12 @@ export default function KnowledgeHub() {
                   alt={post.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
+                  unoptimized={Boolean(post.image && post.image.startsWith("http"))}
                   className="kh-card__img"
                 />
                 <span className="kh-card__tag">
                   <Tag size={11} />
-                  {postCategories[post.slug] || "Senior Care"}
+                  {post.category || postCategories[post.slug] || "Senior Care"}
                 </span>
               </div>
 
@@ -179,12 +200,14 @@ export default function KnowledgeHub() {
                 <div className="kh-meta-row mb-2">
                   <span className="kh-meta-item">
                     <Calendar size={12} className="text-[#0061FF]" />
-                    <time dateTime={post.date}>{formatDate(post.date)}</time>
+                    <time dateTime={post.publishedAt || post.date}>
+                      {formatDate(post.publishedAt || post.date || post.createdAt)}
+                    </time>
                   </span>
                   <span className="kh-meta-dot">•</span>
                   <span className="kh-meta-item">
                     <Clock size={12} className="text-[#FF7A59]" />
-                    <span>{postReadTimes[post.slug] || "4 min read"}</span>
+                    <span>{post.readTime || postReadTimes[post.slug] || "4 min read"}</span>
                   </span>
                 </div>
 

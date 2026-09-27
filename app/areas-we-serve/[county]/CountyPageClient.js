@@ -22,10 +22,13 @@ import {
   Sparkles,
   Award,
   Zap,
-  Lock
+  Lock,
+  Loader2,
+  AlertCircle
 } from "lucide-react";
 import { site } from "@/lib/site";
 import GoogleReviews from "@/components/GoogleReviews";
+import { submitContactInquiry } from "@/lib/firebase";
 import "../areas.css";
 
 const servicesList = [
@@ -128,6 +131,58 @@ export default function CountyPageClient({ data, city }) {
   const heroSubtitle = city
     ? `Reliable in-home care for seniors in ${cityName}, PA and surrounding ${data.name}. Companion, personal & 24 hour care.`
     : data.heroSubtitle;
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: ""
+  });
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const result = await submitContactInquiry({
+        firstName: formData.firstName.trim(),
+        lastName: formData.lastName.trim(),
+        fullName: `${formData.firstName.trim()} ${formData.lastName.trim()}`,
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        message: formData.message.trim(),
+        location: displayLocation,
+        county: data?.name || "",
+        formName: `County Landing Assessment Form (${displayLocation})`,
+        sourcePage: typeof window !== "undefined" ? window.location.pathname : `/areas-we-serve/${data.slug}`
+      });
+
+      if (result.success) {
+        setFormSubmitted(true);
+      } else {
+        if (result.error && result.error.includes("permission-denied")) {
+          setSubmitError("Firebase Firestore permissions pending: Please ensure Firestore rules allow write access to 'PHC-Contact-form-inquiries'.");
+        } else {
+          setSubmitError(result.error || "Unable to send request. Please call us directly.");
+        }
+      }
+    } catch (err) {
+      console.error("Error submitting county form:", err);
+      setSubmitError("An unexpected error occurred. Please call us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="areas-page-container">
@@ -388,33 +443,110 @@ export default function CountyPageClient({ data, city }) {
               Our local care coordinator will discuss your family&apos;s needs and create a customized care plan.
             </p>
 
-            <form onSubmit={(e) => e.preventDefault()} className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
-              <div>
-                <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">First Name</label>
-                <input type="text" placeholder="John" className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]" />
+            {formSubmitted ? (
+              <div className="bg-[#E8F2FF] border border-[#0061FF]/20 rounded-2xl p-8 text-center max-w-[600px] mx-auto">
+                <div className="w-14 h-14 rounded-full bg-[#0061FF] text-white flex items-center justify-center mx-auto mb-4">
+                  <Check size={28} />
+                </div>
+                <h3 className="text-xl font-bold text-[#001A4D] mb-2">Request Received!</h3>
+                <p className="text-sm text-[#4A5A73] mb-4">
+                  Thank you! Our local care coordinator in {displayLocation} will contact you shortly to review your needs and build your customized care plan.
+                </p>
+                <a href={site.phoneHref} className="btn-hero-primary inline-flex items-center gap-2">
+                  <Phone size={16} />
+                  <span>Call {site.phoneDisplay} Directly</span>
+                </a>
               </div>
-              <div>
-                <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Last Name</label>
-                <input type="text" placeholder="Doe" className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]" />
-              </div>
-              <div className="sm:col-span-2">
-                <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Email Address</label>
-                <input type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]" />
-              </div>
-              <div className="sm:col-span-2">
-                <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Phone Number</label>
-                <input type="tel" placeholder="(215) 436-9499" className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]" />
-              </div>
-              <div className="sm:col-span-2">
-                <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">How Can We Help?</label>
-                <textarea rows={3} placeholder="Tell us about the care services needed..." className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]" />
-              </div>
-              <div className="sm:col-span-2 pt-2">
-                <button type="submit" className="w-full inline-flex items-center justify-center gap-2.5 bg-[#FF7A59] hover:bg-[#E86746] text-white font-poppins font-bold text-[15px] py-4 rounded-full shadow-[0_10px_25px_rgba(255,122,89,0.35)] hover:shadow-[0_15px_30px_rgba(255,122,89,0.5)] hover:-translate-y-0.5 transition-all duration-300 btn-shimmer">
-                  Submit Request &amp; Get Call Back <ArrowRight size={18} />
-                </button>
-              </div>
-            </form>
+            ) : (
+              <form onSubmit={handleFormSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                <div>
+                  <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">First Name *</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    required
+                    placeholder="John"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Last Name *</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    required
+                    placeholder="Doe"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Email Address *</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Phone Number *</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    placeholder="(215) 436-9499"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">How Can We Help?</label>
+                  <textarea
+                    rows={3}
+                    name="message"
+                    placeholder="Tell us about the care services needed..."
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]"
+                  />
+                </div>
+
+                {submitError && (
+                  <div className="sm:col-span-2 p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2">
+                    <AlertCircle size={18} className="shrink-0" />
+                    <span>{submitError}</span>
+                  </div>
+                )}
+
+                <div className="sm:col-span-2 pt-2">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full inline-flex items-center justify-center gap-2.5 bg-[#FF7A59] hover:bg-[#E86746] text-white font-poppins font-bold text-[15px] py-4 rounded-full shadow-[0_10px_25px_rgba(255,122,89,0.35)] hover:shadow-[0_15px_30px_rgba(255,122,89,0.5)] hover:-translate-y-0.5 transition-all duration-300 btn-shimmer disabled:opacity-75 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 size={18} className="animate-spin" />
+                        <span>Submitting Request...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Request &amp; Get Call Back</span>
+                        <ArrowRight size={18} />
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </section>

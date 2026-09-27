@@ -6,7 +6,7 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/admin/", "/admin"],
       },
       {
         userAgent: [
@@ -21,6 +21,7 @@ export default function robots() {
           "Bingbot",
         ],
         allow: "/",
+        disallow: ["/admin/", "/admin"],
       },
     ],
     sitemap: `${site.url}/sitemap.xml`,

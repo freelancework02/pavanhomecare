@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
@@ -16,41 +16,68 @@ import {
   Mail, 
   Phone, 
   Heart,
-  ChevronRight
+  ChevronRight,
+  Clock
 } from "lucide-react";
 import "./blog.css";
 
 function formatDate(d) {
-  return new Date(d).toLocaleDateString("en-US", {
+  if (!d) return "Recent";
+  const dateObj = new Date(d);
+  if (isNaN(dateObj.getTime())) return "Recent";
+  return dateObj.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
 }
 
-const categories = [
-  { id: "all", label: "All Topics" },
-  { id: "waiver", label: "Medicaid Waiver" },
-  { id: "tips", label: "Caregiver Tips" }
-];
-
-export default function BlogClient() {
+export default function BlogClient({ initialPosts }) {
   const [activeCategory, setActiveCategory] = useState("all");
 
-  const postsWithCategory = blogPosts.map(post => {
-    let catId = "tips";
-    if (post.slug.includes("waiver") || post.slug.includes("medicaid")) {
-      catId = "waiver";
-    }
-    return { ...post, categoryId: catId };
-  });
+  const rawPosts = initialPosts && initialPosts.length > 0 ? initialPosts : blogPosts;
+
+  const postsWithCategory = useMemo(() => {
+    return rawPosts.map((post) => {
+      let cat = post.category;
+      if (!cat) {
+        cat = post.slug.includes("waiver") || post.slug.includes("medicaid")
+          ? "Medicaid Waiver"
+          : "Caregiver Tips";
+      }
+      const catId = cat.toLowerCase().replace(/\s+/g, "-");
+      return {
+        ...post,
+        categoryLabel: cat,
+        categoryId: catId,
+        dateString: post.publishedAt || post.date || post.createdAt
+      };
+    });
+  }, [rawPosts]);
+
+  // Extract categories dynamically
+  const categories = useMemo(() => {
+    const list = [{ id: "all", label: "All Topics" }];
+    const seen = new Set();
+    postsWithCategory.forEach((p) => {
+      if (!seen.has(p.categoryId)) {
+        seen.add(p.categoryId);
+        list.push({ id: p.categoryId, label: p.categoryLabel });
+      }
+    });
+    return list;
+  }, [postsWithCategory]);
 
   const filteredPosts = activeCategory === "all" 
     ? postsWithCategory 
-    : postsWithCategory.filter(p => p.categoryId === activeCategory);
+    : postsWithCategory.filter((p) => p.categoryId === activeCategory);
 
-  const featuredPost = activeCategory === "all" ? postsWithCategory[0] : null;
-  const standardPosts = activeCategory === "all" ? filteredPosts.slice(1) : filteredPosts;
+  const featuredPost = activeCategory === "all"
+    ? (postsWithCategory.find((p) => p.featured) || postsWithCategory[0])
+    : null;
+  const standardPosts = activeCategory === "all"
+    ? filteredPosts.filter((p) => p.slug !== featuredPost?.slug)
+    : filteredPosts;
 
   return (
     <div className="blog-page-wrapper">
@@ -99,6 +126,7 @@ export default function BlogClient() {
                     alt={featuredPost.title}
                     fill
                     priority
+                    unoptimized={Boolean(featuredPost.image && featuredPost.image.startsWith("http"))}
                     className="blog-featured-img"
                     sizes="(max-width: 64rem) 100vw, 50vw"
                   />
@@ -109,10 +137,10 @@ export default function BlogClient() {
                   <div className="blog-meta-row">
                     <div className="blog-meta-date">
                       <Calendar size={14} className="text-[#0061FF]" />
-                      <time dateTime={featuredPost.date}>{formatDate(featuredPost.date)}</time>
+                      <time dateTime={featuredPost.dateString}>{formatDate(featuredPost.dateString)}</time>
                     </div>
                     <span className="blog-category-badge">
-                      {featuredPost.categoryId === "waiver" ? "Medicaid Waiver" : "Caregiver Tips"}
+                      {featuredPost.categoryLabel || "Care Resource"}
                     </span>
                   </div>
 
@@ -142,7 +170,7 @@ export default function BlogClient() {
           {/* Articles list grid */}
           <div className="inline-flex items-center gap-2 bg-[#E8F2FF] text-[#0061FF] font-bold text-[12px] tracking-wider uppercase px-4 py-1.5 rounded-full mb-6 border border-[#0061FF]/20 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#FF7A59]" />
-            <span>{activeCategory === "all" ? "MORE ARTICLES" : `${categories.find(c => c.id === activeCategory).label} Articles`}</span>
+            <span>{activeCategory === "all" ? "MORE ARTICLES" : `${categories.find(c => c.id === activeCategory)?.label || "Care"} Articles`}</span>
           </div>
 
           {standardPosts.length > 0 ? (
@@ -155,6 +183,7 @@ export default function BlogClient() {
                       alt={post.title}
                       fill
                       loading="lazy"
+                      unoptimized={Boolean(post.image && post.image.startsWith("http"))}
                       className="blog-card-img"
                       sizes="(max-width: 48rem) 100vw, 30vw"
                     />
@@ -164,10 +193,10 @@ export default function BlogClient() {
                     <div className="blog-meta-row">
                       <div className="blog-meta-date">
                         <Calendar size={14} className="text-[#0061FF]" />
-                        <time dateTime={post.date}>{formatDate(post.date)}</time>
+                        <time dateTime={post.dateString}>{formatDate(post.dateString)}</time>
                       </div>
                       <span className="blog-category-badge text-[11px] py-0.5 px-2">
-                        {post.categoryId === "waiver" ? "Medicaid Waiver" : "Caregiver Tips"}
+                        {post.categoryLabel || "Care Resource"}
                       </span>
                     </div>
 

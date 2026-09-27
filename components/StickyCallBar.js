@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Phone, Heart } from "lucide-react";
 import { site } from "@/lib/site";
 
 export default function StickyCallBar() {
+  const pathname = usePathname();
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -17,6 +19,7 @@ export default function StickyCallBar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  if (pathname && pathname.startsWith("/admin")) return null;
   if (!show) return null;
 
   return (

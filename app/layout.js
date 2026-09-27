@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyCallBar from "@/components/StickyCallBar";
+import ChatbotWidget from "@/components/ChatbotWidget";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 import { site } from "@/lib/site";
 
 const poppins = Poppins({
@@ -228,6 +230,8 @@ export default function RootLayout({ children }) {
         <main id="main-content">{children}</main>
         <Footer />
         <StickyCallBar />
+        <ChatbotWidget />
+        <CookieConsentBanner />
       </body>
     </html>
   );

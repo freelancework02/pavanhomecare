@@ -1,5 +1,8 @@
 import BlogClient from "./BlogClient";
-import { site, blogPosts } from "@/lib/site";
+import { site } from "@/lib/site";
+import { getAllBlogs } from "@/lib/blogs";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: `Senior Care Resources, Guides & Medicaid Insights | ${site.name} Blog`,
@@ -31,54 +34,57 @@ export const metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": site.url
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Blog",
-          "item": `${site.url}/blog`
-        }
-      ]
-    },
-    {
-      "@type": "Blog",
-      "@id": `${site.url}/blog/#blog`,
-      "name": `${site.name} Care Resources & Blog`,
-      "description": "Expert advice, eldercare guidance, and family caregiver resources in Pennsylvania.",
-      "url": `${site.url}/blog`,
-      "publisher": {
-        "@id": `${site.url}/#organization`
-      },
-      "blogPost": (blogPosts || []).map(post => ({
-        "@type": "BlogPosting",
-        "headline": post.title,
-        "url": `${site.url}/blog/${post.slug}`,
-        "datePublished": post.date,
-        "description": post.excerpt
-      }))
-    }
-  ]
-};
+export default async function BlogIndexPage() {
+  const dynamicBlogs = await getAllBlogs({ onlyPublished: true });
 
-export default function BlogIndexPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": site.url
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": `${site.url}/blog`
+          }
+        ]
+      },
+      {
+        "@type": "Blog",
+        "@id": `${site.url}/blog/#blog`,
+        "name": `${site.name} Care Resources & Blog`,
+        "description": "Expert advice, eldercare guidance, and family caregiver resources in Pennsylvania.",
+        "url": `${site.url}/blog`,
+        "publisher": {
+          "@id": `${site.url}/#organization`
+        },
+        "blogPost": (dynamicBlogs || []).map((post) => ({
+          "@type": "BlogPosting",
+          "headline": post.title,
+          "url": `${site.url}/blog/${post.slug}`,
+          "datePublished": post.publishedAt || post.date,
+          "description": post.excerpt
+        }))
+      }
+    ]
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <BlogClient />
+      <BlogClient initialPosts={dynamicBlogs} />
     </>
   );
 }
+
