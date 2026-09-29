@@ -21,6 +21,7 @@ import {
 import { site } from "@/lib/site";
 import { submitContactInquiry } from "@/lib/firebase";
 import { matchChatbotResponse, QUICK_SUGGESTIONS } from "@/lib/chatbotKnowledge";
+import { getStoredConsent } from "@/lib/cookieConsent";
 import styles from "./ChatbotWidget.module.css";
 
 const INITIAL_BOT_MESSAGE = {
@@ -37,7 +38,32 @@ const INITIAL_BOT_MESSAGE = {
 export default function ChatbotWidget() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isCookieBannerVisible, setIsCookieBannerVisible] = useState(false);
   const [messages, setMessages] = useState([INITIAL_BOT_MESSAGE]);
+
+  // Suppress chatbot when Cookie Consent notice or modal is open to avoid overlaps
+  useEffect(() => {
+    // Check if consent has already been made
+    const stored = getStoredConsent();
+    if (!stored) {
+      setIsCookieBannerVisible(true);
+    }
+
+    const handleCookieState = (e) => {
+      const { bannerOpen, modalOpen } = e.detail || {};
+      setIsCookieBannerVisible(Boolean(bannerOpen || modalOpen));
+    };
+
+    window.addEventListener("phc_cookie_state_change", handleCookieState);
+    return () => window.removeEventListener("phc_cookie_state_change", handleCookieState);
+  }, []);
+
+  // Update DOM when chat modal opens/closes so other bars can adjust
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-chat-open", isOpen ? "true" : "false");
+    }
+  }, [isOpen]);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [showInChatForm, setShowInChatForm] = useState(false);
@@ -200,6 +226,7 @@ export default function ChatbotWidget() {
   };
 
   if (pathname && pathname.startsWith("/admin")) return null;
+  if (isCookieBannerVisible) return null;
 
   return (
     <div className={styles.chatWrapper}>

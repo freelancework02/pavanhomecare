@@ -6992,3 +6992,19 @@ a.footer-contact-link-item:hover {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 1px;
 }
+
+/* ── 24. PRIVACY CHOICES & FLOATING WIDGET COORDINATION ── */
+.privacyChoicesBtn {
+  transition: bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  html[data-sticky-call="true"] .privacyChoicesBtn {
+    bottom: 5.25rem !important;
+  }
+  html[data-cookie-banner="open"] .privacyChoicesBtn,
+  html[data-cookie-modal="open"] .privacyChoicesBtn {
+    display: none !important;
+  }
+}
+

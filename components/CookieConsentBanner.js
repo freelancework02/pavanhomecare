@@ -73,15 +73,50 @@ export default function CookieConsentBanner() {
     return () => window.removeEventListener("click", handleDocumentClick);
   }, []);
 
+  // Sync banner and modal states with DOM and global events
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    document.documentElement.setAttribute(
+      "data-cookie-banner",
+      showBanner ? "open" : "closed"
+    );
+    document.documentElement.setAttribute(
+      "data-cookie-modal",
+      showModal ? "open" : "closed"
+    );
+    window.dispatchEvent(
+      new CustomEvent("phc_cookie_state_change", {
+        detail: { bannerOpen: showBanner, modalOpen: showModal }
+      })
+    );
+  }, [showBanner, showModal]);
+
   // Check existing consent on mount
   useEffect(() => {
     setHasLoaded(true);
     const existing = getStoredConsent();
     if (!existing) {
-      // Delay showing banner slightly for smooth UX
-      const timer = setTimeout(() => setShowBanner(true), 900);
+      // Set DOM indicator immediately so floating widgets (chatbot, sticky call) don't overlap
+      if (typeof document !== "undefined") {
+        document.documentElement.setAttribute("data-cookie-banner", "open");
+        window.dispatchEvent(
+          new CustomEvent("phc_cookie_state_change", {
+            detail: { bannerOpen: true, modalOpen: false }
+          })
+        );
+      }
+      // Delay showing banner slightly for smooth entrance
+      const timer = setTimeout(() => setShowBanner(true), 400);
       return () => clearTimeout(timer);
     } else {
+      if (typeof document !== "undefined") {
+        document.documentElement.setAttribute("data-cookie-banner", "closed");
+        window.dispatchEvent(
+          new CustomEvent("phc_cookie_state_change", {
+            detail: { bannerOpen: false, modalOpen: false }
+          })
+        );
+      }
       setPreferences({
         necessary: true,
         analytics: Boolean(existing.analytics),
@@ -101,6 +136,19 @@ export default function CookieConsentBanner() {
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
+
+  // Handle dismiss with default essential cookies
+  const handleDismissBanner = async () => {
+    const decision = {
+      status: "dismissed_default",
+      analytics: false,
+      functional: true,
+      doNotSellShare: true
+    };
+    await saveCookieConsent(decision);
+    setPreferences(decision);
+    setShowBanner(false);
+  };
 
   // Do not display on admin pages
   if (pathname && pathname.startsWith("/admin")) {
@@ -198,59 +246,71 @@ export default function CookieConsentBanner() {
           role="dialog"
           aria-label="Cookie consent banner"
           aria-describedby="cookie-consent-description"
-          className="fixed bottom-3 sm:bottom-6 left-3 right-3 sm:left-6 sm:right-auto sm:max-w-xl z-50 animate-slideUp"
+          className="fixed bottom-3 sm:bottom-6 left-3 right-3 sm:left-6 sm:right-auto sm:max-w-xl z-[9998] animate-slideUp"
         >
-          <div className="bg-[#001A4D]/95 backdrop-blur-xl border border-white/20 text-white rounded-3xl p-5 sm:p-6 shadow-2xl shadow-blue-950/40 relative overflow-hidden">
+          <div className="bg-[#001A4D]/95 backdrop-blur-xl border border-white/20 text-white rounded-3xl p-4 sm:p-6 shadow-2xl shadow-blue-950/50 relative overflow-hidden">
             {/* Soft Ambient Glow */}
             <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#0061FF]/30 rounded-full blur-2xl pointer-events-none" />
 
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-[#60EFFF] shrink-0 mt-0.5 border border-white/10">
-                <ShieldCheck size={22} />
+            <div className="flex items-start gap-3 sm:gap-4">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white/10 flex items-center justify-center text-[#60EFFF] shrink-0 mt-0.5 border border-white/10">
+                <ShieldCheck size={20} className="sm:w-[22px] sm:h-[22px]" />
               </div>
 
-              <div className="flex-1">
-                <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-sm sm:text-base font-bold text-white tracking-tight flex items-center gap-2">
-                    Your Privacy & Cookie Choices
-                    <span className="text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full bg-blue-500/20 text-[#60EFFF] border border-blue-400/30">
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between mb-1.5 gap-2">
+                  <h3 className="text-sm sm:text-base font-bold text-white tracking-tight flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    <span>Your Privacy &amp; Cookie Choices</span>
+                    <span className="text-[9.5px] uppercase font-semibold px-2 py-0.5 rounded-full bg-blue-500/20 text-[#60EFFF] border border-blue-400/30 whitespace-nowrap">
                       US Law Notice
                     </span>
                   </h3>
+                  <button
+                    type="button"
+                    onClick={handleDismissBanner}
+                    className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors shrink-0 cursor-pointer"
+                    aria-label="Dismiss cookie notice"
+                  >
+                    <X size={17} />
+                  </button>
                 </div>
 
-                <p id="cookie-consent-description" className="text-xs text-slate-300 leading-relaxed mb-4">
-                  We use cookies and privacy-respecting telemetry to understand traffic, remember your preferences, and provide personalized senior care support across Pennsylvania in accordance with US privacy laws (CCPA/CPRA).
-                  {" "}
+                <p id="cookie-consent-description" className="text-xs text-slate-300 leading-relaxed mb-3 sm:mb-4">
+                  We use cookies and privacy-respecting telemetry to understand traffic, remember your preferences, and provide personalized senior care support across Pennsylvania in accordance with US privacy laws (CCPA/CPRA).{" "}
                   <Link
                     href="/privacy-policy"
-                    className="text-[#60EFFF] hover:underline font-medium inline-flex items-center gap-0.5"
+                    className="text-[#60EFFF] hover:underline font-medium inline-flex items-center gap-0.5 whitespace-nowrap"
                   >
                     Privacy Policy <ExternalLink size={10} />
                   </Link>
                 </p>
 
-                {/* Primary Buttons */}
-                <div className="flex flex-wrap items-center gap-2 pt-1">
-                  <button
-                    onClick={handleAcceptAll}
-                    disabled={isSubmitting}
-                    className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#0061FF] to-[#004ECC] hover:from-[#0052db] hover:to-[#003da8] text-white text-xs font-bold shadow-lg shadow-blue-600/30 transition-all transform hover:-translate-y-0.5 cursor-pointer"
-                  >
-                    Accept All
-                  </button>
+                {/* Primary Buttons: Responsive 2-column on mobile, inline on desktop */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1">
+                  <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center flex-1">
+                    <button
+                      type="button"
+                      onClick={handleAcceptAll}
+                      disabled={isSubmitting}
+                      className="px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-[#0061FF] to-[#004ECC] hover:from-[#0052db] hover:to-[#003da8] text-white text-xs font-bold shadow-lg shadow-blue-600/30 transition-all transform hover:-translate-y-0.5 cursor-pointer text-center"
+                    >
+                      Accept All
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={handleRejectNonEssential}
+                      disabled={isSubmitting}
+                      className="px-3 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-slate-200 hover:text-white text-xs font-semibold border border-white/15 transition-all cursor-pointer text-center"
+                    >
+                      Reject Non-Essential
+                    </button>
+                  </div>
 
                   <button
-                    onClick={handleRejectNonEssential}
-                    disabled={isSubmitting}
-                    className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-slate-200 hover:text-white text-xs font-semibold border border-white/15 transition-all cursor-pointer"
-                  >
-                    Reject Non-Essential
-                  </button>
-
-                  <button
+                    type="button"
                     onClick={() => setShowModal(true)}
-                    className="px-3 py-2.5 rounded-xl text-slate-300 hover:text-white text-xs font-semibold hover:bg-white/5 transition-all inline-flex items-center gap-1.5 cursor-pointer ml-auto"
+                    className="px-3 py-2 rounded-xl text-slate-300 hover:text-white text-xs font-semibold hover:bg-white/5 transition-all inline-flex items-center justify-center gap-1.5 cursor-pointer sm:ml-auto"
                   >
                     <Sliders size={13} className="text-[#60EFFF]" />
                     <span>Customize</span>
@@ -266,7 +326,7 @@ export default function CookieConsentBanner() {
           2. GRANULAR PREFERENCES MODAL (CCPA / CPRA Compliant Choices)
           ===================================================================== */}
       {showModal && (
-        <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto animate-fadeIn">
+        <div className="fixed inset-0 z-[100000] bg-slate-950/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto animate-fadeIn">
           <div className="bg-white w-full max-w-xl rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[90vh] my-auto">
             {/* Header */}
             <div className="bg-gradient-to-r from-[#001A4D] via-[#0B2A6B] to-[#001A4D] text-white px-6 py-4 flex items-center justify-between shrink-0">
@@ -423,29 +483,30 @@ export default function CookieConsentBanner() {
       )}
 
       {/* =====================================================================
-          3. PERSISTENT FLOATING PRIVACY TRIGGER (Always accessible to revisit)
+          3. PERSISTENT FLOATING PRIVACY TRIGGER (Desktop only, mobile accesses via footer)
           ===================================================================== */}
       {!showBanner && !showModal && (
         <button
+          type="button"
           onClick={() => setShowModal(true)}
-          className="fixed bottom-3 left-3 z-40 bg-white/90 hover:bg-white backdrop-blur-md text-[#001A4D] hover:text-[#0061FF] border border-slate-300/80 shadow-md hover:shadow-lg rounded-full px-3 py-1.5 text-[11px] font-bold transition-all flex items-center gap-1.5 group cursor-pointer"
+          className="hidden sm:flex fixed bottom-6 left-6 z-40 bg-white/95 hover:bg-white backdrop-blur-md text-[#001A4D] hover:text-[#0061FF] border border-slate-300/80 shadow-md hover:shadow-lg rounded-full px-3.5 py-2 text-xs font-bold transition-all items-center gap-2 group cursor-pointer"
           title="Cookie & Privacy Choices (CCPA/CPRA)"
           aria-label="Manage cookie choices and privacy settings"
         >
-          <ShieldCheck size={13} className="text-[#0061FF] group-hover:scale-110 transition-transform" />
+          <ShieldCheck size={14} className="text-[#0061FF] group-hover:scale-110 transition-transform" />
           <span>Privacy Choices</span>
         </button>
       )}
 
       {/* =====================================================================
-          4. SUCCESS CONFIRMATION TOAST
+          4. SUCCESS CONFIRMATION TOAST (Clean top notification)
           ===================================================================== */}
       {showSavedToast && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[#001A4D] text-white px-4 py-3 rounded-2xl shadow-2xl border border-emerald-500/50 flex items-center gap-2.5 text-xs font-semibold animate-slideUp">
+        <div className="fixed top-5 left-1/2 -translate-x-1/2 z-[100001] bg-[#001A4D]/95 backdrop-blur-md text-white px-4 py-2.5 rounded-2xl shadow-2xl border border-emerald-500/50 flex items-center gap-2.5 text-xs font-semibold animate-slideDown whitespace-nowrap">
           <div className="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0">
             <Check size={12} />
           </div>
-          <span>Your cookie & privacy preferences have been saved!</span>
+          <span>Your privacy preferences have been saved!</span>
         </div>
       )}
     </>

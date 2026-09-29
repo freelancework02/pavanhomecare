@@ -9,6 +9,26 @@ import { site } from "@/lib/site";
 export default function StickyCallBar() {
   const pathname = usePathname();
   const [show, setShow] = useState(false);
+  const [isCookieBannerVisible, setIsCookieBannerVisible] = useState(false);
+
+  useEffect(() => {
+    // Check initial cookie banner state
+    if (typeof document !== "undefined") {
+      const bState = document.documentElement.getAttribute("data-cookie-banner");
+      const mState = document.documentElement.getAttribute("data-cookie-modal");
+      if (bState === "open" || mState === "open") {
+        setIsCookieBannerVisible(true);
+      }
+    }
+
+    const handleCookieState = (e) => {
+      const { bannerOpen, modalOpen } = e.detail || {};
+      setIsCookieBannerVisible(Boolean(bannerOpen || modalOpen));
+    };
+
+    window.addEventListener("phc_cookie_state_change", handleCookieState);
+    return () => window.removeEventListener("phc_cookie_state_change", handleCookieState);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -19,8 +39,17 @@ export default function StickyCallBar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute(
+        "data-sticky-call",
+        show && !isCookieBannerVisible ? "true" : "false"
+      );
+    }
+  }, [show, isCookieBannerVisible]);
+
   if (pathname && pathname.startsWith("/admin")) return null;
-  if (!show) return null;
+  if (!show || isCookieBannerVisible) return null;
 
   return (
     <div className="sc-bar">
@@ -34,6 +63,12 @@ export default function StickyCallBar() {
       </Link>
 
       <style dangerouslySetInnerHTML={{ __html: `
+        html[data-cookie-banner="open"] .sc-bar,
+        html[data-cookie-modal="open"] .sc-bar,
+        html[data-chat-open="true"] .sc-bar {
+          display: none !important;
+        }
+
         .sc-bar {
           position: fixed;
           bottom: 1rem;
