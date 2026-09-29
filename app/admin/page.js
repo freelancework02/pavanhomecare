@@ -907,7 +907,7 @@ export default function AdminPage() {
             }`}
           >
             <ShieldCheck size={16} className={activeAdminTab === "consent" ? "text-[#60EFFF]" : "text-[#0061FF]"} />
-            <span>Consent &amp; Analytics (US Law)</span>
+            <span>Consent &amp; Analytics</span>
             <span
               className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
                 activeAdminTab === "consent"
@@ -1529,7 +1529,7 @@ export default function AdminPage() {
         )}
 
         {/* =====================================================================
-            VIEW 3: COOKIE CONSENT & VISITOR TELEMETRY (US Law CCPA / CPRA)
+            VIEW 3: COOKIE CONSENT & VISITOR TELEMETRY
             ===================================================================== */}
         {activeAdminTab === "consent" && (
           <div className="space-y-8 animate-fadeIn">
@@ -1541,7 +1541,7 @@ export default function AdminPage() {
                   Cookie Consent &amp; Visitor Analytics
                 </h1>
                 <p className="text-sm text-[#64748B] mt-1">
-                  Real-time visitor telemetry from Firestore collection: <code className="text-[#0061FF] font-mono text-xs font-bold">PHC-cookie-consent-data</code> (US Law: CCPA / CPRA)
+                  Real-time visitor telemetry from Firestore collection: <code className="text-[#0061FF] font-mono text-xs font-bold">PHC-cookie-consent-data</code>
                 </p>
               </div>
 
@@ -1592,7 +1592,7 @@ export default function AdminPage() {
                   </div>
                 </div>
                 <div className="text-2xl font-extrabold text-slate-700">{consentMetrics.rejected}</div>
-                <span className="text-xs text-slate-500 mt-1 block">Strictly Necessary Only (CCPA)</span>
+                <span className="text-xs text-slate-500 mt-1 block">Strictly Necessary Only</span>
               </div>
 
               <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
@@ -1638,20 +1638,20 @@ export default function AdminPage() {
               <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
                 <h3 className="text-sm font-bold text-[#001A4D] mb-3 flex items-center gap-2">
                   <ShieldCheck size={16} className="text-emerald-600" />
-                  United States Privacy Legal Framework
+                  Privacy &amp; Compliance Safeguards
                 </h3>
                 <div className="space-y-2.5 text-xs text-slate-600 leading-relaxed">
                   <p className="flex items-start gap-2">
                     <span className="text-emerald-600 font-bold">✓</span>
-                    <span><strong>CCPA / CPRA Notice at Collection:</strong> Discloses categories of data (analytics, clicks, approximate location, device details) before logging.</span>
+                    <span><strong>Cookie &amp; Privacy Notice:</strong> Discloses categories of data (analytics, clicks, approximate location, device details) before logging.</span>
                   </p>
                   <p className="flex items-start gap-2">
                     <span className="text-emerald-600 font-bold">✓</span>
-                    <span><strong>Do Not Sell or Share My Info:</strong> Provides California residents clear opt-out toggles and zero unauthorized data sales.</span>
+                    <span><strong>Do Not Sell or Share My Info:</strong> Provides visitors clear opt-out toggles and zero unauthorized data sharing.</span>
                   </p>
                   <p className="flex items-start gap-2">
                     <span className="text-emerald-600 font-bold">✓</span>
-                    <span><strong>Persistent Consent Management:</strong> Users can revisit or revoke consent anytime via the floating badge or footer "Cookie Choices" link.</span>
+                    <span><strong>Persistent Consent Management:</strong> Users can revisit or revoke consent anytime via the floating badge or footer &quot;Cookie Choices&quot; link.</span>
                   </p>
                   <p className="flex items-start gap-2">
                     <span className="text-emerald-600 font-bold">✓</span>

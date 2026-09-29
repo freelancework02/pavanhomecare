@@ -386,8 +386,9 @@ export default function ChatbotWidget() {
                 </div>
                 <form onSubmit={handleLeadSubmit}>
                   <div className={styles.inChatFormGroup}>
-                    <label>Full Name *</label>
+                    <label htmlFor="lead-fullName">Full Name *</label>
                     <input
+                      id="lead-fullName"
                       type="text"
                       name="fullName"
                       required
@@ -395,12 +396,14 @@ export default function ChatbotWidget() {
                       value={leadForm.fullName}
                       onChange={handleLeadInputChange}
                       className={styles.inChatInput}
+                      aria-label="Full Name"
                     />
                   </div>
 
                   <div className={styles.inChatFormGroup}>
-                    <label>Phone Number *</label>
+                    <label htmlFor="lead-phone">Phone Number *</label>
                     <input
+                      id="lead-phone"
                       type="tel"
                       name="phone"
                       required
@@ -408,24 +411,28 @@ export default function ChatbotWidget() {
                       value={leadForm.phone}
                       onChange={handleLeadInputChange}
                       className={styles.inChatInput}
+                      aria-label="Phone Number"
                     />
                   </div>
 
                   <div className={styles.inChatFormGroup}>
-                    <label>Email Address</label>
+                    <label htmlFor="lead-email">Email Address</label>
                     <input
+                      id="lead-email"
                       type="email"
                       name="email"
                       placeholder="e.g. name@example.com"
                       value={leadForm.email}
                       onChange={handleLeadInputChange}
                       className={styles.inChatInput}
+                      aria-label="Email Address"
                     />
                   </div>
 
                   <div className={styles.inChatFormGroup}>
-                    <label>PA County or City *</label>
+                    <label htmlFor="lead-countyCity">PA County or City *</label>
                     <input
+                      id="lead-countyCity"
                       type="text"
                       name="countyCity"
                       required
@@ -433,16 +440,19 @@ export default function ChatbotWidget() {
                       value={leadForm.countyCity}
                       onChange={handleLeadInputChange}
                       className={styles.inChatInput}
+                      aria-label="PA County or City"
                     />
                   </div>
 
                   <div className={styles.inChatFormGroup}>
-                    <label>Service Needed</label>
+                    <label htmlFor="lead-serviceNeeded">Service Needed</label>
                     <select
+                      id="lead-serviceNeeded"
                       name="serviceNeeded"
                       value={leadForm.serviceNeeded}
                       onChange={handleLeadInputChange}
                       className={styles.inChatInput}
+                      aria-label="Service Needed"
                     >
                       <option value="Personal Care & Hygiene">Personal Care &amp; Hygiene</option>
                       <option value="Companion & Homemaking">Companion Care &amp; Homemaking</option>

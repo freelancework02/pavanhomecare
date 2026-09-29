@@ -80,9 +80,9 @@ export default function PrivacyPolicyPage() {
             </div>
 
             <div className="border-t border-[#DCE7F7] pt-8 mt-8">
-              <h2 className="font-poppins font-bold text-[24px] text-[#001A4D] mb-4">CCPA &amp; GDPR Privacy Rights</h2>
+              <h2 className="font-poppins font-bold text-[24px] text-[#001A4D] mb-4">Your Privacy &amp; Data Rights</h2>
               <p className="mb-4">
-                We respect your rights under applicable privacy legislation, including CCPA and GDPR. You have the right to request disclosure, rectification, restriction of processing, or erasure of your personal data held in our systems.
+                We respect your rights under applicable privacy laws. You have the right to request disclosure, rectification, restriction of processing, or erasure of your personal data held in our systems.
               </p>
               <p className="mb-6">
                 If you make a request, we will respond within 30 days. To exercise any of these rights, please contact us at <a href={`mailto:${site.email}`} className="text-[#0061FF] font-semibold hover:underline">{site.email}</a>.

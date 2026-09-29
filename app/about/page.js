@@ -2,7 +2,7 @@ import AboutClient from "@/components/AboutClient";
 import { site } from "@/lib/site";
 
 export const metadata = {
-  title: `About Us | Licensed In-Home Senior Care in PA | ${site.name}`,
+  title: "About Us | Licensed In-Home Senior Care in PA",
   description: `Learn about ${site.name}'s mission, values, clinical protocols, and licensed caregivers providing love-driven senior care across 9 Pennsylvania counties.`,
   alternates: { canonical: "/about" },
   keywords: [
@@ -18,11 +18,22 @@ export const metadata = {
     url: `${site.url}/about`,
     type: "website",
     siteName: site.name,
+    images: [
+      {
+        url: `${site.url}/images/og-image.jpg`,
+        secureUrl: `${site.url}/images/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
+        alt: `About ${site.name} - In-Home Senior Care in Pennsylvania`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `About ${site.name} | Licensed In-Home Care in PA`,
     description: `Love-driven senior care and certified caregivers across Pennsylvania.`,
+    images: [`${site.url}/images/og-image.jpg`],
   },
 };
 

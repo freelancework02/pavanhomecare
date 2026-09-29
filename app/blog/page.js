@@ -26,11 +26,22 @@ export const metadata = {
     url: `${site.url}/blog`,
     type: "website",
     siteName: site.name,
+    images: [
+      {
+        url: `${site.url}/images/og-image.jpg`,
+        secureUrl: `${site.url}/images/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
+        alt: `${site.name} - Senior Care Resources in Pennsylvania`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `Senior Care Resources & Eldercare Guides | ${site.name}`,
     description: `Practical knowledge, expert tips, and Medicaid guidance for Pennsylvania families.`,
+    images: [`${site.url}/images/og-image.jpg`],
   },
 };
 

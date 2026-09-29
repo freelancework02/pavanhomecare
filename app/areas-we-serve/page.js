@@ -26,11 +26,22 @@ export const metadata = {
     url: `${site.url}/areas-we-serve`,
     type: "website",
     siteName: site.name,
+    images: [
+      {
+        url: `${site.url}/images/og-image.jpg`,
+        secureUrl: `${site.url}/images/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
+        alt: `${site.name} - Pennsylvania Service Areas`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `Areas We Serve in Pennsylvania | ${site.name}`,
     description: `Compassionate in-home care across Bucks, Philadelphia, Montgomery & 9 PA counties.`,
+    images: [`${site.url}/images/og-image.jpg`],
   },
 };
 

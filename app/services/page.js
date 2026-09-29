@@ -63,11 +63,22 @@ export async function generateMetadata({ searchParams }) {
       url: `${site.url}${canonicalUrl}`,
       type: "website",
       siteName: `${site.name} — ${site.tagline}`,
+      images: [
+        {
+          url: `${site.url}/images/og-image.jpg`,
+          secureUrl: `${site.url}/images/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          type: "image/jpeg",
+          alt: `${site.name} - Care Services in Pennsylvania`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [`${site.url}/images/og-image.jpg`],
     },
   };
 }

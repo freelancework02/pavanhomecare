@@ -460,59 +460,69 @@ export default function CountyPageClient({ data, city }) {
             ) : (
               <form onSubmit={handleFormSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
                 <div>
-                  <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">First Name *</label>
+                  <label htmlFor="county-form-firstName" className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">First Name *</label>
                   <input
+                    id="county-form-firstName"
                     type="text"
                     name="firstName"
                     required
                     placeholder="John"
+                    aria-label="First Name"
                     value={formData.firstName}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Last Name *</label>
+                  <label htmlFor="county-form-lastName" className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Last Name *</label>
                   <input
+                    id="county-form-lastName"
                     type="text"
                     name="lastName"
                     required
                     placeholder="Doe"
+                    aria-label="Last Name"
                     value={formData.lastName}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]"
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Email Address *</label>
+                  <label htmlFor="county-form-email" className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Email Address *</label>
                   <input
+                    id="county-form-email"
                     type="email"
                     name="email"
                     required
                     placeholder="john@example.com"
+                    aria-label="Email Address"
                     value={formData.email}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]"
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Phone Number *</label>
+                  <label htmlFor="county-form-phone" className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">Phone Number *</label>
                   <input
+                    id="county-form-phone"
                     type="tel"
                     name="phone"
                     required
                     placeholder="(215) 436-9499"
+                    aria-label="Phone Number"
                     value={formData.phone}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]"
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">How Can We Help?</label>
+                  <label htmlFor="county-form-message" className="block text-xs font-bold text-[#001A4D] uppercase mb-1.5">How Can We Help?</label>
                   <textarea
+                    id="county-form-message"
                     rows={3}
                     name="message"
                     placeholder="Tell us about the care services needed..."
+                    aria-label="How Can We Help?"
                     value={formData.message}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-xl border border-[#DCE7F7] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 text-sm text-[#0B1730]"

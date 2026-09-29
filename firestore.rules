@@ -28,7 +28,7 @@ service cloud.firestore {
       allow create, update, delete: if true;
     }
 
-    // 5. Pavan Homecare Cookie Consent & Telemetry Data (US Law Compliant)
+    // 5. Pavan Homecare Cookie Consent & Telemetry Data (Privacy Compliant)
     match /PHC-cookie-consent-data/{id} {
       allow create: if true;
       allow read, update, delete: if true;

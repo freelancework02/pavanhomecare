@@ -618,6 +618,7 @@ export default function ContactClient() {
                         id="firstName"
                         name="firstName"
                         placeholder="First Name *"
+                        aria-label="First Name"
                         value={formData.firstName}
                         onChange={handleInputChange}
                         className={`lux-input ${errors.firstName ? "has-error" : ""}`}
@@ -633,6 +634,7 @@ export default function ContactClient() {
                         id="lastName"
                         name="lastName"
                         placeholder="Last Name *"
+                        aria-label="Last Name"
                         value={formData.lastName}
                         onChange={handleInputChange}
                         className={`lux-input ${errors.lastName ? "has-error" : ""}`}
@@ -651,6 +653,7 @@ export default function ContactClient() {
                         id="phone"
                         name="phone"
                         placeholder="Phone Number (e.g. 215-436-9499) *"
+                        aria-label="Phone Number"
                         value={formData.phone}
                         onChange={handleInputChange}
                         className={`lux-input ${errors.phone ? "has-error" : ""}`}
@@ -666,6 +669,7 @@ export default function ContactClient() {
                         id="email"
                         name="email"
                         placeholder="Email Address *"
+                        aria-label="Email Address"
                         value={formData.email}
                         onChange={handleInputChange}
                         className={`lux-input ${errors.email ? "has-error" : ""}`}
@@ -684,6 +688,7 @@ export default function ContactClient() {
                         id="city"
                         name="city"
                         placeholder="City in PA *"
+                        aria-label="City in PA"
                         value={formData.city}
                         onChange={handleInputChange}
                         className={`lux-input ${errors.city ? "has-error" : ""}`}
@@ -699,6 +704,7 @@ export default function ContactClient() {
                         id="zip"
                         name="zip"
                         placeholder="ZIP Code *"
+                        aria-label="ZIP Code"
                         value={formData.zip}
                         onChange={handleInputChange}
                         className={`lux-input ${errors.zip ? "has-error" : ""}`}
@@ -714,6 +720,7 @@ export default function ContactClient() {
                       <select
                         id="preferredContact"
                         name="preferredContact"
+                        aria-label="Preferred Contact Method"
                         value={formData.preferredContact}
                         onChange={handleInputChange}
                         className="lux-select"
@@ -728,6 +735,7 @@ export default function ContactClient() {
                       <select
                         id="preferredTime"
                         name="preferredTime"
+                        aria-label="Best Time to Contact"
                         value={formData.preferredTime}
                         onChange={handleInputChange}
                         className="lux-select"
@@ -745,6 +753,7 @@ export default function ContactClient() {
                     id="message"
                     name="message"
                     placeholder="Tell us about daily schedules, health conditions, mobility, or Medicaid waiver status (optional)..."
+                    aria-label="Additional Care Details"
                     value={formData.message}
                     onChange={handleInputChange}
                     className="lux-textarea"

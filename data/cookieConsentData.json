@@ -1,6 +1,67 @@
 [
   {
     "collection": "PHC-cookie-consent-data",
+    "consentId": "consent_mumx0fl7_6l2ulrt0",
+    "visitorId": "vid_mumx0fkz_j9omgsqg",
+    "sessionId": "sess_mumx0fkz_wd7zo6rq",
+    "consentStatus": "dismissed_default",
+    "categories": {
+      "necessary": true,
+      "analytics": false,
+      "functional": true,
+      "marketing": false
+    },
+    "doNotSellShare": true,
+    "analytics": {
+      "pagesVisited": [
+        {
+          "path": "/",
+          "timestamp": "2026-09-29T16:52:47.110Z",
+          "title": "In-Home Senior Care & Caregiver Services in PA | Pavan Homecare"
+        }
+      ],
+      "pageCount": 1,
+      "currentUrl": "http://localhost:3000/",
+      "currentPath": "/",
+      "clicksRecorded": []
+    },
+    "deviceInfo": {
+      "deviceType": "Mobile",
+      "browser": "Apple Safari",
+      "os": "macOS",
+      "screenResolution": "390x844",
+      "viewportSize": "390x786"
+    },
+    "approximateLocation": {
+      "timezone": "Asia/Calcutta",
+      "timezoneOffset": "UTC+5.5",
+      "locale": "en-US",
+      "region": "Pennsylvania (PA), USA",
+      "clientIpMasked": "::xxxx"
+    },
+    "referralInfo": {
+      "referrer": "http://localhost:3000/",
+      "utm": {}
+    },
+    "preferencesInfo": {
+      "language": "en-US",
+      "savedSettings": {
+        "theme": "light",
+        "highContrast": false,
+        "cookieNoticeDismissed": true
+      },
+      "filters": {
+        "county": "all",
+        "blogCategory": "all"
+      }
+    },
+    "legalFramework": "US-Privacy (CCPA / CPRA / CalOPPA)",
+    "policyVersion": "2026.1",
+    "submittedAtIso": "2026-09-29T16:53:04.045Z",
+    "formattedDate": "Tuesday, September 29, 2026 at 10:23:04 PM"
+  },
+  {
+    "collection": "PHC-cookie-consent-data",
     "consentId": "consent_mumfwv5y_aryzr1wn",
     "visitorId": "vid_mumfwv5t_vvpgpm3d",
     "sessionId": "sess_mumfwv5t_t6dy9vzz",

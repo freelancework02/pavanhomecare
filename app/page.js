@@ -15,7 +15,7 @@ import HomeFaq, { homeFaqs } from "@/components/HomeFaq";
 import { services, site } from "@/lib/site";
 
 export const metadata = {
-  title: `In-Home Senior Care & Caregiver Services in PA | ${site.name}`,
+  title: "Pavan Homecare | In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
   description:
     "Trusted in-home senior care across Pennsylvania. Serving 9 counties including Bucks, Philadelphia, Montgomery, Delaware, and Chester. Companion care, personal care, 24/7 care & Medicaid waiver assistance.",
   alternates: { canonical: "/" },
@@ -30,12 +30,29 @@ export const metadata = {
     "Medicaid waiver home care provider PA"
   ],
   openGraph: {
-    title: `In-Home Senior Care & Caregiver Services in PA | ${site.name}`,
+    title: "Pavan Homecare | In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
     description:
       "Compassionate, licensed in-home care tailored to your family's needs. Serving Bucks County, Philadelphia, and 9 PA counties.",
     url: site.url,
     siteName: site.name,
     type: "website",
+    images: [
+      {
+        url: `${site.url}/images/og-image.jpg`,
+        secureUrl: `${site.url}/images/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
+        alt: "Pavan Homecare - In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pavan Homecare | In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
+    description:
+      "Compassionate, licensed in-home care tailored to your family's needs. Serving Bucks County, Philadelphia, and 9 PA counties.",
+    images: [`${site.url}/images/og-image.jpg`],
   },
 };
 

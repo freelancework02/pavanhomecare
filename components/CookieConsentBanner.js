@@ -39,7 +39,7 @@ export default function CookieConsentBanner() {
     necessary: true, // Always locked
     analytics: true,
     functional: true,
-    doNotSellShare: true // CCPA compliance
+    doNotSellShare: true // Data protection opt-out
   });
 
   // Track page visits automatically
@@ -181,7 +181,7 @@ export default function CookieConsentBanner() {
     }
   };
 
-  // Handle "Reject Non-Essential" (CCPA / Strict Privacy)
+  // Handle "Reject Non-Essential" (Strict Privacy)
   const handleRejectNonEssential = async () => {
     setIsSubmitting(true);
     const decision = {
@@ -259,11 +259,8 @@ export default function CookieConsentBanner() {
 
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between mb-1.5 gap-2">
-                  <h3 className="text-sm sm:text-base font-bold text-white tracking-tight flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  <h3 className="text-sm sm:text-base font-bold text-white !text-white tracking-tight flex flex-wrap items-center gap-1.5 sm:gap-2 m-0 !mb-0">
                     <span>Your Privacy &amp; Cookie Choices</span>
-                    <span className="text-[9.5px] uppercase font-semibold px-2 py-0.5 rounded-full bg-blue-500/20 text-[#60EFFF] border border-blue-400/30 whitespace-nowrap">
-                      US Law Notice
-                    </span>
                   </h3>
                   <button
                     type="button"
@@ -276,7 +273,7 @@ export default function CookieConsentBanner() {
                 </div>
 
                 <p id="cookie-consent-description" className="text-xs text-slate-300 leading-relaxed mb-3 sm:mb-4">
-                  We use cookies and privacy-respecting telemetry to understand traffic, remember your preferences, and provide personalized senior care support across Pennsylvania in accordance with US privacy laws (CCPA/CPRA).{" "}
+                  We use cookies and privacy-respecting telemetry to understand website traffic, remember your preferences, and provide personalized senior care support across Pennsylvania.{" "}
                   <Link
                     href="/privacy-policy"
                     className="text-[#60EFFF] hover:underline font-medium inline-flex items-center gap-0.5 whitespace-nowrap"
@@ -323,7 +320,7 @@ export default function CookieConsentBanner() {
       )}
 
       {/* =====================================================================
-          2. GRANULAR PREFERENCES MODAL (CCPA / CPRA Compliant Choices)
+          2. GRANULAR PREFERENCES MODAL
           ===================================================================== */}
       {showModal && (
         <div className="fixed inset-0 z-[100000] bg-slate-950/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto animate-fadeIn">
@@ -331,24 +328,21 @@ export default function CookieConsentBanner() {
             {/* Header */}
             <div className="bg-gradient-to-r from-[#001A4D] via-[#0B2A6B] to-[#001A4D] text-white px-6 py-4 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-[#60EFFF] border border-white/10">
+                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-[#60EFFF] border border-white/10 shrink-0">
                   <Sliders size={20} />
                 </div>
                 <div>
-                  <h2 className="text-base font-bold flex items-center gap-2">
-                    Cookie & Privacy Settings
-                    <span className="text-[10px] uppercase font-bold bg-[#60EFFF]/20 text-[#60EFFF] px-2 py-0.5 rounded-full">
-                      CCPA / CPRA
-                    </span>
+                  <h2 className="text-base sm:text-lg font-bold text-white !text-white flex items-center gap-2 m-0 !m-0 !mb-0 tracking-tight">
+                    Cookie &amp; Privacy Settings
                   </h2>
-                  <p className="text-xs text-blue-200">
+                  <p className="text-xs text-blue-200 m-0 !m-0 !mt-0.5">
                     Configure your data and traffic analytics preferences
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setShowModal(false)}
-                className="p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                className="p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors shrink-0 cursor-pointer"
                 aria-label="Close preferences"
               >
                 <X size={18} />
@@ -359,8 +353,8 @@ export default function CookieConsentBanner() {
             <div className="p-6 space-y-4 overflow-y-auto text-xs text-slate-700">
               <div className="bg-blue-50/70 border border-blue-200/60 rounded-2xl p-3.5 flex items-start gap-2.5">
                 <Info size={16} className="text-[#0061FF] shrink-0 mt-0.5" />
-                <p className="text-slate-600 leading-relaxed text-[11px]">
-                  Under United States privacy laws (including the California Consumer Privacy Act CCPA/CPRA), you have the right to know what information is collected, customize non-essential tracking, and opt out of data sharing.
+                <p className="text-slate-600 leading-relaxed text-[11px] m-0">
+                  We respect your privacy and give you full control over your data. Customize your cookie and telemetry preferences below to choose how information is collected during your visit and ensure your personal data is protected.
                 </p>
               </div>
 
@@ -375,8 +369,8 @@ export default function CookieConsentBanner() {
                     Always Active
                   </span>
                 </div>
-                <p className="text-slate-500 text-[11px] leading-relaxed">
-                  Required for core website security, authenticating inquiries, preventing fraudulent form submissions, and ensuring HIPAA/privacy safeguards. These cannot be disabled.
+                <p className="text-slate-500 text-[11px] leading-relaxed m-0">
+                  Required for core website security, authenticating inquiries, preventing fraudulent form submissions, and ensuring privacy safeguards. These cannot be disabled.
                 </p>
               </div>
 
@@ -385,7 +379,7 @@ export default function CookieConsentBanner() {
                 <div className="flex items-center justify-between mb-1.5">
                   <div className="flex items-center gap-2">
                     <Activity size={15} className="text-[#0061FF]" />
-                    <span className="font-bold text-sm text-[#001A4D]">Analytics & Telemetry</span>
+                    <span className="font-bold text-sm text-[#001A4D]">Analytics &amp; Telemetry</span>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input
@@ -397,7 +391,7 @@ export default function CookieConsentBanner() {
                     <div className="w-10 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#0061FF]"></div>
                   </label>
                 </div>
-                <p className="text-slate-500 text-[11px] leading-relaxed">
+                <p className="text-slate-500 text-[11px] leading-relaxed m-0">
                   Helps us understand how families use our Pennsylvania home care portal by collecting pages visited, button clicks, device/browser details, referral sources, and session duration.
                 </p>
               </div>
@@ -419,16 +413,16 @@ export default function CookieConsentBanner() {
                     <div className="w-10 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#0061FF]"></div>
                   </label>
                 </div>
-                <p className="text-slate-500 text-[11px] leading-relaxed">
+                <p className="text-slate-500 text-[11px] leading-relaxed m-0">
                   Remembers your language choice, selected county care filters, and chatbot preferences between visits for a seamless experience.
                 </p>
               </div>
 
-              {/* Category 4: Do Not Sell or Share (CCPA Rights) */}
-              <div className="border border-amber-200 rounded-2xl p-4 bg-amber-50/40">
+              {/* Category 4: Personal Data Protection */}
+              <div className="border border-slate-200 rounded-2xl p-4 bg-slate-50/60">
                 <div className="flex items-center justify-between mb-1.5">
                   <div className="flex items-center gap-2">
-                    <ShieldAlert size={15} className="text-amber-600" />
+                    <ShieldAlert size={15} className="text-[#0061FF]" />
                     <span className="font-bold text-sm text-[#001A4D]">Do Not Sell or Share My Information</span>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
@@ -438,11 +432,11 @@ export default function CookieConsentBanner() {
                       onChange={(e) => setPreferences({ ...preferences, doNotSellShare: e.target.checked })}
                       className="sr-only peer"
                     />
-                    <div className="w-10 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-amber-600"></div>
+                    <div className="w-10 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#0061FF]"></div>
                   </label>
                 </div>
-                <p className="text-slate-500 text-[11px] leading-relaxed">
-                  Exercise your statutory opt-out right under CCPA/CPRA. Pavan Homecare does not sell patient or caregiver personal data to third parties.
+                <p className="text-slate-500 text-[11px] leading-relaxed m-0">
+                  Ensure your personal information is never sold or shared. Pavan Homecare strictly safeguards your privacy and never sells or shares patient, family, or caregiver data with third-party advertisers.
                 </p>
               </div>
             </div>
@@ -489,12 +483,12 @@ export default function CookieConsentBanner() {
         <button
           type="button"
           onClick={() => setShowModal(true)}
-          className="hidden sm:flex fixed bottom-6 left-6 z-40 bg-white/95 hover:bg-white backdrop-blur-md text-[#001A4D] hover:text-[#0061FF] border border-slate-300/80 shadow-md hover:shadow-lg rounded-full px-3.5 py-2 text-xs font-bold transition-all items-center gap-2 group cursor-pointer"
-          title="Cookie & Privacy Choices (CCPA/CPRA)"
+          className="hidden sm:inline-flex fixed bottom-5 left-5 z-40 bg-white/95 hover:bg-white backdrop-blur-md text-[#001A4D] hover:text-[#0061FF] border border-slate-200/90 shadow-lg rounded-full p-2.5 hover:px-3.5 text-xs font-semibold transition-all duration-200 items-center gap-2 opacity-85 hover:opacity-100 group cursor-pointer"
+          title="Cookie & Privacy Preferences"
           aria-label="Manage cookie choices and privacy settings"
         >
-          <ShieldCheck size={14} className="text-[#0061FF] group-hover:scale-110 transition-transform" />
-          <span>Privacy Choices</span>
+          <ShieldCheck size={16} className="text-[#0061FF] group-hover:scale-110 transition-transform shrink-0" />
+          <span className="hidden group-hover:inline text-[11px] font-semibold text-[#001A4D] whitespace-nowrap">Privacy Choices</span>
         </button>
       )}
 

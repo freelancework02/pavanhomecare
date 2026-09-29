@@ -18,7 +18,7 @@ const poppins = Poppins({
 export const metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | In-Home Senior Care & Caregivers in Pennsylvania`,
+    default: "Pavan Homecare | In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
     template: `%s | ${site.name}`,
   },
   description:
@@ -65,7 +65,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: `${site.name} | In-Home Senior Care & Caregivers in Pennsylvania`,
+    title: "Pavan Homecare | In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
     description:
       "Compassionate, licensed in-home senior care and caregiver services across Bucks County, Philadelphia, and 9 PA counties. Love driven care for your family.",
     url: site.url,
@@ -74,19 +74,31 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: `${site.url}/images/pavan-logo/PavanHomecare_Transparent.png`,
+        url: `${site.url}/images/og-image.jpg`,
+        secureUrl: `${site.url}/images/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: `${site.name} - Love Driven Care Across Pennsylvania`,
+        type: "image/jpeg",
+        alt: "Pavan Homecare - In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} | In-Home Senior Care in Pennsylvania`,
+    title: "Pavan Homecare | In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
     description:
       "Compassionate, licensed in-home care in Bucks, Philadelphia & surrounding PA communities. Request a free consultation.",
-    images: [`${site.url}/images/pavan-logo/PavanHomecare_Transparent.png`],
+    images: [`${site.url}/images/og-image.jpg`],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/icon.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "google63a6f166145c4e73",
@@ -222,6 +234,13 @@ export default function RootLayout({ children }) {
         )}
       </head>
       <body>
+        {/* ADA / WCAG 2.4.1 Bypass Blocks Skip Link */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[99999] focus:px-4 focus:py-2.5 focus:bg-[#001A4D] focus:text-white focus:font-bold focus:text-sm focus:rounded-xl focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#60EFFF]"
+        >
+          Skip to main content
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

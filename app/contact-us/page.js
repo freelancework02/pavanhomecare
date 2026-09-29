@@ -3,7 +3,7 @@ import ContactClient from "@/components/ContactClient";
 import { site } from "@/lib/site";
 
 export const metadata = {
-  title: `Contact Us & Free In-Home Consultation | ${site.name}`,
+  title: "Contact Us & Free In-Home Consultation",
   description: `Schedule a free in-home consultation or speak with a live 24/7 care coordinator at ${site.name}. Compassionate senior care across 9 PA counties.`,
   alternates: {
     canonical: "/contact-us",
@@ -22,11 +22,22 @@ export const metadata = {
     url: `${site.url}/contact-us`,
     type: "website",
     siteName: `${site.name} — ${site.tagline}`,
+    images: [
+      {
+        url: `${site.url}/images/og-image.jpg`,
+        secureUrl: `${site.url}/images/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
+        alt: `Contact ${site.name} - In-Home Senior Care in Pennsylvania`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `Contact ${site.name} | Free In-Home Care Consultation`,
     description: `Connect with our live Feasterville care coordination team today.`,
+    images: [`${site.url}/images/og-image.jpg`],
   },
 };
 

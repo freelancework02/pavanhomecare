@@ -46,9 +46,11 @@ export async function generateMetadata({ params }) {
       siteName: site.name,
       images: [
         {
-          url: post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/pavan-logo/PavanHomecare_Transparent.png`,
+          url: post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/og-image.jpg`,
+          secureUrl: post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/og-image.jpg`,
           width: 1200,
           height: 630,
+          type: "image/jpeg",
           alt: post.title,
         }
       ]
@@ -57,6 +59,7 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
+      images: [post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/og-image.jpg`],
     },
   };
 }

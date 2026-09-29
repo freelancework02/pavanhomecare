@@ -61,6 +61,7 @@ export default function CoverageMap() {
               <input
                 type="text"
                 placeholder="Search your county in Pennsylvania..."
+                aria-label="Search your county in Pennsylvania"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-11 pr-4 py-3.5 bg-white border border-[#DCE7F7] rounded-full text-[14px] text-[#001A4D] focus:outline-none focus:border-[#0061FF] focus:ring-2 focus:ring-[#0061FF]/20 transition-all shadow-sm"

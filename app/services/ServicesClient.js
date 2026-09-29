@@ -914,24 +914,28 @@ export default function ServicesClient({ initialService }) {
                   <form onSubmit={handleFormSubmit} className="assessment-form-box">
                     <div className="form-row-2">
                       <div className="form-group-lux">
-                        <label>Full Name *</label>
+                        <label htmlFor="service-form-fullName">Full Name *</label>
                         <input
+                          id="service-form-fullName"
                           type="text"
                           name="fullName"
                           required
                           placeholder="John Doe"
+                          aria-label="Full Name"
                           value={formData.fullName}
                           onChange={handleInputChange}
                           className="form-input-lux"
                         />
                       </div>
                       <div className="form-group-lux">
-                        <label>Phone Number *</label>
+                        <label htmlFor="service-form-phone">Phone Number *</label>
                         <input
+                          id="service-form-phone"
                           type="tel"
                           name="phone"
                           required
                           placeholder={site.phoneDisplay}
+                          aria-label="Phone Number"
                           value={formData.phone}
                           onChange={handleInputChange}
                           className="form-input-lux"
@@ -941,22 +945,26 @@ export default function ServicesClient({ initialService }) {
 
                     <div className="form-row-2">
                       <div className="form-group-lux">
-                        <label>Email Address *</label>
+                        <label htmlFor="service-form-email">Email Address *</label>
                         <input
+                          id="service-form-email"
                           type="email"
                           name="email"
                           required
                           placeholder="name@example.com"
+                          aria-label="Email Address"
                           value={formData.email}
                           onChange={handleInputChange}
                           className="form-input-lux"
                         />
                       </div>
                       <div className="form-group-lux">
-                        <label>County of Residence *</label>
+                        <label htmlFor="service-form-county">County of Residence *</label>
                         <select
+                          id="service-form-county"
                           required
                           name="county"
+                          aria-label="County of Residence"
                           className="form-input-lux"
                           value={formData.county}
                           onChange={handleInputChange}
@@ -970,11 +978,13 @@ export default function ServicesClient({ initialService }) {
                     </div>
 
                     <div className="form-group-lux">
-                      <label>Describe Your Loved One's Care Needs</label>
+                      <label htmlFor="service-form-careNeeds">Describe Your Loved One's Care Needs</label>
                       <textarea
+                        id="service-form-careNeeds"
                         rows={4}
                         name="careNeeds"
                         placeholder="Provide any details about schedules, specific needs, or preferred timing..."
+                        aria-label="Describe Your Loved One's Care Needs"
                         value={formData.careNeeds}
                         onChange={handleInputChange}
                         className="form-textarea-lux"

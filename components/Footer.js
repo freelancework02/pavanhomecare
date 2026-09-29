@@ -10,7 +10,7 @@ export default function Footer() {
   const pathname = usePathname();
   if (pathname && pathname.startsWith("/admin")) return null;
   return (
-    <footer className="w-full bg-[#001A4D] text-white pt-20 pb-8 relative overflow-hidden border-t-2 border-[#0061FF]">
+    <footer className="w-full bg-[#001A4D] text-white pt-20 pb-16 sm:pb-20 relative overflow-hidden border-t-2 border-[#0061FF]">
       {/* Top Brand Gradient Edge Divider Line */}
       <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#0061FF] via-[#60EFFF] to-[#FF7A59]" />
 
@@ -137,35 +137,35 @@ export default function Footer() {
           <div className="lg:col-span-3 flex flex-col">
             <h4 className="font-poppins font-bold text-[13px] uppercase tracking-wider text-white mb-2">Service Areas in PA</h4>
             <div className="w-[32px] h-[2px] bg-[#FF7A59] mb-6 rounded-full" />
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-[13.5px] text-white/80">
-              <Link href="/areas-we-serve/bucks" className="hover:text-[#60EFFF] transition-colors">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-[13.5px]">
+              <Link href="/areas-we-serve/bucks" className="text-white/85 hover:text-[#60EFFF] transition-colors">
                 Bucks County
               </Link>
-              <Link href="/areas-we-serve/philadelphia" className="hover:text-[#60EFFF] transition-colors">
+              <Link href="/areas-we-serve/philadelphia" className="text-white/85 hover:text-[#60EFFF] transition-colors">
                 Philadelphia
               </Link>
-              <Link href="/areas-we-serve/montgomery" className="hover:text-[#60EFFF] transition-colors">
+              <Link href="/areas-we-serve/montgomery" className="text-white/85 hover:text-[#60EFFF] transition-colors">
                 Montgomery
               </Link>
-              <Link href="/areas-we-serve/delaware" className="hover:text-[#60EFFF] transition-colors">
+              <Link href="/areas-we-serve/delaware" className="text-white/85 hover:text-[#60EFFF] transition-colors">
                 Delaware County
               </Link>
-              <Link href="/areas-we-serve/chester" className="hover:text-[#60EFFF] transition-colors">
+              <Link href="/areas-we-serve/chester" className="text-white/85 hover:text-[#60EFFF] transition-colors">
                 Chester County
               </Link>
-              <Link href="/areas-we-serve/lehigh" className="hover:text-[#60EFFF] transition-colors">
+              <Link href="/areas-we-serve/lehigh" className="text-white/85 hover:text-[#60EFFF] transition-colors">
                 Lehigh County
               </Link>
-              <Link href="/areas-we-serve/northampton" className="hover:text-[#60EFFF] transition-colors">
+              <Link href="/areas-we-serve/northampton" className="text-white/85 hover:text-[#60EFFF] transition-colors">
                 Northampton
               </Link>
-              <Link href="/areas-we-serve/berks" className="hover:text-[#60EFFF] transition-colors">
+              <Link href="/areas-we-serve/berks" className="text-white/85 hover:text-[#60EFFF] transition-colors">
                 Berks County
               </Link>
-              <Link href="/areas-we-serve/schuylkill" className="hover:text-[#60EFFF] transition-colors">
+              <Link href="/areas-we-serve/schuylkill" className="text-white/85 hover:text-[#60EFFF] transition-colors">
                 Schuylkill
               </Link>
-              <Link href="/feasterville-pa-home-care" className="text-[#60EFFF] hover:underline">
+              <Link href="/feasterville-pa-home-care" className="text-[#60EFFF] hover:underline font-medium">
                 Feasterville PA
               </Link>
             </div>
@@ -228,7 +228,7 @@ export default function Footer() {
                 window.location.hash = "#cookie-settings";
               }}
               className="hover:text-[#60EFFF] transition-colors inline-flex items-center gap-1"
-              title="Manage Cookie Preferences & Privacy Choices (CCPA/CPRA)"
+              title="Manage Cookie Preferences & Privacy Choices"
             >
               <ShieldCheck size={13} className="text-[#60EFFF]" />
               <span>Cookie Choices</span>

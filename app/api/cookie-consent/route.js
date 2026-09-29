@@ -122,7 +122,7 @@ export async function POST(request) {
         filters: body.preferencesInfo?.filters || {}
       },
       // Legal Framework
-      legalFramework: "US-Privacy (CCPA / CPRA / CalOPPA)",
+      legalFramework: "Standard Privacy & Cookie Consent",
       policyVersion: "2026.1",
       submittedAtIso: now.toISOString(),
       formattedDate
