@@ -1,6 +1,218 @@
 [
   {
     "collection": "PHC-cookie-consent-data",
+    "consentId": "consent_1791375190154",
+    "visitorId": "vis_muqwyuel_7z81y7j",
+    "sessionId": "sess_muy0qdfu_imipan5",
+    "consentStatus": "accepted_all",
+    "categories": {
+      "necessary": true,
+      "analytics": false,
+      "functional": false,
+      "marketing": false
+    },
+    "doNotSellShare": true,
+    "analytics": {
+      "pagesVisited": [
+        {
+          "path": "/",
+          "timestamp": "2026-10-07T12:13:10.153Z"
+        }
+      ],
+      "pageCount": 1,
+      "currentUrl": "",
+      "currentPath": "/",
+      "clicksRecorded": []
+    },
+    "deviceInfo": {
+      "deviceType": "Desktop",
+      "browser": "Other",
+      "os": "Other",
+      "screenResolution": "N/A",
+      "viewportSize": "N/A"
+    },
+    "approximateLocation": {
+      "timezone": "America/New_York",
+      "timezoneOffset": "UTC-4",
+      "locale": "en-US",
+      "region": "Pennsylvania (PA), USA",
+      "clientIpMasked": "::xxxx"
+    },
+    "referralInfo": {
+      "referrer": "Direct / Bookmark",
+      "utm": {}
+    },
+    "preferencesInfo": {
+      "language": "en-US",
+      "savedSettings": {},
+      "filters": {}
+    },
+    "legalFramework": "Standard Privacy & Cookie Consent",
+    "policyVersion": "2026.1",
+    "submittedAtIso": "2026-10-07T12:13:10.153Z",
+    "formattedDate": "Wednesday, October 7, 2026 at 8:13:10 AM"
+  },
+  {
+    "collection": "PHC-cookie-consent-data",
+    "consentId": "consent_1791375190125",
+    "visitorId": "vis_muqwyuel_7z81y7j",
+    "sessionId": "sess_muy0qdfu_imipan5",
+    "consentStatus": "accepted_all",
+    "categories": {
+      "necessary": true,
+      "analytics": false,
+      "functional": false,
+      "marketing": false
+    },
+    "doNotSellShare": true,
+    "analytics": {
+      "pagesVisited": [
+        {
+          "path": "/",
+          "timestamp": "2026-10-07T12:13:10.124Z"
+        }
+      ],
+      "pageCount": 1,
+      "currentUrl": "",
+      "currentPath": "/",
+      "clicksRecorded": []
+    },
+    "deviceInfo": {
+      "deviceType": "Desktop",
+      "browser": "Other",
+      "os": "Other",
+      "screenResolution": "N/A",
+      "viewportSize": "N/A"
+    },
+    "approximateLocation": {
+      "timezone": "America/New_York",
+      "timezoneOffset": "UTC-4",
+      "locale": "en-US",
+      "region": "Pennsylvania (PA), USA",
+      "clientIpMasked": "::xxxx"
+    },
+    "referralInfo": {
+      "referrer": "Direct / Bookmark",
+      "utm": {}
+    },
+    "preferencesInfo": {
+      "language": "en-US",
+      "savedSettings": {},
+      "filters": {}
+    },
+    "legalFramework": "Standard Privacy & Cookie Consent",
+    "policyVersion": "2026.1",
+    "submittedAtIso": "2026-10-07T12:13:10.124Z",
+    "formattedDate": "Wednesday, October 7, 2026 at 8:13:10 AM"
+  },
+  {
+    "collection": "PHC-cookie-consent-data",
+    "consentId": "consent_1791374871299",
+    "visitorId": "vis_muqwyuel_7z81y7j",
+    "sessionId": "sess_muy078lr_i0eyage",
+    "consentStatus": "accepted_all",
+    "categories": {
+      "necessary": true,
+      "analytics": false,
+      "functional": false,
+      "marketing": false
+    },
+    "doNotSellShare": true,
+    "analytics": {
+      "pagesVisited": [
+        {
+          "path": "/",
+          "timestamp": "2026-10-07T12:07:51.299Z"
+        }
+      ],
+      "pageCount": 1,
+      "currentUrl": "",
+      "currentPath": "/",
+      "clicksRecorded": []
+    },
+    "deviceInfo": {
+      "deviceType": "Desktop",
+      "browser": "Other",
+      "os": "Other",
+      "screenResolution": "N/A",
+      "viewportSize": "N/A"
+    },
+    "approximateLocation": {
+      "timezone": "America/New_York",
+      "timezoneOffset": "UTC-4",
+      "locale": "en-US",
+      "region": "Pennsylvania (PA), USA",
+      "clientIpMasked": "::xxxx"
+    },
+    "referralInfo": {
+      "referrer": "Direct / Bookmark",
+      "utm": {}
+    },
+    "preferencesInfo": {
+      "language": "en-US",
+      "savedSettings": {},
+      "filters": {}
+    },
+    "legalFramework": "Standard Privacy & Cookie Consent",
+    "policyVersion": "2026.1",
+    "submittedAtIso": "2026-10-07T12:07:51.299Z",
+    "formattedDate": "Wednesday, October 7, 2026 at 8:07:51 AM"
+  },
+  {
+    "collection": "PHC-cookie-consent-data",
+    "consentId": "consent_1791374871252",
+    "visitorId": "vis_muqwyuel_7z81y7j",
+    "sessionId": "sess_muy078lr_i0eyage",
+    "consentStatus": "accepted_all",
+    "categories": {
+      "necessary": true,
+      "analytics": false,
+      "functional": false,
+      "marketing": false
+    },
+    "doNotSellShare": true,
+    "analytics": {
+      "pagesVisited": [
+        {
+          "path": "/",
+          "timestamp": "2026-10-07T12:07:51.252Z"
+        }
+      ],
+      "pageCount": 1,
+      "currentUrl": "",
+      "currentPath": "/",
+      "clicksRecorded": []
+    },
+    "deviceInfo": {
+      "deviceType": "Desktop",
+      "browser": "Other",
+      "os": "Other",
+      "screenResolution": "N/A",
+      "viewportSize": "N/A"
+    },
+    "approximateLocation": {
+      "timezone": "America/New_York",
+      "timezoneOffset": "UTC-4",
+      "locale": "en-US",
+      "region": "Pennsylvania (PA), USA",
+      "clientIpMasked": "::xxxx"
+    },
+    "referralInfo": {
+      "referrer": "Direct / Bookmark",
+      "utm": {}
+    },
+    "preferencesInfo": {
+      "language": "en-US",
+      "savedSettings": {},
+      "filters": {}
+    },
+    "legalFramework": "Standard Privacy & Cookie Consent",
+    "policyVersion": "2026.1",
+    "submittedAtIso": "2026-10-07T12:07:51.252Z",
+    "formattedDate": "Wednesday, October 7, 2026 at 8:07:51 AM"
+  },
+  {
+    "collection": "PHC-cookie-consent-data",
     "consentId": "consent_mumx0fl7_6l2ulrt0",
     "visitorId": "vid_mumx0fkz_j9omgsqg",
     "sessionId": "sess_mumx0fkz_wd7zo6rq",

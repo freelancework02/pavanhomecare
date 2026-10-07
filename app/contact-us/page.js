@@ -24,8 +24,8 @@ export const metadata = {
     siteName: `${site.name} — ${site.tagline}`,
     images: [
       {
-        url: `${site.url}/images/og-image.jpg`,
-        secureUrl: `${site.url}/images/og-image.jpg`,
+        url: `${site.url}/images/og-image.webp`,
+        secureUrl: `${site.url}/images/og-image.webp`,
         width: 1200,
         height: 630,
         type: "image/jpeg",
@@ -37,7 +37,7 @@ export const metadata = {
     card: "summary_large_image",
     title: `Contact ${site.name} | Free In-Home Care Consultation`,
     description: `Connect with our live Feasterville care coordination team today.`,
-    images: [`${site.url}/images/og-image.jpg`],
+    images: [`${site.url}/images/og-image.webp`],
   },
 };
 

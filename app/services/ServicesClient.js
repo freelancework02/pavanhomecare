@@ -44,7 +44,7 @@ const servicesList = [
     id: "personal-care",
     title: "Personal Care",
     icon: <Heart size={22} />,
-    image: "/images/photos/service-personal-care.jpg",
+    image: "/images/photos/service-personal-care.webp",
     desc: "Respectful, professional assistance with daily activities to support dignity and safety at home. Our trained caregivers assist with personal routines like bathing, dressing, grooming, toileting, and safe mobility.",
     whoBenefits: "Seniors recovering from illness, living with limited mobility, or experiencing age-related physical decline.",
     whyChoose: "Dignity-first protocols, fall risk reduction, professional physical transfer techniques.",
@@ -63,7 +63,7 @@ const servicesList = [
     id: "companion-care",
     title: "Companion Care",
     icon: <Users size={22} />,
-    image: "/images/photos/service-companion-care.jpg",
+    image: "/images/photos/service-companion-care.webp",
     desc: "Active companionship and mental stimulation to combat social isolation. We share conversations, assist with hobbies, play board games, read books, and encourage positive daily interaction.",
     whoBenefits: "Seniors living alone who require light social engagement, companionship, or cognitive exercises.",
     whyChoose: "Reduces isolation-related depression, encourages emotional wellness, keeps minds sharp.",
@@ -82,7 +82,7 @@ const servicesList = [
     id: "meal-preparation",
     title: "Meal Preparation",
     icon: <UtensilsCrossed size={22} />,
-    image: "/images/photos/service-meal-prep.jpg",
+    image: "/images/photos/service-meal-prep.webp",
     desc: "Nutritious, warm, home-cooked meals planned around your loved one's dietary guidelines. Caregivers handle grocery planning, prep, cooking, and kitchen cleanup.",
     whoBenefits: "Individuals with severe arthritis, diabetes, heart conditions, or difficulty standing to cook safely.",
     whyChoose: "Fresh nutrient intake, safe kitchen appliance operation, customized health diets.",
@@ -101,7 +101,7 @@ const servicesList = [
     id: "transportation",
     title: "Transportation Support",
     icon: <Car size={22} />,
-    image: "/images/photos/service-transportation.jpg",
+    image: "/images/photos/service-transportation.webp",
     desc: "Accompanied rides to keep clients active and engaged in their community. We drive to doctor appointments, local pharmacies, grocery stores, and family events.",
     whoBenefits: "Seniors who no longer drive and wish to maintain their weekly schedules independently.",
     whyChoose: "Safe transition in and out of vehicles, complete caregiver accompaniment during visits.",
@@ -120,7 +120,7 @@ const servicesList = [
     id: "housekeeping",
     title: "Light Housekeeping",
     icon: <Home size={22} />,
-    image: "/images/photos/service-housekeeping.jpg",
+    image: "/images/photos/service-housekeeping.webp",
     desc: "Maintaining a clean, safe, and hazard-free home environment. We help with laundry, washing dishes, dusting, taking out the trash, and organizing walking pathways.",
     whoBenefits: "Individuals at risk of falling due to clutter, or those unable to manage daily heavy chores.",
     whyChoose: "Direct fall prevention, sanitary living spaces, organized home flow.",
@@ -139,7 +139,7 @@ const servicesList = [
     id: "medication-reminders",
     title: "Medication Reminders",
     icon: <Clock size={22} />,
-    image: "/images/photos/service-medication.jpg",
+    image: "/images/photos/service-medication.webp",
     desc: "Timely reminders to ensure your loved one adheres to their medication schedules. We help verify pill organizer usage, track dosage times, and log compliance.",
     whoBenefits: "Seniors taking multiple daily prescriptions who experience mild cognitive decline.",
     whyChoose: "Prevents missed doses, avoids accidental double-dosing, logs schedule compliance.",
@@ -158,7 +158,7 @@ const servicesList = [
     id: "alzheimers-care",
     title: "Alzheimer's Care",
     icon: <Brain size={22} />,
-    image: "/images/photos/service-alzheimers.jpg",
+    image: "/images/photos/service-alzheimers.webp",
     desc: "Dedicated memory support designed to manage confusion, prevent wandering, and maintain a comforting, stable home environment.",
     whoBenefits: "Seniors diagnosed with progressive Alzheimer's disease.",
     whyChoose: "De-escalation trained support, certified dementia care coordinators, wander prevention.",
@@ -177,7 +177,7 @@ const servicesList = [
     id: "dementia-care",
     title: "Dementia Care",
     icon: <Sparkles size={22} />,
-    image: "/images/photos/service-dementia.jpg",
+    image: "/images/photos/service-dementia.webp",
     desc: "Specialized, non-pharmaceutical home care focused on cognitive enrichment, sensory exercises, and patient communication to help manage progressive memory loss.",
     whoBenefits: "Seniors experiencing early-to-late stage general cognitive decline.",
     whyChoose: "Preserves daily independent habits, supports active memory retention, maintains comfort.",
@@ -196,7 +196,7 @@ const servicesList = [
     id: "respite-care",
     title: "Respite Care",
     icon: <Layers size={22} />,
-    image: "/images/photos/service-respite.jpg",
+    image: "/images/photos/service-respite.webp",
     desc: "Crucial temporary coverage for family caregivers. Take a break, travel, work, or rest while our professional caregivers provide reliable in-home care.",
     whoBenefits: "Family members who need relief from the daily physical and emotional demands of caregiving.",
     whyChoose: "Prevents caregiver burnout, maintains care quality, provides peace of mind.",
@@ -215,7 +215,7 @@ const servicesList = [
     id: "disability-support",
     title: "Disability Support",
     icon: <Accessibility size={22} />,
-    image: "/images/photos/service-disability.jpg",
+    image: "/images/photos/service-disability.webp",
     desc: "Compassionate, custom assistance for adults and children with physical or developmental disabilities, supporting independence and active community participation.",
     whoBenefits: "Individuals of any age with physical paralysis, developmental delay, cerebral palsy, or autism.",
     whyChoose: "Medicaid Waiver approved, customized sensory integration, lifestyle support.",
@@ -234,7 +234,7 @@ const servicesList = [
     id: "veteran-care",
     title: "Veteran Care",
     icon: <Award size={22} />,
-    image: "/images/photos/service-veteran.jpg",
+    image: "/images/photos/service-veteran.webp",
     desc: "Honoring veterans and their surviving spouses with dedicated, non-medical home care. We help coordinate care programs funded through VA Aid & Attendance benefits.",
     whoBenefits: "Eligible military veterans and surviving spouses who require assistance with ADLs.",
     whyChoose: "VA Aid & Attendance specialist coordinators, zero out-of-pocket options.",
@@ -253,7 +253,7 @@ const servicesList = [
     id: "24hour-care",
     title: "24-Hour Care",
     icon: <ShieldCheck size={22} />,
-    image: "/images/photos/service-24hour.jpg",
+    image: "/images/photos/service-24hour.webp",
     desc: "Continuous around-the-clock monitoring and personal assistance to guarantee client safety, peace of mind, and emergency preparedness day or night.",
     whoBenefits: "Individuals with advanced neurological conditions, severe fall risks, or hospice patients.",
     whyChoose: "Certified wake-staff shifts, coordinator monitoring metrics, 24/7 standby support.",
@@ -272,7 +272,7 @@ const servicesList = [
     id: "employment-services",
     title: "Employment Services",
     icon: <Briefcase size={22} />,
-    image: "/images/photos/service-employment.jpg",
+    image: "/images/photos/service-employment.webp",
     desc: "Empowering individuals to achieve their career goals and gain independence. We offer comprehensive support to build skills, find suitable opportunities, and maintain meaningful employment.",
     whoBenefits: "Individuals seeking to enter or re-enter the workforce, develop professional skills, or receive coaching for job retention.",
     whyChoose: "Tailored career planning, job search assistance, skill enhancement, and ongoing coaching support.",
@@ -499,7 +499,7 @@ export default function ServicesClient({ initialService }) {
             >
               <div className="hero-image-frame-lux">
                 <Image
-                  src="/images/photos/services-hero.jpg"
+                  src="/images/photos/services-hero.webp"
                   alt="Caregiver supporting senior client at home"
                   fill
                   priority
@@ -827,7 +827,7 @@ export default function ServicesClient({ initialService }) {
             {/* Media Image */}
             <div className="faq-media-frame">
               <Image
-                src="/images/photos/services-faq-media.jpg"
+                src="/images/photos/services-faq-media.webp"
                 alt="Caregiver helping senior client with comfort and care"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

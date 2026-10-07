@@ -142,7 +142,7 @@ export default function AboutClient() {
 
               <div className="about-hero-image-wrapper">
                 <Image
-                  src="/images/photos/about-hero-medical-team.png"
+                  src="/images/photos/about-hero-medical-team.webp"
                   alt="Pavan Homecare professional caregiver supporting an elderly senior client"
                   fill
                   sizes="(max-width: 68rem) 100vw, 550px"
@@ -201,7 +201,7 @@ export default function AboutClient() {
             >
               <div className="about-story-image-container">
                 <Image
-                  src="/images/photos/about-story-grooming.jpg"
+                  src="/images/photos/about-story-grooming.webp"
                   alt="Pavan clinical directors planning customized home care schedule"
                   fill
                   sizes="(max-width: 68rem) 100vw, 500px"
@@ -365,7 +365,7 @@ export default function AboutClient() {
               <div className="about-trust-media">
                 <div className="about-trust-image-wrapper">
                   <Image
-                    src="/images/photos/trust-row1-conversation.jpg"
+                    src="/images/photos/trust-row1-conversation.webp"
                     alt="A caregiver assisting a senior client safely using a walker"
                     fill
                     sizes="(max-width: 68rem) 100vw, 550px"
@@ -395,7 +395,7 @@ export default function AboutClient() {
               <div className="about-trust-media">
                 <div className="about-trust-image-wrapper">
                   <Image
-                    src="/images/photos/trust-row2-meal.jpg"
+                    src="/images/photos/trust-row2-meal.webp"
                     alt="Caregiver preparing meals in client kitchen with senior"
                     fill
                     sizes="(max-width: 68rem) 100vw, 550px"
@@ -425,7 +425,7 @@ export default function AboutClient() {
               <div className="about-trust-media">
                 <div className="about-trust-image-wrapper">
                   <Image
-                    src="/images/photos/trust-row3-interaction.jpg"
+                    src="/images/photos/trust-row3-interaction.webp"
                     alt="A friendly caregiver interacting warmly with an older woman"
                     fill
                     sizes="(max-width: 68rem) 100vw, 550px"
@@ -455,7 +455,7 @@ export default function AboutClient() {
               <div className="about-trust-media">
                 <div className="about-trust-image-wrapper">
                   <Image
-                    src="/images/photos/trust-row4-coordination.jpg"
+                    src="/images/photos/trust-row4-coordination.webp"
                     alt="Local Feasterville PA care coordination meeting"
                     fill
                     sizes="(max-width: 68rem) 100vw, 550px"
@@ -610,7 +610,7 @@ export default function AboutClient() {
             <div className="about-local-media">
               <div className="about-local-image-wrapper">
                 <Image
-                  src="/images/service-area-map.png"
+                  src="/images/service-area-map.webp"
                   alt="Pennsylvania map highlighting Feasterville headquarters and serving Bucks, Philadelphia, Montgomery, Delaware, Chester, Lehigh, Northampton, Berks, and Schuylkill counties"
                   fill
                   sizes="(max-width: 68rem) 100vw, 550px"

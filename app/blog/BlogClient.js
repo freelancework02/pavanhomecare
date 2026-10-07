@@ -88,7 +88,7 @@ export default function BlogClient({ initialPosts }) {
         ctaLabel="Explore Resources"
         ctaHref="#blog-articles"
         mediaLabel="Caregiver reading with a senior client"
-        imageSrc="/images/photos/blog-listing-hero.jpg"
+        imageSrc="/images/photos/blog-listing-hero.webp"
       />
 
       {/* Blog Resource Hub Section */}
@@ -122,7 +122,7 @@ export default function BlogClient({ initialPosts }) {
                 {/* Thumbnail */}
                 <div className="blog-featured-media">
                   <Image
-                    src={featuredPost.image || "/images/photos/fallback-care.png"}
+                    src={featuredPost.image || "/images/photos/fallback-care.webp"}
                     alt={featuredPost.title}
                     fill
                     priority
@@ -179,7 +179,7 @@ export default function BlogClient({ initialPosts }) {
                 <article key={post.slug} className="blog-card group">
                   <div className="blog-card-media">
                     <Image
-                      src={post.image || "/images/photos/fallback-care.png"}
+                      src={post.image || "/images/photos/fallback-care.webp"}
                       alt={post.title}
                       fill
                       loading="lazy"

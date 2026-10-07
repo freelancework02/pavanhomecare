@@ -9,7 +9,7 @@ async function createOgCard() {
   // 1. Process Caregiver & Senior Photo (Right side)
   const photoW = 440;
   const photoH = 390;
-  const rawPhoto = await sharp('public/images/caregiver-client-warm.png')
+  const rawPhoto = await sharp('public/images/caregiver-client-warm.webp')
     .resize(photoW, photoH, { fit: 'cover', position: 'top' })
     .toBuffer();
 
@@ -23,7 +23,7 @@ async function createOgCard() {
     .toBuffer();
 
   // 2. Process Logo
-  const logoBuf = await sharp('public/images/pavan-logo/PavanHomecare_Transparent.png')
+  const logoBuf = await sharp('public/images/pavan-logo/PavanHomecare_Transparent.webp')
     .resize(225, null, { fit: 'inside' })
     .png()
     .toBuffer();
@@ -257,23 +257,19 @@ async function createOgCard() {
   `;
 
   // 4. Render to buffer using Sharp and optimize for ultra-fast mobile loading
-  const svgBuffer = Buffer.from(svgCard);
-  
-  const finalJpegBuffer = await sharp(svgBuffer)
-    .jpeg({
+  const finalWebpBuffer = await sharp(svgBuffer)
+    .webp({
       quality: 89,
-      chromaSubsampling: '4:4:4',
-      progressive: false, // Baseline JPEG loads immediately without progressive delay
+      effort: 6,
     })
     .toBuffer();
 
-  // Save to public/images/og-image.jpg
-  const outputPath = path.join(__dirname, '..', 'public', 'images', 'og-image.jpg');
-  fs.writeFileSync(outputPath, finalJpegBuffer);
+  const outputWebpPath = path.join(__dirname, '..', 'public', 'images', 'og-image.webp');
+  fs.writeFileSync(outputWebpPath, finalWebpBuffer);
 
-  const stats = fs.statSync(outputPath);
-  console.log(`Success! Generated ultra-modern og-image.jpg at ${outputPath}`);
-  console.log(`Dimensions: ${width}x${height}, Size: ${(stats.size / 1024).toFixed(1)} KB`);
+  const stats = fs.statSync(outputWebpPath);
+  console.log(`Success! Generated og-image.webp`);
+  console.log(`Dimensions: ${width}x${height}, WebP Size: ${(stats.size / 1024).toFixed(1)} KB`);
 }
 
 createOgCard().catch(err => {

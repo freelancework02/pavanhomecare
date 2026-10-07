@@ -74,11 +74,11 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: `${site.url}/images/og-image.jpg`,
-        secureUrl: `${site.url}/images/og-image.jpg`,
+        url: `${site.url}/images/og-image.webp`,
+        secureUrl: `${site.url}/images/og-image.webp`,
         width: 1200,
         height: 630,
-        type: "image/jpeg",
+        type: "image/webp",
         alt: "Pavan Homecare - In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
       },
     ],
@@ -88,16 +88,16 @@ export const metadata = {
     title: "Pavan Homecare | In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
     description:
       "Compassionate, licensed in-home care in Bucks, Philadelphia & surrounding PA communities. Request a free consultation.",
-    images: [`${site.url}/images/og-image.jpg`],
+    images: [`${site.url}/images/og-image.webp`],
   },
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/favicon.png", type: "image/png" },
-      { url: "/icon.png", type: "image/png", sizes: "192x192" },
+      { url: "/favicon.webp", type: "image/webp" },
+      { url: "/icon.webp", type: "image/webp", sizes: "192x192" },
     ],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon.webp", sizes: "180x180", type: "image/webp" },
     ],
   },
   verification: {
@@ -116,10 +116,10 @@ const jsonLd = {
       url: site.url,
       logo: {
         "@type": "ImageObject",
-        url: `${site.url}/images/pavan-logo/PavanHomecare_Transparent.png`,
+        url: `${site.url}/images/pavan-logo/PavanHomecare_Transparent.webp`,
         caption: site.name,
       },
-      image: `${site.url}/images/pavan-logo/PavanHomecare_Transparent.png`,
+      image: `${site.url}/images/pavan-logo/PavanHomecare_Transparent.webp`,
       description:
         "Licensed in-home care agency delivering love-driven senior care, personal care, 24-hour live-in support, and Medicaid waiver care across 9 Pennsylvania counties.",
       telephone: site.phoneDisplay,
@@ -147,7 +147,7 @@ const jsonLd = {
       "@type": ["HomeHealthCareService", "LocalBusiness"],
       "@id": `${site.url}/#headquarters`,
       name: `${site.name} - Headquarters`,
-      image: `${site.url}/images/pavan-logo/PavanHomecare_Transparent.png`,
+      image: `${site.url}/images/pavan-logo/PavanHomecare_Transparent.webp`,
       url: site.url,
       telephone: site.phoneDisplay,
       email: site.email,

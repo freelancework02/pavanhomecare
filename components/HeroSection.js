@@ -119,7 +119,7 @@ export default function HeroSection() {
             {/* Organic Oval Image Container */}
             <div className="hs-photo-wrapper">
               <Image
-                src="/images/hero_right_image_card.png"
+                src="/images/hero_right_image_card.webp"
                 alt="Pavan Homecare caregiver providing compassionate support to senior lady at home"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

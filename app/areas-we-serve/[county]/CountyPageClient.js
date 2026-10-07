@@ -251,7 +251,7 @@ export default function CountyPageClient({ data, city }) {
             >
               <div className="areas-hero-image-frame">
                 <Image
-                  src={data.heroImage || "/images/photos/fallback-care.png"}
+                  src={data.heroImage || "/images/photos/fallback-care.webp"}
                   alt={`Caregiver assisting senior in ${displayLocation}`}
                   fill
                   priority

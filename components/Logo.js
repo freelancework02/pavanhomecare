@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 export default function Logo({ variant = "color", showTagline = false, title = "Pavan Homecare", height = "4.0rem" }) {
-  let logoSrc = "/images/pavan-logo/PavanHomecare_Transparent.png";
+  let logoSrc = "/images/pavan-logo/PavanHomecare_Transparent.webp";
   
   if (variant === "white") {
-    logoSrc = "/images/pavan-logo/White_Version.png";
+    logoSrc = "/images/pavan-logo/White_Version.webp";
   } else if (variant === "icon") {
-    logoSrc = "/images/pavan-logo/PavanHomecare_IconOnly.png";
+    logoSrc = "/images/pavan-logo/PavanHomecare_IconOnly.webp";
   }
 
   return (

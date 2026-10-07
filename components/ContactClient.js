@@ -123,21 +123,21 @@ const careTeamCoordinators = [
     role: "Lead Care Coordinator",
     badge: "Client Care Lead",
     quote: "My mission is making sure every family feels heard, valued, and paired with a caregiver who feels like family.",
-    img: "/images/photos/team-coordinator-1.jpg"
+    img: "/images/photos/team-coordinator-1.webp"
   },
   {
     name: "Sarah Jenkins",
     role: "Medicaid Waiver & CHC Navigator",
     badge: "State Programs Specialist",
     quote: "I guide families step-by-step through PA state waiver documentation so they receive every hour of care they deserve.",
-    img: "/images/photos/team-coordinator-2.jpg"
+    img: "/images/photos/team-coordinator-2.webp"
   },
   {
     name: "David Vance",
     role: "24/7 Scheduling Director",
     badge: "Care Logistics",
     quote: "We work around the clock to ensure seamless schedule coverage and reliable emergency backup at all times.",
-    img: "/images/photos/team-coordinator-3.jpg"
+    img: "/images/photos/team-coordinator-3.webp"
   }
 ];
 
@@ -404,7 +404,7 @@ export default function ContactClient() {
             >
               <div className="hero-visual-frame">
                 <Image
-                  src="/images/photos/contact-hero.jpg"
+                  src="/images/photos/contact-hero.webp"
                   alt="Compassionate Pavan Homecare caregiver assisting an elderly client at home"
                   fill
                   priority
@@ -1120,7 +1120,7 @@ export default function ContactClient() {
 
             <div className="careers-card-media">
               <Image
-                src="/images/photos/careers-caregiver.jpg"
+                src="/images/photos/careers-caregiver.webp"
                 alt="Compassionate Pavan caregiver embracing an elderly senior client with warmth"
                 fill
                 sizes="(max-width: 900px) 100vw, 40vw"

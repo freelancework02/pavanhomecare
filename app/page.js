@@ -38,8 +38,8 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: `${site.url}/images/og-image.jpg`,
-        secureUrl: `${site.url}/images/og-image.jpg`,
+        url: `${site.url}/images/og-image.webp`,
+        secureUrl: `${site.url}/images/og-image.webp`,
         width: 1200,
         height: 630,
         type: "image/jpeg",
@@ -52,7 +52,7 @@ export const metadata = {
     title: "Pavan Homecare | In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
     description:
       "Compassionate, licensed in-home care tailored to your family's needs. Serving Bucks County, Philadelphia, and 9 PA counties.",
-    images: [`${site.url}/images/og-image.jpg`],
+    images: [`${site.url}/images/og-image.webp`],
   },
 };
 
@@ -234,7 +234,7 @@ export default function HomePage() {
             
             <div className="relative w-full h-[420px] sm:h-[500px] lg:h-[540px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,26,77,0.14)] border-4 border-white">
               <Image
-                src="/images/photos/about-companion-knitting.jpg"
+                src="/images/photos/about-companion-knitting.webp"
                 alt="Friendly professional caregiver supporting senior client walking with walker"
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"

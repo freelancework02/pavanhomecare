@@ -46,8 +46,8 @@ export async function generateMetadata({ params }) {
       siteName: site.name,
       images: [
         {
-          url: post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/og-image.jpg`,
-          secureUrl: post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/og-image.jpg`,
+          url: post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/og-image.webp`,
+          secureUrl: post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/og-image.webp`,
           width: 1200,
           height: 630,
           type: "image/jpeg",
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: [post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/og-image.jpg`],
+      images: [post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/og-image.webp`],
     },
   };
 }
@@ -120,7 +120,7 @@ export default async function BlogPostPage({ params }) {
         "datePublished": postDate,
         "dateModified": post.updatedAt || postDate,
         "url": `${site.url}${canonicalUrl}`,
-        "image": post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/pavan-logo/PavanHomecare_Transparent.png`,
+        "image": post.image ? (post.image.startsWith("http") ? post.image : `${site.url}${post.image}`) : `${site.url}/images/pavan-logo/PavanHomecare_Transparent.webp`,
         "author": {
           "@type": "Organization",
           "name": post.author || `${site.name} Clinical Care Team`,
@@ -150,7 +150,7 @@ export default async function BlogPostPage({ params }) {
         ctaLabel="Request Care"
         ctaHref="/contact-us"
         mediaLabel={post.title}
-        imageSrc={post.image || "/images/photos/fallback-care.png"}
+        imageSrc={post.image || "/images/photos/fallback-care.webp"}
       />
 
       <article className="py-16 lg:py-20">

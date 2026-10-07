@@ -124,7 +124,7 @@ export default function WhyChooseUs() {
             {/* Tall image */}
             <div className="wcu-img-wrap">
               <Image
-                src="/images/photos/why-choose-us-hands.jpg"
+                src="/images/photos/why-choose-us-hands.webp"
                 alt="Pavan Homecare caregiver embracing senior client with warmth"
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
@@ -168,9 +168,9 @@ export default function WhyChooseUs() {
               className="wcu-trust-badge"
             >
               <div className="wcu-trust-badge__avatars">
-                <Image src="/images/reviewer_gloria.png"   alt="" width={36} height={36} className="wcu-avatar" />
-                <Image src="/images/reviewer_reginald.png" alt="" width={36} height={36} className="wcu-avatar" />
-                <Image src="/images/review_gloria_photo.png" alt="" width={36} height={36} className="wcu-avatar" />
+                <Image src="/images/reviewer_gloria.webp"   alt="" width={36} height={36} className="wcu-avatar" />
+                <Image src="/images/reviewer_reginald.webp" alt="" width={36} height={36} className="wcu-avatar" />
+                <Image src="/images/review_gloria_photo.webp" alt="" width={36} height={36} className="wcu-avatar" />
               </div>
               <div className="wcu-trust-badge__text">
                 <span className="wcu-trust-badge__primary">Licensed &amp; 100% Vetted</span>

@@ -21,13 +21,13 @@ const reviewsData = [
   {
     id: 1,
     name: "Gloria Custis",
-    avatar: "/images/reviewer_gloria.png",
+    avatar: "/images/reviewer_gloria.webp",
     type: "image",
     verified: true,
     time: "Verified Google Review",
     rating: 5,
     text: "I love working with Pavan Homecare. The team is so nice, extremely professional and compassionate. Highly recommend! 🙏❤️👍",
-    photo: "/images/review_gloria_photo.png",
+    photo: "/images/review_gloria_photo.webp",
     featured: true,
   },
   {
@@ -55,7 +55,7 @@ const reviewsData = [
   {
     id: 4,
     name: "Reginald Smalls",
-    avatar: "/images/reviewer_reginald.png",
+    avatar: "/images/reviewer_reginald.webp",
     type: "image",
     verified: true,
     time: "Verified Google Review",

@@ -32,18 +32,18 @@ import {
 import { slugify, calculateReadTime } from "@/lib/blogs";
 
 const PRESET_IMAGES = [
-  { label: "Caregiver & Senior", url: "/images/photos/blog-listing-hero.jpg" },
-  { label: "Medicaid & Financial", url: "/images/photos/blog-medicaid-waiver.jpg" },
-  { label: "Home Safety", url: "/images/photos/blog-safe-home.jpg" },
-  { label: "Caregiver Support", url: "/images/photos/blog-caregiver-burnout.jpg" },
-  { label: "Senior Health & Signs", url: "/images/photos/blog-signs-need-care.jpg" },
-  { label: "Personal Care", url: "/images/photos/service-personal-care.jpg" },
-  { label: "Dementia & Memory Care", url: "/images/photos/service-dementia.jpg" },
-  { label: "Companion Care", url: "/images/photos/service-companion-care.jpg" },
-  { label: "Respite Relief", url: "/images/photos/service-respite.jpg" },
-  { label: "24/7 Live-In Support", url: "/images/photos/service-24hour.jpg" },
-  { label: "Garden & Outdoor", url: "/images/photos/live-in-care-garden.jpg" },
-  { label: "Comfort & Conversation", url: "/images/photos/about-companion-knitting.jpg" }
+  { label: "Caregiver & Senior", url: "/images/photos/blog-listing-hero.webp" },
+  { label: "Medicaid & Financial", url: "/images/photos/blog-medicaid-waiver.webp" },
+  { label: "Home Safety", url: "/images/photos/blog-safe-home.webp" },
+  { label: "Caregiver Support", url: "/images/photos/blog-caregiver-burnout.webp" },
+  { label: "Senior Health & Signs", url: "/images/photos/blog-signs-need-care.webp" },
+  { label: "Personal Care", url: "/images/photos/service-personal-care.webp" },
+  { label: "Dementia & Memory Care", url: "/images/photos/service-dementia.webp" },
+  { label: "Companion Care", url: "/images/photos/service-companion-care.webp" },
+  { label: "Respite Relief", url: "/images/photos/service-respite.webp" },
+  { label: "24/7 Live-In Support", url: "/images/photos/service-24hour.webp" },
+  { label: "Garden & Outdoor", url: "/images/photos/live-in-care-garden.webp" },
+  { label: "Comfort & Conversation", url: "/images/photos/about-companion-knitting.webp" }
 ];
 
 const PRESET_CATEGORIES = [
@@ -64,7 +64,7 @@ export default function BlogEditor({ initialBlog, onSave, onClose }) {
   const [excerpt, setExcerpt] = useState(initialBlog?.excerpt || "");
   const [category, setCategory] = useState(initialBlog?.category || "Caregiver Tips");
   const [customCategory, setCustomCategory] = useState("");
-  const [image, setImage] = useState(initialBlog?.image || "/images/photos/blog-listing-hero.jpg");
+  const [image, setImage] = useState(initialBlog?.image || "/images/photos/blog-listing-hero.webp");
   const [author, setAuthor] = useState(initialBlog?.author || "Pavan Homecare Clinical Care Team");
   const [status, setStatus] = useState(initialBlog?.status || "published");
   const [featured, setFeatured] = useState(Boolean(initialBlog?.featured));
@@ -182,7 +182,7 @@ export default function BlogEditor({ initialBlog, onSave, onClose }) {
         excerpt: excerpt.trim() || title.trim(),
         content: currentContent.trim(),
         category: finalCategory,
-        image: image.trim() || "/images/photos/blog-listing-hero.jpg",
+        image: image.trim() || "/images/photos/blog-listing-hero.webp",
         author: author.trim() || "Pavan Homecare Clinical Care Team",
         status,
         featured: Boolean(featured)

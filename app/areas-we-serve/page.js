@@ -28,8 +28,8 @@ export const metadata = {
     siteName: site.name,
     images: [
       {
-        url: `${site.url}/images/og-image.jpg`,
-        secureUrl: `${site.url}/images/og-image.jpg`,
+        url: `${site.url}/images/og-image.webp`,
+        secureUrl: `${site.url}/images/og-image.webp`,
         width: 1200,
         height: 630,
         type: "image/jpeg",
@@ -41,7 +41,7 @@ export const metadata = {
     card: "summary_large_image",
     title: `Areas We Serve in Pennsylvania | ${site.name}`,
     description: `Compassionate in-home care across Bucks, Philadelphia, Montgomery & 9 PA counties.`,
-    images: [`${site.url}/images/og-image.jpg`],
+    images: [`${site.url}/images/og-image.webp`],
   },
 };
 

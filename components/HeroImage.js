@@ -15,7 +15,7 @@ export default function HeroImage() {
       >
         <div className="relative h-[420px] sm:h-[540px] lg:h-[620px]">
           <Image
-            src="/images/hero_right_image_card.png"
+            src="/images/hero_right_image_card.webp"
             alt="Pavan Homecare caregiver assisting a senior client at home"
             fill
             sizes="(max-width: 992px) 100vw, 54vw"

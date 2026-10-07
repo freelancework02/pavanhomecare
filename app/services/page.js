@@ -65,8 +65,8 @@ export async function generateMetadata({ searchParams }) {
       siteName: `${site.name} — ${site.tagline}`,
       images: [
         {
-          url: `${site.url}/images/og-image.jpg`,
-          secureUrl: `${site.url}/images/og-image.jpg`,
+          url: `${site.url}/images/og-image.webp`,
+          secureUrl: `${site.url}/images/og-image.webp`,
           width: 1200,
           height: 630,
           type: "image/jpeg",
@@ -78,7 +78,7 @@ export async function generateMetadata({ searchParams }) {
       card: "summary_large_image",
       title,
       description,
-      images: [`${site.url}/images/og-image.jpg`],
+      images: [`${site.url}/images/og-image.webp`],
     },
   };
 }

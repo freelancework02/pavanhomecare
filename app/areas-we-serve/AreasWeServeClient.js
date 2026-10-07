@@ -166,7 +166,7 @@ export default function AreasWeServeClient() {
             >
               <div className="areas-hero-image-frame">
                 <Image
-                  src="/images/photos/areas-hero.jpg"
+                  src="/images/photos/areas-hero.webp"
                   alt="Caregiver walking outdoors with senior client in Pennsylvania"
                   fill
                   priority

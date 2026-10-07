@@ -9,10 +9,10 @@ import { blogPosts } from "@/lib/site";
 
 // Image mapping for posts
 const postImages = {
-  "medicaid-waiver-programs-pa": "/images/photos/blog-medicaid-waiver.jpg",
-  "signs-loved-one-needs-home-care": "/images/photos/blog-signs-need-care.jpg",
-  "caregiver-burnout-family-caregivers": "/images/photos/blog-caregiver-burnout.jpg",
-  "creating-safe-home-for-seniors": "/images/photos/blog-safe-home.jpg",
+  "medicaid-waiver-programs-pa": "/images/photos/blog-medicaid-waiver.webp",
+  "signs-loved-one-needs-home-care": "/images/photos/blog-signs-need-care.webp",
+  "caregiver-burnout-family-caregivers": "/images/photos/blog-caregiver-burnout.webp",
+  "creating-safe-home-for-seniors": "/images/photos/blog-safe-home.webp",
 };
 
 const postCategories = {
@@ -115,7 +115,7 @@ export default function KnowledgeHub() {
               {/* Left Photo (55%) */}
               <div className="kh-featured-img-wrap">
                 <Image
-                  src={featuredPost.image || postImages[featuredPost.slug] || "/images/photos/fallback-care.png"}
+                  src={featuredPost.image || postImages[featuredPost.slug] || "/images/photos/fallback-care.webp"}
                   alt={featuredPost.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"
@@ -182,7 +182,7 @@ export default function KnowledgeHub() {
               {/* Image */}
               <div className="kh-card__img-wrap">
                 <Image
-                  src={post.image || postImages[post.slug] || "/images/photos/fallback-care.png"}
+                  src={post.image || postImages[post.slug] || "/images/photos/fallback-care.webp"}
                   alt={post.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"

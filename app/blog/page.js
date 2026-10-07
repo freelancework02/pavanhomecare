@@ -28,8 +28,8 @@ export const metadata = {
     siteName: site.name,
     images: [
       {
-        url: `${site.url}/images/og-image.jpg`,
-        secureUrl: `${site.url}/images/og-image.jpg`,
+        url: `${site.url}/images/og-image.webp`,
+        secureUrl: `${site.url}/images/og-image.webp`,
         width: 1200,
         height: 630,
         type: "image/jpeg",
@@ -41,7 +41,7 @@ export const metadata = {
     card: "summary_large_image",
     title: `Senior Care Resources & Eldercare Guides | ${site.name}`,
     description: `Practical knowledge, expert tips, and Medicaid guidance for Pennsylvania families.`,
-    images: [`${site.url}/images/og-image.jpg`],
+    images: [`${site.url}/images/og-image.webp`],
   },
 };
 

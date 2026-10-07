@@ -76,7 +76,7 @@ export async function POST(request) {
       excerpt,
       content,
       category = "Caregiver Tips",
-      image = "/images/photos/blog-listing-hero.jpg",
+      image = "/images/photos/blog-listing-hero.webp",
       author = "Pavan Homecare Clinical Care Team",
       status = "published",
       featured = false
@@ -100,7 +100,7 @@ export async function POST(request) {
       excerpt: (excerpt || "").trim(),
       content: (content || "").trim(),
       category: category.trim(),
-      image: (image || "").trim() || "/images/photos/blog-listing-hero.jpg",
+      image: (image || "").trim() || "/images/photos/blog-listing-hero.webp",
       author: author.trim(),
       readTime,
       status: status || "published",
