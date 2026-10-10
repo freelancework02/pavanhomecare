@@ -316,16 +316,16 @@ const differentiators = [
 
 const testimonials = [
   {
-    quote: "Our caregiver treats my mother like family. She's punctual, patient, and always goes the extra mile.",
-    author: "Denise R."
+    quote: "I love working with Pavan Homecare. The team is so nice, extremely professional and compassionate. Highly recommend!",
+    author: "Gloria Custis (Verified Google Review)"
   },
   {
-    quote: "Pavan Homecare made the Medicaid waiver process painless and matched us with a wonderful caregiver within a week.",
-    author: "Michael T."
+    quote: "I enjoy working with the Pavan team. They are always understanding, highly responsive, and help check in when there are issues. I truly appreciate that.",
+    author: "Betty Mellinger (Verified Google Review)"
   },
   {
-    quote: "Respite care from this team gave me the break I badly needed, knowing my husband was in good hands.",
-    author: "Angela P."
+    quote: "Pavan Homecare is an exceptional company. Very nice to work with, highly professional, and extremely friendly caregivers.",
+    author: "Dennie Barnes (Verified Google Review)"
   }
 ];
 
@@ -920,7 +920,7 @@ export default function ServicesClient({ initialService }) {
                           type="text"
                           name="fullName"
                           required
-                          placeholder="John Doe"
+                          placeholder="Enter your full name"
                           aria-label="Full Name"
                           value={formData.fullName}
                           onChange={handleInputChange}
@@ -951,7 +951,7 @@ export default function ServicesClient({ initialService }) {
                           type="email"
                           name="email"
                           required
-                          placeholder="name@example.com"
+                          placeholder="yourname@email.com"
                           aria-label="Email Address"
                           value={formData.email}
                           onChange={handleInputChange}

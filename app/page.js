@@ -4,8 +4,6 @@ import Script from "next/script";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import Placeholder from "@/components/Placeholder";
-import Testimonials from "@/components/Testimonials";
 import CTASection from "@/components/CTASection";
 import ServiceAreasSearch from "@/components/ServiceAreasSearch";
 import KnowledgeHub from "@/components/KnowledgeHub";

@@ -392,7 +392,7 @@ export default function ChatbotWidget() {
                       type="text"
                       name="fullName"
                       required
-                      placeholder="e.g. Mary Smith"
+                      placeholder="Full Name"
                       value={leadForm.fullName}
                       onChange={handleLeadInputChange}
                       className={styles.inChatInput}
@@ -407,7 +407,7 @@ export default function ChatbotWidget() {
                       type="tel"
                       name="phone"
                       required
-                      placeholder="e.g. (215) 555-0199"
+                      placeholder="(215) 436-9499"
                       value={leadForm.phone}
                       onChange={handleLeadInputChange}
                       className={styles.inChatInput}
@@ -421,7 +421,7 @@ export default function ChatbotWidget() {
                       id="lead-email"
                       type="email"
                       name="email"
-                      placeholder="e.g. name@example.com"
+                      placeholder="yourname@email.com"
                       value={leadForm.email}
                       onChange={handleLeadInputChange}
                       className={styles.inChatInput}

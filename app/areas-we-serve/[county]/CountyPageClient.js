@@ -466,7 +466,7 @@ export default function CountyPageClient({ data, city }) {
                     type="text"
                     name="firstName"
                     required
-                    placeholder="John"
+                    placeholder="First Name"
                     aria-label="First Name"
                     value={formData.firstName}
                     onChange={handleInputChange}
@@ -480,7 +480,7 @@ export default function CountyPageClient({ data, city }) {
                     type="text"
                     name="lastName"
                     required
-                    placeholder="Doe"
+                    placeholder="Last Name"
                     aria-label="Last Name"
                     value={formData.lastName}
                     onChange={handleInputChange}
@@ -494,7 +494,7 @@ export default function CountyPageClient({ data, city }) {
                     type="email"
                     name="email"
                     required
-                    placeholder="john@example.com"
+                    placeholder="yourname@email.com"
                     aria-label="Email Address"
                     value={formData.email}
                     onChange={handleInputChange}
