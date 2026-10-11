@@ -294,7 +294,7 @@ export default function HomePage() {
 
       <KnowledgeHub />
 
-      <section className="w-full bg-white py-14 lg:py-24" aria-label="Google Reviews">
+      <section id="reviews" className="w-full bg-white py-14 lg:py-24" aria-label="Google Reviews">
         <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-10">
           <GoogleReviews />
         </div>

@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import StickyCallBar from "@/components/StickyCallBar";
 import ChatbotWidget from "@/components/ChatbotWidget";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
+import AccessibleSkipNav from "@/components/AccessibleSkipNav";
+import AccessibilityMenu from "@/components/AccessibilityMenu";
 import { site } from "@/lib/site";
 
 const poppins = Poppins({
@@ -234,13 +236,8 @@ export default function RootLayout({ children }) {
         )}
       </head>
       <body>
-        {/* ADA / WCAG 2.4.1 Bypass Blocks Skip Link */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[99999] focus:px-4 focus:py-2.5 focus:bg-[#001A4D] focus:text-white focus:font-bold focus:text-sm focus:rounded-xl focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#60EFFF]"
-        >
-          Skip to main content
-        </a>
+        {/* ADA / WCAG 2.4.1 Accessible Bypass Blocks Skip Navigation Toolbar */}
+        <AccessibleSkipNav />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -251,6 +248,7 @@ export default function RootLayout({ children }) {
         <StickyCallBar />
         <ChatbotWidget />
         <CookieConsentBanner />
+        <AccessibilityMenu />
       </body>
     </html>
   );

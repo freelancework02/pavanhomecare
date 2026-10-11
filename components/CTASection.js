@@ -17,7 +17,7 @@ import { site } from "@/lib/site";
 
 export default function CTASection() {
   return (
-    <section className="cta-section" aria-labelledby="cta-heading">
+    <section id="get-started" className="cta-section" aria-labelledby="cta-heading">
       {/* Background ambient radial mesh */}
       <div aria-hidden="true" className="cta-bg-mesh" />
       <div aria-hidden="true" className="cta-dots" />

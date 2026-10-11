@@ -14,7 +14,8 @@ import {
   Info,
   Activity,
   Settings,
-  ShieldAlert
+  ShieldAlert,
+  Cookie
 } from "lucide-react";
 import {
   CONSENT_STORAGE_KEY,
@@ -126,28 +127,44 @@ export default function CookieConsentBanner() {
     }
   }, []);
 
-  // Listen to open modal events from footer link
+  // Listen to open modal or banner events from links, hash, or custom events
   useEffect(() => {
-    const handleHashChange = () => {
+    const handleHash = () => {
       if (window.location.hash === "#cookie-settings" || window.location.hash === "#privacy-choices") {
         setShowModal(true);
+      } else if (window.location.hash === "#cookie-banner") {
+        setShowBanner(true);
       }
     };
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+
+    const handleCustomOpen = (e) => {
+      if (e.detail?.target === "modal") {
+        setShowModal(true);
+      } else {
+        setShowBanner(true);
+      }
+    };
+    window.addEventListener("phc_open_cookie_preferences", handleCustomOpen);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHash);
+      window.removeEventListener("phc_open_cookie_preferences", handleCustomOpen);
+    };
   }, []);
 
   // Handle dismiss with default essential cookies
-  const handleDismissBanner = async () => {
+  const handleDismissBanner = () => {
     const decision = {
       status: "dismissed_default",
       analytics: false,
       functional: true,
       doNotSellShare: true
     };
-    await saveCookieConsent(decision);
     setPreferences(decision);
     setShowBanner(false);
+    saveCookieConsent(decision).catch(console.error);
   };
 
   // Do not display on admin pages
@@ -156,20 +173,18 @@ export default function CookieConsentBanner() {
   }
 
   // Handle "Accept All"
-  const handleAcceptAll = async () => {
-    setIsSubmitting(true);
+  const handleAcceptAll = () => {
     const decision = {
       status: "accepted_all",
       analytics: true,
       functional: true,
       doNotSellShare: true
     };
-    await saveCookieConsent(decision);
     setPreferences(decision);
     setShowBanner(false);
     setShowModal(false);
-    setIsSubmitting(false);
     triggerSavedToast();
+    saveCookieConsent(decision).catch(console.error);
 
     // Enable Google Analytics consent
     if (typeof window !== "undefined" && window.gtag) {
@@ -182,20 +197,18 @@ export default function CookieConsentBanner() {
   };
 
   // Handle "Reject Non-Essential" (Strict Privacy)
-  const handleRejectNonEssential = async () => {
-    setIsSubmitting(true);
+  const handleRejectNonEssential = () => {
     const decision = {
       status: "rejected_non_essential",
       analytics: false,
       functional: false,
       doNotSellShare: true // Strictly opted out
     };
-    await saveCookieConsent(decision);
     setPreferences(decision);
     setShowBanner(false);
     setShowModal(false);
-    setIsSubmitting(false);
     triggerSavedToast();
+    saveCookieConsent(decision).catch(console.error);
 
     // Restrict Google Analytics
     if (typeof window !== "undefined" && window.gtag) {
@@ -207,19 +220,17 @@ export default function CookieConsentBanner() {
   };
 
   // Handle "Save Preferences"
-  const handleSaveCustomPreferences = async () => {
-    setIsSubmitting(true);
+  const handleSaveCustomPreferences = () => {
     const decision = {
       status: "customized",
       analytics: preferences.analytics,
       functional: preferences.functional,
       doNotSellShare: preferences.doNotSellShare
     };
-    await saveCookieConsent(decision);
     setShowBanner(false);
     setShowModal(false);
-    setIsSubmitting(false);
     triggerSavedToast();
+    saveCookieConsent(decision).catch(console.error);
 
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("consent", "update", {
@@ -246,7 +257,7 @@ export default function CookieConsentBanner() {
           role="dialog"
           aria-label="Cookie consent banner"
           aria-describedby="cookie-consent-description"
-          className="fixed bottom-3 sm:bottom-6 left-3 right-3 sm:left-6 sm:right-auto sm:max-w-xl z-[9998] animate-slideUp"
+          className="fixed bottom-3 sm:bottom-6 left-3 right-3 sm:left-1/2 sm:-translate-x-1/2 sm:max-w-xl z-[9998] animate-slideUp"
         >
           <div className="bg-[#001A4D]/95 backdrop-blur-xl border border-white/20 text-white rounded-3xl p-4 sm:p-6 shadow-2xl shadow-blue-950/50 relative overflow-hidden">
             {/* Soft Ambient Glow */}
@@ -477,18 +488,20 @@ export default function CookieConsentBanner() {
       )}
 
       {/* =====================================================================
-          3. PERSISTENT FLOATING PRIVACY TRIGGER (Desktop only, mobile accesses via footer)
+          3. PERSISTENT FLOATING COOKIE CHOICES TRIGGER (Stacked cleanly above Accessibility)
           ===================================================================== */}
       {!showBanner && !showModal && (
         <button
           type="button"
-          onClick={() => setShowModal(true)}
-          className="hidden sm:inline-flex fixed bottom-5 left-5 z-40 bg-white/95 hover:bg-white backdrop-blur-md text-[#001A4D] hover:text-[#0061FF] border border-slate-200/90 shadow-lg rounded-full p-2.5 hover:px-3.5 text-xs font-semibold transition-all duration-200 items-center gap-2 opacity-85 hover:opacity-100 group cursor-pointer"
-          title="Cookie & Privacy Preferences"
-          aria-label="Manage cookie choices and privacy settings"
+          onClick={() => setShowBanner(true)}
+          className="phcCookieTriggerBtn"
+          aria-label="Manage Cookie Consent & Privacy Preferences"
+          title="Cookie & Privacy Choices"
         >
-          <ShieldCheck size={16} className="text-[#0061FF] group-hover:scale-110 transition-transform shrink-0" />
-          <span className="hidden group-hover:inline text-[11px] font-semibold text-[#001A4D] whitespace-nowrap">Privacy Choices</span>
+          <div className="w-5 h-5 rounded-full bg-amber-500/15 text-amber-600 flex items-center justify-center shrink-0">
+            <Cookie size={13} className="text-amber-600" />
+          </div>
+          <span>Cookie Choices</span>
         </button>
       )}
 

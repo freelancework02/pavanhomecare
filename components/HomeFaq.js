@@ -40,7 +40,7 @@ export default function HomeFaq() {
   };
 
   return (
-    <section className="w-full bg-[#F8FAFC] py-16 lg:py-24 border-t border-[#DCE7F7]" aria-labelledby="home-faq-heading">
+    <section id="faqs" className="w-full bg-[#F8FAFC] py-16 lg:py-24 border-t border-[#DCE7F7]" aria-labelledby="home-faq-heading">
       <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

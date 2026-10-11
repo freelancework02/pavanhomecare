@@ -81,7 +81,7 @@ function SmallCard({ icon: Icon, title, desc, href, accent, delay = 0 }) {
 
 export default function ServicesSection() {
   return (
-    <section className="ss-section" aria-labelledby="services-heading">
+    <section id="services" className="ss-section" aria-labelledby="services-heading">
       {/* top gradient rule */}
       <div aria-hidden="true" className="ss-rule" />
 

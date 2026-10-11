@@ -84,7 +84,7 @@ const COUNTIES = [
 
 export default function ServiceAreasSearch() {
   return (
-    <section className="w-full bg-white py-14 lg:py-24 relative overflow-hidden">
+    <section id="service-areas" className="w-full bg-white py-14 lg:py-24 relative overflow-hidden" aria-label="Service Areas">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#DCE7F7] to-transparent" />
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-10 relative z-10">

@@ -14,8 +14,10 @@
   }
 }
 
-:global(html[data-sticky-call="true"]) .chatWrapper {
-  bottom: 5.25rem;
+@media (max-width: 768px) {
+  :global(html[data-sticky-call="true"]) .chatWrapper {
+    bottom: 5.25rem;
+  }
 }
 
 :global(html[data-chat-open="true"]) .chatWrapper {

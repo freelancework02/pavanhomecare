@@ -9,33 +9,15 @@ import { site } from "@/lib/site";
 export default function StickyCallBar() {
   const pathname = usePathname();
   const [show, setShow] = useState(false);
-  const [isCookieBannerVisible, setIsCookieBannerVisible] = useState(false);
-
-  useEffect(() => {
-    // Check initial cookie banner state
-    if (typeof document !== "undefined") {
-      const bState = document.documentElement.getAttribute("data-cookie-banner");
-      const mState = document.documentElement.getAttribute("data-cookie-modal");
-      if (bState === "open" || mState === "open") {
-        setIsCookieBannerVisible(true);
-      }
-    }
-
-    const handleCookieState = (e) => {
-      const { bannerOpen, modalOpen } = e.detail || {};
-      setIsCookieBannerVisible(Boolean(bannerOpen || modalOpen));
-    };
-
-    window.addEventListener("phc_cookie_state_change", handleCookieState);
-    return () => window.removeEventListener("phc_cookie_state_change", handleCookieState);
-  }, []);
 
   useEffect(() => {
     const onScroll = () => {
-      // Show sticky bar after scrolling past 300px
-      setShow(window.scrollY > 300);
+      // Show sticky bar after scrolling past 200px
+      setShow(window.scrollY > 200);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
+    // Check scroll state immediately on mount
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -43,13 +25,13 @@ export default function StickyCallBar() {
     if (typeof document !== "undefined") {
       document.documentElement.setAttribute(
         "data-sticky-call",
-        show && !isCookieBannerVisible ? "true" : "false"
+        show ? "true" : "false"
       );
     }
-  }, [show, isCookieBannerVisible]);
+  }, [show]);
 
   if (pathname && pathname.startsWith("/admin")) return null;
-  if (!show || isCookieBannerVisible) return null;
+  if (!show) return null;
 
   return (
     <div className="sc-bar">
@@ -63,7 +45,14 @@ export default function StickyCallBar() {
       </Link>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        html[data-cookie-banner="open"] .sc-bar,
+        /* On small screens, hide call bar if full-width cookie modal or banner is active */
+        @media (max-width: 768px) {
+          html[data-cookie-banner="open"] .sc-bar,
+          html[data-cookie-modal="open"] .sc-bar {
+            display: none !important;
+          }
+        }
+
         html[data-cookie-modal="open"] .sc-bar,
         html[data-chat-open="true"] .sc-bar {
           display: none !important;
@@ -71,28 +60,28 @@ export default function StickyCallBar() {
 
         .sc-bar {
           position: fixed;
-          bottom: 1rem;
+          bottom: 1.25rem;
           left: 50%;
-          transform: translateX(-50%);
-          z-index: 990;
+          transform: translateX(-50%) !important;
+          z-index: 9980;
           display: flex;
           align-items: center;
           gap: 0.75rem;
           padding: 0.5rem 0.75rem;
-          background: rgba(0, 26, 77, 0.92);
+          background: rgba(0, 26, 77, 0.95);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(96, 239, 255, 0.25);
+          border: 1.5px solid rgba(96, 239, 255, 0.35);
           border-radius: 9999px;
           box-shadow: 0 12px 32px rgba(0, 26, 77, 0.35);
-          animation: barSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: scFadeIn 0.25s ease forwards;
           width: calc(100% - 2rem);
           max-width: 440px;
         }
 
-        @keyframes barSlideUp {
-          from { opacity: 0; transform: translate(-50%, 20px); }
-          to   { opacity: 1; transform: translate(-50%, 0); }
+        @keyframes scFadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
         }
 
         .sc-btn {

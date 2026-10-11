@@ -3,14 +3,14 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Logo from "./Logo";
-import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin, Twitter, ShieldCheck } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin, Twitter, ShieldCheck, Accessibility } from "lucide-react";
 import { site } from "@/lib/site";
 
 export default function Footer() {
   const pathname = usePathname();
   if (pathname && pathname.startsWith("/admin")) return null;
   return (
-    <footer className="w-full bg-[#001A4D] text-white pt-20 pb-16 sm:pb-20 relative overflow-hidden border-t-2 border-[#0061FF]">
+    <footer id="site-footer" className="w-full bg-[#001A4D] text-white pt-20 pb-16 sm:pb-20 relative overflow-hidden border-t-2 border-[#0061FF]">
       {/* Top Brand Gradient Edge Divider Line */}
       <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#0061FF] via-[#60EFFF] to-[#FF7A59]" />
 
@@ -233,6 +233,17 @@ export default function Footer() {
               <ShieldCheck size={13} className="text-[#60EFFF]" />
               <span>Cookie Choices</span>
             </a>
+            <button
+              type="button"
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent("phc_toggle_accessibility_menu", { detail: { tab: "statement" } }));
+              }}
+              className="hover:text-[#60EFFF] transition-colors inline-flex items-center gap-1 bg-transparent border-0 p-0 text-[13px] text-white/70 cursor-pointer"
+              title="Open ADA Accessibility Statement & Tools"
+            >
+              <Accessibility size={13} className="text-[#60EFFF]" />
+              <span>Accessibility</span>
+            </button>
             <a href="/sitemap.xml" className="hover:text-white transition-colors">
               Sitemap
             </a>

@@ -9,10 +9,45 @@ import {
   query,
   orderBy
 } from "firebase/firestore";
+import fs from "fs";
+import path from "path";
 import { authenticateAdminRequest } from "@/lib/adminAuthServer";
 
 const PRIMARY_COLLECTION = "PHC-Contact-form-inquiries";
 const CHATBOT_COLLECTION = "PHC-Chatbot-inquiries";
+const DATA_DIR = path.join(process.cwd(), "data");
+const LOCAL_INQUIRIES_FILE = path.join(DATA_DIR, "inquiriesData.json");
+
+function getLocalInquiries() {
+  try {
+    if (fs.existsSync(LOCAL_INQUIRIES_FILE)) {
+      return JSON.parse(fs.readFileSync(LOCAL_INQUIRIES_FILE, "utf-8") || "[]");
+    }
+  } catch (err) {
+    console.warn("Could not read local inquiries:", err.message);
+  }
+  return [];
+}
+
+function updateLocalInquiry(id, updates) {
+  try {
+    const list = getLocalInquiries();
+    const updated = list.map((item) => (item.id === id ? { ...item, ...updates } : item));
+    fs.writeFileSync(LOCAL_INQUIRIES_FILE, JSON.stringify(updated, null, 2), "utf-8");
+  } catch (err) {
+    console.warn("Could not update local inquiry:", err.message);
+  }
+}
+
+function deleteLocalInquiry(id) {
+  try {
+    const list = getLocalInquiries();
+    const filtered = list.filter((item) => item.id !== id);
+    fs.writeFileSync(LOCAL_INQUIRIES_FILE, JSON.stringify(filtered, null, 2), "utf-8");
+  } catch (err) {
+    console.warn("Could not delete local inquiry:", err.message);
+  }
+}
 
 // GET: Fetch all inquiries (Admin authentication required)
 export async function GET(request) {
@@ -50,7 +85,7 @@ export async function GET(request) {
         });
       });
     } catch (err) {
-      console.error("Error fetching from primary inquiries collection:", err);
+      console.warn("Firestore primary inquiries read warning:", err.message);
     }
 
     // 2. Also check secondary chatbot inquiries collection if any exist
@@ -74,6 +109,24 @@ export async function GET(request) {
     } catch (chatErr) {
       // Secondary collection may not exist yet, ignore
     }
+
+    // 3. Merge with local backup file (strictly de-duplicate by ID, email, and phone)
+    const localRecords = getLocalInquiries();
+    localRecords.forEach((localItem) => {
+      const isDuplicate = inquiries.some(
+        (item) =>
+          item.id === localItem.id ||
+          (item.email &&
+            localItem.email &&
+            item.email.toLowerCase().trim() === localItem.email.toLowerCase().trim() &&
+            item.phone &&
+            localItem.phone &&
+            item.phone.replace(/\D/g, "") === localItem.phone.replace(/\D/g, ""))
+      );
+      if (!isDuplicate) {
+        inquiries.push(localItem);
+      }
+    });
 
     // Sort descending by date
     inquiries.sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt));
@@ -110,14 +163,22 @@ export async function PATCH(request) {
       return NextResponse.json({ success: false, error: "Inquiry ID is required" }, { status: 400 });
     }
 
-    const docRef = doc(db, collectionName, id);
     const updates = {
       updatedAtIso: new Date().toISOString()
     };
     if (status !== undefined) updates.status = status;
     if (adminNotes !== undefined) updates.adminNotes = adminNotes;
 
-    await updateDoc(docRef, updates);
+    // Update in Firestore
+    try {
+      const docRef = doc(db, collectionName, id);
+      await updateDoc(docRef, updates);
+    } catch (fsErr) {
+      console.warn("Firestore update warning:", fsErr.message);
+    }
+
+    // Update in local file
+    updateLocalInquiry(id, updates);
 
     return NextResponse.json({
       success: true,
@@ -153,8 +214,16 @@ export async function DELETE(request) {
       return NextResponse.json({ success: false, error: "Inquiry ID is required" }, { status: 400 });
     }
 
-    const docRef = doc(db, collectionName, id);
-    await deleteDoc(docRef);
+    // Delete in Firestore
+    try {
+      const docRef = doc(db, collectionName, id);
+      await deleteDoc(docRef);
+    } catch (fsErr) {
+      console.warn("Firestore delete warning:", fsErr.message);
+    }
+
+    // Delete in local file
+    deleteLocalInquiry(id);
 
     return NextResponse.json({
       success: true,

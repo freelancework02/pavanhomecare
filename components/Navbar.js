@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  MapPin, Phone, ChevronDown, Menu, X, ArrowRight, Heart, User, Navigation,
+  MapPin, Phone, ChevronDown, Menu, X, ArrowRight, Heart, User, Navigation, Accessibility,
 } from "lucide-react";
 import Logo from "./Logo";
 import { countiesData } from "@/lib/countiesData";
@@ -35,7 +35,7 @@ export default function Navbar() {
   }, [mobileOpen]);
 
   return (
-    <header className="nb-header">
+    <header id="site-header" className="nb-header">
       {/* ── TOP BAR (EXACT REF: full_header.png) ── */}
       <div className="nb-topbar">
         <div className="nb-topbar__inner">
@@ -63,6 +63,19 @@ export default function Navbar() {
               <User size={13} color="#0061FF" />
               <span>Client Portal</span>
             </Link>
+            <span className="nb-topbar__divider" />
+            <button
+              type="button"
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent("phc_toggle_accessibility_menu"));
+              }}
+              className="nb-topbar__link bg-transparent border-0 cursor-pointer text-left"
+              aria-label="Open ADA Accessibility Menu (Alt + A)"
+              title="Open ADA Accessibility Menu (Alt + A)"
+            >
+              <Accessibility size={13} color="#0061FF" />
+              <span>Accessibility</span>
+            </button>
           </div>
         </div>
       </div>
@@ -214,6 +227,20 @@ export default function Navbar() {
             </div>
             <Link href="/blog" onClick={() => setMobileOpen(false)} className="nb-mobile__link">Blog</Link>
             <Link href="/contact-us" onClick={() => setMobileOpen(false)} className="nb-mobile__link">Contact Us</Link>
+            <button
+              type="button"
+              onClick={() => {
+                setMobileOpen(false);
+                window.dispatchEvent(new CustomEvent("phc_toggle_accessibility_menu"));
+              }}
+              className="nb-mobile__link flex items-center justify-between text-left w-full bg-transparent border-0 cursor-pointer"
+            >
+              <span className="flex items-center gap-2">
+                <Accessibility size={18} className="text-[#0061FF]" />
+                <span>Accessibility Menu (Alt+A)</span>
+              </span>
+              <span className="text-[10px] font-bold px-2 py-0.5 bg-[#E8F2FF] text-[#0061FF] rounded-full">ADA</span>
+            </button>
           </nav>
           <div className="nb-mobile__ctas">
             <a href={site.phoneHref} className="nb-mobile__call">
