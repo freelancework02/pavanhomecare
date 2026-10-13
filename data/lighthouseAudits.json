@@ -1,1 +1,448 @@
-[]
+[
+  {
+    "id": "audit_1791893379553",
+    "path": "/",
+    "fullUrl": "http://localhost:3000/",
+    "device": "mobile",
+    "timestamp": "2026-10-13T12:09:39.550Z",
+    "durationMs": 1623,
+    "scores": {
+      "performance": 88,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 91
+    },
+    "metrics": {
+      "fcp": "2.9 s",
+      "lcp": "4.6 s",
+      "tbt": "40 ms",
+      "cls": "0.01",
+      "speedIndex": "3.2 s"
+    },
+    "report": {
+      "url": "http://localhost:3000/",
+      "deviceMode": "mobile",
+      "statusCode": 200,
+      "auditedAt": "2026-10-13T12:09:39.550Z",
+      "durationMs": 1623,
+      "scores": {
+        "performance": 88,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 91
+      },
+      "metrics": {
+        "fcp": "2.9 s",
+        "lcp": "4.6 s",
+        "tbt": "40 ms",
+        "cls": "0.01",
+        "speedIndex": "3.2 s"
+      },
+      "categories": {
+        "performance": {
+          "title": "Performance",
+          "score": 88,
+          "description": "Evaluates page load speed, responsiveness, and Core Web Vitals.",
+          "audits": [
+            {
+              "id": "server-response-time",
+              "title": "Server response time (TTFB)",
+              "score": 0.5,
+              "displayValue": "1611 ms",
+              "description": "Time to First Byte indicates how fast your web server responds.",
+              "passed": false
+            },
+            {
+              "id": "dom-size",
+              "title": "Avoid an excessive DOM size",
+              "score": 0.7,
+              "displayValue": "1522 elements (266.8 KB)",
+              "description": "A small DOM size reduces memory consumption and accelerates reflows.",
+              "passed": false
+            },
+            {
+              "id": "render-blocking-resources",
+              "title": "Eliminate render-blocking resources",
+              "score": 1,
+              "displayValue": "Next.js async script bundling active",
+              "description": "Scripts are loaded with asynchronous strategies to prevent blocking DOM render.",
+              "passed": true
+            },
+            {
+              "id": "modern-image-formats",
+              "title": "Serve images in next-gen formats",
+              "score": 1,
+              "displayValue": "Modern WebP/Next image optimization verified",
+              "description": "Image formats like WebP and AVIF provide superior compression over PNG/JPEG.",
+              "passed": true
+            },
+            {
+              "id": "font-display",
+              "title": "Ensure text remains visible during webfont load",
+              "score": 0.7,
+              "displayValue": "Default font loading",
+              "description": "Using font-display: swap enables visitors to read text immediately while fonts load.",
+              "passed": false
+            }
+          ]
+        },
+        "accessibility": {
+          "title": "Accessibility",
+          "score": 100,
+          "description": "Checks whether all users can navigate, understand, and interact with the page.",
+          "audits": [
+            {
+              "id": "html-has-lang",
+              "title": "<html> element has a [lang] attribute",
+              "score": 1,
+              "displayValue": "lang=\"en\" defined",
+              "description": "Screen readers rely on language tags to pronounce words accurately.",
+              "passed": true
+            },
+            {
+              "id": "image-alt",
+              "title": "Image elements have [alt] attributes",
+              "score": 1,
+              "displayValue": "All images include alt text",
+              "description": "Informative alt text enables blind and visually impaired users to understand images.",
+              "passed": true
+            },
+            {
+              "id": "heading-order",
+              "title": "Heading elements appear in a sequentially descending order",
+              "score": 1,
+              "displayValue": "Proper H1 & H2 semantic structure",
+              "description": "Semantically structured headings provide vital navigation landmarks for screen readers.",
+              "passed": true
+            },
+            {
+              "id": "aria-landmarks",
+              "title": "Page contains landmark regions (main, header, footer)",
+              "score": 1,
+              "displayValue": "<header>, <main>, and <footer> tags verified",
+              "description": "Landmark elements partition pages into meaningful navigational sections.",
+              "passed": true
+            },
+            {
+              "id": "button-name",
+              "title": "Buttons have an accessible name",
+              "score": 1,
+              "displayValue": "Interactive buttons include labels",
+              "description": "When a button doesn't have an accessible name, screen readers announce it as 'button'.",
+              "passed": true
+            }
+          ]
+        },
+        "bestPractices": {
+          "title": "Best Practices",
+          "score": 100,
+          "description": "Ensures modern web development standards, security, and error prevention.",
+          "audits": [
+            {
+              "id": "doctype",
+              "title": "Page has the HTML5 doctype",
+              "score": 1,
+              "displayValue": "<!DOCTYPE html> detected",
+              "description": "Specifying a doctype prevents the browser from switching to quirks-mode.",
+              "passed": true
+            },
+            {
+              "id": "charset",
+              "title": "Properly defines character set",
+              "score": 1,
+              "displayValue": "UTF-8 declared",
+              "description": "A character encoding declaration is required to display text correctly.",
+              "passed": true
+            },
+            {
+              "id": "viewport",
+              "title": "Has a <meta name=\"viewport\"> tag with width or initial-scale",
+              "score": 1,
+              "displayValue": "Mobile viewport configured",
+              "description": "A viewport tag optimizes the app for mobile screens.",
+              "passed": true
+            },
+            {
+              "id": "external-anchors-use-rel-noopener",
+              "title": "Links to cross-origin destinations are safe",
+              "score": 1,
+              "displayValue": "No opener issues detected",
+              "description": "Add rel='noopener' or rel='noreferrer' to any external links with target='_blank'.",
+              "passed": true
+            }
+          ]
+        },
+        "seo": {
+          "title": "SEO",
+          "score": 91,
+          "description": "Validates technical optimization for search engines like Google and Bing.",
+          "audits": [
+            {
+              "id": "document-title",
+              "title": "Document has a <title> element",
+              "score": 0.85,
+              "displayValue": "\"Pavan Homecare | In-Home Senior Care &amp; Ca...\" (91 chars)",
+              "description": "The title gives search engine users a primary overview of the page content.",
+              "passed": true
+            },
+            {
+              "id": "meta-description",
+              "title": "Document has a meta description",
+              "score": 0.85,
+              "displayValue": "208 characters",
+              "description": "The meta description may be included in search results to summarize page content.",
+              "passed": true
+            },
+            {
+              "id": "single-h1",
+              "title": "Document has a single, descriptive <h1> heading",
+              "score": 1,
+              "displayValue": "1 H1 heading verified",
+              "description": "Search engines use H1 headings to identify the primary topic of the page.",
+              "passed": true
+            },
+            {
+              "id": "structured-data",
+              "title": "Structured data (Schema.org JSON-LD) is valid",
+              "score": 1,
+              "displayValue": "Schema.org Article / MedicalBusiness detected",
+              "description": "Structured data enables rich search results like star ratings, FAQs, and local business snippets.",
+              "passed": true
+            },
+            {
+              "id": "open-graph",
+              "title": "Page has OpenGraph social sharing meta tags",
+              "score": 1,
+              "displayValue": "og:title, og:description, and og:image active",
+              "description": "OpenGraph tags ensure rich link previews when shared on Facebook, LinkedIn, Twitter, and iMessage.",
+              "passed": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "audit_1791892574040",
+    "path": "/",
+    "fullUrl": "http://localhost:3000/",
+    "device": "mobile",
+    "timestamp": "2026-10-13T11:56:14.035Z",
+    "durationMs": 532,
+    "scores": {
+      "performance": 88,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 91
+    },
+    "metrics": {
+      "fcp": "0.9 s",
+      "lcp": "2 s",
+      "tbt": "40 ms",
+      "cls": "0.01",
+      "speedIndex": "1.2 s"
+    },
+    "report": {
+      "url": "http://localhost:3000/",
+      "deviceMode": "mobile",
+      "statusCode": 200,
+      "auditedAt": "2026-10-13T11:56:14.035Z",
+      "durationMs": 532,
+      "scores": {
+        "performance": 88,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 91
+      },
+      "metrics": {
+        "fcp": "0.9 s",
+        "lcp": "2 s",
+        "tbt": "40 ms",
+        "cls": "0.01",
+        "speedIndex": "1.2 s"
+      },
+      "categories": {
+        "performance": {
+          "title": "Performance",
+          "score": 88,
+          "description": "Evaluates page load speed, responsiveness, and Core Web Vitals.",
+          "audits": [
+            {
+              "id": "server-response-time",
+              "title": "Server response time (TTFB)",
+              "score": 0.8,
+              "displayValue": "510 ms",
+              "description": "Time to First Byte indicates how fast your web server responds.",
+              "passed": false
+            },
+            {
+              "id": "dom-size",
+              "title": "Avoid an excessive DOM size",
+              "score": 0.7,
+              "displayValue": "1522 elements (266.8 KB)",
+              "description": "A small DOM size reduces memory consumption and accelerates reflows.",
+              "passed": false
+            },
+            {
+              "id": "render-blocking-resources",
+              "title": "Eliminate render-blocking resources",
+              "score": 1,
+              "displayValue": "Next.js async script bundling active",
+              "description": "Scripts are loaded with asynchronous strategies to prevent blocking DOM render.",
+              "passed": true
+            },
+            {
+              "id": "modern-image-formats",
+              "title": "Serve images in next-gen formats",
+              "score": 1,
+              "displayValue": "Modern WebP/Next image optimization verified",
+              "description": "Image formats like WebP and AVIF provide superior compression over PNG/JPEG.",
+              "passed": true
+            },
+            {
+              "id": "font-display",
+              "title": "Ensure text remains visible during webfont load",
+              "score": 0.7,
+              "displayValue": "Default font loading",
+              "description": "Using font-display: swap enables visitors to read text immediately while fonts load.",
+              "passed": false
+            }
+          ]
+        },
+        "accessibility": {
+          "title": "Accessibility",
+          "score": 100,
+          "description": "Checks whether all users can navigate, understand, and interact with the page.",
+          "audits": [
+            {
+              "id": "html-has-lang",
+              "title": "<html> element has a [lang] attribute",
+              "score": 1,
+              "displayValue": "lang=\"en\" defined",
+              "description": "Screen readers rely on language tags to pronounce words accurately.",
+              "passed": true
+            },
+            {
+              "id": "image-alt",
+              "title": "Image elements have [alt] attributes",
+              "score": 1,
+              "displayValue": "All images include alt text",
+              "description": "Informative alt text enables blind and visually impaired users to understand images.",
+              "passed": true
+            },
+            {
+              "id": "heading-order",
+              "title": "Heading elements appear in a sequentially descending order",
+              "score": 1,
+              "displayValue": "Proper H1 & H2 semantic structure",
+              "description": "Semantically structured headings provide vital navigation landmarks for screen readers.",
+              "passed": true
+            },
+            {
+              "id": "aria-landmarks",
+              "title": "Page contains landmark regions (main, header, footer)",
+              "score": 1,
+              "displayValue": "<header>, <main>, and <footer> tags verified",
+              "description": "Landmark elements partition pages into meaningful navigational sections.",
+              "passed": true
+            },
+            {
+              "id": "button-name",
+              "title": "Buttons have an accessible name",
+              "score": 1,
+              "displayValue": "Interactive buttons include labels",
+              "description": "When a button doesn't have an accessible name, screen readers announce it as 'button'.",
+              "passed": true
+            }
+          ]
+        },
+        "bestPractices": {
+          "title": "Best Practices",
+          "score": 100,
+          "description": "Ensures modern web development standards, security, and error prevention.",
+          "audits": [
+            {
+              "id": "doctype",
+              "title": "Page has the HTML5 doctype",
+              "score": 1,
+              "displayValue": "<!DOCTYPE html> detected",
+              "description": "Specifying a doctype prevents the browser from switching to quirks-mode.",
+              "passed": true
+            },
+            {
+              "id": "charset",
+              "title": "Properly defines character set",
+              "score": 1,
+              "displayValue": "UTF-8 declared",
+              "description": "A character encoding declaration is required to display text correctly.",
+              "passed": true
+            },
+            {
+              "id": "viewport",
+              "title": "Has a <meta name=\"viewport\"> tag with width or initial-scale",
+              "score": 1,
+              "displayValue": "Mobile viewport configured",
+              "description": "A viewport tag optimizes the app for mobile screens.",
+              "passed": true
+            },
+            {
+              "id": "external-anchors-use-rel-noopener",
+              "title": "Links to cross-origin destinations are safe",
+              "score": 1,
+              "displayValue": "No opener issues detected",
+              "description": "Add rel='noopener' or rel='noreferrer' to any external links with target='_blank'.",
+              "passed": true
+            }
+          ]
+        },
+        "seo": {
+          "title": "SEO",
+          "score": 91,
+          "description": "Validates technical optimization for search engines like Google and Bing.",
+          "audits": [
+            {
+              "id": "document-title",
+              "title": "Document has a <title> element",
+              "score": 0.85,
+              "displayValue": "\"Pavan Homecare | In-Home Senior Care &amp; Ca...\" (91 chars)",
+              "description": "The title gives search engine users a primary overview of the page content.",
+              "passed": true
+            },
+            {
+              "id": "meta-description",
+              "title": "Document has a meta description",
+              "score": 0.85,
+              "displayValue": "208 characters",
+              "description": "The meta description may be included in search results to summarize page content.",
+              "passed": true
+            },
+            {
+              "id": "single-h1",
+              "title": "Document has a single, descriptive <h1> heading",
+              "score": 1,
+              "displayValue": "1 H1 heading verified",
+              "description": "Search engines use H1 headings to identify the primary topic of the page.",
+              "passed": true
+            },
+            {
+              "id": "structured-data",
+              "title": "Structured data (Schema.org JSON-LD) is valid",
+              "score": 1,
+              "displayValue": "Schema.org Article / MedicalBusiness detected",
+              "description": "Structured data enables rich search results like star ratings, FAQs, and local business snippets.",
+              "passed": true
+            },
+            {
+              "id": "open-graph",
+              "title": "Page has OpenGraph social sharing meta tags",
+              "score": 1,
+              "displayValue": "og:title, og:description, and og:image active",
+              "description": "OpenGraph tags ensure rich link previews when shared on Facebook, LinkedIn, Twitter, and iMessage.",
+              "passed": true
+            }
+          ]
+        }
+      }
+    }
+  }
+]

@@ -2227,19 +2227,30 @@ export default function AdminPage() {
             </div>
 
             {/* Quick action buttons */}
-            <div className="mt-6 pt-4 border-t flex items-center justify-end gap-2">
-              <a
-                href={`tel:${selectedInquiry.phone}`}
-                className="px-4 py-2 bg-[#FF7A59] hover:bg-[#E86746] text-white font-bold text-xs rounded-xl shadow-sm inline-flex items-center gap-1.5"
-              >
-                <Phone size={14} /> Call Client
-              </a>
+            <div className="mt-6 pt-4 border-t flex items-center justify-between gap-2">
               <button
-                onClick={() => setSelectedInquiry(null)}
-                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl"
+                type="button"
+                onClick={() => handleDeleteInquiry(selectedInquiry.id, selectedInquiry.collection)}
+                className="px-3.5 py-2 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs rounded-xl inline-flex items-center gap-1.5 transition-colors"
+                title="Delete Inquiry"
               >
-                Close
+                <Trash2 size={14} /> Delete
               </button>
+              <div className="flex items-center gap-2">
+                <a
+                  href={`tel:${selectedInquiry.phone}`}
+                  className="px-4 py-2 bg-[#FF7A59] hover:bg-[#E86746] text-white font-bold text-xs rounded-xl shadow-sm inline-flex items-center gap-1.5"
+                >
+                  <Phone size={14} /> Call Client
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setSelectedInquiry(null)}
+                  className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>

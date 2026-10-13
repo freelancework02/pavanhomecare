@@ -3,14 +3,23 @@ import { countiesData, citiesData } from "@/lib/countiesData";
 import CountyPageClient from "./CountyPageClient";
 import { site } from "@/lib/site";
 
+function resolveCountyData(countyParam) {
+  if (!countyParam) return null;
+  const direct = countiesData[countyParam];
+  if (direct) return direct;
+  const normalized = countyParam.toLowerCase().replace(/-county$/, "");
+  return countiesData[normalized] || null;
+}
+
 export async function generateStaticParams() {
-  return Object.keys(countiesData).map((county) => ({
-    county: county,
-  }));
+  const baseKeys = Object.keys(countiesData);
+  const withSuffix = baseKeys.map((c) => ({ county: `${c}-county` }));
+  const standard = baseKeys.map((county) => ({ county }));
+  return [...standard, ...withSuffix];
 }
 
 export async function generateMetadata({ params, searchParams }) {
-  const data = countiesData[params.county];
+  const data = resolveCountyData(params.county);
   if (!data) return {};
 
   const city = searchParams?.city;
@@ -81,7 +90,7 @@ export async function generateMetadata({ params, searchParams }) {
 }
 
 export default function CountyPage({ params, searchParams }) {
-  const data = countiesData[params.county];
+  const data = resolveCountyData(params.county);
   
   if (!data) {
     notFound();
