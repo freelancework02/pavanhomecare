@@ -5,7 +5,7 @@ import { getAllBlogs } from "@/lib/blogs";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: `Senior Care Resources, Guides & Medicaid Insights | ${site.name} Blog`,
+  title: "Senior Care Resources & Medicaid Guides",
   description: `Expert advice, eldercare guidance, Medicaid waiver tips, and family caregiver resources from the ${site.name} clinical care team in Pennsylvania.`,
   alternates: {
     canonical: "/blog",

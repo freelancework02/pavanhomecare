@@ -6,40 +6,40 @@ export async function generateMetadata({ searchParams }) {
 
   const serviceSeo = {
     "companion-care": {
-      title: `Companion Care Services in PA | Friendly In-Home Support | ${site.name}`,
-      description: `Licensed companion care across 9 Pennsylvania counties. Meaningful conversation, meal prep, medication reminders, and errand assistance from Pavan Homecare.`,
+      title: "Companion Care Services in PA | Friendly In-Home Support",
+      description: "Licensed companion care across 9 Pennsylvania counties. Meaningful conversation, meal prep, medication reminders, and errand assistance from Pavan Homecare.",
       canonical: "/companion-care",
       keywords: ["companion care Pennsylvania", "elderly companion care Bucks County", "senior companionship Philadelphia", "in home companion caregiver PA"]
     },
     "personal-care": {
-      title: `Personal Care & Daily Hygiene Assistance in PA | ${site.name}`,
-      description: `Dignified hands-on personal care, bathing, grooming, and mobility assistance tailored to seniors across Pennsylvania. Request a free in-home consultation.`,
+      title: "Personal Care & Daily Hygiene Assistance in PA",
+      description: "Dignified hands-on personal care, bathing, grooming, and mobility assistance tailored to seniors across Pennsylvania. Request a free in-home consultation.",
       canonical: "/personal-care",
       keywords: ["personal care Pennsylvania", "senior hygiene assistance Bucks County", "private duty caregiver PA", "elderly bathing assistance Philadelphia"]
     },
     "24hour-care": {
-      title: `24-Hour & Live-In Senior Home Care in PA | ${site.name}`,
-      description: `Continuous 24-hour and live-in care providing round-the-clock peace of mind for seniors across 9 PA counties. Immediate availability for your family.`,
+      title: "24-Hour & Live-In Senior Home Care in PA",
+      description: "Continuous 24-hour and live-in care providing round-the-clock peace of mind for seniors across 9 PA counties. Immediate availability for your family.",
       canonical: "/24-hour-live-in-care",
       keywords: ["24 hour home care Pennsylvania", "live in caregiver Bucks County", "overnight senior care Philadelphia", "24 7 elder care PA"]
     },
     "dementia-care": {
-      title: `Alzheimer's & Dementia Memory Care at Home in PA | ${site.name}`,
-      description: `Specialized Alzheimer's and dementia care supporting seniors in the familiar safety of home across Pennsylvania. Trained memory care caregivers.`,
+      title: "Alzheimer's & Dementia Memory Care at Home in PA",
+      description: "Specialized Alzheimer's and dementia care supporting seniors in the familiar safety of home across Pennsylvania. Trained memory care caregivers.",
       canonical: "/dementia-alzheimers-care",
       keywords: ["dementia care Pennsylvania", "Alzheimers home care Bucks County", "memory care at home Philadelphia", "dementia caregiver PA"]
     },
     "respite-care": {
-      title: `Post-Hospital & Family Respite Care Services in PA | ${site.name}`,
-      description: `Post-hospital transitional care and reliable respite relief for family caregivers across Pennsylvania. Seamless care when you need it most.`,
+      title: "Post-Hospital & Family Respite Care Services in PA",
+      description: "Post-hospital transitional care and reliable respite relief for family caregivers across Pennsylvania. Seamless care when you need it most.",
       canonical: "/post-hospital-respite-care",
       keywords: ["respite care Pennsylvania", "post hospital home care Bucks County", "caregiver relief Philadelphia", "short term senior care PA"]
     }
   };
 
   const seo = service && serviceSeo[service];
-  const title = seo ? seo.title : `Professional In-Home Care Services in Pennsylvania | ${site.name}`;
-  const description = seo ? seo.description : `${site.name} provides licensed companion care, personal care, 24-hour live-in support, memory care, and respite care in Pennsylvania. Request a free assessment.`;
+  const title = seo ? seo.title : "Professional In-Home Care Services in Pennsylvania";
+  const description = seo ? seo.description : "Pavan Homecare provides licensed companion care, personal care, 24-hour live-in support, memory care & respite care in PA. Request a free consultation.";
   const canonicalUrl = seo ? seo.canonical : "/services";
   const keywords = seo ? seo.keywords : [
     "in home care services PA",

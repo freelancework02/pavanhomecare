@@ -8,6 +8,7 @@ import ChatbotWidget from "@/components/ChatbotWidget";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
 import AccessibleSkipNav from "@/components/AccessibleSkipNav";
 import AccessibilityMenu from "@/components/AccessibilityMenu";
+import LanguageTranslator from "@/components/LanguageTranslator";
 import { site } from "@/lib/site";
 
 const poppins = Poppins({
@@ -140,10 +141,22 @@ const jsonLd = {
           telephone: site.phoneDisplay,
           contactType: "customer service",
           areaServed: "US-PA",
-          availableLanguage: ["English"],
+          availableLanguage: ["English", "Spanish", "Russian", "Chinese", "Hindi", "Ukrainian", "Vietnamese", "Arabic"],
         },
       ],
       sameAs: [],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      alternateName: ["Pavan Home Care", "Pavan Homecare PA", "Pavan Senior Care"],
+      description: "Licensed in-home senior care and caregiver services across Pennsylvania.",
+      publisher: {
+        "@id": `${site.url}/#organization`
+      },
+      inLanguage: ["en-US", "es", "ru", "zh-CN", "hi", "uk", "vi", "ar"]
     },
     {
       "@type": ["HomeHealthCareService", "LocalBusiness"],
@@ -249,6 +262,7 @@ export default function RootLayout({ children }) {
         <ChatbotWidget />
         <CookieConsentBanner />
         <AccessibilityMenu />
+        <LanguageTranslator />
       </body>
     </html>
   );

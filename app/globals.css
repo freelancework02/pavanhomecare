@@ -6997,7 +6997,7 @@ a.footer-contact-link-item:hover {
 /* ── 24. PRIVACY CHOICES & FLOATING WIDGET COORDINATION ── */
 .phcCookieTriggerBtn {
   position: fixed;
-  bottom: 4.5rem;
+  bottom: 5.35rem;
   left: 1.25rem;
   z-index: 9935;
   display: inline-flex;
@@ -7031,12 +7031,12 @@ a.footer-contact-link-item:hover {
 
 @media (max-width: 768px) {
   .phcCookieTriggerBtn {
-    bottom: 4.25rem;
+    bottom: 5.25rem;
     left: 1rem;
     padding: 0.5rem 0.8rem;
   }
   html[data-sticky-call="true"] .phcCookieTriggerBtn {
-    bottom: 8.5rem !important;
+    bottom: 9.25rem !important;
   }
   html[data-cookie-banner="open"] .phcCookieTriggerBtn,
   html[data-cookie-modal="open"] .phcCookieTriggerBtn {
@@ -7045,6 +7045,9 @@ a.footer-contact-link-item:hover {
 }
 
 @media (max-width: 640px) {
+  .phcCookieTriggerBtn {
+    bottom: 4.85rem;
+  }
   .phcCookieTriggerBtn span {
     display: none;
   }
@@ -7210,5 +7213,69 @@ html.ada-keyboard-nav textarea:focus {
   outline-offset: 3px !important;
   box-shadow: 0 0 0 6px rgba(96, 239, 255, 0.75) !important;
 }
+
+/* =========================================================================
+   26. GOOGLE TRANSLATE SEAMLESS OVERRIDES & LANGUAGE SWITCHER
+   ========================================================================= */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover,
+#goog-gt-tt {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}
+
+.skiptranslate:not(.notranslate) {
+  display: none !important;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 
 

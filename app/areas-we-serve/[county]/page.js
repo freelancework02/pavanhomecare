@@ -48,7 +48,9 @@ export async function generateMetadata({ params, searchParams }) {
       ];
 
   return {
-    title,
+    title: {
+      absolute: title,
+    },
     description,
     keywords: localizedKeywords,
     alternates: {

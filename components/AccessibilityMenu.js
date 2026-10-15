@@ -39,9 +39,11 @@ import {
   CheckCircle2,
   Play,
   Square,
-  Pause
+  Pause,
+  Globe
 } from "lucide-react";
 import { site } from "@/lib/site";
+import { getLanguageByCode } from "@/lib/languagesData";
 import styles from "./AccessibilityMenu.module.css";
 
 const STORAGE_KEY = "phc_ada_settings";
@@ -72,7 +74,23 @@ export default function AccessibilityMenu() {
   const [searchQuery, setSearchQuery] = useState("");
   const [mouseY, setMouseY] = useState(300);
   const [speechState, setSpeechState] = useState("idle"); // "idle" | "speaking" | "paused"
+  const [activeLang, setActiveLang] = useState("en");
   const [announcement, setAnnouncement] = useState("");
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("phc_selected_lang");
+      if (saved) setActiveLang(saved);
+    } catch {}
+
+    const onLang = (e) => {
+      if (e?.detail?.code) setActiveLang(e.detail.code);
+    };
+    window.addEventListener("phc_language_changed", onLang);
+    return () => window.removeEventListener("phc_language_changed", onLang);
+  }, []);
+
+  const currentLangObj = getLanguageByCode(activeLang);
 
   const triggerRef = useRef(null);
   const modalRef = useRef(null);
@@ -343,14 +361,26 @@ export default function AccessibilityMenu() {
       ? textNodes
       : "Welcome to Pavan Homecare. Compassionate senior home care and caregiver services across Pennsylvania.";
 
+    const activeLangCode = typeof window !== "undefined" ? localStorage.getItem("phc_selected_lang") || "en" : "en";
+    const langObj = getLanguageByCode(activeLangCode);
+
     const utterance = new SpeechSynthesisUtterance(textToRead);
     utterance.rate = 1.0;
     utterance.pitch = 1.0;
-    utterance.lang = "en-US";
+    utterance.lang = langObj.bcp47 || "en-US";
+
+    try {
+      const voices = synth.getVoices();
+      const targetPrefix = (langObj.bcp47 || "en").split("-")[0].toLowerCase();
+      const matchVoice = voices.find((v) => v.lang.toLowerCase().startsWith(targetPrefix));
+      if (matchVoice) {
+        utterance.voice = matchVoice;
+      }
+    } catch {}
 
     utterance.onstart = () => {
       setSpeechState("speaking");
-      announce("Reading page content aloud");
+      announce(`Reading page content aloud in ${langObj.name}`);
     };
 
     utterance.onend = () => {
@@ -1330,6 +1360,35 @@ export default function AccessibilityMenu() {
                   ───────────────────────────────────────────────────────── */}
               {activeTab === "reading" && (
                 <div role="tabpanel" id="panel-reading" aria-labelledby="tab-reading" className="flex flex-col gap-5">
+                  {/* Active Language & Translation Info */}
+                  <div className="bg-[#E8F2FF] border border-[#0061FF]/20 rounded-2xl p-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-xl bg-white text-[#0061FF] border border-blue-200 flex items-center justify-center shrink-0">
+                        <Globe size={16} />
+                      </div>
+                      <div>
+                        <div className="font-bold text-[#001A4D] flex items-center gap-1.5">
+                          <span>Page &amp; Voice Language:</span>
+                          <span className="text-sm">{currentLangObj.flag}</span>
+                          <span className="text-[#0061FF]">{currentLangObj.nativeName} ({currentLangObj.name})</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500">
+                          Screen reader speaks aloud using this language&apos;s native accent.
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsOpen(false);
+                        window.dispatchEvent(new CustomEvent("phc_open_language_selector"));
+                      }}
+                      className="px-3 py-1.5 bg-white border border-slate-300 hover:border-[#0061FF] hover:text-[#0061FF] text-[#001A4D] font-bold rounded-xl transition-colors shrink-0 shadow-sm cursor-pointer"
+                    >
+                      Change Language
+                    </button>
+                  </div>
+
                   {/* Text to Speech Bar */}
                   <div className={styles.ttsBar}>
                     <div className={styles.ttsStatus}>

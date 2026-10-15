@@ -2,8 +2,8 @@ import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 
 export const metadata = {
-  title: "Terms & Conditions",
-  description: `Read the Terms & Conditions and SMS Terms for using the ${site.name} website and care coordination services.`,
+  title: "Terms & Conditions & Service Policies",
+  description: "Read the Terms & Conditions, SMS messaging terms, and service policies for using the Pavan Homecare website and Pennsylvania care coordination services.",
   alternates: { canonical: "/terms-conditions" },
 };
 

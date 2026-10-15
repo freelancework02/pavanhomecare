@@ -13,9 +13,11 @@ import HomeFaq, { homeFaqs } from "@/components/HomeFaq";
 import { services, site } from "@/lib/site";
 
 export const metadata = {
-  title: "Pavan Homecare | In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
+  title: {
+    absolute: "In-Home Senior Care & Caregivers in PA | Pavan Homecare",
+  },
   description:
-    "Trusted in-home senior care across Pennsylvania. Serving 9 counties including Bucks, Philadelphia, Montgomery, Delaware, and Chester. Companion care, personal care, 24/7 care & Medicaid waiver assistance.",
+    "Licensed in-home senior care & caregivers across Bucks County, Philadelphia & 9 PA counties. 24/7 care, Medicaid waiver, personal & companion care.",
   alternates: { canonical: "/" },
   keywords: [
     "in home care Pennsylvania",
@@ -28,9 +30,9 @@ export const metadata = {
     "Medicaid waiver home care provider PA"
   ],
   openGraph: {
-    title: "Pavan Homecare | In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania",
+    title: "In-Home Senior Care & Caregiver Services in PA | Pavan Homecare",
     description:
-      "Compassionate, licensed in-home care tailored to your family's needs. Serving Bucks County, Philadelphia, and 9 PA counties.",
+      "Licensed in-home senior care & caregivers across Bucks County, Philadelphia & 9 PA counties. 24/7 care, Medicaid waiver, personal & companion care.",
     url: site.url,
     siteName: site.name,
     type: "website",

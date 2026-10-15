@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata = {
   title: "About Us | Licensed In-Home Senior Care in PA",
-  description: `Learn about ${site.name}'s mission, values, clinical protocols, and licensed caregivers providing love-driven senior care across 9 Pennsylvania counties.`,
+  description: "Learn about Pavan Homecare's mission, values, clinical standards & licensed caregivers providing love-driven senior care across 9 PA counties.",
   alternates: { canonical: "/about" },
   keywords: [
     "about Pavan Homecare",

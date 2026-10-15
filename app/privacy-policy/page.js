@@ -2,8 +2,8 @@ import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 
 export const metadata = {
-  title: "Privacy Policy",
-  description: `Learn how ${site.name} protects your personal information. Review our privacy practices, data collection policies, and your rights regarding the use and security of your information.`,
+  title: "Privacy Policy & Client Data Security",
+  description: "Learn how Pavan Homecare protects your personal information, client privacy, HIPAA data standards, and communications security across Pennsylvania.",
   alternates: { canonical: "/privacy-policy" },
 };
 

@@ -4,18 +4,35 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  MapPin, Phone, ChevronDown, Menu, X, ArrowRight, Heart, User, Navigation, Accessibility,
+  MapPin, Phone, ChevronDown, Menu, X, ArrowRight, Heart, User, Navigation, Accessibility, Globe,
 } from "lucide-react";
 import Logo from "./Logo";
 import { countiesData } from "@/lib/countiesData";
 import { site } from "@/lib/site";
+import { getLanguageByCode } from "@/lib/languagesData";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileAreasOpen, setMobileAreasOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [activeLang, setActiveLang] = useState("en");
   const pathname = usePathname();
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("phc_selected_lang");
+      if (saved) setActiveLang(saved);
+    } catch {}
+
+    const onLangChanged = (e) => {
+      if (e?.detail?.code) setActiveLang(e.detail.code);
+    };
+    window.addEventListener("phc_language_changed", onLangChanged);
+    return () => window.removeEventListener("phc_language_changed", onLangChanged);
+  }, []);
+
+  const currentLangObj = getLanguageByCode(activeLang);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -75,6 +92,23 @@ export default function Navbar() {
             >
               <Accessibility size={13} color="#0061FF" />
               <span>Accessibility</span>
+            </button>
+            <span className="nb-topbar__divider" />
+            <button
+              type="button"
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent("phc_open_language_selector"));
+              }}
+              className="nb-topbar__link bg-transparent border-0 cursor-pointer text-left inline-flex items-center gap-1.5 font-bold hover:text-[#0061FF] transition-colors"
+              aria-label={`Current language: ${currentLangObj.name}. Click to translate website.`}
+              title="Translate Website (100+ Languages)"
+            >
+              <Globe size={13} color="#0061FF" />
+              <span className="inline-flex items-center gap-1">
+                <span aria-hidden="true">{currentLangObj.flag}</span>
+                <span>{currentLangObj.nativeName}</span>
+                <ChevronDown size={11} className="opacity-70" />
+              </span>
             </button>
           </div>
         </div>
@@ -240,6 +274,23 @@ export default function Navbar() {
                 <span>Accessibility Menu (Alt+A)</span>
               </span>
               <span className="text-[10px] font-bold px-2 py-0.5 bg-[#E8F2FF] text-[#0061FF] rounded-full">ADA</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setMobileOpen(false);
+                window.dispatchEvent(new CustomEvent("phc_open_language_selector"));
+              }}
+              className="nb-mobile__link flex items-center justify-between text-left w-full bg-transparent border-0 cursor-pointer"
+            >
+              <span className="flex items-center gap-2">
+                <Globe size={18} className="text-[#0061FF]" />
+                <span>Language: {currentLangObj.flag} {currentLangObj.nativeName}</span>
+              </span>
+              <span className="text-[10px] font-bold px-2 py-0.5 bg-[#60EFFF]/20 text-[#001A4D] rounded-full">
+                Translate
+              </span>
             </button>
           </nav>
           <div className="nb-mobile__ctas">

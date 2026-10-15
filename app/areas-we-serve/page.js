@@ -2,8 +2,8 @@ import AreasWeServeClient from "./AreasWeServeClient";
 import { site } from "@/lib/site";
 
 export const metadata = {
-  title: `Areas We Serve in Pennsylvania | Bucks, Philadelphia & 9 Counties | ${site.name}`,
-  description: `Explore ${site.name}'s licensed service coverage across 9 Pennsylvania counties: Bucks, Philadelphia, Montgomery, Delaware, Chester, Lehigh, Northampton, Berks, and Schuylkill.`,
+  title: "Areas We Serve in Pennsylvania | 9 PA Counties",
+  description: "Explore Pavan Homecare's licensed service coverage across Bucks, Philadelphia, Montgomery & 9 PA counties. Find certified local caregivers near you.",
   alternates: {
     canonical: "/areas-we-serve",
   },

@@ -15,9 +15,15 @@ export async function generateMetadata({ params }) {
 
   const postDate = post.publishedAt || post.date || post.createdAt || new Date().toISOString();
 
+  const cleanExcerpt = post.excerpt && post.excerpt.length > 158
+    ? post.excerpt.slice(0, 155).trim() + "..."
+    : post.excerpt;
+
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: {
+      absolute: `${post.title} | ${site.name}`,
+    },
+    description: cleanExcerpt,
     alternates: { canonical: canonicalUrl },
     keywords: [
       post.title,

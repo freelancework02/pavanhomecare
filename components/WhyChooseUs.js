@@ -168,9 +168,9 @@ export default function WhyChooseUs() {
               className="wcu-trust-badge"
             >
               <div className="wcu-trust-badge__avatars">
-                <Image src="/images/reviewer_gloria.webp"   alt="" width={36} height={36} className="wcu-avatar" />
-                <Image src="/images/reviewer_reginald.webp" alt="" width={36} height={36} className="wcu-avatar" />
-                <Image src="/images/review_gloria_photo.webp" alt="" width={36} height={36} className="wcu-avatar" />
+                <Image src="/images/reviewer_gloria.webp" alt="Client review avatar - Gloria" width={36} height={36} className="wcu-avatar" />
+                <Image src="/images/reviewer_reginald.webp" alt="Client review avatar - Reginald" width={36} height={36} className="wcu-avatar" />
+                <Image src="/images/review_gloria_photo.webp" alt="Pavan Homecare family testimonial avatar" width={36} height={36} className="wcu-avatar" />
               </div>
               <div className="wcu-trust-badge__text">
                 <span className="wcu-trust-badge__primary">Licensed &amp; 100% Vetted</span>

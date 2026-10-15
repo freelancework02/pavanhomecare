@@ -1,6 +1,67 @@
 [
   {
     "collection": "PHC-cookie-consent-data",
+    "consentId": "consent_mv9edwn1_okxzu7ks",
+    "visitorId": "vid_mv9edwn0_angd5rxu",
+    "sessionId": "sess_mv9edwn0_qwul8cvi",
+    "consentStatus": "dismissed_default",
+    "categories": {
+      "necessary": true,
+      "analytics": false,
+      "functional": true,
+      "marketing": false
+    },
+    "doNotSellShare": true,
+    "analytics": {
+      "pagesVisited": [
+        {
+          "path": "/",
+          "timestamp": "2026-10-15T10:30:06.557Z",
+          "title": "Pavan Homecare | In-Home Senior Care & Caregiver Services in Bucks County, Pennsylvania"
+        }
+      ],
+      "pageCount": 1,
+      "currentUrl": "http://localhost:3000/",
+      "currentPath": "/",
+      "clicksRecorded": []
+    },
+    "deviceInfo": {
+      "deviceType": "Desktop",
+      "browser": "Google Chrome",
+      "os": "Windows",
+      "screenResolution": "1920x1080",
+      "viewportSize": "902x947"
+    },
+    "approximateLocation": {
+      "timezone": "Asia/Calcutta",
+      "timezoneOffset": "UTC+5.5",
+      "locale": "en-US",
+      "region": "Pennsylvania (PA), USA",
+      "clientIpMasked": "::xxxx"
+    },
+    "referralInfo": {
+      "referrer": "Direct / Bookmark",
+      "utm": {}
+    },
+    "preferencesInfo": {
+      "language": "en-US",
+      "savedSettings": {
+        "theme": "light",
+        "highContrast": false,
+        "cookieNoticeDismissed": true
+      },
+      "filters": {
+        "county": "all",
+        "blogCategory": "all"
+      }
+    },
+    "legalFramework": "Standard Privacy & Cookie Consent",
+    "policyVersion": "2026.1",
+    "submittedAtIso": "2026-10-15T10:30:21.928Z",
+    "formattedDate": "Thursday, October 15, 2026 at 4:00:21 PM"
+  },
+  {
+    "collection": "PHC-cookie-consent-data",
     "consentId": "consent_mv3gswew_q62nv9qw",
     "visitorId": "vid_mujpw9z0_ye1si18p",
     "sessionId": "sess_mv3gnz4r_72ih788j",

@@ -46,7 +46,7 @@ function auditRoute(path) {
         const descMatch = html.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)["']/i);
         const hasOgImage = html.includes('og:image');
         const hasAppleTouch = html.includes('apple-touch-icon');
-        const hasSkip = html.includes('Skip to main content');
+        const hasSkip = /skip to main content/i.test(html);
 
         resolve({
           path,
