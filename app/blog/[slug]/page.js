@@ -9,7 +9,8 @@ import { Calendar, ArrowLeft, ArrowRight, BookOpen, Clock, Tag } from "lucide-re
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }) {
-  const post = await getBlogBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogBySlug(slug);
   if (!post) return {};
   const canonicalUrl = `/blog/${post.slug}`;
 
@@ -82,7 +83,8 @@ function formatDate(d) {
 }
 
 export default async function BlogPostPage({ params }) {
-  const post = await getBlogBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogBySlug(slug);
   if (!post) notFound();
 
   // Fetch related articles dynamically

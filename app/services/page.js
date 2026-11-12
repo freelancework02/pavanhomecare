@@ -2,7 +2,8 @@ import ServicesClient from "./ServicesClient";
 import { site } from "@/lib/site";
 
 export async function generateMetadata({ searchParams }) {
-  const service = searchParams?.service;
+  const resolvedSearchParams = await searchParams;
+  const service = resolvedSearchParams?.service;
 
   const serviceSeo = {
     "companion-care": {
@@ -83,8 +84,9 @@ export async function generateMetadata({ searchParams }) {
   };
 }
 
-export default function ServicesPage({ searchParams }) {
-  const service = searchParams?.service;
+export default async function ServicesPage({ searchParams }) {
+  const resolvedSearchParams = await searchParams;
+  const service = resolvedSearchParams?.service;
 
   const serviceJsonLd = {
     "@context": "https://schema.org",

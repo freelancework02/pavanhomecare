@@ -19,10 +19,12 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params, searchParams }) {
-  const data = resolveCountyData(params.county);
+  const { county } = await params;
+  const resolvedSearchParams = await searchParams;
+  const data = resolveCountyData(county);
   if (!data) return {};
 
-  const city = searchParams?.city;
+  const city = resolvedSearchParams?.city;
   const isCity = city && citiesData[city];
   const title = isCity ? citiesData[city].seoTitle : data.seoTitle;
   const description = isCity ? citiesData[city].metaDescription : data.metaDescription;
@@ -91,14 +93,16 @@ export async function generateMetadata({ params, searchParams }) {
   };
 }
 
-export default function CountyPage({ params, searchParams }) {
-  const data = resolveCountyData(params.county);
+export default async function CountyPage({ params, searchParams }) {
+  const { county } = await params;
+  const resolvedSearchParams = await searchParams;
+  const data = resolveCountyData(county);
   
   if (!data) {
     notFound();
   }
 
-  const city = searchParams?.city;
+  const city = resolvedSearchParams?.city;
   const isCity = city && citiesData[city];
   const pageTitle = isCity ? citiesData[city].seoTitle : data.seoTitle;
   const pageDesc = isCity ? citiesData[city].metaDescription : data.metaDescription;
