@@ -6,7 +6,7 @@ import {
   doc,
   setDoc,
   deleteDoc
-} from "firebase/firestore";
+} from "firebase/firestore/lite";
 import {
   BLOGS_COLLECTION,
   DEFAULT_BLOGS,

@@ -3,7 +3,11 @@
 	"main": ".open-next/worker.js",
 	"name": "pavanhomecare",
 	"compatibility_date": "2026-11-10",
-	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public",
+		"allow_eval_during_startup"
+	],
 	"assets": {
 		"directory": ".open-next/assets",
 		"binding": "ASSETS"

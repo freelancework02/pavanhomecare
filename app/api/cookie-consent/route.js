@@ -8,7 +8,7 @@ import {
   orderBy,
   limit,
   serverTimestamp
-} from "firebase/firestore";
+} from "firebase/firestore/lite";
 import fs from "fs";
 import path from "path";
 import { authenticateAdminRequest } from "@/lib/adminAuthServer";
